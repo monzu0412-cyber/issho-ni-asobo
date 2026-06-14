@@ -1835,6 +1835,17 @@
   white-space: pre-line;
 }
 
+.messageEditForm {
+  margin-top: 0;
+}
+
+.messageEditForm textarea {
+  line-height: 1.65;
+  min-height: 120px;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
 .previewMode .editForm,
 .previewMode .mainWantForm,
 .previewMode .targetEditForm,
@@ -2317,6 +2328,7 @@ body.card-png-export .previewMode .card {
   .editMode .editForm input,
   .editMode .editForm select,
   .editMode .editForm textarea,
+  .editMode .messageEditForm textarea,
   .editMode .targetEditForm input,
   .editMode .targetEditForm select,
   .editMode .imageAdjustForm select {

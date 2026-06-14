@@ -2369,6 +2369,13 @@ function App() {
     }))
   }
 
+  function updateCharacterMessage(message: string) {
+    setCharacter((currentCharacter) => ({
+      ...currentCharacter,
+      message,
+    }))
+  }
+
   function updateCharacterImage(file: File | undefined) {
     if (!file) {
       return
@@ -3352,7 +3359,20 @@ function App() {
               style={getCardSectionBackgroundStyle('row4')}
             >
               <div className="sectionTitle">ひとこと</div>
-              <p>{character.message}</p>
+              {isPreviewMode ? (
+                character.message ? <p>{character.message}</p> : null
+              ) : (
+                <div className="editForm messageEditForm">
+                  <label>
+                    一言コメント
+                    <textarea
+                      rows={4}
+                      value={character.message}
+                      onChange={(event) => updateCharacterMessage(event.target.value)}
+                    />
+                  </label>
+                </div>
+              )}
             </section>
           </section>
         </div>
