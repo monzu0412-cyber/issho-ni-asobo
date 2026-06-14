@@ -1954,6 +1954,71 @@
   padding: 9px 10px;
 }
 
+.previewMode .activityBox {
+  align-items: stretch;
+  grid-template-rows: minmax(var(--layout-row3-height), auto);
+  height: auto;
+  min-height: var(--layout-row3-height);
+  overflow: visible;
+}
+
+.previewMode .activityBox > .activityColumn:not(.interestBox) {
+  height: auto;
+  max-height: none;
+  min-height: var(--layout-row3-height);
+  overflow: visible;
+}
+
+.previewMode .activityBox > .activityColumn.interestBox {
+  min-height: var(--layout-row3-height);
+}
+
+.previewMode .todoSummary strong {
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.previewMode .todoSummary.titleMedium strong {
+  font-size: 14px;
+}
+
+.previewMode .todoSummary.titleLong strong {
+  font-size: 12px;
+}
+
+.previewMode .todoSummary.titleVeryLong strong {
+  font-size: 11px;
+}
+
+.previewMode .todoSummary span {
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+body.card-png-export,
+body.card-png-export html {
+  overflow: visible !important;
+}
+
+body.card-png-export #root {
+  max-width: none;
+  overflow: visible;
+  width: max-content;
+}
+
+body.card-png-export .previewMode.app {
+  overflow: visible;
+  width: max-content;
+}
+
+body.card-png-export .previewMode .card {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  max-width: none;
+  overflow: visible;
+  width: 1024px;
+}
+
 .previewMode .messageBox {
   padding: 12px;
 }

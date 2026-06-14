@@ -1516,6 +1516,11 @@ function getWantTitleSizeClass(title: string) {
   return ''
 }
 
+function getTodoTitleSizeClass(item: TodoItem) {
+  const primaryText = item.middle?.trim() || item.title.trim()
+  return getWantTitleSizeClass(primaryText)
+}
+
 function isInternalRouteMemo(text: string | undefined) {
   if (!text) {
     return false
@@ -2692,12 +2697,17 @@ function App() {
       void cardElement.offsetHeight
     }
 
+    document.body.classList.add('card-png-export')
+
     try {
+      cardElement.scrollIntoView({ block: 'start', inline: 'nearest' })
+      void cardElement.offsetHeight
       await exportCardPng(cardElement, { orientation })
     } catch (error) {
       console.error('Failed to export card PNG', error)
       window.alert('PNGの出力に失敗しました。')
     } finally {
+      document.body.classList.remove('card-png-export')
       applyPreviewLayoutClass(cardElement, previousLayoutMode)
 
       if (exportLayoutMode === 'horizontal' && previousLayoutMode === 'vertical') {
@@ -3337,7 +3347,10 @@ function App() {
 
               <ul className="simpleList">
                 {todoList.slice(0, contentDisplayLimit).map((todo) => (
-                  <li className="todoSummary" key={getTodoItemKey(todo)}>
+                  <li
+                    className={`todoSummary${isPreviewMode ? ` ${getTodoTitleSizeClass(todo)}` : ''}`}
+                    key={getTodoItemKey(todo)}
+                  >
                     {renderTodoItemLines(todo)}
                     <button type="button" onClick={() => removeContentItem('todoList', getTodoItemKey(todo))}>
                       削除
@@ -3372,7 +3385,10 @@ function App() {
 
               <ul className="simpleList">
                 {unfinishedList.slice(0, contentDisplayLimit).map((item) => (
-                  <li className="todoSummary" key={getTodoItemKey(item)}>
+                  <li
+                    className={`todoSummary${isPreviewMode ? ` ${getTodoTitleSizeClass(item)}` : ''}`}
+                    key={getTodoItemKey(item)}
+                  >
                     {renderTodoItemLines(item)}
                     <button type="button" onClick={() => removeContentItem('unfinishedList', getTodoItemKey(item))}>
                       削除

@@ -74,8 +74,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  html,
-  body {
+  html:has(.editMode),
+  html:has(.editMode) body {
     overflow-x: clip;
   }
 }

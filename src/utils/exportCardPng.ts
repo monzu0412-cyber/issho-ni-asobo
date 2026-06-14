@@ -119,8 +119,11 @@ async function measureBlobImageSize(blob: Blob) {
   })
 }
 
+/** Set true to draw a red outline on the html2canvas clone for capture-boundary checks. */
+export const EXPORT_CAPTURE_DEBUG_OUTLINE = import.meta.env.DEV
+
 /** Bump when export sizing logic changes — confirm in Console after reload. */
-export const EXPORT_PNG_PIPELINE_VERSION = 'w1400-v3'
+export const EXPORT_PNG_PIPELINE_VERSION = 'w1400-v4'
 
 /** Matches `.card { width: 1024px }` in App.css — used to lock clone layout during export. */
 export const CARD_DOM_WIDTH = 1024
@@ -151,6 +154,42 @@ function getExportWindowMinWidth(cardWidth: number) {
 
 function getExportWindowMinHeight(cardHeight: number) {
   return Math.max(cardHeight + 128, window.innerHeight)
+}
+
+function unlockOverflowForCapture(element: HTMLElement) {
+  let current: HTMLElement | null = element
+
+  while (current) {
+    current.style.overflow = 'visible'
+    current.style.overflowX = 'visible'
+    current.style.overflowY = 'visible'
+    current = current.parentElement
+  }
+}
+
+function prepareCardElementForCapture(
+  cardElement: HTMLElement,
+  captureDomWidth: number,
+  orientation: CardExportOrientation,
+) {
+  unlockOverflowForCapture(cardElement)
+
+  if (orientation === 'vertical') {
+    cardElement.style.width = `${captureDomWidth}px`
+    cardElement.style.minWidth = `${captureDomWidth}px`
+    cardElement.style.maxWidth = `${captureDomWidth}px`
+    cardElement.style.boxSizing = 'border-box'
+  }
+
+  cardElement.style.flexShrink = '0'
+}
+
+function resetCardElementCaptureStyles(cardElement: HTMLElement) {
+  cardElement.style.width = ''
+  cardElement.style.minWidth = ''
+  cardElement.style.maxWidth = ''
+  cardElement.style.boxSizing = ''
+  cardElement.style.flexShrink = ''
 }
 
 function stabilizeCloneForExport(
@@ -194,6 +233,12 @@ function stabilizeCloneForExport(
   clonedElement.style.minHeight = `${cardHeight}px`
   clonedElement.style.boxSizing = 'border-box'
   clonedElement.style.flexShrink = '0'
+  clonedElement.style.overflow = 'visible'
+
+  if (EXPORT_CAPTURE_DEBUG_OUTLINE) {
+    clonedElement.style.outline = '4px solid #e00'
+    clonedElement.style.outlineOffset = '-4px'
+  }
 }
 
 function ensureTargetCanvasSize(
@@ -341,9 +386,15 @@ export async function exportCardPng(
 
   await waitForImages(cardElement)
 
+  const captureDomWidth = exportConfig.domWidth ?? measureCardSize(cardElement).width
+
+  prepareCardElementForCapture(cardElement, captureDomWidth, orientation)
+  cardElement.scrollIntoView({ block: 'start', inline: 'start' })
+  void cardElement.offsetHeight
+
+  try {
   const browserSnapshot = measureCardLayout(cardElement, document, 'browser-dom')
   const cardSize = measureCardSize(cardElement)
-  const captureDomWidth = exportConfig.domWidth ?? cardSize.width
   const captureDomHeight = exportConfig.domHeight ?? cardSize.height
 
   if (captureDomHeight === 0) {
@@ -367,6 +418,16 @@ export async function exportCardPng(
   const browserInterestLayoutSnapshot = measureInterestLayoutSnapshot(cardElement, 'browser-dom')
 
   console.info('[PNG export] interest layout (browser-dom)\n' + formatInterestLayoutSnapshot(browserInterestLayoutSnapshot))
+
+  console.info('[PNG export] capture target', {
+    tagName: cardElement.tagName,
+    className: cardElement.className,
+    id: cardElement.id,
+    offsetWidth: cardElement.offsetWidth,
+    offsetHeight: cardElement.offsetHeight,
+    scrollWidth: cardElement.scrollWidth,
+    scrollHeight: cardElement.scrollHeight,
+  })
 
   console.info('[PNG export] pre-capture', {
     orientation,
@@ -489,5 +550,8 @@ export async function exportCardPng(
     interestIconComparison,
     browserSnapshot,
     cloneSnapshot,
+  }
+  } finally {
+    resetCardElementCaptureStyles(cardElement)
   }
 }
