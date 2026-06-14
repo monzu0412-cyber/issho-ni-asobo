@@ -1439,7 +1439,8 @@ function isContentTranslationCategory(
   return category1 === '譜面'
     || category1 === 'マウント'
     || category1 === 'ミニオン'
-    || ['譜面', 'マウント', 'ミニオン'].includes(subCategory ?? '')
+    || category1 === 'エモート'
+    || ['譜面', 'マウント', 'ミニオン', 'エモート'].includes(subCategory ?? '')
 }
 
 function isContentTranslationTarget(target: TargetItem) {
