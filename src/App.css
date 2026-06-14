@@ -1,7 +1,8 @@
 .app {
   --layout-profile-image-size: 280px;
   --layout-main-want-height: calc(var(--layout-profile-image-size) * 1.5);
-  --layout-row3-height: 540px;
+  --layout-row2-min-height: 360px;
+  --layout-row3-height: 500px;
   --item-card-bg: #fff4dc;
   --item-card-border: #efd39b;
   --item-card-heading: #102a54;
@@ -1812,6 +1813,11 @@
   display: contents;
 }
 
+.previewMode .heroLayout {
+  align-items: stretch;
+  grid-template-rows: minmax(var(--layout-main-want-height), auto);
+}
+
 .previewMode .topRow .mainWant {
   grid-column: 2;
   grid-row: 1;
@@ -1841,14 +1847,37 @@
   gap: 16px;
 }
 
+.previewMode .middleRow {
+  align-items: stretch;
+  min-height: var(--layout-row2-min-height);
+}
+
 .previewMode .middleRow .activityColumn {
   height: auto;
-  min-height: 0;
+  min-height: var(--layout-row2-min-height);
   overflow: visible;
 }
 
 .previewMode .middleRow .wantSlotColumn {
-  min-height: 0;
+  min-height: var(--layout-row2-min-height);
+}
+
+.previewMode .middleRow .wantSlotItem {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.previewMode .middleRow .targetDetails,
+.previewMode .middleRow .routeList {
+  width: 100%;
+}
+
+.previewMode .middleRow .routeItem strong,
+.previewMode .middleRow .routeContentLine,
+.previewMode .middleRow .routeDetailLine,
+.previewMode .middleRow .targetContentName {
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .previewMode .profileImage {
@@ -1862,6 +1891,10 @@
   padding: 14px;
 }
 
+.previewMode .activityBox > .activityColumn {
+  padding: 12px;
+}
+
 .previewMode .playTimeText {
   display: none;
 }
@@ -1871,8 +1904,58 @@
 }
 
 .previewMode .mainWant {
-  height: var(--layout-main-want-height);
+  height: auto;
+  min-height: var(--layout-main-want-height);
+  overflow: visible;
   padding: 16px 28px 28px;
+}
+
+.previewMode .mainWant.hasTargetFrame {
+  color: #041a38;
+}
+
+.previewMode .mainWant.hasTargetFrame::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(255, 255, 255, 0.62) 100%
+  );
+}
+
+.previewMode .mainWant.hasTargetFrame h2,
+.previewMode .mainWant.hasTargetFrame p,
+.previewMode .mainWant.hasTargetFrame .targetContentName,
+.previewMode .mainWant.hasTargetFrame .targetDetails.compact {
+  color: #041a38;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 10px rgba(255, 255, 255, 0.72);
+}
+
+.previewMode .mainWant.hasTargetFrame .categoryBadge {
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid rgba(16, 42, 84, 0.28);
+  box-shadow: 0 1px 4px rgba(16, 42, 84, 0.12);
+  color: #041a38;
+}
+
+.previewMode .mainWant:not(.hasTargetFrame) h2,
+.previewMode .mainWant:not(.hasTargetFrame) p,
+.previewMode .mainWant:not(.hasTargetFrame) .targetContentName {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(9, 38, 83, 0.55);
+}
+
+.previewMode .mainWant .routeItem {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(16, 42, 84, 0.22);
+}
+
+.previewMode .mainWant .routeItem strong,
+.previewMode .mainWant .routeItem .routeContentLine,
+.previewMode .mainWant .routeItem .routeDetailLine,
+.previewMode .mainWant .routeItem span {
+  color: #102a54;
 }
 
 .previewMode .mainWant h2 {
@@ -1912,20 +1995,20 @@
 }
 
 .previewMode .activityBox .sectionHeader {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .previewMode .activityBox .interestItem {
   gap: 0;
-  height: 78px;
-  min-height: 78px;
+  height: 74px;
+  min-height: 74px;
   padding: 1px 2px 2px;
 }
 
 .previewMode .activityBox .interestName {
   flex-basis: auto;
   height: auto;
-  min-height: 64px;
+  min-height: 60px;
 }
 
 .previewMode .activityBox .stars {
@@ -1953,8 +2036,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 95%;
-  height: 64px;
-  max-height: 64px;
+  height: 60px;
+  max-height: 60px;
   max-width: 100%;
   transform: none;
   width: 76px;
@@ -1966,7 +2049,7 @@
 
 .previewMode .targetList,
 .previewMode .simpleList {
-  gap: 8px;
+  gap: 6px;
 }
 
 .previewMode .targetItem,
