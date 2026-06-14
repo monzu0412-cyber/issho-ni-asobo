@@ -388,7 +388,7 @@ function sanitizeCharacterDraft(value: unknown, fallback: CharacterDraft): Chara
     playTime: sanitizePlayTime(value.playTime, fallback.playTime),
     vc: readEnumValue(value.vc, voiceChatOptions, fallback.vc),
     interests: interests.length > 0 ? interests : fallback.interests,
-    targets: targets.length > 0 ? targets : fallback.targets,
+    targets,
     todoList,
     unfinishedList,
     sectionTitles: sanitizeSectionTitles(value.sectionTitles, fallback.sectionTitles),

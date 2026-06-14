@@ -937,92 +937,128 @@ const IMAGE_SCALE_MAX = 4.5
 const CARD_CONTENT_DISPLAY_LIMIT = 5
 const EDIT_CONTENT_DISPLAY_LIMIT = 5
 
-const initialCharacter = {
-  name: 'Rogan Stone',
-  dc: 'Meteor' as DataCenter,
-  world: 'Ramuh',
-  imageUrl: '',
-  imageSettings: {
-    scale: 1,
-    x: 0,
-    y: 0,
-  } as ImageSettings,
-  imageFrameTheme: 'simple' as ImageFrameTheme,
-  targetFrameTheme: 'simple' as TargetFrameTheme,
-  roles: {
-    tank: true,
-    healer: true,
-    dps: false,
-  },
-  playTime: {
-    weekday: { start: 21, end: 24 },
-    holiday: { start: 12, end: 3 },
-  } as PlayTime,
-  vc: '聞き専' as VoiceChat,
-  interests: [
-    { iconUrl: '/icons/interests/combat.png', name: '戦闘', level: 4 },
-    { iconUrl: '/icons/interests/collection.png', name: '収集', level: 3 },
-    { iconUrl: '/icons/interests/fishing.png', name: '釣り', level: 5 },
-    { iconUrl: '/icons/interests/treasure.png', name: '地図', level: 3 },
-    { iconUrl: '/icons/interests/crafter.png', name: 'クラフター', level: 2 },
-    { iconUrl: '/icons/interests/gatherer.png', name: 'ギャザラー', level: 3 },
-    { iconUrl: '/icons/interests/screenshot.png', name: 'SS', level: 4 },
-    { iconUrl: '/icons/interests/housing.png', name: 'ハウジング', level: 2 },
-    { iconUrl: '/icons/interests/glamour.png', name: 'ミラプリ', level: 4 },
-    { iconUrl: '/icons/interests/performance.png', name: '演奏', level: 1 },
-    { iconUrl: '/icons/interests/pvp.png', name: 'PvP', level: 1 },
-    { iconUrl: '/icons/interests/social.png', name: '交流', level: 3 },
-    { iconUrl: '/icons/interests/rp.png', name: 'RP', level: 2 },
-    { iconUrl: '/icons/interests/gil.png', name: '金策', level: 3 },
-    { iconUrl: '/icons/interests/other.png', name: 'モブハント', level: 2 },
-  ] as InterestItem[],
-  targets: [
-    {
-      title: 'サンダースケイル',
-      category: '釣り',
-      subcategory: 'オオヌシ',
-      icon: '🐟',
-      comment: 'オオヌシ釣りにハマり中！',
-    },
-    { title: '極マウント', category: '収集', subcategory: 'マウント', icon: '🎁' },
-    { title: 'オーケストリオン譜', category: '収集', subcategory: '譜面', icon: '🎵' },
-  ] as TargetItem[],
-  todoList: [
-    {
-      title: '下限シンク',
-      major: '零式',
-      middle: '希望の園エデン零式：再生編',
-    },
-    {
-      title: 'フルパ',
-      major: '地図',
-      middle: 'G18',
-    },
-  ] as TodoItem[],
-  unfinishedList: [
-    {
-      title: '攻略',
-      major: 'ヴァリアント / 異聞',
-      middle: 'ヴァリアントアロアロ島',
-    },
-    {
-      title: 'マウント周回',
-      major: '極',
-      middle: '極ゾディアーク討滅戦',
-    },
-  ] as TodoItem[],
-  sectionTitles: {
-    target: '狙ってるもの',
-    want: '誘って！',
-    help: '手伝える！',
-  } as SectionTitles,
-  tags: ['#まったり勢', '#初心者歓迎', '#釣り好き', '#VCOK', '#SS好き'],
-  message: '一緒に遊んでくれると嬉しいです！\nのんびりでも全力でも大歓迎です〜！',
+const defaultInterestNames: ActivityCategory[] = [
+  '戦闘',
+  '収集',
+  '釣り',
+  '地図',
+  'クラフター',
+  'ギャザラー',
+  'SS',
+  'ハウジング',
+  'ミラプリ',
+  '演奏',
+  'PvP',
+  '交流',
+  'RP',
+  '金策',
+  'モブハント',
+]
+
+function createDefaultInterests(): InterestItem[] {
+  return defaultInterestNames.map((name) => ({
+    iconUrl: interestIconUrls[name],
+    name,
+    level: 1,
+  }))
 }
 
-type RoleKey = keyof typeof initialCharacter.roles
+function createEmptyTarget(): TargetItem {
+  return {
+    title: '',
+    category: 'その他',
+    subcategory: '',
+    icon: '🎯',
+    comment: '',
+  }
+}
 
-type CharacterState = typeof initialCharacter
+function normalizeTargets(targets: TargetItem[] | undefined): TargetItem[] {
+  const normalized = [...(targets ?? [])]
+
+  while (normalized.length < 3) {
+    normalized.push(createEmptyTarget())
+  }
+
+  return normalized.slice(0, 3)
+}
+
+function updateTargetAtIndex(
+  targets: TargetItem[] | undefined,
+  targetIndex: number,
+  updater: (target: TargetItem) => TargetItem,
+): TargetItem[] {
+  const normalized = normalizeTargets(targets)
+  normalized[targetIndex] = updater(normalized[targetIndex] ?? createEmptyTarget())
+  return normalized
+}
+
+type CharacterState = {
+  name: string
+  dc: DataCenter
+  world: string
+  imageUrl: string
+  imageSettings: ImageSettings
+  imageFrameTheme: ImageFrameTheme
+  targetFrameTheme: TargetFrameTheme
+  roles: {
+    tank: boolean
+    healer: boolean
+    dps: boolean
+  }
+  playTime: PlayTime
+  vc: VoiceChat
+  interests: InterestItem[]
+  targets: TargetItem[]
+  todoList: TodoItem[]
+  unfinishedList: TodoItem[]
+  sectionTitles: SectionTitles
+  tags: string[]
+  message: string
+}
+
+function createEmptyCharacter(): CharacterState {
+  const defaultDc: DataCenter = 'Elemental'
+
+  return {
+    name: '',
+    dc: defaultDc,
+    world: worldsByDc[defaultDc][0],
+    imageUrl: '',
+    imageSettings: {
+      scale: 1,
+      x: 0,
+      y: 0,
+    },
+    imageFrameTheme: 'simple',
+    targetFrameTheme: 'simple',
+    roles: {
+      tank: false,
+      healer: false,
+      dps: false,
+    },
+    playTime: {
+      weekday: { start: 21, end: 24 },
+      holiday: { start: 12, end: 3 },
+    },
+    vc: 'VC OK',
+    interests: createDefaultInterests(),
+    targets: normalizeTargets([]),
+    todoList: [],
+    unfinishedList: [],
+    sectionTitles: {
+      target: '狙ってるもの',
+      want: '誘って！',
+      help: '手伝える！',
+    },
+    tags: [],
+    message: '',
+  }
+}
+
+const initialCharacter = createEmptyCharacter()
+
+type RoleKey = keyof CharacterState['roles']
 
 function createDefaultCardDraft(): CardDraft {
   return {
@@ -1041,18 +1077,20 @@ function createDefaultCardDraft(): CardDraft {
 }
 
 function restoreCharacterFromDraft(characterDraft: CharacterDraft): CharacterState {
+  const emptyCharacter = createEmptyCharacter()
+
   return {
-    ...initialCharacter,
+    ...emptyCharacter,
     ...characterDraft,
     imageUrl: '',
-    interests: characterDraft.interests.map((interest) => ({
+    interests: (characterDraft.interests.length > 0 ? characterDraft.interests : emptyCharacter.interests).map((interest) => ({
       ...interest,
       iconUrl: interestIconUrls[interest.name],
     })),
-    targets: characterDraft.targets.map((target) => ({
+    targets: normalizeTargets(characterDraft.targets.map((target) => ({
       ...target,
       acquisitionRoutes: (target.acquisitionRoutes ?? []) as AcquisitionRoute[],
-    })),
+    }))),
   }
 }
 
@@ -1064,7 +1102,7 @@ function loadPersistedAppState() {
     return {
       isSaveEnabled: false,
       restoredFromDraft: false,
-      character: initialCharacter,
+      character: createEmptyCharacter(),
       cardColorTheme: defaultDraft.cardColorTheme,
       cardBaseBackground: defaultDraft.cardBaseBackground,
       cardSectionTheme: defaultDraft.cardSectionTheme,
@@ -1080,7 +1118,7 @@ function loadPersistedAppState() {
     return {
       isSaveEnabled: true,
       restoredFromDraft: false,
-      character: initialCharacter,
+      character: createEmptyCharacter(),
       cardColorTheme: defaultDraft.cardColorTheme,
       cardBaseBackground: defaultDraft.cardBaseBackground,
       cardSectionTheme: defaultDraft.cardSectionTheme,
@@ -2445,21 +2483,17 @@ function App() {
 
     setCharacter((currentCharacter) => ({
       ...currentCharacter,
-      targets: currentCharacter.targets.map((target, index) => (
-        index === targetIndex
-          ? {
-              ...target,
-              title: item.name,
-              category,
-              subcategory,
-              icon: iconUrl ? '' : getTargetIconFromDictionary(item, sourceItem),
-              iconUrl: iconUrl ?? null,
-              sourceDictionaryId: item.sourceDictionaryId,
-              contentName: sourceItem?.contentName ?? null,
-              acquisitionRoutes: sourceItem?.acquisitionRoutes ?? [],
-            }
-          : target
-      )),
+      targets: updateTargetAtIndex(currentCharacter.targets, targetIndex, (target) => ({
+        ...target,
+        title: item.name,
+        category,
+        subcategory,
+        icon: iconUrl ? '' : getTargetIconFromDictionary(item, sourceItem),
+        iconUrl: iconUrl ?? null,
+        sourceDictionaryId: item.sourceDictionaryId,
+        contentName: sourceItem?.contentName ?? null,
+        acquisitionRoutes: sourceItem?.acquisitionRoutes ?? [],
+      })),
     }))
     updateTargetSearchQuery(targetIndex, item.name)
   }
@@ -2467,9 +2501,10 @@ function App() {
   function updateTopTargetComment(comment: string) {
     setCharacter((currentCharacter) => ({
       ...currentCharacter,
-      targets: currentCharacter.targets.map((target, index) => (
-        index === 0 ? { ...target, comment } : target
-      )),
+      targets: updateTargetAtIndex(currentCharacter.targets, 0, (target) => ({
+        ...target,
+        comment,
+      })),
     }))
   }
 
@@ -2591,7 +2626,7 @@ function App() {
     writeSaveEnabled(false)
     setIsSaveEnabled(false)
     setRestoredFromDraft(false)
-    setCharacter(initialCharacter)
+    setCharacter(createEmptyCharacter())
     setCardColorTheme(defaultDraft.cardColorTheme)
     setCardBaseBackground(defaultDraft.cardBaseBackground)
     setCardSectionTheme(defaultDraft.cardSectionTheme)
@@ -2657,7 +2692,7 @@ function App() {
     }
   }
 
-  const targets = character.targets ?? []
+  const targets = normalizeTargets(character.targets)
   const interests = character.interests ?? []
   const todoList = normalizeContentList(character.todoList ?? [])
   const unfinishedList = normalizeContentList(character.unfinishedList ?? [])
@@ -2673,13 +2708,7 @@ function App() {
     help: '手伝える！',
   }
 
-  const topTarget = targets[0] ?? {
-    title: '',
-    category: 'その他' as ActivityCategory,
-    subcategory: '',
-    icon: '🎯',
-    comment: '',
-  }
+  const topTarget = targets[0]
   const targetFrameUrl = getTargetFrameUrl(topTarget, targetFrameTheme)
 
   return (
@@ -2821,7 +2850,7 @@ function App() {
             </div>
             <div className="cardHeaderIntro">
               <p>
-                FF14で「今やりたいこと」「ほしいもの」「一緒に遊べること」をまとめるカードメーカーです。
+                FF14向けのキャラクターカード・プロフィールカードメーカーです。「今やりたいこと」「ほしいもの」「一緒に遊べること」を入力して、フレンド募集などにそのまま使えるカードを作れます。
               </p>
               <ul>
                 <li>画像はブラウザ内で処理されます</li>
@@ -2939,13 +2968,26 @@ function App() {
                 ) : topTarget.icon ? (
                   <span className="mainWantIconFallback" aria-hidden="true">{topTarget.icon}</span>
                 ) : null}
-                <h2>{topTarget.title}</h2>
+                {topTarget.title ? <h2>{topTarget.title}</h2> : null}
               </div>
-              <p>{topTarget.comment}</p>
-              <div className="categoryBadge">{topTarget.category} / {topTarget.subcategory}</div>
-              <TargetDetails target={topTarget} isCompact />
+              {isPreviewMode && topTarget.comment ? (
+                <p>{topTarget.comment}</p>
+              ) : null}
+              {(topTarget.title || isPreviewMode) && (
+                <div className="categoryBadge">{topTarget.category} / {topTarget.subcategory}</div>
+              )}
+              {topTarget.title ? <TargetDetails target={topTarget} isCompact /> : null}
 
               <div className="mainWantForm">
+                <label>
+                  アピールコメント
+                  <textarea
+                    rows={3}
+                    value={topTarget.comment ?? ''}
+                    onChange={(event) => updateTopTargetComment(event.target.value)}
+                  />
+                </label>
+
                 <TargetSearch
                   query={targetSearchQueries[0] ?? ''}
                   onQueryChange={(query) => updateTargetSearchQuery(0, query)}
@@ -2962,15 +3004,6 @@ function App() {
                       <option key={theme.value} value={theme.value}>{theme.label}</option>
                     ))}
                   </select>
-                </label>
-
-                <label>
-                  アピールコメント
-                  <textarea
-                    rows={3}
-                    value={topTarget.comment ?? ''}
-                    onChange={(event) => updateTopTargetComment(event.target.value)}
-                  />
                 </label>
               </div>
             </section>

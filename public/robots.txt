@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://issho-ni-asobo.vercel.app/sitemap.xml
