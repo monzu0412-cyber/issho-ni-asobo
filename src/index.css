@@ -51,8 +51,8 @@
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1126px;
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);
@@ -62,8 +62,22 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  #root {
+    max-width: 100%;
+    border-inline: none;
+  }
+}
+
 body {
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: clip;
+  }
 }
 
 h1,
