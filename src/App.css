@@ -1,8 +1,8 @@
 .app {
   --layout-profile-image-size: 280px;
   --layout-main-want-height: calc(var(--layout-profile-image-size) * 1.5);
-  --layout-row2-min-height: 300px;
-  --layout-row3-height: 520px;
+  --layout-row2-min-height: 380px;
+  --layout-row3-height: 510px;
   --item-card-bg: #fff4dc;
   --item-card-border: #efd39b;
   --item-card-heading: #102a54;
@@ -1848,7 +1848,8 @@
 }
 
 .previewMode .middleRow {
-  align-items: start;
+  align-items: stretch;
+  min-height: var(--layout-row2-min-height);
 }
 
 .previewMode .middleRow .activityColumn {
@@ -1858,13 +1859,12 @@
 }
 
 .previewMode .middleRow .wantSlotColumn {
-  min-height: 0;
+  min-height: var(--layout-row2-min-height);
 }
 
 .previewMode .middleRow .wantSlotItem {
-  align-items: flex-start;
-  flex: 0 0 auto;
-  text-align: center;
+  flex: 1;
+  min-height: 0;
 }
 
 .previewMode .middleRow .targetDetails,
