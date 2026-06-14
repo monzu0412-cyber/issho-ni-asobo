@@ -1,4 +1,4 @@
-import { type CSSProperties, type SyntheticEvent, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { type CSSProperties, type SyntheticEvent, useEffect, useRef, useState } from 'react'
 import { getActivityPurposeItem, getActivityPurposeItems } from './data/invite/activityPurposeDictionary'
 import { getXPostIntentUrl } from './data/postShareTemplate'
 import {
@@ -26,8 +26,7 @@ import {
   type CardDraft,
   type CharacterDraft,
 } from './utils/cardDraftStorage'
-import { exportCardPng, type CardExportOrientation } from './utils/exportCardPng'
-import { clearHorizontalRow4Height, syncHorizontalRow4Height } from './utils/syncHorizontalRow4Height'
+import { exportCardPng } from './utils/exportCardPng'
 
 type LocationTranslationEntry = {
   en: string
@@ -2274,18 +2273,12 @@ function getImageMoveRange(scale: number) {
   return Math.round((scale - 1) * 90)
 }
 
-type PreviewLayoutMode = 'vertical' | 'horizontal'
-
 function App() {
   const [character, setCharacter] = useState<CharacterState>(() => getInitialAppState().character)
   const [isPreviewMode, setIsPreviewMode] = useState(false)
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)
-  const [previewLayoutMode, setPreviewLayoutMode] = useState<PreviewLayoutMode>('vertical')
-  const [exportingOrientation, setExportingOrientation] = useState<CardExportOrientation | null>(null)
-  const isExportingCard = exportingOrientation !== null
+  const [isExportingCard, setIsExportingCard] = useState(false)
   const cardRef = useRef<HTMLElement>(null)
-  const horizontalLeftColumnRef = useRef<HTMLDivElement>(null)
-  const horizontalRightColumnRef = useRef<HTMLDivElement>(null)
   const [hasTargetFrame, setHasTargetFrame] = useState(false)
   const [isSaveEnabled, setIsSaveEnabled] = useState(() => getInitialAppState().isSaveEnabled)
   const [restoredFromDraft, setRestoredFromDraft] = useState(() => getInitialAppState().restoredFromDraft)
@@ -2606,117 +2599,30 @@ function App() {
     contentSelections,
   ])
 
-  function applyPreviewLayoutClass(cardElement: HTMLElement, orientation: PreviewLayoutMode) {
-    if (orientation === 'horizontal') {
-      cardElement.classList.add('cardLayoutHorizontal')
-      return
-    }
-
-    cardElement.classList.remove('cardLayoutHorizontal')
-  }
-
-  const syncHorizontalColumnAlignment = useCallback(() => {
-    syncHorizontalRow4Height(
-      horizontalLeftColumnRef.current,
-      horizontalRightColumnRef.current,
-    )
-  }, [])
-
-  const isHorizontalPreview = isPreviewMode && previewLayoutMode === 'horizontal'
-
-  useLayoutEffect(() => {
-    if (!isHorizontalPreview) {
-      clearHorizontalRow4Height(horizontalRightColumnRef.current)
-      return
-    }
-
-    syncHorizontalColumnAlignment()
-
-    const leftColumn = horizontalLeftColumnRef.current
-    const rightColumn = horizontalRightColumnRef.current
-
-    if (!leftColumn) {
-      return
-    }
-
-    const observer = new ResizeObserver(() => {
-      syncHorizontalColumnAlignment()
-    })
-
-    observer.observe(leftColumn)
-    window.addEventListener('resize', syncHorizontalColumnAlignment)
-
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('resize', syncHorizontalColumnAlignment)
-      clearHorizontalRow4Height(rightColumn)
-    }
-  }, [isHorizontalPreview, syncHorizontalColumnAlignment])
-
-  useEffect(() => {
-    if (!isHorizontalPreview) {
-      return
-    }
-
-    syncHorizontalColumnAlignment()
-  }, [
-    isHorizontalPreview,
-    syncHorizontalColumnAlignment,
-    character,
-    hasTargetFrame,
-    cardColorTheme,
-    cardSectionTheme,
-    cardSectionStyle,
-    cardBaseBackground,
-  ])
-
   function handlePostOnX() {
     window.open(getXPostIntentUrl(), '_blank', 'noopener,noreferrer')
   }
 
-  async function handleExportCardPng(orientation: CardExportOrientation) {
+  async function handleExportCardPng() {
     if (!isPreviewMode || !cardRef.current || isExportingCard) {
       return
     }
 
     const cardElement = cardRef.current
-    const previousLayoutMode: PreviewLayoutMode = cardElement.classList.contains('cardLayoutHorizontal')
-      ? 'horizontal'
-      : 'vertical'
-    const exportLayoutMode: PreviewLayoutMode = orientation === 'horizontal' ? 'horizontal' : 'vertical'
 
-    setExportingOrientation(orientation)
-    applyPreviewLayoutClass(cardElement, exportLayoutMode)
-    void cardElement.offsetHeight
-
-    if (exportLayoutMode === 'horizontal') {
-      syncHorizontalRow4Height(
-        horizontalLeftColumnRef.current,
-        horizontalRightColumnRef.current,
-      )
-      void cardElement.offsetHeight
-    }
-
+    setIsExportingCard(true)
     document.body.classList.add('card-png-export')
 
     try {
       cardElement.scrollIntoView({ block: 'start', inline: 'nearest' })
       void cardElement.offsetHeight
-      await exportCardPng(cardElement, { orientation })
+      await exportCardPng(cardElement)
     } catch (error) {
       console.error('Failed to export card PNG', error)
       window.alert('PNGの出力に失敗しました。')
     } finally {
       document.body.classList.remove('card-png-export')
-      applyPreviewLayoutClass(cardElement, previousLayoutMode)
-
-      if (exportLayoutMode === 'horizontal' && previousLayoutMode === 'vertical') {
-        clearHorizontalRow4Height(horizontalRightColumnRef.current)
-      } else if (previousLayoutMode === 'horizontal') {
-        syncHorizontalColumnAlignment()
-      }
-
-      setExportingOrientation(null)
+      setIsExportingCard(false)
     }
   }
 
@@ -2769,18 +2675,10 @@ function App() {
             <button
               className="cardExportButton"
               type="button"
-              onClick={() => void handleExportCardPng('vertical')}
+              onClick={() => void handleExportCardPng()}
               disabled={isExportingCard}
             >
-              {exportingOrientation === 'vertical' ? '出力中…' : '縦PNG保存'}
-            </button>
-            <button
-              className="cardExportButton cardExportButtonSecondary"
-              type="button"
-              onClick={() => void handleExportCardPng('horizontal')}
-              disabled={isExportingCard}
-            >
-              {exportingOrientation === 'horizontal' ? '出力中…' : '横PNG保存'}
+              {isExportingCard ? '出力中…' : 'PNG保存'}
             </button>
             <button
               className="cardXPostButton"
@@ -2849,30 +2747,6 @@ function App() {
         </p>
       )}
 
-      {isPreviewMode && (
-        <div className="previewToolbar">
-          <div className="previewLayoutSwitcher" aria-label="プレビュー表示">
-            <span>プレビュー表示</span>
-            <button
-              className={previewLayoutMode === 'vertical' ? 'active' : ''}
-              type="button"
-              aria-pressed={previewLayoutMode === 'vertical'}
-              onClick={() => setPreviewLayoutMode('vertical')}
-            >
-              縦
-            </button>
-            <button
-              className={previewLayoutMode === 'horizontal' ? 'active' : ''}
-              type="button"
-              aria-pressed={previewLayoutMode === 'horizontal'}
-              onClick={() => setPreviewLayoutMode('horizontal')}
-            >
-              横
-            </button>
-          </div>
-        </div>
-      )}
-
       {!isPreviewMode && (
         <section className="draftSavePanel" aria-label="ブラウザ保存">
           <div className="draftSaveToggle">
@@ -2899,7 +2773,7 @@ function App() {
 
       <section
         ref={cardRef}
-        className={`card${isHorizontalPreview ? ' cardLayoutHorizontal' : ''}`}
+        className="card"
         style={getCardBaseBackgroundStyle(cardBaseBackground)}
       >
         {!isPreviewMode && (
@@ -2928,8 +2802,6 @@ function App() {
         )}
 
         <div className="cardBody">
-          <div className="cardHorizontalLayout">
-            <div ref={horizontalLeftColumnRef} className="cardHorizontalColumn cardHorizontalColumnLeft">
           <div className="heroLayout">
           <section className="topRow">
             <label
@@ -3274,7 +3146,7 @@ function App() {
                       )}
                       <strong className="wantSlotTitle">{target.title}</strong>
                     </div>
-                    <div className="wantSlotCategory">
+                    <div className={`wantSlotCategory ${getWantTitleSizeClass(`${target.category} / ${target.subcategory}`)}`}>
                       {target.category} / {target.subcategory}
                     </div>
                     <TargetDetails target={target} />
@@ -3292,9 +3164,6 @@ function App() {
             })}
           </section>
 
-            </div>
-
-            <div ref={horizontalRightColumnRef} className="cardHorizontalColumn cardHorizontalColumnRight">
           <section className="activityBox">
             <div
               className="activityColumn interestBox"
@@ -3408,8 +3277,6 @@ function App() {
               <p>{character.message}</p>
             </section>
           </section>
-            </div>
-          </div>
         </div>
       </section>
 

@@ -17,31 +17,15 @@ import {
   type CardLayoutComparison,
   type CardLayoutSnapshot,
 } from './cardLayoutDiagnostics'
+import { deliverExportedPng, type PngDeliveryMethod } from './deliverExportedPng'
 
 /** Uniform upscale target width. Height follows DOM aspect ratio. */
 export const CARD_EXPORT_TARGET_WIDTH = 1400
 export const CARD_EXPORT_FILENAME = 'issho-asobo-card.png'
 
-export const CARD_HORIZONTAL_EXPORT_TARGET_WIDTH = 2000
-export const CARD_HORIZONTAL_EXPORT_FILENAME = 'issho-asobo-card-horizontal.png'
-
 /** Reserved for future Policy B (DOM must match this ratio before export). */
 export const CARD_EXPORT_ASPECT_WIDTH = 1400
 export const CARD_EXPORT_ASPECT_HEIGHT = 2000
-
-export type CardExportOrientation = 'vertical' | 'horizontal'
-
-export type ExportCardPngOptions = {
-  orientation?: CardExportOrientation
-}
-
-type CardExportConfig = {
-  domWidth: number | null
-  domHeight: number | null
-  targetWidth: number
-  filename: string
-  pipelineVersion: string
-}
 
 export type PngExportMetrics = {
   domCardWidth: number
@@ -76,6 +60,7 @@ export type PngExportResult = {
   interestIconComparison: InterestIconComparison
   browserSnapshot: CardLayoutSnapshot
   cloneSnapshot: CardLayoutSnapshot | null
+  deliveryMethod: PngDeliveryMethod
 }
 
 function measureCardSize(cardElement: HTMLElement) {
@@ -128,26 +113,6 @@ export const EXPORT_PNG_PIPELINE_VERSION = 'w1400-v4'
 /** Matches `.card { width: 1024px }` in App.css — used to lock clone layout during export. */
 export const CARD_DOM_WIDTH = 1024
 
-function getCardExportConfig(orientation: CardExportOrientation): CardExportConfig {
-  if (orientation === 'horizontal') {
-    return {
-      domWidth: null,
-      domHeight: null,
-      targetWidth: CARD_HORIZONTAL_EXPORT_TARGET_WIDTH,
-      filename: CARD_HORIZONTAL_EXPORT_FILENAME,
-      pipelineVersion: `${EXPORT_PNG_PIPELINE_VERSION}-h2000-v2`,
-    }
-  }
-
-  return {
-    domWidth: CARD_DOM_WIDTH,
-    domHeight: null,
-    targetWidth: CARD_EXPORT_TARGET_WIDTH,
-    filename: CARD_EXPORT_FILENAME,
-    pipelineVersion: EXPORT_PNG_PIPELINE_VERSION,
-  }
-}
-
 function getExportWindowMinWidth(cardWidth: number) {
   return Math.max(cardWidth + 128, 1126, CARD_DOM_WIDTH + 128)
 }
@@ -167,20 +132,13 @@ function unlockOverflowForCapture(element: HTMLElement) {
   }
 }
 
-function prepareCardElementForCapture(
-  cardElement: HTMLElement,
-  captureDomWidth: number,
-  orientation: CardExportOrientation,
-) {
+function prepareCardElementForCapture(cardElement: HTMLElement, captureDomWidth: number) {
   unlockOverflowForCapture(cardElement)
 
-  if (orientation === 'vertical') {
-    cardElement.style.width = `${captureDomWidth}px`
-    cardElement.style.minWidth = `${captureDomWidth}px`
-    cardElement.style.maxWidth = `${captureDomWidth}px`
-    cardElement.style.boxSizing = 'border-box'
-  }
-
+  cardElement.style.width = `${captureDomWidth}px`
+  cardElement.style.minWidth = `${captureDomWidth}px`
+  cardElement.style.maxWidth = `${captureDomWidth}px`
+  cardElement.style.boxSizing = 'border-box'
   cardElement.style.flexShrink = '0'
 }
 
@@ -377,180 +335,171 @@ export function formatPngExportReport(result: PngExportResult) {
   ].join('\n')
 }
 
-export async function exportCardPng(
-  cardElement: HTMLElement,
-  options: ExportCardPngOptions = {},
-): Promise<PngExportResult> {
-  const orientation = options.orientation ?? 'vertical'
-  const exportConfig = getCardExportConfig(orientation)
-
+export async function exportCardPng(cardElement: HTMLElement): Promise<PngExportResult> {
   await waitForImages(cardElement)
 
-  const captureDomWidth = exportConfig.domWidth ?? measureCardSize(cardElement).width
+  const captureDomWidth = CARD_DOM_WIDTH
 
-  prepareCardElementForCapture(cardElement, captureDomWidth, orientation)
+  prepareCardElementForCapture(cardElement, captureDomWidth)
   cardElement.scrollIntoView({ block: 'start', inline: 'start' })
   void cardElement.offsetHeight
 
   try {
-  const browserSnapshot = measureCardLayout(cardElement, document, 'browser-dom')
-  const cardSize = measureCardSize(cardElement)
-  const captureDomHeight = exportConfig.domHeight ?? cardSize.height
+    const browserSnapshot = measureCardLayout(cardElement, document, 'browser-dom')
+    const cardSize = measureCardSize(cardElement)
+    const captureDomHeight = cardSize.height
 
-  if (captureDomHeight === 0) {
-    throw new Error('Card has no dimensions')
-  }
+    if (captureDomHeight === 0) {
+      throw new Error('Card has no dimensions')
+    }
 
-  if (cardSize.offsetWidth !== captureDomWidth) {
-    console.warn(
-      `[PNG export] DOM offsetWidth (${cardSize.offsetWidth}) differs from export domWidth (${captureDomWidth}, orientation=${orientation}). Export uses ${captureDomWidth}px.`,
+    if (cardSize.offsetWidth !== captureDomWidth) {
+      console.warn(
+        `[PNG export] DOM offsetWidth (${cardSize.offsetWidth}) differs from export domWidth (${captureDomWidth}). Export uses ${captureDomWidth}px.`,
+      )
+    }
+
+    const captureScale = CARD_EXPORT_TARGET_WIDTH / captureDomWidth
+    const targetCanvasWidth = Math.round(captureDomWidth * captureScale)
+    const targetCanvasHeight = Math.round(captureDomHeight * captureScale)
+    const exportWindowMinWidth = getExportWindowMinWidth(captureDomWidth)
+    const exportWindowMinHeight = getExportWindowMinHeight(captureDomHeight)
+    let cloneSnapshot: CardLayoutSnapshot | null = null
+    let cloneInterestIconSnapshot: InterestIconSnapshot | null = null
+    const browserInterestIconSnapshot = measureInterestIconSnapshot(cardElement, 'browser-dom')
+    const browserInterestLayoutSnapshot = measureInterestLayoutSnapshot(cardElement, 'browser-dom')
+
+    console.info('[PNG export] interest layout (browser-dom)\n' + formatInterestLayoutSnapshot(browserInterestLayoutSnapshot))
+
+    console.info('[PNG export] capture target', {
+      tagName: cardElement.tagName,
+      className: cardElement.className,
+      id: cardElement.id,
+      offsetWidth: cardElement.offsetWidth,
+      offsetHeight: cardElement.offsetHeight,
+      scrollWidth: cardElement.scrollWidth,
+      scrollHeight: cardElement.scrollHeight,
+    })
+
+    console.info('[PNG export] pre-capture', {
+      pipelineVersion: EXPORT_PNG_PIPELINE_VERSION,
+      domCardWidth: cardSize.width,
+      domCardHeight: captureDomHeight,
+      captureDomWidth,
+      captureDomHeight,
+      captureScale,
+      targetCanvasWidth,
+      targetCanvasHeight,
+      devicePixelRatio: window.devicePixelRatio,
+      cssWidth: cardSize.cssWidth,
+      offsetWidth: cardSize.offsetWidth,
+      clientWidth: cardSize.clientWidth,
+      scrollWidth: cardSize.scrollWidth,
+      exportWindowMinWidth,
+      exportWindowMinHeight,
+    })
+
+    const sourceCanvas = await html2canvas(cardElement, {
+      backgroundColor: null,
+      scale: captureScale,
+      width: captureDomWidth,
+      height: captureDomHeight,
+      windowWidth: exportWindowMinWidth,
+      windowHeight: exportWindowMinHeight,
+      scrollX: 0,
+      scrollY: 0,
+      useCORS: true,
+      allowTaint: false,
+      logging: false,
+      imageTimeout: 15000,
+      onclone: (clonedDocument, clonedElement) => {
+        removeCloneFileInputs(clonedDocument)
+
+        if (clonedElement instanceof HTMLElement) {
+          stabilizeCloneForExport(clonedDocument, clonedElement, captureDomWidth, captureDomHeight)
+          cloneSnapshot = measureCardLayout(clonedElement, clonedDocument, 'html2canvas-clone')
+          cloneInterestIconSnapshot = measureInterestIconSnapshot(clonedElement, 'html2canvas-clone')
+          console.info('[PNG export] interest layout (html2canvas-clone)\n' + formatInterestLayoutSnapshot(
+            measureInterestLayoutSnapshot(clonedElement, 'html2canvas-clone'),
+          ))
+        }
+      },
+    })
+
+    const exportCanvas = ensureTargetCanvasSize(sourceCanvas, targetCanvasWidth, targetCanvasHeight)
+
+    console.info('[PNG export] post-capture canvas', {
+      pipelineVersion: EXPORT_PNG_PIPELINE_VERSION,
+      sourceCanvasWidth: sourceCanvas.width,
+      sourceCanvasHeight: sourceCanvas.height,
+      exportCanvasWidth: exportCanvas.width,
+      exportCanvasHeight: exportCanvas.height,
+      inferredCaptureWidth: sourceCanvas.width / captureScale,
+      inferredCaptureHeight: sourceCanvas.height / captureScale,
+      expectedCanvasWidth: targetCanvasWidth,
+      expectedCanvasHeight: targetCanvasHeight,
+    })
+
+    const blob = await new Promise<Blob | null>((resolve) => {
+      exportCanvas.toBlob(resolve, 'image/png')
+    })
+
+    if (!blob) {
+      throw new Error('Failed to create PNG blob')
+    }
+
+    const finalPngSize = await measureBlobImageSize(blob)
+    const layoutComparison = compareCardLayoutSnapshots(browserSnapshot, cloneSnapshot)
+    const interestIconComparison = compareInterestIconSnapshots(
+      browserInterestIconSnapshot,
+      cloneInterestIconSnapshot,
     )
-  }
-
-  const captureScale = exportConfig.targetWidth / captureDomWidth
-  const targetCanvasWidth = Math.round(captureDomWidth * captureScale)
-  const targetCanvasHeight = Math.round(captureDomHeight * captureScale)
-  const exportWindowMinWidth = getExportWindowMinWidth(captureDomWidth)
-  const exportWindowMinHeight = getExportWindowMinHeight(captureDomHeight)
-  let cloneSnapshot: CardLayoutSnapshot | null = null
-  let cloneInterestIconSnapshot: InterestIconSnapshot | null = null
-  const browserInterestIconSnapshot = measureInterestIconSnapshot(cardElement, 'browser-dom')
-  const browserInterestLayoutSnapshot = measureInterestLayoutSnapshot(cardElement, 'browser-dom')
-
-  console.info('[PNG export] interest layout (browser-dom)\n' + formatInterestLayoutSnapshot(browserInterestLayoutSnapshot))
-
-  console.info('[PNG export] capture target', {
-    tagName: cardElement.tagName,
-    className: cardElement.className,
-    id: cardElement.id,
-    offsetWidth: cardElement.offsetWidth,
-    offsetHeight: cardElement.offsetHeight,
-    scrollWidth: cardElement.scrollWidth,
-    scrollHeight: cardElement.scrollHeight,
-  })
-
-  console.info('[PNG export] pre-capture', {
-    orientation,
-    pipelineVersion: exportConfig.pipelineVersion,
-    domCardWidth: cardSize.width,
-    domCardHeight: captureDomHeight,
-    captureDomWidth,
-    captureDomHeight,
-    captureScale,
-    targetCanvasWidth,
-    targetCanvasHeight,
-    devicePixelRatio: window.devicePixelRatio,
-    cssWidth: cardSize.cssWidth,
-    offsetWidth: cardSize.offsetWidth,
-    clientWidth: cardSize.clientWidth,
-    scrollWidth: cardSize.scrollWidth,
-    exportWindowMinWidth,
-    exportWindowMinHeight,
-  })
-
-  const sourceCanvas = await html2canvas(cardElement, {
-    backgroundColor: null,
-    scale: captureScale,
-    width: captureDomWidth,
-    height: captureDomHeight,
-    windowWidth: exportWindowMinWidth,
-    windowHeight: exportWindowMinHeight,
-    scrollX: 0,
-    scrollY: 0,
-    useCORS: true,
-    allowTaint: false,
-    logging: false,
-    imageTimeout: 15000,
-    onclone: (clonedDocument, clonedElement) => {
-      removeCloneFileInputs(clonedDocument)
-
-      if (clonedElement instanceof HTMLElement) {
-        stabilizeCloneForExport(clonedDocument, clonedElement, captureDomWidth, captureDomHeight)
-        cloneSnapshot = measureCardLayout(clonedElement, clonedDocument, 'html2canvas-clone')
-        cloneInterestIconSnapshot = measureInterestIconSnapshot(clonedElement, 'html2canvas-clone')
-        console.info('[PNG export] interest layout (html2canvas-clone)\n' + formatInterestLayoutSnapshot(
-          measureInterestLayoutSnapshot(clonedElement, 'html2canvas-clone'),
-        ))
-      }
-    },
-  })
-
-  const exportCanvas = ensureTargetCanvasSize(sourceCanvas, targetCanvasWidth, targetCanvasHeight)
-
-  console.info('[PNG export] post-capture canvas', {
-    orientation,
-    pipelineVersion: exportConfig.pipelineVersion,
-    sourceCanvasWidth: sourceCanvas.width,
-    sourceCanvasHeight: sourceCanvas.height,
-    exportCanvasWidth: exportCanvas.width,
-    exportCanvasHeight: exportCanvas.height,
-    inferredCaptureWidth: sourceCanvas.width / captureScale,
-    inferredCaptureHeight: sourceCanvas.height / captureScale,
-    expectedCanvasWidth: targetCanvasWidth,
-    expectedCanvasHeight: targetCanvasHeight,
-  })
-
-  const blob = await new Promise<Blob | null>((resolve) => {
-    exportCanvas.toBlob(resolve, 'image/png')
-  })
-
-  if (!blob) {
-    throw new Error('Failed to create PNG blob')
-  }
-
-  const finalPngSize = await measureBlobImageSize(blob)
-  const layoutComparison = compareCardLayoutSnapshots(browserSnapshot, cloneSnapshot)
-  const interestIconComparison = compareInterestIconSnapshots(
-    browserInterestIconSnapshot,
-    cloneInterestIconSnapshot,
-  )
-  const metrics = buildExportMetrics(
-    { ...cardSize, width: captureDomWidth, height: captureDomHeight },
-    exportCanvas,
-    captureScale,
-    finalPngSize.width,
-    finalPngSize.height,
-    cloneSnapshot,
-  )
-
-  console.info('[PNG export diagnostics]\n' + formatPngExportReport({
-    metrics,
-    layoutComparison,
-    interestIconComparison,
-    browserSnapshot,
-    cloneSnapshot,
-  }))
-
-  if (metrics.finalPngWidth !== exportConfig.targetWidth) {
-    throw new Error(
-      `[PNG export] final PNG width is ${metrics.finalPngWidth}, expected ${exportConfig.targetWidth} (orientation=${orientation}). Hard-reload the page (Ctrl+Shift+R) and confirm Console shows pipelineVersion "${exportConfig.pipelineVersion}".`,
+    const metrics = buildExportMetrics(
+      { ...cardSize, width: captureDomWidth, height: captureDomHeight },
+      exportCanvas,
+      captureScale,
+      finalPngSize.width,
+      finalPngSize.height,
+      cloneSnapshot,
     )
-  }
 
-  if (metrics.canvasWidthDelta !== 0) {
-    console.warn(`[PNG export] canvas width delta is ${metrics.canvasWidthDelta} (expected 0).`)
-  }
+    console.info('[PNG export diagnostics]\n' + formatPngExportReport({
+      metrics,
+      layoutComparison,
+      interestIconComparison,
+      browserSnapshot,
+      cloneSnapshot,
+      deliveryMethod: 'download',
+    }))
 
-  if (metrics.cloneCardWidth !== null && metrics.cloneCardWidth !== captureDomWidth) {
-    console.warn(
-      `[PNG export] clone card width is ${metrics.cloneCardWidth}, expected ${captureDomWidth}.`,
-    )
-  }
+    if (metrics.finalPngWidth !== CARD_EXPORT_TARGET_WIDTH) {
+      throw new Error(
+        `[PNG export] final PNG width is ${metrics.finalPngWidth}, expected ${CARD_EXPORT_TARGET_WIDTH}. Hard-reload the page (Ctrl+Shift+R) and confirm Console shows pipelineVersion "${EXPORT_PNG_PIPELINE_VERSION}".`,
+      )
+    }
 
-  const objectUrl = URL.createObjectURL(blob)
-  const link = document.createElement('a')
-  link.href = objectUrl
-  link.download = exportConfig.filename
-  link.click()
-  URL.revokeObjectURL(objectUrl)
+    if (metrics.canvasWidthDelta !== 0) {
+      console.warn(`[PNG export] canvas width delta is ${metrics.canvasWidthDelta} (expected 0).`)
+    }
 
-  return {
-    metrics,
-    layoutComparison,
-    interestIconComparison,
-    browserSnapshot,
-    cloneSnapshot,
-  }
+    if (metrics.cloneCardWidth !== null && metrics.cloneCardWidth !== captureDomWidth) {
+      console.warn(
+        `[PNG export] clone card width is ${metrics.cloneCardWidth}, expected ${captureDomWidth}.`,
+      )
+    }
+
+    const deliveryMethod = await deliverExportedPng(blob, CARD_EXPORT_FILENAME)
+
+    console.info('[PNG export] delivery', { deliveryMethod })
+
+    return {
+      metrics,
+      layoutComparison,
+      interestIconComparison,
+      browserSnapshot,
+      cloneSnapshot,
+      deliveryMethod,
+    }
   } finally {
     resetCardElementCaptureStyles(cardElement)
   }

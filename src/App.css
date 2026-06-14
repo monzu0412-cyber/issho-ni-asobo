@@ -154,10 +154,6 @@
   opacity: 0.7;
 }
 
-.cardExportButtonSecondary {
-  background: #245ea8;
-}
-
 .cardXPostButton {
   background: #102a54;
   border: 0;
@@ -376,11 +372,6 @@
 
 .cardBody > .bottomRow {
   flex-shrink: 0;
-}
-
-.cardHorizontalLayout,
-.cardHorizontalColumn {
-  display: contents;
 }
 
 .heroLayout {
@@ -1285,6 +1276,7 @@
 }
 
 .previewMode .wantSlotTitleGroup {
+  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
 }
@@ -1349,6 +1341,25 @@
 
 .previewMode .wantSlotCategory {
   align-self: center;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  white-space: normal;
+}
+
+.previewMode .wantSlotCategory.titleMedium {
+  font-size: 11px;
+  padding: 5px 12px;
+}
+
+.previewMode .wantSlotCategory.titleLong {
+  font-size: 10px;
+  padding: 4px 10px;
+}
+
+.previewMode .wantSlotCategory.titleVeryLong {
+  font-size: 9px;
+  padding: 4px 8px;
 }
 
 .targetList,
@@ -1830,6 +1841,16 @@
   gap: 16px;
 }
 
+.previewMode .middleRow .activityColumn {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+.previewMode .middleRow .wantSlotColumn {
+  min-height: 0;
+}
+
 .previewMode .profileImage {
   min-height: var(--layout-main-want-height);
 }
@@ -2027,130 +2048,6 @@ body.card-png-export .previewMode .card {
   font-size: 18px;
   line-height: 1.55;
   padding: 12px 16px;
-}
-
-.previewToolbar {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  justify-content: center;
-  width: min(100%, 960px);
-}
-
-.previewLayoutSwitcher {
-  align-items: center;
-  background: white;
-  border: 3px solid #102a54;
-  border-radius: 999px;
-  color: #102a54;
-  display: flex;
-  font-size: 13px;
-  font-weight: bold;
-  gap: 6px;
-  padding: 6px 10px 6px 14px;
-}
-
-.previewLayoutSwitcher button {
-  background: transparent;
-  border: 0;
-  border-radius: 999px;
-  color: #102a54;
-  cursor: pointer;
-  font: inherit;
-  font-weight: bold;
-  min-width: 52px;
-  padding: 8px 14px;
-}
-
-.previewLayoutSwitcher button.active {
-  background: #102a54;
-  color: white;
-}
-
-.previewMode .card.cardLayoutHorizontal {
-  --layout-horizontal-column-width: 960px;
-  --layout-horizontal-column-gap: 22px;
-  --layout-horizontal-row3-height: 620px;
-  --layout-horizontal-row4-min-height: 176px;
-  box-sizing: border-box;
-  height: auto;
-  max-height: none;
-  min-height: 0;
-  overflow: visible;
-  padding: 20px 24px 28px;
-  width: fit-content;
-}
-
-.previewMode .card.cardLayoutHorizontal .cardBody {
-  display: block;
-}
-
-.previewMode .card.cardLayoutHorizontal .cardHorizontalLayout {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: row;
-  gap: var(--layout-horizontal-column-gap);
-}
-
-.previewMode .card.cardLayoutHorizontal .cardHorizontalColumn {
-  display: flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  gap: var(--layout-horizontal-column-gap);
-  width: var(--layout-horizontal-column-width);
-}
-
-.previewMode .card.cardLayoutHorizontal .heroLayout,
-.previewMode .card.cardLayoutHorizontal .middleRow,
-.previewMode .card.cardLayoutHorizontal .activityBox,
-.previewMode .card.cardLayoutHorizontal .bottomRow {
-  flex-shrink: 0;
-  width: 100%;
-}
-
-.previewMode .card.cardLayoutHorizontal .activityBox {
-  height: var(--layout-horizontal-row3-height);
-  max-height: var(--layout-horizontal-row3-height);
-  min-height: var(--layout-horizontal-row3-height);
-}
-
-.previewMode .card.cardLayoutHorizontal .activityBox > .activityColumn {
-  height: var(--layout-horizontal-row3-height);
-  max-height: var(--layout-horizontal-row3-height);
-  min-height: var(--layout-horizontal-row3-height);
-}
-
-.previewMode .card.cardLayoutHorizontal .cardHorizontalColumnRight .bottomRow {
-  box-sizing: border-box;
-  height: var(--layout-horizontal-row4-height, var(--layout-horizontal-row4-min-height));
-  min-height: var(--layout-horizontal-row4-height, var(--layout-horizontal-row4-min-height));
-}
-
-.previewMode .card.cardLayoutHorizontal .cardHorizontalColumnRight .messageBox {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 100%;
-}
-
-.previewMode .card.cardLayoutHorizontal .cardHorizontalColumnRight .messageBox p {
-  flex: 1 1 auto;
-}
-
-.previewMode .card.cardLayoutHorizontal .activityBox .interestGrid {
-  gap: 12px 4px;
-}
-
-.previewMode .card.cardLayoutHorizontal .activityBox > .activityColumn:not(.interestBox) .sectionHeader {
-  flex-shrink: 0;
-}
-
-.previewMode .card.cardLayoutHorizontal .activityBox > .activityColumn:not(.interestBox) .simpleList {
-  flex: 1 1 auto;
-  justify-content: space-evenly;
-  min-height: 0;
 }
 
 /* Edit mode: mobile layout (preview / PNG export unchanged) */
