@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "type": "item_override_dictionary",
+  "description": "Item-level overrides maintained by 04 when a stable item mapping is known.",
+  "overrides": [
+    {
+      "id": 16479,
+      "name": "アレキサンダー・ディフェンダーバイザー",
+      "category1": "装備",
+      "category2": null,
+      "contentName": null,
+      "needsReview": true,
+      "note": "アレキサンダー系。起動/律動/天動の確定待ち。item_overrideで管理する。"
+    }
+  ]
+}

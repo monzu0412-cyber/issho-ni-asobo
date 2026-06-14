@@ -1,0 +1,54 @@
+[
+  {
+    "version": 1,
+    "type": "metadata",
+    "policy": "series_dictionary is allowed to infer category2/contentName only when a series maps to one stable content. Ambiguous series must stay needsReview."
+  },
+  {
+    "seriesKey": "エデンモーン",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：再生編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "キタンナ",
+    "category2": "ID",
+    "contentName": "古跡探索 キタンナ神影洞",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "フッブート",
+    "category2": "ID",
+    "contentName": "水妖幻園 ドォーヌ・メグ",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "アレキサンダー",
+    "category2": null,
+    "contentName": null,
+    "candidates": [
+      "機工城アレキサンダー零式：起動編",
+      "機工城アレキサンダー零式：律動編",
+      "機工城アレキサンダー零式：天動編"
+    ],
+    "matchType": "ambiguous_name_prefix",
+    "confidence": "low",
+    "needsReview": true,
+    "handling": ["item_override_dictionary", "manual_override", "unclassified_items"],
+    "note": "04判断: 名称だけでは起動/律動/天動を自動判定しない。初期はneedsReview:true。"
+  },
+  {
+    "seriesKey": "潮衝",
+    "category2": "ID",
+    "contentName": "逆襲要害 サスタシャ浸食洞(Hard)",
+    "matchType": "orchestrion_description",
+    "confidence": "medium",
+    "needsReview": false
+  }
+]

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "type": "reverse_search_enum_candidates",
+  "description": "Future enum candidates retained from 04/Cursor review. This file is memo-only and must not be used by generation, classification, validation, or UI. Only values adopted in reverse_search_enums.json are usable.",
+  "routeType": [
+    {
+      "value": "DD交換",
+      "status": "candidate"
+    },
+    {
+      "value": "ヴァリアント交換",
+      "status": "candidate"
+    },
+    {
+      "value": "アナザーダンジョン",
+      "status": "candidate"
+    },
+    {
+      "value": "幻討滅戦",
+      "status": "candidate"
+    },
+    {
+      "value": "クロの空想帳",
+      "status": "candidate"
+    },
+    {
+      "value": "無人島",
+      "status": "candidate"
+    },
+    {
+      "value": "サブマリンボイジャー",
+      "status": "candidate"
+    }
+  ],
+  "categorySubCategory": [
+    {
+      "category": "戦闘",
+      "subCategory": "討滅戦",
+      "status": "adopted"
+    },
+    {
+      "category": "戦闘",
+      "subCategory": "幻",
+      "status": "adopted"
+    },
+    {
+      "category": "戦闘",
+      "subCategory": "モブハント",
+      "status": "adopted"
+    },
+    {
+      "category": "探索",
+      "subCategory": "ディープダンジョン",
+      "status": "adopted"
+    },
+    {
+      "category": "探索",
+      "subCategory": "ヴァリアント",
+      "status": "adopted"
+    },
+    {
+      "category": "探索",
+      "subCategory": "無人島",
+      "status": "adopted"
+    },
+    {
+      "category": "収集",
+      "subCategory": "アチーブメント",
+      "status": "adopted"
+    },
+    {
+      "category": "収集",
+      "subCategory": "ハウジング",
+      "status": "adopted"
+    },
+    {
+      "category": "その他",
+      "subCategory": "課金",
+      "status": "adopted"
+    },
+    {
+      "category": "その他",
+      "subCategory": "イベント",
+      "status": "adopted"
+    }
+  ],
+  "status": [
+    {
+      "value": "alias_required",
+      "status": "adopted"
+    }
+  ]
+}

@@ -1,0 +1,1935 @@
+{
+  "generatedAt": "2026-06-13T15:40:20.618Z",
+  "summary": {
+    "totalCollect": 198,
+    "alreadyRegistered": 140,
+    "targetCount": 49,
+    "itemIdYes": 0,
+    "itemIdNo": 49,
+    "hasSources": 49,
+    "noSources": 0,
+    "emoteJaAvailable": 49,
+    "emoteJaMissing": 0,
+    "itemJaAvailable": 0,
+    "itemJaMissing": 0,
+    "nameMismatchWithItem": 0,
+    "nameMatchWithItem": 0,
+    "autoSafe": 9,
+    "manualReview": 40,
+    "routeTypeMappedEvents": 52,
+    "routeContentInDictEvents": 13,
+    "routeContentMissingEvents": 41,
+    "uniqueMissingContentTranslations": 35
+  },
+  "sourceTypeDistribution": {
+    "Quest": 29,
+    "Skybuilders": 2,
+    "Other": 2,
+    "Premium": 12,
+    "Tribal": 1,
+    "Event": 4,
+    "Achievement": 4
+  },
+  "routeTypeCounts": {
+    "Quest": 29,
+    "Skybuilders": 2,
+    "Other": 2,
+    "Premium": 12,
+    "Tribal": 1,
+    "Event": 4,
+    "Achievement": 4
+  },
+  "collectCategoryDistribution": {
+    "Special": 24,
+    "General": 23,
+    "Expressions": 2
+  },
+  "displayNamePolicy": {
+    "existingRegisteredExample": {
+      "collectId": 188,
+      "itemId": 24222,
+      "emoteJa": "確認",
+      "itemJa": "演技教本:確認",
+      "sourceDictionaryUses": "演技教本:確認"
+    },
+    "recommendation": "表示名=エモート本体JP名（XIVAPI Emote.Name, collect.id=row_id）。item_idあり件は演技教本名をsearchNamesへ。",
+    "mismatchCount": 0
+  },
+  "missingContentTranslationsAll": [
+    "1,800 Skybuilders' Scrips (Unlock with the \"Read\" emote)",
+    "A Dream Realized",
+    "A Spectacle for the Ages",
+    "Acting the Part",
+    "An Intrepid New Enterprise",
+    "Arenvald's Adventure",
+    "Available if registered in the Companion app",
+    "Causes and Costs",
+    "Ceremony of Eternal Bonding",
+    "Confederate Consternation",
+    "Dear Leader I",
+    "Death Unto Dawn",
+    "Don't Do the Dewprism",
+    "Emissary of the Dawn",
+    "Eternity, Loyalty, Honesty",
+    "Fête Present (Unlock with the \"Read\" emote)",
+    "Good for What Ales You",
+    "Help Me, Lord of the Dance",
+    "Imposing Views",
+    "In Soroban We Trust",
+    "Item code included with Meister Quality Figure Omega",
+    "Learning to Lali-ho",
+    "Letters from No One",
+    "Piecing Together the Past",
+    "Quest \"Dreams Come True\" (Requires Loporrits Rank 8)",
+    "Saw That One Coming",
+    "Sundrop the Beat",
+    "The Burdens We Bear",
+    "The Call",
+    "The Fire-bird Down Below",
+    "The Hammer",
+    "The Make It Rain Campaign (2022)",
+    "Tidings from the East",
+    "Toss Fit Workout",
+    "What a Wonder-full World"
+  ],
+  "items": [
+    {
+      "collectId": 59,
+      "collectNameEn": "Imperial Salute",
+      "command": "/imperialsalute",
+      "itemId": null,
+      "patch": "2.0",
+      "category": "General",
+      "emoteJa": "帝国式敬礼",
+      "emoteEn": "Imperial Salute",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "帝国式敬礼",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "帝国式敬礼",
+        "Imperial Salute",
+        "imperialsalute"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Acting the Part",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 66538
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Acting the Part"
+      ]
+    },
+    {
+      "collectId": 85,
+      "collectNameEn": "Throw",
+      "command": "/throw",
+      "itemId": null,
+      "patch": "2.1",
+      "category": "General",
+      "emoteJa": "投げる",
+      "emoteEn": "Throw",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "投げる",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "投げる",
+        "Throw",
+        "throw"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Toss Fit Workout",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 66846
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Toss Fit Workout"
+      ]
+    },
+    {
+      "collectId": 101,
+      "collectNameEn": "Step Dance",
+      "command": "/stepdance, /sdance",
+      "itemId": null,
+      "patch": "2.2",
+      "category": "Special",
+      "emoteJa": "ステップダンス",
+      "emoteEn": "Step Dance",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "ステップダンス",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "ステップダンス",
+        "Step Dance",
+        "stepdance, /sdance"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Good for What Ales You",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 66962
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Good for What Ales You"
+      ]
+    },
+    {
+      "collectId": 102,
+      "collectNameEn": "Harvest Dance",
+      "command": "/harvestdance, /hdance",
+      "itemId": null,
+      "patch": "2.2",
+      "category": "Special",
+      "emoteJa": "豊穣の舞",
+      "emoteEn": "Harvest Dance",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "豊穣の舞",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "豊穣の舞",
+        "Harvest Dance",
+        "harvestdance, /hdance"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Saw That One Coming",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 66961
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Saw That One Coming"
+      ]
+    },
+    {
+      "collectId": 103,
+      "collectNameEn": "Ball Dance",
+      "command": "/balldance, /bdance",
+      "itemId": null,
+      "patch": "2.2",
+      "category": "Special",
+      "emoteJa": "宮廷の舞",
+      "emoteEn": "Ball Dance",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "宮廷の舞",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "宮廷の舞",
+        "Ball Dance",
+        "balldance, /bdance"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Help Me, Lord of the Dance",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 66963
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Help Me, Lord of the Dance"
+      ]
+    },
+    {
+      "collectId": 104,
+      "collectNameEn": "Manderville Dance",
+      "command": "/mandervilledance, /mdance",
+      "itemId": null,
+      "patch": "2.2",
+      "category": "Special",
+      "emoteJa": "紳士の舞",
+      "emoteEn": "Manderville Dance",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "紳士の舞",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "紳士の舞",
+        "Manderville Dance",
+        "mandervilledance, /mdance"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "The Hammer",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 66852
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:The Hammer"
+      ]
+    },
+    {
+      "collectId": 113,
+      "collectNameEn": "Embrace",
+      "command": "/embrace",
+      "itemId": null,
+      "patch": "2.45",
+      "category": "General",
+      "emoteJa": "抱き合う",
+      "emoteEn": "Embrace",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "抱き合う",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "抱き合う",
+        "Embrace",
+        "embrace"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Ceremony of Eternal Bonding",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Ceremony of Eternal Bonding"
+      ]
+    },
+    {
+      "collectId": 114,
+      "collectNameEn": "Most Gentlemanly",
+      "command": "/hildibrand, /hildy",
+      "itemId": null,
+      "patch": "2.5",
+      "category": "Special",
+      "emoteJa": "事件屋の決めポーズ",
+      "emoteEn": "Most Gentlemanly",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "事件屋の決めポーズ",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "事件屋の決めポーズ",
+        "Most Gentlemanly",
+        "hildibrand, /hildy"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Her Last Vow",
+          "contentJa": "事件は砂塵に消ゆ",
+          "related_type": "Quest",
+          "related_id": 66038
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 120,
+      "collectNameEn": "Sundrop Dance",
+      "command": "/sundance, /sundropdance",
+      "itemId": null,
+      "patch": "3.1",
+      "category": "Special",
+      "emoteJa": "太陽の舞",
+      "emoteEn": "Sundrop Dance",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "太陽の舞",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "太陽の舞",
+        "Sundrop Dance",
+        "sundance, /sundropdance"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Sundrop the Beat",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 67705
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Sundrop the Beat"
+      ]
+    },
+    {
+      "collectId": 121,
+      "collectNameEn": "Battle Stance",
+      "command": "/battlestance, /bstance",
+      "itemId": null,
+      "patch": "3.2",
+      "category": "General",
+      "emoteJa": "戦いに備える",
+      "emoteEn": "Battle Stance",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "戦いに備える",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "戦いに備える",
+        "Battle Stance",
+        "battlestance, /bstance"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Causes and Costs",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 67777
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Causes and Costs"
+      ]
+    },
+    {
+      "collectId": 122,
+      "collectNameEn": "Victory",
+      "command": "/victorypose, /vpose",
+      "itemId": null,
+      "patch": "3.2",
+      "category": "General",
+      "emoteJa": "勝利を喜ぶ",
+      "emoteEn": "Victory",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "勝利を喜ぶ",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "勝利を喜ぶ",
+        "Victory",
+        "victorypose, /vpose"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "A Spectacle for the Ages",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 67775
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:A Spectacle for the Ages"
+      ]
+    },
+    {
+      "collectId": 126,
+      "collectNameEn": "Moogle Dance",
+      "command": "/mogdance",
+      "itemId": null,
+      "patch": "3.3",
+      "category": "Special",
+      "emoteJa": "モグモグダンス",
+      "emoteEn": "Moogle Dance",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "モグモグダンス",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "モグモグダンス",
+        "Moogle Dance",
+        "mogdance"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Piecing Together the Past",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 67862
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Piecing Together the Past"
+      ]
+    },
+    {
+      "collectId": 127,
+      "collectNameEn": "Haurchefant",
+      "command": "/haurchefant, /hknight",
+      "itemId": null,
+      "patch": "3.3",
+      "category": "General",
+      "emoteJa": "「イイ！」",
+      "emoteEn": "Haurchefant",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "「イイ！」",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "「イイ！」",
+        "Haurchefant",
+        "haurchefant, /hknight"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "The Burdens We Bear",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 67015
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:The Burdens We Bear"
+      ]
+    },
+    {
+      "collectId": 130,
+      "collectNameEn": "Red Ranger Pose A",
+      "command": "/rangerpose1r, /redrangerposea, /rpose1r, /rrpa",
+      "itemId": null,
+      "patch": "3.35",
+      "category": "Special",
+      "emoteJa": "戦士の演武：壱",
+      "emoteEn": "Red Ranger Pose A",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "戦士の演武：壱",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "戦士の演武：壱",
+        "Red Ranger Pose A",
+        "rangerpose1r, /redrangerposea, /rpose1r, /rrpa"
+      ],
+      "sourceCount": 2,
+      "routes": [
+        {
+          "type": "Event",
+          "mappedType": "イベント",
+          "text": "Moonfire Faire (2016)",
+          "contentJa": "ムーンファイア・フェア (2016)",
+          "related_type": null,
+          "related_id": null
+        },
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 131,
+      "collectNameEn": "Black Ranger Pose A",
+      "command": "/rangerpose2r, /blackrangerposea, /rpose2r, /brpa",
+      "itemId": null,
+      "patch": "3.35",
+      "category": "Special",
+      "emoteJa": "戦士の演武：弐",
+      "emoteEn": "Black Ranger Pose A",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "戦士の演武：弐",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "戦士の演武：弐",
+        "Black Ranger Pose A",
+        "rangerpose2r, /blackrangerposea, /rpose2r, /brpa"
+      ],
+      "sourceCount": 2,
+      "routes": [
+        {
+          "type": "Event",
+          "mappedType": "イベント",
+          "text": "Moonfire Faire (2016)",
+          "contentJa": "ムーンファイア・フェア (2016)",
+          "related_type": null,
+          "related_id": null
+        },
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 132,
+      "collectNameEn": "Yellow Ranger Pose A",
+      "command": "/rangerpose3r, /yellowrangerposea, /rpose3r, /yrpa",
+      "itemId": null,
+      "patch": "3.35",
+      "category": "Special",
+      "emoteJa": "戦士の演武：参",
+      "emoteEn": "Yellow Ranger Pose A",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "戦士の演武：参",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "戦士の演武：参",
+        "Yellow Ranger Pose A",
+        "rangerpose3r, /yellowrangerposea, /rpose3r, /yrpa"
+      ],
+      "sourceCount": 2,
+      "routes": [
+        {
+          "type": "Event",
+          "mappedType": "イベント",
+          "text": "Moonfire Faire (2016)",
+          "contentJa": "ムーンファイア・フェア (2016)",
+          "related_type": null,
+          "related_id": null
+        },
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 145,
+      "collectNameEn": "Moonlift Dance",
+      "command": "/moonlift",
+      "itemId": null,
+      "patch": "3.5",
+      "category": "Special",
+      "emoteJa": "太陽と月の舞",
+      "emoteEn": "Moonlift Dance",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "太陽と月の舞",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "太陽と月の舞",
+        "Moonlift Dance",
+        "moonlift"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Eternity, Loyalty, Honesty",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 67921
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Eternity, Loyalty, Honesty"
+      ]
+    },
+    {
+      "collectId": 148,
+      "collectNameEn": "Spectacles",
+      "command": "/spectacles",
+      "itemId": null,
+      "patch": "3.5",
+      "category": "General",
+      "emoteJa": "眼鏡を正す",
+      "emoteEn": "Spectacles",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "眼鏡を正す",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "眼鏡を正す",
+        "Spectacles",
+        "spectacles"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Letters from No One",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 67899
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Letters from No One"
+      ]
+    },
+    {
+      "collectId": 151,
+      "collectNameEn": "Water Flip",
+      "command": "/waterflip",
+      "itemId": null,
+      "patch": "4.0",
+      "category": "General",
+      "emoteJa": "水中宙返り",
+      "emoteEn": "Water Flip",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "水中宙返り",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "水中宙返り",
+        "Water Flip",
+        "waterflip"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "In Soroban We Trust",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68020
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:In Soroban We Trust"
+      ]
+    },
+    {
+      "collectId": 154,
+      "collectNameEn": "Eastern Bow",
+      "command": "/easternbow, /ebow",
+      "itemId": null,
+      "patch": "4.0",
+      "category": "General",
+      "emoteJa": "東方風お辞儀",
+      "emoteEn": "Eastern Bow",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "東方風お辞儀",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "東方風お辞儀",
+        "Eastern Bow",
+        "easternbow, /ebow"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Confederate Consternation",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68016
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Confederate Consternation"
+      ]
+    },
+    {
+      "collectId": 155,
+      "collectNameEn": "Squats",
+      "command": "/squats",
+      "itemId": null,
+      "patch": "4.1",
+      "category": "Special",
+      "emoteJa": "スクワット",
+      "emoteEn": "Squats",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "スクワット",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "スクワット",
+        "Squats",
+        "squats"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Achievement",
+          "mappedType": "アチーブメント",
+          "text": "Dear Leader I",
+          "contentJa": null,
+          "related_type": "Achievement",
+          "related_id": 1966
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Dear Leader I"
+      ]
+    },
+    {
+      "collectId": 156,
+      "collectNameEn": "Push-ups",
+      "command": "/pushups",
+      "itemId": null,
+      "patch": "4.1",
+      "category": "Special",
+      "emoteJa": "腕立て伏せ",
+      "emoteEn": "Push-ups",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "腕立て伏せ",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "腕立て伏せ",
+        "Push-ups",
+        "pushups"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Achievement",
+          "mappedType": "アチーブメント",
+          "text": "Dear Leader I",
+          "contentJa": null,
+          "related_type": "Achievement",
+          "related_id": 1966
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Dear Leader I"
+      ]
+    },
+    {
+      "collectId": 157,
+      "collectNameEn": "Sit-ups",
+      "command": "/situps",
+      "itemId": null,
+      "patch": "4.1",
+      "category": "Special",
+      "emoteJa": "腹筋運動",
+      "emoteEn": "Sit-ups",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "腹筋運動",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "腹筋運動",
+        "Sit-ups",
+        "situps"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Achievement",
+          "mappedType": "アチーブメント",
+          "text": "Dear Leader I",
+          "contentJa": null,
+          "related_type": "Achievement",
+          "related_id": 1966
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Dear Leader I"
+      ]
+    },
+    {
+      "collectId": 158,
+      "collectNameEn": "Breath Control",
+      "command": "/breathcontrol",
+      "itemId": null,
+      "patch": "4.1",
+      "category": "Special",
+      "emoteJa": "深呼吸",
+      "emoteEn": "Breath Control",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "深呼吸",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "深呼吸",
+        "Breath Control",
+        "breathcontrol"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Achievement",
+          "mappedType": "アチーブメント",
+          "text": "Dear Leader I",
+          "contentJa": null,
+          "related_type": "Achievement",
+          "related_id": 1966
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Dear Leader I"
+      ]
+    },
+    {
+      "collectId": 166,
+      "collectNameEn": "Box",
+      "command": "/box",
+      "itemId": null,
+      "patch": "4.1",
+      "category": "Special",
+      "emoteJa": "格闘訓練",
+      "emoteEn": "Box",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "格闘訓練",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "格闘訓練",
+        "Box",
+        "box"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Arenvald's Adventure",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68498
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Arenvald's Adventure"
+      ]
+    },
+    {
+      "collectId": 172,
+      "collectNameEn": "Greeting",
+      "command": "/greet",
+      "itemId": null,
+      "patch": "4.2",
+      "category": "General",
+      "emoteJa": "挨拶する",
+      "emoteEn": "Greeting",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "挨拶する",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "挨拶する",
+        "Greeting",
+        "greet"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Tidings from the East",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68558
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Tidings from the East"
+      ]
+    },
+    {
+      "collectId": 183,
+      "collectNameEn": "Ponder",
+      "command": "/ponder, /makeyougohmmm",
+      "itemId": null,
+      "patch": "4.3",
+      "category": "Expressions",
+      "emoteJa": "表情：空想",
+      "emoteEn": "Ponder",
+      "emoteCatJa": "表情",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "表情：空想",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "表情：空想",
+        "Ponder",
+        "ponder, /makeyougohmmm"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Emissary of the Dawn",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68612
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Emissary of the Dawn"
+      ]
+    },
+    {
+      "collectId": 187,
+      "collectNameEn": "Hum",
+      "command": "/hum",
+      "itemId": null,
+      "patch": "4.4",
+      "category": "Special",
+      "emoteJa": "鼻歌",
+      "emoteEn": "Hum",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "鼻歌",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "鼻歌",
+        "Hum",
+        "hum"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "The Fire-bird Down Below",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68688
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:The Fire-bird Down Below"
+      ]
+    },
+    {
+      "collectId": 190,
+      "collectNameEn": "Endure",
+      "command": "/endure",
+      "itemId": null,
+      "patch": "4.4",
+      "category": "Expressions",
+      "emoteJa": "表情：忍耐",
+      "emoteEn": "Endure",
+      "emoteCatJa": "表情",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "表情：忍耐",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "表情：忍耐",
+        "Endure",
+        "endure"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "The Call",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68684
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:The Call"
+      ]
+    },
+    {
+      "collectId": 191,
+      "collectNameEn": "Tomestone",
+      "command": "/tomestone",
+      "itemId": null,
+      "patch": "4.4",
+      "category": "General",
+      "emoteJa": "トームストーン",
+      "emoteEn": "Tomestone",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "トームストーン",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "トームストーン",
+        "Tomestone",
+        "tomestone"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Other",
+          "mappedType": null,
+          "text": "Available if registered in the Companion app",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "unknown_route_type:Other",
+        "missing_content_translation:Available if registered in the Companion app"
+      ]
+    },
+    {
+      "collectId": 194,
+      "collectNameEn": "Gratuity",
+      "command": "/gratuity, /makeithail",
+      "itemId": null,
+      "patch": "4.5",
+      "category": "General",
+      "emoteJa": "心づけ",
+      "emoteEn": "Gratuity",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "心づけ",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "心づけ",
+        "Gratuity",
+        "gratuity, /makeithail"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "What a Wonder-full World",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68700
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:What a Wonder-full World"
+      ]
+    },
+    {
+      "collectId": 198,
+      "collectNameEn": "Manderville Mambo",
+      "command": "/mandervillemambo, /mmambo",
+      "itemId": null,
+      "patch": "4.5",
+      "category": "Special",
+      "emoteJa": "事件屋のマンボ",
+      "emoteEn": "Manderville Mambo",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "事件屋のマンボ",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "事件屋のマンボ",
+        "Manderville Mambo",
+        "mandervillemambo, /mmambo"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Don't Do the Dewprism",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 68704
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Don't Do the Dewprism"
+      ]
+    },
+    {
+      "collectId": 199,
+      "collectNameEn": "Lali-ho",
+      "command": "/laliho",
+      "itemId": null,
+      "patch": "5.0",
+      "category": "General",
+      "emoteJa": "ラリホー",
+      "emoteEn": "Lali-ho",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "ラリホー",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "ラリホー",
+        "Lali-ho",
+        "laliho"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Learning to Lali-ho",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 69095
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Learning to Lali-ho"
+      ]
+    },
+    {
+      "collectId": 200,
+      "collectNameEn": "Simulation M",
+      "command": "/simulationm",
+      "itemId": null,
+      "patch": "5.4",
+      "category": "Special",
+      "emoteJa": "オメガMの構え",
+      "emoteEn": "Simulation M",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "オメガMの構え",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "オメガMの構え",
+        "Simulation M",
+        "simulationm"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Item code included with Meister Quality Figure Omega",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Item code included with Meister Quality Figure Omega"
+      ]
+    },
+    {
+      "collectId": 201,
+      "collectNameEn": "Simulation F",
+      "command": "/simulationf",
+      "itemId": null,
+      "patch": "5.4",
+      "category": "Special",
+      "emoteJa": "オメガFの構え",
+      "emoteEn": "Simulation F",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "オメガFの構え",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "オメガFの構え",
+        "Simulation F",
+        "simulationf"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Item code included with Meister Quality Figure Omega",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Item code included with Meister Quality Figure Omega"
+      ]
+    },
+    {
+      "collectId": 231,
+      "collectNameEn": "Shush",
+      "command": "/shush, /shh",
+      "itemId": null,
+      "patch": "5.55",
+      "category": "General",
+      "emoteJa": "静寂を促す",
+      "emoteEn": "Shush",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "静寂を促す",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "静寂を促す",
+        "Shush",
+        "shush, /shh"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Death Unto Dawn",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 69602
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Death Unto Dawn"
+      ]
+    },
+    {
+      "collectId": 242,
+      "collectNameEn": "Show Left",
+      "command": "/showleft",
+      "itemId": null,
+      "patch": "6.1",
+      "category": "Special",
+      "emoteJa": "見せつける：左",
+      "emoteEn": "Show Left",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "見せつける：左",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "見せつける：左",
+        "Show Left",
+        "showleft"
+      ],
+      "sourceCount": 2,
+      "routes": [
+        {
+          "type": "Event",
+          "mappedType": "イベント",
+          "text": "The Make It Rain Campaign (2022)",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        },
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:The Make It Rain Campaign (2022)"
+      ]
+    },
+    {
+      "collectId": 252,
+      "collectNameEn": "Ear Wiggle",
+      "command": "/earwiggle",
+      "itemId": null,
+      "patch": "6.35",
+      "category": "General",
+      "emoteJa": "おみみピコピコ",
+      "emoteEn": "Ear Wiggle",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "おみみピコピコ",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "おみみピコピコ",
+        "Ear Wiggle",
+        "earwiggle"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Tribal",
+          "mappedType": "友好部族",
+          "text": "Quest \"Dreams Come True\" (Requires Loporrits Rank 8)",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Quest \"Dreams Come True\" (Requires Loporrits Rank 8)"
+      ]
+    },
+    {
+      "collectId": 258,
+      "collectNameEn": "Jump for Joy 1",
+      "command": "/jumpforjoy1, /jj1",
+      "itemId": null,
+      "patch": "6.5",
+      "category": "General",
+      "emoteJa": "ハッピージャンプ1",
+      "emoteEn": "Jump for Joy 1",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "ハッピージャンプ1",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "ハッピージャンプ1",
+        "Jump for Joy 1",
+        "jumpforjoy1, /jj1"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 259,
+      "collectNameEn": "Jump for Joy 2",
+      "command": "/jumpforjoy2, /jj2",
+      "itemId": null,
+      "patch": "6.5",
+      "category": "General",
+      "emoteJa": "ハッピージャンプ2",
+      "emoteEn": "Jump for Joy 2",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "ハッピージャンプ2",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "ハッピージャンプ2",
+        "Jump for Joy 2",
+        "jumpforjoy2, /jj2"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 260,
+      "collectNameEn": "Jump for Joy 3",
+      "command": "/jumpforjoy3, /jj3",
+      "itemId": null,
+      "patch": "6.5",
+      "category": "General",
+      "emoteJa": "ハッピージャンプ3",
+      "emoteEn": "Jump for Joy 3",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "ハッピージャンプ3",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "ハッピージャンプ3",
+        "Jump for Joy 3",
+        "jumpforjoy3, /jj3"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 261,
+      "collectNameEn": "Jump for Joy 4",
+      "command": "/jumpforjoy4, /jj4",
+      "itemId": null,
+      "patch": "6.5",
+      "category": "General",
+      "emoteJa": "ハッピージャンプ4",
+      "emoteEn": "Jump for Joy 4",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "ハッピージャンプ4",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "ハッピージャンプ4",
+        "Jump for Joy 4",
+        "jumpforjoy4, /jj4"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 262,
+      "collectNameEn": "Jump for Joy 5",
+      "command": "/jumpforjoy5, /jj5",
+      "itemId": null,
+      "patch": "6.5",
+      "category": "General",
+      "emoteJa": "ハッピージャンプ5",
+      "emoteEn": "Jump for Joy 5",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "ハッピージャンプ5",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "ハッピージャンプ5",
+        "Jump for Joy 5",
+        "jumpforjoy5, /jj5"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Premium",
+          "mappedType": "課金",
+          "text": "Online Store",
+          "contentJa": "オンラインストア",
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": true,
+      "manualReasons": []
+    },
+    {
+      "collectId": 282,
+      "collectNameEn": "Pose of the Unbound",
+      "command": "/poseoftheunbound, /unbound",
+      "itemId": null,
+      "patch": "7.16",
+      "category": "General",
+      "emoteJa": "自由のポーズ",
+      "emoteEn": "Pose of the Unbound",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "自由のポーズ",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "自由のポーズ",
+        "Pose of the Unbound",
+        "poseoftheunbound, /unbound"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "Imposing Views",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 70725
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:Imposing Views"
+      ]
+    },
+    {
+      "collectId": 285,
+      "collectNameEn": "Ohokaliy",
+      "command": "/ohokaliy",
+      "itemId": null,
+      "patch": "7.1",
+      "category": "General",
+      "emoteJa": "オフォカリー",
+      "emoteEn": "Ohokaliy",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "オフォカリー",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "オフォカリー",
+        "Ohokaliy",
+        "ohokaliy"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "An Intrepid New Enterprise",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 70729
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:An Intrepid New Enterprise"
+      ]
+    },
+    {
+      "collectId": 295,
+      "collectNameEn": "Tomescroll",
+      "command": "/tomescroll",
+      "itemId": null,
+      "patch": "7.2",
+      "category": "Special",
+      "emoteJa": "トームストーンを愛で続ける",
+      "emoteEn": "Tomescroll",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "トームストーンを愛で続ける",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "トームストーンを愛で続ける",
+        "Tomescroll",
+        "tomescroll"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Other",
+          "mappedType": null,
+          "text": "Available if registered in the Companion app",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "unknown_route_type:Other",
+        "missing_content_translation:Available if registered in the Companion app"
+      ]
+    },
+    {
+      "collectId": 296,
+      "collectNameEn": "Study",
+      "command": "/study",
+      "itemId": null,
+      "patch": "7.2",
+      "category": "Special",
+      "emoteJa": "本を熟読する",
+      "emoteEn": "Study",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "本を熟読する",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "本を熟読する",
+        "Study",
+        "study"
+      ],
+      "sourceCount": 2,
+      "routes": [
+        {
+          "type": "Skybuilders",
+          "mappedType": "ギャザクラ",
+          "text": "1,800 Skybuilders' Scrips (Unlock with the \"Read\" emote)",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        },
+        {
+          "type": "Skybuilders",
+          "mappedType": "ギャザクラ",
+          "text": "Fête Present (Unlock with the \"Read\" emote)",
+          "contentJa": null,
+          "related_type": null,
+          "related_id": null
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:1,800 Skybuilders' Scrips (Unlock with the \"Read\" emote)",
+        "missing_content_translation:Fête Present (Unlock with the \"Read\" emote)"
+      ]
+    },
+    {
+      "collectId": 330,
+      "collectNameEn": "Eat Taco",
+      "command": "/eattaco, /taco",
+      "itemId": null,
+      "patch": "7.51",
+      "category": "General",
+      "emoteJa": "タコスを食べる",
+      "emoteEn": "Eat Taco",
+      "emoteCatJa": "全般",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "タコスを食べる",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "タコスを食べる",
+        "Eat Taco",
+        "eattaco, /taco"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "A Dream Realized",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 70997
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:A Dream Realized"
+      ]
+    },
+    {
+      "collectId": 331,
+      "collectNameEn": "Devour Taco",
+      "command": "/devourtaco",
+      "itemId": null,
+      "patch": "7.51",
+      "category": "Special",
+      "emoteJa": "タコスを食べ続ける",
+      "emoteEn": "Devour Taco",
+      "emoteCatJa": "スペシャル",
+      "itemJa": "",
+      "itemEn": "",
+      "itemBookJa": "",
+      "nameMismatch": false,
+      "displayRecommendation": "タコスを食べ続ける",
+      "displayRationale": "item_idなし → エモート本体名のみ",
+      "searchNames": [
+        "タコスを食べ続ける",
+        "Devour Taco",
+        "devourtaco"
+      ],
+      "sourceCount": 1,
+      "routes": [
+        {
+          "type": "Quest",
+          "mappedType": "クエスト",
+          "text": "A Dream Realized",
+          "contentJa": null,
+          "related_type": "Quest",
+          "related_id": 70997
+        }
+      ],
+      "autoSafe": false,
+      "manualReasons": [
+        "missing_content_translation:A Dream Realized"
+      ]
+    }
+  ]
+}

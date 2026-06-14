@@ -1,0 +1,172 @@
+[
+  {
+    "version": 3,
+    "type": "metadata",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "policy": "Items enter this list when category2/contentName is unknown, confidence is low, rawCategory is その他/雑貨, or multiple candidates exist."
+  },
+  {
+    "id": 10074,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "マメット・アルフィノ",
+    "iconPath": "ui/icon/059000/059519.tex",
+    "iconPathHr1": "ui/icon/059000/059519_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/059000/059519_hr1.tex&format=png",
+    "rawCategory": "ミニオン",
+    "category1": "ミニオン",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "reason": "04判断: 初期は分類①を優先し、入手元辞書は全網羅しない。category2/contentName unknown.",
+    "suggestedAction": "Add minion acquisition dictionary or manual_override.",
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "ミニオン" },
+      { "type": "category1_rules", "key": "rawCategory=ミニオン" }
+    ]
+  },
+  {
+    "id": 17582,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "サンダースケイル",
+    "iconPath": "ui/icon/029000/029437.tex",
+    "iconPathHr1": "ui/icon/029000/029437_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/029000/029437_hr1.tex&format=png",
+    "rawCategory": "水産物",
+    "category1": "魚",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "reason": "04判断: 初期は分類①「魚」まで。ヌシ判定は後回し。",
+    "suggestedAction": "Add fish/nushi dictionary keyed by item name.",
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "水産物" },
+      { "type": "category1_rules", "key": "rawCategory=水産物" }
+    ]
+  },
+  {
+    "id": 16479,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "アレキサンダー・ディフェンダーバイザー",
+    "iconPath": "ui/icon/040000/040484.tex",
+    "iconPathHr1": "ui/icon/040000/040484_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040484_hr1.tex&format=png",
+    "rawCategory": "頭防具",
+    "category1": "装備",
+    "category2": null,
+    "category2Candidates": ["零式", "レイド"],
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "reason": "04判断: アレキサンダー系は名称だけで起動/律動/天動を自動判定しない。",
+    "suggestedAction": "Use item_override_dictionary/manual_override. Keep needsReview:true initially.",
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "頭防具" },
+      { "type": "category1_rules", "key": "rawCategory includes 防具" },
+      { "type": "series_dictionary", "key": "アレキサンダー" }
+    ]
+  },
+  {
+    "id": null,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "アレキサンダー・ヒーラーキャップ",
+    "iconPath": null,
+    "iconPathHr1": null,
+    "iconUrl": null,
+    "rawCategory": null,
+    "category1": "その他",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "reason": "Exact sample label returned no XIVAPI Item search result.",
+    "suggestedAction": "Confirm official item name or add alias dictionary.",
+    "sources": [
+      { "type": "xivapi", "key": "search", "value": "no_exact_result" }
+    ]
+  },
+  {
+    "id": 6001,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "チョコボホイッスル",
+    "iconPath": "ui/icon/026000/026012.tex",
+    "iconPathHr1": "ui/icon/026000/026012_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/026000/026012_hr1.tex&format=png",
+    "rawCategory": "その他",
+    "category1": "マウント",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "reason": "04判断: ホイッスル/認証鍵は分類①のみ名前パターン補助。ItemUICategory is その他.",
+    "suggestedAction": "Leave category2/contentName unknown until high-volume unclassified patterns justify a dictionary.",
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "その他" },
+      { "type": "category1_rules", "key": "name includes ホイッスル" }
+    ]
+  },
+  {
+    "id": 24222,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "演技教本:確認",
+    "iconPath": "ui/icon/026000/026435.tex",
+    "iconPathHr1": "ui/icon/026000/026435_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/026000/026435_hr1.tex&format=png",
+    "rawCategory": "雑貨",
+    "category1": "エモート",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "reason": "04判断: 雑貨/修得/登録系は名前パターンで分類①のみ自動判定。ItemUICategory is 雑貨.",
+    "suggestedAction": "Keep category2/contentName unknown unless override exists.",
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "雑貨" },
+      { "type": "category1_rules", "key": "name startsWith 演技教本:" }
+    ]
+  },
+  {
+    "id": 33707,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "ヘアカタログ:２Ｂ",
+    "iconPath": "ui/icon/026000/026178.tex",
+    "iconPathHr1": "ui/icon/026000/026178_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/026000/026178_hr1.tex&format=png",
+    "rawCategory": "雑貨",
+    "category1": "髪型",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "reason": "04判断: 雑貨/修得/登録系は名前パターンで分類①のみ自動判定。ItemUICategory is 雑貨.",
+    "suggestedAction": "Keep category2/contentName unknown unless override exists.",
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "雑貨" },
+      { "type": "category1_rules", "key": "name startsWith ヘアカタログ:" }
+    ]
+  }
+]

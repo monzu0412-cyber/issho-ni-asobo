@@ -1,0 +1,31 @@
+[
+  {
+    "version": 2,
+    "type": "metadata",
+    "policy": "04 content tree is canonical. This dictionary only maps stable series/content hints to existing tree nodes."
+  },
+  {
+    "contentName": "希望の園エデン零式：再生編",
+    "category2": "零式",
+    "categoryTree": ["戦闘コンテンツ", "零式"],
+    "keywords": ["エデンモーン", "ILv530"]
+  },
+  {
+    "contentName": "古跡探索 キタンナ神影洞",
+    "category2": "ID",
+    "categoryTree": ["戦闘コンテンツ", "ID周回：漆黒メインクエストID"],
+    "keywords": ["キタンナ", "LevelEquip=75", "ItemLevel=406"]
+  },
+  {
+    "contentName": "水妖幻園 ドォーヌ・メグ",
+    "category2": "ID",
+    "categoryTree": ["戦闘コンテンツ", "ID周回：漆黒メインクエストID"],
+    "keywords": ["フッブート", "LevelEquip=73", "ItemLevel=400"]
+  },
+  {
+    "contentName": "逆襲要害 サスタシャ浸食洞(Hard)",
+    "category2": "ID",
+    "categoryTree": ["戦闘コンテンツ", "ID周回：新生追加ID"],
+    "keywords": ["潮衝", "サスタシャ", "Orchestrion.Description"]
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "description": "Manual category1 rules. Order matters. category2/contentName are not inferred here.",
+  "confidencePolicy": {
+    "high": "category1, category2, and contentName are all confirmed",
+    "medium": "category1 is confirmed and category2 or contentName is inferred by dictionaries",
+    "low": "category1 only, or name-pattern dependent"
+  },
+  "needsReviewPolicy": [
+    "confidence is low",
+    "multiple content candidates exist",
+    "rawCategory is その他 or 雑貨",
+    "category2 is unknown",
+    "contentName is unknown"
+  ],
+  "rules": [
+    {
+      "category1": "ミニオン",
+      "conditions": [
+        { "field": "rawCategory", "equals": "ミニオン" },
+        { "field": "additionalSheet", "equals": "Companion" }
+      ]
+    },
+    {
+      "category1": "マウント",
+      "conditions": [
+        { "field": "additionalSheet", "equals": "Mount" },
+        { "field": "name", "includesAny": ["ホイッスル", "認証鍵"] }
+      ],
+      "confidence": "low",
+      "needsReview": true,
+      "note": "ItemUICategory often returns その他. Assign category1 only; category2/contentName remain unknown unless override exists."
+    },
+    {
+      "category1": "装備",
+      "conditions": [
+        { "field": "rawCategory", "includesAny": ["武器", "盾", "防具", "指輪", "耳飾り", "首飾り", "腕輪"] }
+      ]
+    },
+    {
+      "category1": "魚",
+      "conditions": [
+        { "field": "rawCategory", "equals": "水産物" },
+        { "field": "searchCategory", "equals": "水産物" }
+      ]
+    },
+    {
+      "category1": "カード",
+      "conditions": [
+        { "field": "rawCategory", "equals": "トリプルトライアドカード" },
+        { "field": "additionalSheet", "equals": "TripleTriadCard" },
+        { "field": "name", "startsWith": "カード:" }
+      ]
+    },
+    {
+      "category1": "譜面",
+      "conditions": [
+        { "field": "rawCategory", "equals": "オーケストリオン譜" },
+        { "field": "additionalSheet", "equals": "Orchestrion" },
+        { "field": "name", "startsWith": "オーケストリオン譜:" }
+      ]
+    },
+    {
+      "category1": "素材",
+      "conditions": [
+        { "field": "rawCategory", "includesAny": ["素材", "石材", "木材", "金属材", "布材", "皮革材", "錬金術材", "食材"] },
+        { "field": "searchCategory", "includesAny": ["素材", "材料"] },
+        { "field": "name", "includesAny": ["素材", "材料"] }
+      ]
+    },
+    {
+      "category1": "家具",
+      "conditions": [
+        { "field": "rawCategory", "includesAny": ["調度品", "庭具"] },
+        { "field": "searchCategory", "includesAny": ["調度品", "庭具"] },
+        { "field": "additionalSheet", "includesAny": ["HousingFurniture", "HousingYardObject"] }
+      ]
+    },
+    {
+      "category1": "エモート",
+      "conditions": [
+        { "field": "name", "startsWith": "演技教本:" },
+        { "field": "additionalSheet", "equals": "Emote" }
+      ],
+      "confidence": "low",
+      "needsReview": true
+    },
+    {
+      "category1": "髪型",
+      "conditions": [
+        { "field": "name", "startsWith": "ヘアカタログ:" }
+      ],
+      "confidence": "low",
+      "needsReview": true
+    },
+    {
+      "category1": "ファッションアクセサリー",
+      "conditions": [
+        { "field": "name", "includesAny": ["パラソル", "傘"] },
+        { "field": "additionalSheet", "includesAny": ["Glasses"] }
+      ],
+      "confidence": "low",
+      "needsReview": true
+    }
+  ],
+  "fallback": "その他"
+}

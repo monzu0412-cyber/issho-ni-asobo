@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "type": "manual_override",
+  "description": "Highest-priority manual fixes maintained by 04 for urgent patches or confirmed exceptions.",
+  "overrides": []
+}

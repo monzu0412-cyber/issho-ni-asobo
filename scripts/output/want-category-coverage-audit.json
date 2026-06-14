@@ -1,0 +1,241 @@
+{
+  "generatedAt": "2026-06-13T14:49:55.414Z",
+  "categories": {
+    "譜面": {
+      "universeTotal": 940,
+      "registered": 862,
+      "inReverseSearch": 862,
+      "unregistered": 78,
+      "dataSources": {
+        "Collect": null,
+        "Teamcraft": 0,
+        "XIVAPI_Item": 940,
+        "XIVAPI_MountSheet": null,
+        "PrototypeCandidates": null,
+        "Manual": 862
+      },
+      "collectOverlap": null,
+      "acquisitionRouteCoverage": "862/862",
+      "routeSourceBreakdown": {
+        "FFXIV Collect / Console Games Wiki / Gamer Escape": 862
+      },
+      "jpNameAvailability": {
+        "dictEntries": 862,
+        "translated": 862,
+        "teamcraftPotential": null
+      },
+      "fetchAvailability": {}
+    },
+    "マウント": {
+      "universeTotal": 349,
+      "registered": 346,
+      "inReverseSearch": 346,
+      "unregistered": 3,
+      "dataSources": {
+        "Collect": 349,
+        "Teamcraft": null,
+        "XIVAPI_Item": 143,
+        "XIVAPI_MountSheet": 451,
+        "PrototypeCandidates": null,
+        "Manual": 346
+      },
+      "collectOverlap": {
+        "collectTotal": 349,
+        "overlap": 345,
+        "collectOnly": 4,
+        "srcOnly": 0
+      },
+      "acquisitionRouteCoverage": "346/346",
+      "routeSourceBreakdown": {
+        "Console Games Wiki / Lodestone": 1,
+        "FFXIV Collect / Console Games Wiki / Gamer Escape": 345
+      },
+      "jpNameAvailability": {
+        "dictEntries": 344,
+        "translated": 344,
+        "teamcraftPotential": null
+      },
+      "fetchAvailability": {}
+    },
+    "ミニオン": {
+      "universeTotal": 575,
+      "registered": 570,
+      "inReverseSearch": 570,
+      "unregistered": 5,
+      "dataSources": {
+        "Collect": 575,
+        "Teamcraft": 180,
+        "XIVAPI_Item": 574,
+        "XIVAPI_MountSheet": null,
+        "PrototypeCandidates": null,
+        "Manual": 570
+      },
+      "collectOverlap": {
+        "collectTotal": 575,
+        "overlap": 569,
+        "collectOnly": 6,
+        "srcOnly": 0
+      },
+      "acquisitionRouteCoverage": "570/570",
+      "routeSourceBreakdown": {
+        "Gamer Escape / Console Games Wiki / Lodestone": 1,
+        "FFXIV Collect / Console Games Wiki / Gamer Escape": 569
+      },
+      "jpNameAvailability": {
+        "dictEntries": 569,
+        "translated": 568,
+        "teamcraftPotential": null
+      },
+      "fetchAvailability": {}
+    },
+    "髪型": {
+      "universeTotal": 49,
+      "registered": 47,
+      "inReverseSearch": 47,
+      "unregistered": 2,
+      "dataSources": {
+        "Collect": null,
+        "Teamcraft": 49,
+        "XIVAPI_Item": 49,
+        "XIVAPI_MountSheet": null,
+        "PrototypeCandidates": 49,
+        "Manual": 47
+      },
+      "collectOverlap": null,
+      "acquisitionRouteCoverage": "47/47",
+      "routeSourceBreakdown": {
+        "Lodestone / Console Games Wiki": 1,
+        "Console Games Wiki": 42,
+        "Console Games Wiki / Gamer Escape": 4
+      },
+      "jpNameAvailability": {
+        "dictEntries": 46,
+        "translated": 46,
+        "teamcraftPotential": null
+      },
+      "fetchAvailability": {}
+    },
+    "ファッションアクセサリー": {
+      "universeTotal": 34,
+      "registered": 21,
+      "inReverseSearch": 21,
+      "unregistered": 13,
+      "dataSources": {
+        "Collect": null,
+        "Teamcraft": null,
+        "XIVAPI_Item": 48,
+        "XIVAPI_MountSheet": null,
+        "PrototypeCandidates": 34,
+        "Manual": 6
+      },
+      "collectOverlap": null,
+      "acquisitionRouteCoverage": "21/21",
+      "routeSourceBreakdown": {
+        "Console Games Wiki / Gamer Escape": 1,
+        "Console Games Wiki": 1,
+        "Escapist / TheGamer": 15,
+        "Console Games Wiki / Destructoid": 1,
+        "Gamer Escape": 1,
+        "Console Games Wiki / TheGamer": 2
+      },
+      "jpNameAvailability": {
+        "dictEntries": 21,
+        "translated": 21,
+        "teamcraftPotential": null
+      },
+      "fetchAvailability": {}
+    },
+    "魚": {
+      "universeTotal": 2814,
+      "registered": 660,
+      "inReverseSearch": 660,
+      "unregistered": 2154,
+      "dataSources": {
+        "Collect": null,
+        "Teamcraft": null,
+        "XIVAPI_Item": 2814,
+        "XIVAPI_MountSheet": null,
+        "PrototypeCandidates": null,
+        "Manual": 0
+      },
+      "collectOverlap": null,
+      "acquisitionRouteCoverage": "660/660",
+      "routeSourceBreakdown": {
+        "Teamcraft / XIVAPI": 660
+      },
+      "jpNameAvailability": {
+        "dictEntries": 0,
+        "translated": 0,
+        "teamcraftPotential": 660
+      },
+      "fetchAvailability": {}
+    },
+    "エモート": {
+      "universeTotal": 198,
+      "registered": 1,
+      "inReverseSearch": 1,
+      "unregistered": 197,
+      "dataSources": {
+        "Collect": 198,
+        "Teamcraft": 0,
+        "XIVAPI_Item": 143,
+        "XIVAPI_MountSheet": null,
+        "PrototypeCandidates": null,
+        "Manual": 1
+      },
+      "collectOverlap": {
+        "collectTotal": 198,
+        "overlapByItemId": 1
+      },
+      "acquisitionRouteCoverage": "1/1",
+      "routeSourceBreakdown": {
+        "Gamer Escape / Console Games Wiki": 1
+      },
+      "jpNameAvailability": {
+        "dictEntries": 0,
+        "translated": 0,
+        "teamcraftPotential": null
+      },
+      "fetchAvailability": {}
+    },
+    "装備": {
+      "universeTotal": 21120,
+      "registered": 3,
+      "inReverseSearch": 3,
+      "unregistered": 21117,
+      "dataSources": {
+        "Collect": null,
+        "Teamcraft": null,
+        "XIVAPI_Item": 21120,
+        "XIVAPI_MountSheet": null,
+        "PrototypeCandidates": null,
+        "Manual": 3
+      },
+      "collectOverlap": null,
+      "acquisitionRouteCoverage": "3/3",
+      "routeSourceBreakdown": {
+        "manual_review": 1,
+        "Console Games Wiki / Gamer Escape": 1,
+        "Gamer Escape / Console Games Wiki": 1
+      },
+      "jpNameAvailability": {
+        "dictEntries": 0,
+        "translated": 0,
+        "teamcraftPotential": null
+      },
+      "fetchAvailability": {}
+    }
+  },
+  "notes": [
+    "Collect API: mounts/minions/emotes は単一GETで全件取得可能。orchestrion/fish エンドポイントは404。",
+    "Collect pagination (?page=N) は実質機能せず page=1 相当のみ返る。",
+    "魚660件は Collect ではなく Teamcraft/XIVAPI 由来。",
+    "装備3件は04仕様確認用サンプルのみ。XIVAPI装備候補は約21120件。"
+  ],
+  "totals": {
+    "currentRegistered": 2510,
+    "currentReverseSearch": 2510,
+    "estimatedIfAllCategoriesExpanded": 26079,
+    "expansionDelta": 23569
+  }
+}

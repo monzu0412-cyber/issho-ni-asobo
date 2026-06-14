@@ -1,0 +1,119 @@
+.termsPage {
+  background: #eef3fb;
+  box-sizing: border-box;
+  color: #26364f;
+  font-family: system-ui, sans-serif;
+  min-height: 100svh;
+  padding: 24px 20px 40px;
+  text-align: left;
+  width: 100%;
+}
+
+.termsPageInner {
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.termsPageBackLink {
+  color: #102a54;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.termsPageBackLink:hover {
+  text-decoration: underline;
+}
+
+.termsPageContent {
+  background: white;
+  border: 3px solid #102a54;
+  border-radius: 20px;
+  padding: 28px 24px 32px;
+}
+
+.termsPageContent h1 {
+  color: #102a54;
+  font-size: 32px;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.termsPageContent h2 {
+  color: #102a54;
+  font-size: 20px;
+  line-height: 1.35;
+  margin: 28px 0 12px;
+}
+
+.termsPageContent h2:first-of-type {
+  margin-top: 0;
+}
+
+.termsPageContent p {
+  color: #40516d;
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0 0 12px;
+}
+
+.termsPageContent ul {
+  color: #40516d;
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 0 0 12px;
+  padding-left: 1.4em;
+}
+
+.termsPageContent li + li {
+  margin-top: 6px;
+}
+
+.termsPageContent hr {
+  border: 0;
+  border-top: 1px solid #d8e0ec;
+  margin: 24px 0;
+}
+
+.termsPageFooter {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.termsPageFooter a {
+  color: #102a54;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.termsPageFooter a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .termsPage {
+    padding: 16px 12px 32px;
+  }
+
+  .termsPageContent {
+    padding: 22px 18px 26px;
+  }
+
+  .termsPageContent h1 {
+    font-size: 26px;
+  }
+
+  .termsPageContent h2 {
+    font-size: 18px;
+  }
+
+  .termsPageContent p,
+  .termsPageContent ul {
+    font-size: 15px;
+  }
+}

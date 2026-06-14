@@ -1,0 +1,246 @@
+[
+  {
+    "version": 3,
+    "type": "metadata",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "confidencePolicy": "high=all confirmed, medium=category1 confirmed and category2/contentName inferred by dictionary, low=category1 only or name-pattern dependent"
+  },
+  {
+    "id": 10074,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "マメット・アルフィノ",
+    "iconPath": "ui/icon/059000/059519.tex",
+    "iconPathHr1": "ui/icon/059000/059519_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/059000/059519_hr1.tex&format=png",
+    "rawCategory": "ミニオン",
+    "category1": "ミニオン",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "ミニオン" },
+      { "type": "category1_rules", "key": "rawCategory=ミニオン" }
+    ]
+  },
+  {
+    "id": 17582,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "サンダースケイル",
+    "iconPath": "ui/icon/029000/029437.tex",
+    "iconPathHr1": "ui/icon/029000/029437_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/029000/029437_hr1.tex&format=png",
+    "rawCategory": "水産物",
+    "category1": "魚",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "水産物" },
+      { "type": "category1_rules", "key": "rawCategory=水産物" }
+    ]
+  },
+  {
+    "id": 32294,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "エデンモーン・ディフェンダーマスク",
+    "iconPath": "ui/icon/040000/040566.tex",
+    "iconPathHr1": "ui/icon/040000/040566_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040566_hr1.tex&format=png",
+    "rawCategory": "頭防具",
+    "category1": "装備",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：再生編",
+    "confidence": "medium",
+    "needsReview": false,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "頭防具" },
+      { "type": "category1_rules", "key": "rawCategory includes 防具" },
+      { "type": "series_dictionary", "key": "エデンモーン" }
+    ]
+  },
+  {
+    "id": 16479,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "アレキサンダー・ディフェンダーバイザー",
+    "iconPath": "ui/icon/040000/040484.tex",
+    "iconPathHr1": "ui/icon/040000/040484_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040484_hr1.tex&format=png",
+    "rawCategory": "頭防具",
+    "category1": "装備",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "頭防具" },
+      { "type": "category1_rules", "key": "rawCategory includes 防具" },
+      { "type": "series_dictionary", "key": "アレキサンダー" }
+    ]
+  },
+  {
+    "id": null,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "アレキサンダー・ヒーラーキャップ",
+    "iconPath": null,
+    "iconPathHr1": null,
+    "iconUrl": null,
+    "rawCategory": null,
+    "category1": "その他",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "sources": [
+      { "type": "xivapi", "key": "search", "value": "no_exact_result" }
+    ]
+  },
+  {
+    "id": 26106,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "キタンナ・ヒーラーリング",
+    "iconPath": "ui/icon/054000/054653.tex",
+    "iconPathHr1": "ui/icon/054000/054653_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/054000/054653_hr1.tex&format=png",
+    "rawCategory": "指輪",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "古跡探索 キタンナ神影洞",
+    "confidence": "medium",
+    "needsReview": false,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "指輪" },
+      { "type": "category1_rules", "key": "rawCategory=指輪" },
+      { "type": "series_dictionary", "key": "キタンナ" }
+    ]
+  },
+  {
+    "id": 25916,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "フッブート・ヒーラーハット",
+    "iconPath": "ui/icon/041000/041448.tex",
+    "iconPathHr1": "ui/icon/041000/041448_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041448_hr1.tex&format=png",
+    "rawCategory": "頭防具",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "水妖幻園 ドォーヌ・メグ",
+    "confidence": "medium",
+    "needsReview": false,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "頭防具" },
+      { "type": "category1_rules", "key": "rawCategory includes 防具" },
+      { "type": "series_dictionary", "key": "フッブート" }
+    ]
+  },
+  {
+    "id": 14241,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "オーケストリオン譜:潮衝",
+    "iconPath": "ui/icon/025000/025945.tex",
+    "iconPathHr1": "ui/icon/025000/025945_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/025000/025945_hr1.tex&format=png",
+    "rawCategory": "オーケストリオン譜",
+    "category1": "譜面",
+    "category2": "ID",
+    "contentName": "逆襲要害 サスタシャ浸食洞(Hard)",
+    "confidence": "medium",
+    "needsReview": false,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "オーケストリオン譜" },
+      { "type": "category1_rules", "key": "rawCategory=オーケストリオン譜" },
+      { "type": "additional_data", "key": "Orchestrion.Description" },
+      { "type": "series_dictionary", "key": "潮衝" }
+    ]
+  },
+  {
+    "id": 6001,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "チョコボホイッスル",
+    "iconPath": "ui/icon/026000/026012.tex",
+    "iconPathHr1": "ui/icon/026000/026012_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/026000/026012_hr1.tex&format=png",
+    "rawCategory": "その他",
+    "category1": "マウント",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "その他" },
+      { "type": "category1_rules", "key": "name includes ホイッスル" }
+    ]
+  },
+  {
+    "id": 24222,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "演技教本:確認",
+    "iconPath": "ui/icon/026000/026435.tex",
+    "iconPathHr1": "ui/icon/026000/026435_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/026000/026435_hr1.tex&format=png",
+    "rawCategory": "雑貨",
+    "category1": "エモート",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "雑貨" },
+      { "type": "category1_rules", "key": "name startsWith 演技教本:" }
+    ]
+  },
+  {
+    "id": 33707,
+    "sourceType": "xivapi",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "name": "ヘアカタログ:２Ｂ",
+    "iconPath": "ui/icon/026000/026178.tex",
+    "iconPathHr1": "ui/icon/026000/026178_hr1.tex",
+    "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/026000/026178_hr1.tex&format=png",
+    "rawCategory": "雑貨",
+    "category1": "髪型",
+    "category2": null,
+    "contentName": null,
+    "confidence": "low",
+    "needsReview": true,
+    "sources": [
+      { "type": "xivapi", "key": "ItemUICategory.Name", "value": "雑貨" },
+      { "type": "category1_rules", "key": "name startsWith ヘアカタログ:" }
+    ]
+  }
+]

@@ -1,0 +1,133 @@
+.helpModalBackdrop {
+  align-items: center;
+  background: rgba(16, 42, 84, 0.45);
+  box-sizing: border-box;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 16px;
+  position: fixed;
+  z-index: 1000;
+}
+
+.helpModal {
+  background: #fffaf2;
+  border: 3px solid #102a54;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(16, 42, 84, 0.25);
+  box-sizing: border-box;
+  max-height: calc(100svh - 32px);
+  max-width: 640px;
+  overflow: auto;
+  width: min(100%, 640px);
+}
+
+.helpModalHeader {
+  align-items: center;
+  border-bottom: 2px solid #d8e0ec;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 14px 18px;
+}
+
+.helpModalHeader h2 {
+  color: #102a54;
+  font-size: 20px;
+  margin: 0;
+}
+
+.helpModalClose {
+  background: #eef3fb;
+  border: 2px solid #102a54;
+  border-radius: 999px;
+  color: #102a54;
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+  font-weight: bold;
+  height: 36px;
+  line-height: 1;
+  padding: 0;
+  width: 36px;
+}
+
+.helpModalClose:hover {
+  background: #dceaff;
+}
+
+.helpModalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+}
+
+.helpModalImageFrame {
+  align-items: center;
+  aspect-ratio: 4 / 3;
+  background: #eef3fb;
+  border: 2px solid #d8e0ec;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.helpModalImage {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.helpModalPlaceholder {
+  align-items: center;
+  color: #708099;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  height: 100%;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  width: 100%;
+}
+
+.helpModalNav {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.helpModalNavButton {
+  background: #eef3fb;
+  border: 2px solid #102a54;
+  border-radius: 999px;
+  color: #102a54;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 96px;
+  padding: 8px 14px;
+}
+
+.helpModalNavButton:hover:not(:disabled) {
+  background: #dceaff;
+}
+
+.helpModalNavButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.helpModalNavCounter {
+  color: #40516d;
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 56px;
+  text-align: center;
+}

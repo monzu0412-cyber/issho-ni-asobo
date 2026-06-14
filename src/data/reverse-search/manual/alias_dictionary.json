@@ -1,0 +1,12 @@
+[
+  {
+    "version": 1,
+    "type": "metadata",
+    "description": "Manual alias dictionary maintained by 04. Generation scripts read this file to resolve search labels to official item names before source_dictionary matching."
+  },
+  {
+    "alias": "アレキサンダー・ヒーラーキャップ",
+    "officialName": "アレキサンダー・ヒーラーフード",
+    "status": "confirmed"
+  }
+]

@@ -1,0 +1,1527 @@
+{
+  "generatedAt": "2026-06-13T15:41:43.226Z",
+  "scope": {
+    "emoteEntries": 198,
+    "confirmedEntries": 2695,
+    "needsReviewEntries": 12
+  },
+  "routeEventStats": {
+    "totalRouteEvents": 258,
+    "uniqueTexts": 132,
+    "contentDictHits": 36,
+    "uniqueMissing": 96,
+    "routeEventsMissingTranslation": 125
+  },
+  "uniqueMissingCategoryCounts": {
+    "currency_exchange": 12,
+    "quest_or_content_name": 48,
+    "seasonal_event": 13,
+    "premium_product_promo": 12,
+    "occult_crescent": 1,
+    "cosmic_exploration": 2,
+    "vendor_npc_exchange": 5,
+    "event_campaign": 3
+  },
+  "autoCounts": {
+    "existingDictionary": 36,
+    "questRelatedId": 28,
+    "instanceRelatedId": 0,
+    "currencyTemplate": 12,
+    "keepEnglish": 12,
+    "manualDictionary": 44,
+    "reviewPlaceholder": 0
+  },
+  "questRelatedId": {
+    "uniqueQuestTexts": 28,
+    "translatableTexts": 28,
+    "uniqueQuestIds": 28,
+    "samples": [
+      {
+        "text": "A Dream Realized",
+        "relatedId": 70997,
+        "ja": "2号店、グランドオープン！"
+      },
+      {
+        "text": "Imposing Views",
+        "relatedId": 70725,
+        "ja": "縛られざる者"
+      },
+      {
+        "text": "An Intrepid New Enterprise",
+        "relatedId": 70729,
+        "ja": " 新事業！ トラル旅行公司"
+      },
+      {
+        "text": "A Dream Worth Chasing",
+        "relatedId": 70324,
+        "ja": "宇宙の果てで最高のレースを！"
+      },
+      {
+        "text": "Death Unto Dawn",
+        "relatedId": 69602,
+        "ja": "黎明の死闘"
+      },
+      {
+        "text": "Learning to Lali-ho",
+        "relatedId": 69095,
+        "ja": " ラリホー！！！！"
+      },
+      {
+        "text": "Don't Do the Dewprism",
+        "relatedId": 68704,
+        "ja": "薬に侵されし最強の男"
+      },
+      {
+        "text": "What a Wonder-full World",
+        "relatedId": 68700,
+        "ja": "三種の至宝"
+      },
+      {
+        "text": "The Call",
+        "relatedId": 68684,
+        "ja": "響き渡る声"
+      },
+      {
+        "text": "The Fire-bird Down Below",
+        "relatedId": 68688,
+        "ja": "朱色慕情"
+      },
+      {
+        "text": "Emissary of the Dawn",
+        "relatedId": 68612,
+        "ja": "「暁」の少年"
+      },
+      {
+        "text": "Tidings from the East",
+        "relatedId": 68558,
+        "ja": "風雲急を告げる報せ"
+      },
+      {
+        "text": "Arenvald's Adventure",
+        "relatedId": 68498,
+        "ja": "冒険の誘い"
+      },
+      {
+        "text": "In Soroban We Trust",
+        "relatedId": 68020,
+        "ja": "大海原に泳ぎ出せ！"
+      },
+      {
+        "text": "Confederate Consternation",
+        "relatedId": 68016,
+        "ja": "砦に集いし無頼漢"
+      }
+    ],
+    "untranslatableQuestTexts": []
+  },
+  "instanceRelatedId": {
+    "uniqueInstanceTexts": 3,
+    "translatableTexts": 0,
+    "uniqueInstanceIds": 2,
+    "samples": [],
+    "alreadyInDictionary": []
+  },
+  "englishKeepTexts": [
+    {
+      "text": "Available if registered in the Companion app",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 2,
+      "sampleCollectId": 295
+    },
+    {
+      "text": "Ceremony of Eternal Bonding",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 113
+    },
+    {
+      "text": "Collect sources unavailable",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 4,
+      "sampleCollectId": 316
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Hydaelyn & Zodiark",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 272
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Odin",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 138
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Omega",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 2,
+      "sampleCollectId": 201
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Shiva",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 144
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Ultima, the High Seraph",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 175
+    },
+    {
+      "text": "Jollibee Promotion (NA Only)",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 271
+    },
+    {
+      "text": "KFC Promotion (Japan Only)",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 271
+    },
+    {
+      "text": "Recruit a Friend Campaign reward",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 115
+    },
+    {
+      "text": "Unresolved",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 4,
+      "sampleCollectId": 316
+    }
+  ],
+  "manualDictionaryTexts": [
+    {
+      "text": "All Saints' Wake (2023)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 267
+    },
+    {
+      "text": "All Saints' Wake (Oct 2022)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 247
+    },
+    {
+      "text": "Cold-warped Lockbox - Eureka Pagos",
+      "category": "occult_crescent",
+      "autoMethod": "manual_or_template",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 181
+    },
+    {
+      "text": "Cosmic Fortune - Phaenna",
+      "category": "cosmic_exploration",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 304
+    },
+    {
+      "text": "Cosmic Fortune - Sinus Ardonum",
+      "category": "cosmic_exploration",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 286
+    },
+    {
+      "text": "Dear Leader I",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 4,
+      "sampleCollectId": 158
+    },
+    {
+      "text": "Eschina - Rhalgr's Reach - 6 Mythic Clan Mark Logs",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 170
+    },
+    {
+      "text": "Fête Present (Unlock with the \"Read\" emote)",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 296
+    },
+    {
+      "text": "Gyosho - Dhoro Iloh (The Azim Steppe) - 8 Namazu Koban (Rank 6)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 176
+    },
+    {
+      "text": "Little Ladies' Day (2017)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 149
+    },
+    {
+      "text": "Madhura - Castellum Velodyna (The Fringes) - 5 Ananta Dreamstaves (Rank 5)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 64
+    },
+    {
+      "text": "Mizutt - Watts's Anvil (Lakeland) - 8 Hammered Frogments (Rank 8)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 217
+    },
+    {
+      "text": "Moonfire Faire (2014)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 109
+    },
+    {
+      "text": "Moonfire Faire (2018)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 178
+    },
+    {
+      "text": "Moonfire Faire (2020)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 212
+    },
+    {
+      "text": "Moonfire Faire (2024)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 278
+    },
+    {
+      "text": "PvP Series 1 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 240
+    },
+    {
+      "text": "PvP Series 10 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 317
+    },
+    {
+      "text": "PvP Series 11 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 329
+    },
+    {
+      "text": "PvP Series 2 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 248
+    },
+    {
+      "text": "PvP Series 3 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 251
+    },
+    {
+      "text": "PvP Series 4 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 263
+    },
+    {
+      "text": "PvP Series 5 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 273
+    },
+    {
+      "text": "PvP Series 7 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 279
+    },
+    {
+      "text": "PvP Series 8 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 293
+    },
+    {
+      "text": "PvP Series 9 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 307
+    },
+    {
+      "text": "Quest \"Dreams Come True\" (Requires Loporrits Rank 8)",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 252
+    },
+    {
+      "text": "Shikitahe - Tamamizu (The Ruby Sea) - 3 Kojin Sango (Rank 8)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 167
+    },
+    {
+      "text": "Silver/Gold Voyagers' Record",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 207
+    },
+    {
+      "text": "The Make It Rain Campaign (2016)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 125
+    },
+    {
+      "text": "The Make It Rain Campaign (2019)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 197
+    },
+    {
+      "text": "The Make It Rain Campaign (2020)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 209
+    },
+    {
+      "text": "The Make It Rain Campaign (2021)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 230
+    },
+    {
+      "text": "The Make It Rain Campaign (2022)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 242
+    },
+    {
+      "text": "The Make It Rain Campaign (2025)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 291
+    },
+    {
+      "text": "The Starlight Celebration (2025)",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 6,
+      "sampleCollectId": 302
+    },
+    {
+      "text": "Trisassant - Old Sharlayan - 9 Corvosi Potsherds",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 312
+    },
+    {
+      "text": "Trisassant - Old Sharlayan - 9 Sil'dihn Potsherds",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 246
+    },
+    {
+      "text": "Valentione's Day (2023)",
+      "category": "event_campaign",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 234
+    },
+    {
+      "text": "Valentione's Day (2024)",
+      "category": "event_campaign",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 274
+    },
+    {
+      "text": "Valentione's Day (2025)",
+      "category": "event_campaign",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 283
+    },
+    {
+      "text": "ウズネアカナル祭殿",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 188
+    },
+    {
+      "text": "古ぼけた地図G10由来",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 188
+    },
+    {
+      "text": "宝物庫 ウズネアカナル",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 188
+    }
+  ],
+  "currencyTemplateTexts": [
+    {
+      "text": "1,800 Skybuilders' Scrips",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 6,
+      "sampleCollectId": 223
+    },
+    {
+      "text": "1,800 Skybuilders' Scrips (Unlock with the \"Read\" emote)",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 296
+    },
+    {
+      "text": "10,000 Company Seals",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 82
+    },
+    {
+      "text": "100,000 MGP",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 237
+    },
+    {
+      "text": "3,000 Trophy Crystals",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 5,
+      "sampleCollectId": 273
+    },
+    {
+      "text": "30 Chunks of Sanguinite",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 292
+    },
+    {
+      "text": "40,000 Company Seals",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 165
+    },
+    {
+      "text": "50 Bozjan Clusters",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 215
+    },
+    {
+      "text": "50 Fragments of Illumed Aetherpool Glass",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 306
+    },
+    {
+      "text": "80,000 MGP",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 3,
+      "sampleCollectId": 216
+    },
+    {
+      "text": "9,600 Cosmocredits",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 294
+    },
+    {
+      "text": "900 Skybuilders' Scrips",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 206
+    }
+  ],
+  "reviewQueue": {
+    "entries": [
+      115,
+      181,
+      189,
+      191,
+      214,
+      222,
+      292,
+      295,
+      297,
+      314,
+      315,
+      316
+    ],
+    "uniqueMissingTexts": [
+      {
+        "text": "30 Chunks of Sanguinite",
+        "category": "currency_exchange",
+        "autoMethod": "template_currency",
+        "keepEnglish": false,
+        "routeRefs": 1,
+        "sampleCollectId": 292
+      },
+      {
+        "text": "50 Bozjan Clusters",
+        "category": "currency_exchange",
+        "autoMethod": "template_currency",
+        "keepEnglish": false,
+        "routeRefs": 2,
+        "sampleCollectId": 215
+      },
+      {
+        "text": "Available if registered in the Companion app",
+        "category": "premium_product_promo",
+        "autoMethod": "keep_english",
+        "keepEnglish": true,
+        "routeRefs": 2,
+        "sampleCollectId": 295
+      },
+      {
+        "text": "Cold-warped Lockbox - Eureka Pagos",
+        "category": "occult_crescent",
+        "autoMethod": "manual_or_template",
+        "keepEnglish": false,
+        "routeRefs": 1,
+        "sampleCollectId": 181
+      },
+      {
+        "text": "Collect sources unavailable",
+        "category": "premium_product_promo",
+        "autoMethod": "keep_english",
+        "keepEnglish": true,
+        "routeRefs": 4,
+        "sampleCollectId": 316
+      },
+      {
+        "text": "Recruit a Friend Campaign reward",
+        "category": "premium_product_promo",
+        "autoMethod": "keep_english",
+        "keepEnglish": true,
+        "routeRefs": 1,
+        "sampleCollectId": 115
+      },
+      {
+        "text": "Unresolved",
+        "category": "premium_product_promo",
+        "autoMethod": "keep_english",
+        "keepEnglish": true,
+        "routeRefs": 4,
+        "sampleCollectId": 316
+      }
+    ],
+    "note": "12件は Collect sources 欠落または Occult Crescent/Other 系。経路日本語化とは別枠で処理"
+  },
+  "implementationPriority": [
+    "Tier1: Quest related_id -> XIVAPI Quest.Name(JA)",
+    "Tier2: Instance related_id -> XIVAPI InstanceContent.Name(JA)",
+    "Tier3: 通貨/交換テンプレ（MGP, Company Seals, Skybuilders Scrips, Bozjan Clusters 等）",
+    "Tier4: イベント名手動辞書（Seasonal Event, Moonfire Faire 等）",
+    "Tier5: Premium/商品コード/外部プロモは英語維持方針を明示",
+    "Tier6: needs_review 12件は route補完後に翻訳"
+  ],
+  "uniqueMissingAll": [
+    {
+      "text": "1,800 Skybuilders' Scrips",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 6,
+      "sampleCollectId": 223
+    },
+    {
+      "text": "1,800 Skybuilders' Scrips (Unlock with the \"Read\" emote)",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 296
+    },
+    {
+      "text": "10,000 Company Seals",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 82
+    },
+    {
+      "text": "100,000 MGP",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 237
+    },
+    {
+      "text": "3,000 Trophy Crystals",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 5,
+      "sampleCollectId": 273
+    },
+    {
+      "text": "30 Chunks of Sanguinite",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 292
+    },
+    {
+      "text": "40,000 Company Seals",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 165
+    },
+    {
+      "text": "50 Bozjan Clusters",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 215
+    },
+    {
+      "text": "50 Fragments of Illumed Aetherpool Glass",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 306
+    },
+    {
+      "text": "80,000 MGP",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 3,
+      "sampleCollectId": 216
+    },
+    {
+      "text": "9,600 Cosmocredits",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 294
+    },
+    {
+      "text": "900 Skybuilders' Scrips",
+      "category": "currency_exchange",
+      "autoMethod": "template_currency",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 206
+    },
+    {
+      "text": "A Dream Realized",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 331
+    },
+    {
+      "text": "A Dream Worth Chasing",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 269
+    },
+    {
+      "text": "A Spectacle for the Ages",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 122
+    },
+    {
+      "text": "Acting the Part",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 59
+    },
+    {
+      "text": "All Saints' Wake (2023)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 267
+    },
+    {
+      "text": "All Saints' Wake (Oct 2022)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 247
+    },
+    {
+      "text": "An Intrepid New Enterprise",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 285
+    },
+    {
+      "text": "Arenvald's Adventure",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 166
+    },
+    {
+      "text": "Available if registered in the Companion app",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 2,
+      "sampleCollectId": 295
+    },
+    {
+      "text": "Causes and Costs",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 121
+    },
+    {
+      "text": "Ceremony of Eternal Bonding",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 113
+    },
+    {
+      "text": "Cold-warped Lockbox - Eureka Pagos",
+      "category": "occult_crescent",
+      "autoMethod": "manual_or_template",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 181
+    },
+    {
+      "text": "Collect sources unavailable",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 4,
+      "sampleCollectId": 316
+    },
+    {
+      "text": "Confederate Consternation",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 154
+    },
+    {
+      "text": "Cosmic Fortune - Phaenna",
+      "category": "cosmic_exploration",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 304
+    },
+    {
+      "text": "Cosmic Fortune - Sinus Ardonum",
+      "category": "cosmic_exploration",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 286
+    },
+    {
+      "text": "Dear Leader I",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 4,
+      "sampleCollectId": 158
+    },
+    {
+      "text": "Death Unto Dawn",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 231
+    },
+    {
+      "text": "Don't Do the Dewprism",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 198
+    },
+    {
+      "text": "Emissary of the Dawn",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 183
+    },
+    {
+      "text": "Eschina - Rhalgr's Reach - 6 Mythic Clan Mark Logs",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 170
+    },
+    {
+      "text": "Eternity, Loyalty, Honesty",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 145
+    },
+    {
+      "text": "Fête Present (Unlock with the \"Read\" emote)",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 296
+    },
+    {
+      "text": "Good for What Ales You",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 101
+    },
+    {
+      "text": "Gyosho - Dhoro Iloh (The Azim Steppe) - 8 Namazu Koban (Rank 6)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 176
+    },
+    {
+      "text": "Help Me, Lord of the Dance",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 103
+    },
+    {
+      "text": "Imposing Views",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 282
+    },
+    {
+      "text": "In Soroban We Trust",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 151
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Hydaelyn & Zodiark",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 272
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Odin",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 138
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Omega",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 2,
+      "sampleCollectId": 201
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Shiva",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 144
+    },
+    {
+      "text": "Item code included with Meister Quality Figure Ultima, the High Seraph",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 175
+    },
+    {
+      "text": "Jollibee Promotion (NA Only)",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 271
+    },
+    {
+      "text": "KFC Promotion (Japan Only)",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 271
+    },
+    {
+      "text": "Learning to Lali-ho",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 199
+    },
+    {
+      "text": "Letters from No One",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 148
+    },
+    {
+      "text": "Little Ladies' Day (2017)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 149
+    },
+    {
+      "text": "Madhura - Castellum Velodyna (The Fringes) - 5 Ananta Dreamstaves (Rank 5)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 64
+    },
+    {
+      "text": "Mizutt - Watts's Anvil (Lakeland) - 8 Hammered Frogments (Rank 8)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 217
+    },
+    {
+      "text": "Moonfire Faire (2014)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 109
+    },
+    {
+      "text": "Moonfire Faire (2018)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 178
+    },
+    {
+      "text": "Moonfire Faire (2020)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 212
+    },
+    {
+      "text": "Moonfire Faire (2024)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 278
+    },
+    {
+      "text": "Piecing Together the Past",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 126
+    },
+    {
+      "text": "PvP Series 1 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 240
+    },
+    {
+      "text": "PvP Series 10 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 317
+    },
+    {
+      "text": "PvP Series 11 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 329
+    },
+    {
+      "text": "PvP Series 2 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 248
+    },
+    {
+      "text": "PvP Series 3 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 251
+    },
+    {
+      "text": "PvP Series 4 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 263
+    },
+    {
+      "text": "PvP Series 5 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 273
+    },
+    {
+      "text": "PvP Series 7 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 279
+    },
+    {
+      "text": "PvP Series 8 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 293
+    },
+    {
+      "text": "PvP Series 9 - Level 5",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 307
+    },
+    {
+      "text": "Quest \"Dreams Come True\" (Requires Loporrits Rank 8)",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 252
+    },
+    {
+      "text": "Recruit a Friend Campaign reward",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 1,
+      "sampleCollectId": 115
+    },
+    {
+      "text": "Saw That One Coming",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 102
+    },
+    {
+      "text": "Shikitahe - Tamamizu (The Ruby Sea) - 3 Kojin Sango (Rank 8)",
+      "category": "vendor_npc_exchange",
+      "autoMethod": "template_vendor_npc",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 167
+    },
+    {
+      "text": "Silver/Gold Voyagers' Record",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 207
+    },
+    {
+      "text": "Sundrop the Beat",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 120
+    },
+    {
+      "text": "The Burdens We Bear",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 127
+    },
+    {
+      "text": "The Call",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 190
+    },
+    {
+      "text": "The Fire-bird Down Below",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 187
+    },
+    {
+      "text": "The Hammer",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 104
+    },
+    {
+      "text": "The Make It Rain Campaign (2016)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 125
+    },
+    {
+      "text": "The Make It Rain Campaign (2019)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 197
+    },
+    {
+      "text": "The Make It Rain Campaign (2020)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 209
+    },
+    {
+      "text": "The Make It Rain Campaign (2021)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 230
+    },
+    {
+      "text": "The Make It Rain Campaign (2022)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 242
+    },
+    {
+      "text": "The Make It Rain Campaign (2025)",
+      "category": "seasonal_event",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 291
+    },
+    {
+      "text": "The Starlight Celebration (2025)",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 6,
+      "sampleCollectId": 302
+    },
+    {
+      "text": "Tidings from the East",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 172
+    },
+    {
+      "text": "Toss Fit Workout",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 85
+    },
+    {
+      "text": "Trisassant - Old Sharlayan - 9 Corvosi Potsherds",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 312
+    },
+    {
+      "text": "Trisassant - Old Sharlayan - 9 Sil'dihn Potsherds",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 246
+    },
+    {
+      "text": "Unresolved",
+      "category": "premium_product_promo",
+      "autoMethod": "keep_english",
+      "keepEnglish": true,
+      "routeRefs": 4,
+      "sampleCollectId": 316
+    },
+    {
+      "text": "Valentione's Day (2023)",
+      "category": "event_campaign",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 234
+    },
+    {
+      "text": "Valentione's Day (2024)",
+      "category": "event_campaign",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 274
+    },
+    {
+      "text": "Valentione's Day (2025)",
+      "category": "event_campaign",
+      "autoMethod": "manual_dictionary",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 283
+    },
+    {
+      "text": "What a Wonder-full World",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 194
+    },
+    {
+      "text": "ウズネアカナル祭殿",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 188
+    },
+    {
+      "text": "古ぼけた地図G10由来",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 2,
+      "sampleCollectId": 188
+    },
+    {
+      "text": "宝物庫 ウズネアカナル",
+      "category": "quest_or_content_name",
+      "autoMethod": "manual_dictionary_or_xivapi",
+      "keepEnglish": false,
+      "routeRefs": 1,
+      "sampleCollectId": 188
+    }
+  ]
+}

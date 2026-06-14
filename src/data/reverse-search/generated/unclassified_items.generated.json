@@ -1,0 +1,10 @@
+[
+  {
+    "version": 1,
+    "type": "metadata",
+    "generatedAt": "2026-06-12T15:57:00+09:00",
+    "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+    "xivapiVersion": "9183b12d5dfc05bf",
+    "policy": "Items enter this list when category2/contentName is unknown, confidence is low, rawCategory is その他/雑貨, or multiple candidates exist."
+  }
+]
