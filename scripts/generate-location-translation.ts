@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 type SourceDictionaryEntry = {
   acquisitionRoutes?: Array<{
+    detail?: string
     specialConditions?: {
       area?: string
       location?: string
@@ -44,6 +45,7 @@ async function main() {
     for (const route of entry.acquisitionRoutes ?? []) {
       const area = route.specialConditions?.area?.trim()
       const location = route.specialConditions?.location?.trim()
+      const detail = route.detail?.trim()
 
       if (area) {
         areaNames.add(area)
@@ -51,6 +53,10 @@ async function main() {
 
       if (location) {
         locationNames.add(location)
+      }
+
+      if (detail) {
+        locationNames.add(detail)
       }
     }
   }

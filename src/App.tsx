@@ -1739,8 +1739,51 @@ type ResolveJapaneseDetailNameInput = {
   rawCategory?: string | null
 }
 
+function translateDetailToJapanese(detail: string, category1?: string | null): string {
+  const normalized = detail.trim()
+
+  if (!normalized || isJapaneseText(normalized)) {
+    return normalized
+  }
+
+  if (category1 === '魚') {
+    const localizedLocation = translateLocationName(normalized)
+
+    if (localizedLocation !== normalized) {
+      return localizedLocation
+    }
+
+    const translatedFishTerm = translateFishTerm(normalized)
+
+    if (translatedFishTerm !== normalized) {
+      return translatedFishTerm
+    }
+  }
+
+  const translatedContent = translateContentName(normalized, true)
+
+  if (translatedContent !== normalized) {
+    return translatedContent
+  }
+
+  const translatedLocation = translateLocationName(normalized)
+
+  if (translatedLocation !== normalized) {
+    return translatedLocation
+  }
+
+  const translatedFishTerm = translateFishTerm(normalized)
+
+  if (translatedFishTerm !== normalized) {
+    return translatedFishTerm
+  }
+
+  return normalized
+}
+
 function resolveJapaneseDetailName({
   detail,
+  category1,
   sourceItem,
   rawCategory,
 }: ResolveJapaneseDetailNameInput): string {
@@ -1771,23 +1814,11 @@ function resolveJapaneseDetailName({
     const routeDisplayName = resolveRouteDetailDisplayName(route)
 
     if (routeDisplayName) {
-      return routeDisplayName
+      return translateDetailToJapanese(routeDisplayName, category1)
     }
   }
 
-  const translatedDetail = translateContentName(normalizedDetail, true)
-
-  if (translatedDetail !== normalizedDetail) {
-    return translatedDetail
-  }
-
-  const translatedLocation = translateLocationName(normalizedDetail)
-
-  if (translatedLocation !== normalizedDetail) {
-    return translatedLocation
-  }
-
-  return normalizedDetail
+  return translateDetailToJapanese(normalizedDetail, category1)
 }
 
 function getRouteCardKey(route: AcquisitionRoute) {
