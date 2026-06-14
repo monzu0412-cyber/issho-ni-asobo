@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { HELP_IMAGES, HELP_IMAGES_PLACEHOLDER } from '../data/helpImages'
+import { HELP_IMAGES_PLACEHOLDER, HELP_SLIDES } from '../data/helpImages'
 import './HelpModal.css'
 
 type HelpModalProps = {
@@ -9,7 +9,7 @@ type HelpModalProps = {
 
 export function HelpModal({ isOpen, onClose }: HelpModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const total = HELP_IMAGES.length
+  const total = HELP_SLIDES.length
 
   const goPrev = useCallback(() => {
     setCurrentIndex((index) => Math.max(0, index - 1))
@@ -56,7 +56,7 @@ export function HelpModal({ isOpen, onClose }: HelpModalProps) {
     return null
   }
 
-  const currentImage = HELP_IMAGES[currentIndex]
+  const currentSlide = HELP_SLIDES[currentIndex]
 
   return (
     <div className="helpModalBackdrop" onClick={handleClose} role="presentation">
@@ -81,17 +81,22 @@ export function HelpModal({ isOpen, onClose }: HelpModalProps) {
 
         <div className="helpModalBody">
           <div className="helpModalImageFrame">
-            {HELP_IMAGES_PLACEHOLDER ? (
+            {currentSlide.imageUrl && !HELP_IMAGES_PLACEHOLDER ? (
+              <img
+                className="helpModalImage"
+                src={currentSlide.imageUrl}
+                alt={currentSlide.title}
+              />
+            ) : (
               <div className="helpModalPlaceholder">
                 <span>準備中</span>
               </div>
-            ) : (
-              <img
-                className="helpModalImage"
-                src={currentImage}
-                alt={`使い方 ${currentIndex + 1}`}
-              />
             )}
+          </div>
+
+          <div className="helpModalSlideText">
+            <h3 className="helpModalSlideTitle">{currentSlide.title}</h3>
+            <p className="helpModalSlideDescription">{currentSlide.description}</p>
           </div>
 
           <nav className="helpModalNav" aria-label="使い方ナビゲーション">

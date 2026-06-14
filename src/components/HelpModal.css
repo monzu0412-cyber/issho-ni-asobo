@@ -94,6 +94,30 @@
   width: 100%;
 }
 
+.helpModalSlideText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.helpModalSlideTitle {
+  color: #102a54;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+
+.helpModalSlideDescription {
+  color: #40516d;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+  text-align: center;
+  white-space: pre-line;
+}
+
 .helpModalNav {
   align-items: center;
   display: flex;
