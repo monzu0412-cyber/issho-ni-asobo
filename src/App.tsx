@@ -3123,6 +3123,7 @@ function App() {
             {targets.slice(1, 3).map((target, relativeIndex) => {
               const index = relativeIndex + 1
               const slotBackgrounds: CardSectionName[] = ['row2_center', 'row2_right']
+              const wantSlotFrameUrl = getTargetFrameUrl(target, targetFrameTheme)
 
               return (
                 <section
@@ -3135,7 +3136,20 @@ function App() {
                   >
                     ほしいもの{index + 1}位！
                   </div>
-                  <div className="targetItem wantSlotItem">
+                  <div
+                    className={`targetItem wantSlotItem${wantSlotFrameUrl ? ' hasWantSlotFrame' : ''}`}
+                  >
+                    {wantSlotFrameUrl && (
+                      <img
+                        className="wantSlotFrame"
+                        src={wantSlotFrameUrl}
+                        alt=""
+                        aria-hidden="true"
+                        onError={(event) => {
+                          event.currentTarget.style.display = 'none'
+                        }}
+                      />
+                    )}
                     <div className={`wantSlotTitleGroup ${getWantTitleSizeClass(target.title)}`}>
                       {isPreviewMode && (
                         target.iconUrl ? (

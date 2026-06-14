@@ -1265,6 +1265,44 @@
   flex: 1;
 }
 
+.wantSlotItem.hasWantSlotFrame {
+  background: transparent;
+  border-color: rgba(16, 42, 84, 0.22);
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
+.wantSlotFrame {
+  height: 100%;
+  inset: 0;
+  object-fit: fill;
+  opacity: 0.45;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.wantSlotItem.hasWantSlotFrame::before {
+  background: rgba(255, 255, 255, 0.68);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.wantSlotItem.hasWantSlotFrame > :not(.wantSlotFrame) {
+  position: relative;
+  z-index: 2;
+}
+
+.wantSlotItem.hasWantSlotFrame .routeItem {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(16, 42, 84, 0.18);
+}
+
 .wantSlotTitleGroup {
   align-items: center;
   display: flex;
