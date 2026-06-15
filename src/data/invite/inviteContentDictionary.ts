@@ -344,6 +344,11 @@ const housingMiddleItems = createMiddleItems('housing', [
   'ハウジング相談',
 ])
 
+const eventMiddleItems = createMiddleItems('event', [
+  ...extractSubCategoryLabels(['user-event', 'shop-tour', 'concert']),
+  'RPイベント',
+])
+
 export const inviteMajorCategories: InviteMajorCategory[] = [
   {
     id: 'savage',
@@ -431,6 +436,11 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     id: 'housing',
     label: 'ハウジング',
     middleItems: housingMiddleItems,
+  },
+  {
+    id: 'event',
+    label: 'イベント',
+    middleItems: eventMiddleItems,
   },
 ]
 
