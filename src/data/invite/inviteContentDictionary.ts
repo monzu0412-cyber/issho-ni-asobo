@@ -337,6 +337,13 @@ const screenshotMiddleItems = createMiddleItems('screenshot', [
 
 export const screenshotEditingMiddleId = screenshotMiddleItems[3]?.id ?? 'screenshot-04'
 
+const housingMiddleItems = createMiddleItems('housing', [
+  'ハウジング見学',
+  '内装制作',
+  '庭づくり',
+  'ハウジング相談',
+])
+
 export const inviteMajorCategories: InviteMajorCategory[] = [
   {
     id: 'savage',
@@ -419,6 +426,11 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     id: 'screenshot',
     label: 'SS',
     middleItems: screenshotMiddleItems,
+  },
+  {
+    id: 'housing',
+    label: 'ハウジング',
+    middleItems: housingMiddleItems,
   },
 ]
 
