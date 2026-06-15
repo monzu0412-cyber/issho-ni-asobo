@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
-import { HELP_IMAGES_PLACEHOLDER, HELP_SLIDES } from '../data/helpImages'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { getHelpSlides, HELP_IMAGES_PLACEHOLDER, type HelpSlide } from '../data/helpImages'
+import { useMobileViewport } from '../utils/isMobileViewport'
 import './HelpModal.css'
 
 type HelpModalProps = {
@@ -7,9 +8,14 @@ type HelpModalProps = {
   onClose: () => void
 }
 
-export function HelpModal({ isOpen, onClose }: HelpModalProps) {
+type HelpModalBodyProps = {
+  slides: HelpSlide[]
+  onClose: () => void
+}
+
+function HelpModalBody({ slides, onClose }: HelpModalBodyProps) {
+  const total = slides.length
   const [currentIndex, setCurrentIndex] = useState(0)
-  const total = HELP_SLIDES.length
 
   const goPrev = useCallback(() => {
     setCurrentIndex((index) => Math.max(0, index - 1))
@@ -20,15 +26,10 @@ export function HelpModal({ isOpen, onClose }: HelpModalProps) {
   }, [total])
 
   const handleClose = useCallback(() => {
-    setCurrentIndex(0)
     onClose()
   }, [onClose])
 
   useEffect(() => {
-    if (!isOpen) {
-      return
-    }
-
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         handleClose()
@@ -50,13 +51,13 @@ export function HelpModal({ isOpen, onClose }: HelpModalProps) {
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
     }
-  }, [goNext, goPrev, handleClose, isOpen])
+  }, [goNext, goPrev, handleClose])
 
-  if (!isOpen || total === 0) {
+  if (total === 0) {
     return null
   }
 
-  const currentSlide = HELP_SLIDES[currentIndex]
+  const currentSlide = slides[currentIndex]
 
   return (
     <div className="helpModalBackdrop" onClick={handleClose} role="presentation">
@@ -124,4 +125,16 @@ export function HelpModal({ isOpen, onClose }: HelpModalProps) {
       </div>
     </div>
   )
+}
+
+export function HelpModal({ isOpen, onClose }: HelpModalProps) {
+  const isMobileViewport = useMobileViewport()
+  const slides = useMemo(() => getHelpSlides(isMobileViewport), [isMobileViewport])
+  const platformKey = isMobileViewport ? 'mobile' : 'desktop'
+
+  if (!isOpen) {
+    return null
+  }
+
+  return <HelpModalBody key={platformKey} slides={slides} onClose={onClose} />
 }
