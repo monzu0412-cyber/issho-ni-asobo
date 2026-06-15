@@ -1,3 +1,10 @@
+import {
+  defaultActivitySectionTitles,
+  normalizeHelpSectionTitle,
+  normalizeWantSectionTitle,
+  type HelpSectionSubtitle,
+  type WantSectionSubtitle,
+} from '../data/activityColumnTitles'
 import { inviteMajorIds } from '../data/invite/inviteContentDictionary'
 import type { InviteContentSelection, InviteMajorId } from '../data/invite/inviteDictionaryTypes'
 
@@ -27,8 +34,6 @@ const imageFrameThemes = ['simple', 'cute', 'stylish', 'cool', 'mechanical'] as 
 const targetFrameThemes = ['simple', 'cute', 'stylish'] as const
 const sectionTitleOptions = {
   target: ['狙ってるもの', 'ほしいもの', 'ほしい！', 'ターゲット'],
-  want: ['誘って！', '手伝って！', '連れてって！', '拉致歓迎！'],
-  help: ['手伝える！', 'いける！', 'ついていきます。', '護衛可能'],
 } as const
 
 const activityCategories = [
@@ -108,8 +113,8 @@ export type CharacterDraft = {
   unfinishedList: TodoItem[]
   sectionTitles: {
     target: typeof sectionTitleOptions.target[number]
-    want: typeof sectionTitleOptions.want[number]
-    help: typeof sectionTitleOptions.help[number]
+    want: WantSectionSubtitle
+    help: HelpSectionSubtitle
   }
   tags: string[]
   message: string
@@ -327,8 +332,8 @@ function sanitizeSectionTitles(value: unknown, fallback: CharacterDraft['section
 
   return {
     target: readEnumValue(value.target, sectionTitleOptions.target, fallback.target),
-    want: readEnumValue(value.want, sectionTitleOptions.want, fallback.want),
-    help: readEnumValue(value.help, sectionTitleOptions.help, fallback.help),
+    want: normalizeWantSectionTitle(value.want, fallback.want),
+    help: normalizeHelpSectionTitle(value.help, fallback.help),
   }
 }
 
@@ -521,7 +526,10 @@ export function buildCharacterDraft(
     }),
     todoList: character.todoList ?? [],
     unfinishedList: character.unfinishedList ?? [],
-    sectionTitles: { ...character.sectionTitles },
+    sectionTitles: sanitizeSectionTitles(character.sectionTitles, {
+      target: '狙ってるもの',
+      ...defaultActivitySectionTitles,
+    }),
     tags: [...(character.tags ?? [])],
     message: character.message,
   }

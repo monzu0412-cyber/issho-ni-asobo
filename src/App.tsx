@@ -1,5 +1,13 @@
 import { type CSSProperties, type SyntheticEvent, useEffect, useRef, useState } from 'react'
 import { getActivityPurposeItem, getActivityPurposeItems } from './data/invite/activityPurposeDictionary'
+import {
+  activityColumnMainTitles,
+  activityColumnSubtitleOptions,
+  defaultActivitySectionTitles,
+  type ActivityColumnKey,
+  type HelpSectionSubtitle,
+  type WantSectionSubtitle,
+} from './data/activityColumnTitles'
 import { getXPostIntentUrl } from './data/postShareTemplate'
 import {
   getInviteMajorCategory,
@@ -400,16 +408,44 @@ const targetFrameThemeOptions: Array<{ value: TargetFrameTheme; label: string }>
   { value: 'stylish', label: 'おしゃれ' },
 ]
 
-const sectionTitleOptions = {
-  target: ['狙ってるもの', 'ほしいもの', 'ほしい！', 'ターゲット'],
-  want: ['誘って！', '手伝って！', '連れてって！', '拉致歓迎！'],
-  help: ['手伝える！', 'いける！', 'ついていきます。', '護衛可能'],
-} as const
+type SectionTitles = CharacterDraft['sectionTitles']
 
-type SectionTitleKey = keyof typeof sectionTitleOptions
+function ActivityColumnHeader({
+  columnKey,
+  subtitle,
+  isPreviewMode,
+  onSubtitleChange,
+}: {
+  columnKey: ActivityColumnKey
+  subtitle: WantSectionSubtitle | HelpSectionSubtitle
+  isPreviewMode: boolean
+  onSubtitleChange: (value: WantSectionSubtitle | HelpSectionSubtitle) => void
+}) {
+  const mainTitle = activityColumnMainTitles[columnKey]
+  const subtitleOptions = activityColumnSubtitleOptions[columnKey]
 
-type SectionTitles = {
-  [Key in SectionTitleKey]: typeof sectionTitleOptions[Key][number]
+  return (
+    <div className="sectionHeader activityColumnHeader">
+      <div className="activityColumnTitle">
+        <div className="activityColumnTitleMain">{mainTitle}</div>
+        {isPreviewMode ? (
+          <p className="activityColumnSubtitleDisplay">{subtitle}</p>
+        ) : (
+          <select
+            className="activityColumnSubtitleSelect"
+            value={subtitle}
+            onChange={(event) => {
+              onSubtitleChange(event.target.value as WantSectionSubtitle | HelpSectionSubtitle)
+            }}
+          >
+            {subtitleOptions.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        )}
+      </div>
+    </div>
+  )
 }
 
 const timeOptions = Array.from({ length: 25 }, (_, hour) => hour)
@@ -1048,8 +1084,7 @@ function createEmptyCharacter(): CharacterState {
     unfinishedList: [],
     sectionTitles: {
       target: '狙ってるもの',
-      want: '誘って！',
-      help: '手伝える！',
+      ...defaultActivitySectionTitles,
     },
     tags: [],
     message: '',
@@ -2532,15 +2567,15 @@ function App() {
     }))
   }
 
-  function updateSectionTitle<Key extends SectionTitleKey>(
-    key: Key,
-    value: SectionTitles[Key],
+  function updateActivitySubtitle(
+    columnKey: 'want' | 'help',
+    value: WantSectionSubtitle | HelpSectionSubtitle,
   ) {
     setCharacter((currentCharacter) => ({
       ...currentCharacter,
       sectionTitles: {
         ...currentCharacter.sectionTitles,
-        [key]: value,
+        [columnKey]: value,
       },
     }))
   }
@@ -2712,8 +2747,7 @@ function App() {
   const playTime = normalizePlayTime(character.playTime)
   const sectionTitles = character.sectionTitles ?? {
     target: '狙ってるもの',
-    want: '誘って！',
-    help: '手伝える！',
+    ...defaultActivitySectionTitles,
   }
 
   const topTarget = targets[0]
@@ -3281,18 +3315,12 @@ function App() {
               className="activityColumn"
               style={getCardSectionBackgroundStyle('row3_center')}
             >
-              <div className="sectionHeader">
-                <div className="sectionTitle previewSectionTitle">{sectionTitles.want}</div>
-                <select
-                  className="sectionTitleSelect"
-                  value={sectionTitles.want}
-                  onChange={(event) => updateSectionTitle('want', event.target.value as SectionTitles['want'])}
-                >
-                  {sectionTitleOptions.want.map((title) => (
-                    <option key={title} value={title}>{title}</option>
-                  ))}
-                </select>
-              </div>
+              <ActivityColumnHeader
+                columnKey="want"
+                subtitle={sectionTitles.want}
+                isPreviewMode={isPreviewMode}
+                onSubtitleChange={(value) => updateActivitySubtitle('want', value)}
+              />
 
               <InviteContentPicker
                 selection={contentSelections.todoList}
@@ -3319,18 +3347,12 @@ function App() {
               className="activityColumn"
               style={getCardSectionBackgroundStyle('row3_right')}
             >
-              <div className="sectionHeader">
-                <div className="sectionTitle previewSectionTitle">{sectionTitles.help}</div>
-                <select
-                  className="sectionTitleSelect"
-                  value={sectionTitles.help}
-                  onChange={(event) => updateSectionTitle('help', event.target.value as SectionTitles['help'])}
-                >
-                  {sectionTitleOptions.help.map((title) => (
-                    <option key={title} value={title}>{title}</option>
-                  ))}
-                </select>
-              </div>
+              <ActivityColumnHeader
+                columnKey="help"
+                subtitle={sectionTitles.help}
+                isPreviewMode={isPreviewMode}
+                onSubtitleChange={(value) => updateActivitySubtitle('help', value)}
+              />
 
               <InviteContentPicker
                 selection={contentSelections.unfinishedList}
@@ -3375,6 +3397,10 @@ function App() {
                 </div>
               )}
             </section>
+            <footer className="cardCopyright" aria-label="コピーライト">
+              <p className="cardCopyrightLine">FINAL FANTASY XIV © SQUARE ENIX</p>
+              <p className="cardCopyrightLine">本ツールは非公式のファンメイド作品です</p>
+            </footer>
           </section>
         </div>
       </section>

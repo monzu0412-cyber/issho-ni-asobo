@@ -441,6 +441,7 @@
 .bottomRow {
   grid-template-columns: 1fr;
   align-items: stretch;
+  gap: 10px;
 }
 
 .profileImage {
@@ -1082,6 +1083,69 @@
 
 .sectionHeader .sectionTitle {
   margin-bottom: 8px;
+}
+
+.activityColumnHeader {
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.activityColumnTitle {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.activityColumnTitleMain {
+  align-items: center;
+  background: #102a54;
+  border-radius: 999px;
+  color: white;
+  display: inline-block;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: bold;
+  line-height: 1.2;
+  max-width: 100%;
+  padding: 7px 14px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.activityColumnSubtitleSelect,
+.activityColumnSubtitleDisplay {
+  color: #102a54;
+  font-size: clamp(9px, 0.85vw, 11px);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 100%;
+  text-align: center;
+  width: 100%;
+  word-break: keep-all;
+}
+
+.activityColumnSubtitleSelect {
+  appearance: none;
+  background-color: #fff4dc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23102a54' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  border: 2px solid #efd39b;
+  border-radius: 999px;
+  cursor: pointer;
+  padding: 5px 24px 5px 10px;
+  text-align-last: center;
+}
+
+.activityColumnSubtitleSelect:focus {
+  outline: 3px solid #d6a23a;
+  outline-offset: 2px;
+}
+
+.activityColumnSubtitleDisplay {
+  padding: 0 4px;
 }
 
 .sectionTitleSelect {
@@ -1846,6 +1910,26 @@
   white-space: pre-wrap;
 }
 
+.cardCopyright {
+  color: rgba(16, 42, 84, 0.62);
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0 12px 2px;
+  text-align: center;
+}
+
+.cardCopyrightLine {
+  font-size: clamp(9px, 0.72vw, 11px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cardCopyrightLine + .cardCopyrightLine {
+  margin-top: 2px;
+}
+
 .previewMode .editForm,
 .previewMode .mainWantForm,
 .previewMode .targetEditForm,
@@ -2043,6 +2127,20 @@
   margin-bottom: 10px;
 }
 
+.previewMode .activityColumnHeader {
+  margin-bottom: 8px;
+}
+
+.previewMode .activityColumnTitleMain {
+  font-size: 13px;
+  padding: 6px 12px;
+}
+
+.previewMode .activityColumnSubtitleSelect,
+.previewMode .activityColumnSubtitleDisplay {
+  font-size: 10px;
+}
+
 .previewMode .activityBox .interestItem {
   gap: 0;
   height: 78px;
@@ -2178,6 +2276,15 @@ body.card-png-export .previewMode .card {
   padding: 12px 16px;
 }
 
+.previewMode .cardCopyright {
+  padding: 0 16px 4px;
+}
+
+.previewMode .cardCopyrightLine {
+  font-size: 10px;
+  line-height: 1.45;
+}
+
 /* Edit mode: mobile layout (preview / PNG export unchanged) */
 @media (max-width: 768px) {
   .editMode.app {
@@ -2309,6 +2416,25 @@ body.card-png-export .previewMode .card {
   .editMode .activityBox .interestGrid,
   .editMode .interestGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .editMode .activityColumnTitleMain {
+    font-size: clamp(12px, 3.4vw, 14px);
+    padding: 7px 14px;
+  }
+
+  .editMode .activityColumnSubtitleSelect,
+  .editMode .activityColumnSubtitleDisplay {
+    font-size: clamp(10px, 2.8vw, 11px);
+  }
+
+  .editMode .cardCopyright {
+    padding: 0 4px 2px;
+  }
+
+  .editMode .cardCopyrightLine {
+    font-size: clamp(8px, 2.3vw, 10px);
+    line-height: 1.4;
   }
 
   .editMode .mainWantForm,
