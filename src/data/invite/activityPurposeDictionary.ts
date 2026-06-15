@@ -17,6 +17,15 @@ const extremePurposeLabels = [
   '復帰者歓迎',
 ] as const
 
+const idPurposeLabels = [
+  '攻略',
+  '初見',
+  '練習',
+  '周回',
+  'ルーレット',
+  'お手伝い',
+] as const
+
 export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
   savage: [
     '攻略',
@@ -47,6 +56,12 @@ export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
   'extreme-shadowbringers': extremePurposeLabels,
   'extreme-endwalker': extremePurposeLabels,
   'extreme-dawntrail': extremePurposeLabels,
+  'dungeon-arr': idPurposeLabels,
+  'dungeon-heavensward': idPurposeLabels,
+  'dungeon-stormblood': idPurposeLabels,
+  'dungeon-shadowbringers': idPurposeLabels,
+  'dungeon-endwalker': idPurposeLabels,
+  'dungeon-dawntrail': idPurposeLabels,
   unreal: [
     '攻略',
     '初見攻略',

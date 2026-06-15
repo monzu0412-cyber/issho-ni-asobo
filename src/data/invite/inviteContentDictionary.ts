@@ -67,6 +67,48 @@ const extremeExpansionCategories: InviteMajorCategory[] = extremeExpansionDefini
   ),
 }))
 
+const dungeonExpansionDefinitions = [
+  {
+    id: 'dungeon-arr',
+    label: 'ID（新生）',
+    subCategoryIds: ['dungeon-arr-main', 'dungeon-arr-extra'],
+  },
+  {
+    id: 'dungeon-heavensward',
+    label: 'ID（蒼天）',
+    subCategoryIds: ['dungeon-heavensward-main', 'dungeon-heavensward-extra'],
+  },
+  {
+    id: 'dungeon-stormblood',
+    label: 'ID（紅蓮）',
+    subCategoryIds: ['dungeon-stormblood-main', 'dungeon-stormblood-extra'],
+  },
+  {
+    id: 'dungeon-shadowbringers',
+    label: 'ID（漆黒）',
+    subCategoryIds: ['dungeon-shadowbringers-main', 'dungeon-shadowbringers-extra'],
+  },
+  {
+    id: 'dungeon-endwalker',
+    label: 'ID（暁月）',
+    subCategoryIds: ['dungeon-endwalker-main', 'dungeon-endwalker-extra'],
+  },
+  {
+    id: 'dungeon-dawntrail',
+    label: 'ID（黄金）',
+    subCategoryIds: ['dungeon-dawntrail-main', 'dungeon-dawntrail-extra'],
+  },
+] as const
+
+const dungeonExpansionCategories: InviteMajorCategory[] = dungeonExpansionDefinitions.map((definition) => ({
+  id: definition.id,
+  label: definition.label,
+  middleItems: createMiddleItems(
+    definition.id,
+    extractMiddleLabelsFromSubCategoryIds(definition.subCategoryIds),
+  ),
+}))
+
 const legacyExtremeMiddleItems = createMiddleItems('extreme', [
   '極ガルーダ討滅戦',
   '極タイタン討滅戦',
@@ -275,6 +317,7 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     middleItems: ultimateMiddleItems,
   },
   ...extremeExpansionCategories,
+  ...dungeonExpansionCategories,
   {
     id: 'unreal',
     label: '幻',
