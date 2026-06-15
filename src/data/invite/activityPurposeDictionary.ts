@@ -1,5 +1,22 @@
 import type { InviteDictionaryItem, InviteMajorId } from './inviteDictionaryTypes'
 
+const extremePurposeLabels = [
+  '攻略',
+  '初見攻略',
+  '練習',
+  'クリア目的',
+  '周回',
+  '収集',
+  'マウント周回',
+  'トーテム集め',
+  '下限シンク',
+  '制限解除',
+  '少人数攻略',
+  'お手伝い',
+  '初心者歓迎',
+  '復帰者歓迎',
+] as const
+
 export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
   savage: [
     '攻略',
@@ -24,22 +41,12 @@ export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
     'お手伝い',
     '復帰者歓迎',
   ],
-  extreme: [
-    '攻略',
-    '初見攻略',
-    '練習',
-    'クリア目的',
-    '周回',
-    '収集',
-    'マウント周回',
-    'トーテム集め',
-    '下限シンク',
-    '制限解除',
-    '少人数攻略',
-    'お手伝い',
-    '初心者歓迎',
-    '復帰者歓迎',
-  ],
+  'extreme-arr': extremePurposeLabels,
+  'extreme-heavensward': extremePurposeLabels,
+  'extreme-stormblood': extremePurposeLabels,
+  'extreme-shadowbringers': extremePurposeLabels,
+  'extreme-endwalker': extremePurposeLabels,
+  'extreme-dawntrail': extremePurposeLabels,
   unreal: [
     '攻略',
     '初見攻略',

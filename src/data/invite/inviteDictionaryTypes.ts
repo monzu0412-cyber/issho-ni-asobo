@@ -1,7 +1,12 @@
 export type InviteMajorId =
   | 'savage'
   | 'ultimate'
-  | 'extreme'
+  | 'extreme-arr'
+  | 'extreme-heavensward'
+  | 'extreme-stormblood'
+  | 'extreme-shadowbringers'
+  | 'extreme-endwalker'
+  | 'extreme-dawntrail'
   | 'unreal'
   | 'mettle'
   | 'alliance'

@@ -5,7 +5,7 @@ import {
   type HelpSectionSubtitle,
   type WantSectionSubtitle,
 } from '../data/activityColumnTitles'
-import { inviteMajorIds } from '../data/invite/inviteContentDictionary'
+import { inviteMajorIds, migrateLegacyInviteContentSelection } from '../data/invite/inviteContentDictionary'
 import type { InviteContentSelection, InviteMajorId } from '../data/invite/inviteDictionaryTypes'
 
 export const CARD_DRAFT_STORAGE_KEY = 'issho-asobo-card-draft'
@@ -314,9 +314,15 @@ function sanitizeContentSelection(value: unknown, fallback: InviteContentSelecti
     return fallback
   }
 
-  const majorId = readEnumValue(value.majorId, inviteMajorIds, fallback.majorId) as InviteMajorId
-  const middleId = readString(value.middleId, fallback.middleId)
-  const purposeId = readString(value.purposeId, fallback.purposeId)
+  const migratedSelection = migrateLegacyInviteContentSelection({
+    majorId: readString(value.majorId, fallback.majorId),
+    middleId: readString(value.middleId, fallback.middleId),
+    purposeId: readString(value.purposeId, fallback.purposeId),
+  })
+
+  const majorId = readEnumValue(migratedSelection.majorId, inviteMajorIds, fallback.majorId) as InviteMajorId
+  const middleId = readString(migratedSelection.middleId, fallback.middleId)
+  const purposeId = readString(migratedSelection.purposeId, fallback.purposeId)
 
   return {
     majorId,

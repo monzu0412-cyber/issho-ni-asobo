@@ -49,7 +49,25 @@ const ultimateMiddleItems = createMiddleItems(
   extractMiddleLabelsFromSubCategoryIds(['ultimate']),
 )
 
-const extremeMiddleItems = createMiddleItems('extreme', [
+const extremeExpansionDefinitions = [
+  { id: 'extreme-arr', label: '極（新生）', subCategoryId: 'extreme-arr' },
+  { id: 'extreme-heavensward', label: '極（蒼天）', subCategoryId: 'extreme-heavensward' },
+  { id: 'extreme-stormblood', label: '極（紅蓮）', subCategoryId: 'extreme-stormblood' },
+  { id: 'extreme-shadowbringers', label: '極（漆黒）', subCategoryId: 'extreme-shadowbringers' },
+  { id: 'extreme-endwalker', label: '極（暁月）', subCategoryId: 'extreme-endwalker' },
+  { id: 'extreme-dawntrail', label: '極（黄金）', subCategoryId: 'extreme-dawntrail' },
+] as const
+
+const extremeExpansionCategories: InviteMajorCategory[] = extremeExpansionDefinitions.map((definition) => ({
+  id: definition.id,
+  label: definition.label,
+  middleItems: createMiddleItems(
+    definition.id,
+    extractMiddleLabelsFromSubCategoryIds([definition.subCategoryId]),
+  ),
+}))
+
+const legacyExtremeMiddleItems = createMiddleItems('extreme', [
   '極ガルーダ討滅戦',
   '極タイタン討滅戦',
   '極イフリート討滅戦',
@@ -97,6 +115,58 @@ const extremeMiddleItems = createMiddleItems('extreme', [
   '極グラシャラボラス討滅戦',
   '極エヌオー討滅戦',
 ])
+
+const legacyExtremeMiddleIdMigration = new Map<string, { majorId: InviteMajorId; middleId: string }>()
+
+for (const legacyMiddleItem of legacyExtremeMiddleItems) {
+  for (const expansionCategory of extremeExpansionCategories) {
+    const matchedMiddleItem = expansionCategory.middleItems.find((item) => item.label === legacyMiddleItem.label)
+
+    if (matchedMiddleItem) {
+      legacyExtremeMiddleIdMigration.set(legacyMiddleItem.id, {
+        majorId: expansionCategory.id,
+        middleId: matchedMiddleItem.id,
+      })
+      break
+    }
+  }
+}
+
+const defaultExtremeExpansionSelection = {
+  majorId: extremeExpansionCategories[0].id,
+  middleId: extremeExpansionCategories[0].middleItems[0]?.id ?? `${extremeExpansionCategories[0].id}-01`,
+} as const
+
+function migrateLegacyExtremePurposeId(purposeId: string, majorId: InviteMajorId): string {
+  const purposeSuffixMatch = purposeId.match(/^extreme-purpose-(\d{2})$/)
+  if (purposeSuffixMatch) {
+    return `${majorId}-purpose-${purposeSuffixMatch[1]}`
+  }
+
+  return purposeId
+}
+
+export function migrateLegacyInviteContentSelection(selection: {
+  majorId: string
+  middleId: string
+  purposeId: string
+}): {
+  majorId: string
+  middleId: string
+  purposeId: string
+} {
+  if (selection.majorId !== 'extreme') {
+    return selection
+  }
+
+  const migratedMiddle = legacyExtremeMiddleIdMigration.get(selection.middleId) ?? defaultExtremeExpansionSelection
+
+  return {
+    majorId: migratedMiddle.majorId,
+    middleId: migratedMiddle.middleId,
+    purposeId: migrateLegacyExtremePurposeId(selection.purposeId, migratedMiddle.majorId),
+  }
+}
 
 const unrealMiddleItems = createMiddleItems(
   'unreal',
@@ -204,11 +274,7 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     label: '絶',
     middleItems: ultimateMiddleItems,
   },
-  {
-    id: 'extreme',
-    label: '極',
-    middleItems: extremeMiddleItems,
-  },
+  ...extremeExpansionCategories,
   {
     id: 'unreal',
     label: '幻',
