@@ -1,3 +1,4 @@
+import { screenshotEditingMiddleId } from './inviteContentDictionary'
 import type { InviteDictionaryItem, InviteMajorId } from './inviteDictionaryTypes'
 
 const extremePurposeLabels = [
@@ -32,6 +33,20 @@ const socialPurposeLabels = [
   'お手伝い',
   '初心者歓迎',
   '復帰者歓迎',
+] as const
+
+const screenshotShootingPurposeLabels = [
+  '個人',
+  'ペア',
+  '複数人',
+  'お手伝い',
+] as const
+
+const screenshotEditingPurposeLabels = [
+  '見学',
+  '一緒に',
+  '相談',
+  'お手伝い',
 ] as const
 
 export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
@@ -189,6 +204,7 @@ export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
     '復帰者歓迎',
   ],
   social: socialPurposeLabels,
+  screenshot: screenshotShootingPurposeLabels,
 }
 
 function createPurposeItems(prefix: string, labels: readonly string[]): InviteDictionaryItem[] {
@@ -205,12 +221,31 @@ const purposeItemsByMajor = new Map<InviteMajorId, InviteDictionaryItem[]>(
   ]),
 )
 
-export function getActivityPurposeItems(majorId: InviteMajorId): InviteDictionaryItem[] {
+const screenshotShootingPurposeItems = createPurposeItems('screenshot-shooting-purpose', screenshotShootingPurposeLabels)
+const screenshotEditingPurposeItems = createPurposeItems('screenshot-editing-purpose', screenshotEditingPurposeLabels)
+
+function getScreenshotPurposeItems(middleId?: string): InviteDictionaryItem[] {
+  if (middleId === screenshotEditingMiddleId) {
+    return screenshotEditingPurposeItems
+  }
+
+  return screenshotShootingPurposeItems
+}
+
+export function getActivityPurposeItems(majorId: InviteMajorId, middleId?: string): InviteDictionaryItem[] {
+  if (majorId === 'screenshot') {
+    return getScreenshotPurposeItems(middleId)
+  }
+
   return purposeItemsByMajor.get(majorId) ?? purposeItemsByMajor.get('savage')!
 }
 
-export function getActivityPurposeItem(majorId: InviteMajorId, purposeId: string): InviteDictionaryItem {
-  const options = getActivityPurposeItems(majorId)
+export function getActivityPurposeItem(
+  majorId: InviteMajorId,
+  purposeId: string,
+  middleId?: string,
+): InviteDictionaryItem {
+  const options = getActivityPurposeItems(majorId, middleId)
 
   return options.find((item) => item.id === purposeId) ?? options[0]
 }

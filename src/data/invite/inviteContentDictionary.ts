@@ -26,6 +26,22 @@ function extractMiddleLabelsFromSubCategoryIds(subCategoryIds: readonly string[]
   return labels
 }
 
+function extractSubCategoryLabels(subCategoryIds: readonly string[]): readonly string[] {
+  const labels: string[] = []
+
+  for (const subCategoryId of subCategoryIds) {
+    for (const category of contentCategories) {
+      const subCategory = category.children.find((child) => child.id === subCategoryId)
+
+      if (subCategory) {
+        labels.push(subCategory.label)
+      }
+    }
+  }
+
+  return labels
+}
+
 const savageMiddleItems = createMiddleItems('savage', [
   '機工城アレキサンダー零式：起動編',
   '機工城アレキサンダー零式：律動編',
@@ -312,6 +328,15 @@ const socialMiddleItems = createMiddleItems('social', [
   'CWLS活動',
 ])
 
+const screenshotMiddleItems = createMiddleItems('screenshot', [
+  'SS撮影',
+  'スタジオ巡り',
+  ...extractSubCategoryLabels(['location-shooting']),
+  '加工交流',
+])
+
+export const screenshotEditingMiddleId = screenshotMiddleItems[3]?.id ?? 'screenshot-04'
+
 export const inviteMajorCategories: InviteMajorCategory[] = [
   {
     id: 'savage',
@@ -389,6 +414,11 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     id: 'social',
     label: '交流',
     middleItems: socialMiddleItems,
+  },
+  {
+    id: 'screenshot',
+    label: 'SS',
+    middleItems: screenshotMiddleItems,
   },
 ]
 

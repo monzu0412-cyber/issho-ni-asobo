@@ -1298,7 +1298,7 @@ function getImageCrossOrigin(src: string | undefined | null) {
 function getInitialContentSelection(): ContentSelection {
   const firstMajor = inviteMajorCategories[0]
   const firstMiddle = firstMajor.middleItems[0]
-  const firstPurpose = getActivityPurposeItems(firstMajor.id)[0]
+  const firstPurpose = getActivityPurposeItems(firstMajor.id, firstMiddle.id)[0]
 
   return {
     majorId: firstMajor.id,
@@ -1319,12 +1319,12 @@ function getInviteMiddleOption(selection: Pick<ContentSelection, 'majorId' | 'mi
   return getInviteMiddleItem(selection.majorId, selection.middleId)
 }
 
-function getInvitePurposeOptions(selection: Pick<ContentSelection, 'majorId'>) {
-  return getActivityPurposeItems(selection.majorId)
+function getInvitePurposeOptions(selection: Pick<ContentSelection, 'majorId' | 'middleId'>) {
+  return getActivityPurposeItems(selection.majorId, selection.middleId)
 }
 
 function getInvitePurposeOption(selection: ContentSelection) {
-  return getActivityPurposeItem(selection.majorId, selection.purposeId)
+  return getActivityPurposeItem(selection.majorId, selection.purposeId, selection.middleId)
 }
 
 function getTodoItemKey(item: TodoItem) {
@@ -2618,7 +2618,7 @@ function App() {
       if (field === 'majorId') {
         const majorId = value as InviteMajorId
         const middleOption = getInviteMiddleOptions(majorId)[0]
-        const purposeOption = getActivityPurposeItems(majorId)[0]
+        const purposeOption = getActivityPurposeItems(majorId, middleOption.id)[0]
 
         return {
           ...currentSelections,
@@ -2632,10 +2632,15 @@ function App() {
 
       if (field === 'middleId') {
         const middleId = value
+        const purposeOption = getActivityPurposeItems(currentSelection.majorId, middleId)[0]
 
         return {
           ...currentSelections,
-          [listKey]: { ...currentSelection, middleId },
+          [listKey]: {
+            ...currentSelection,
+            middleId,
+            purposeId: purposeOption.id,
+          },
         }
       }
 

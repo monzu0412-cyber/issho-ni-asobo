@@ -26,6 +26,7 @@ export type InviteMajorId =
   | 'blue-mage'
   | 'fishing'
   | 'social'
+  | 'screenshot'
 
 export type InviteDictionaryItem = {
   id: string
