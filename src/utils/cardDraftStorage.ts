@@ -25,7 +25,7 @@ const worldsByDc: Record<DataCenter, readonly string[]> = {
   Meteor: ['Belias', 'Mandragora', 'Ramuh', 'Shinryu', 'Unicorn', 'Valefor', 'Yojimbo', 'Zeromus'],
 }
 
-const voiceChatOptions = ['VC OK', '聞き専', 'VCなし'] as const
+const voiceChatOptions = ['未設定', 'VC OK', '聞き専', 'VCなし'] as const
 const cardColorThemeOptions = ['white', 'blue', 'lightblue', 'red', 'pink', 'green', 'lime', 'yellow', 'beige'] as const
 const cardBaseBackgroundOptions = ['01', '02', '03', '04', '05'] as const
 const cardSectionThemeOptions = ['fish', 'mount', 'minion', 'music', 'housing', 'adventure'] as const

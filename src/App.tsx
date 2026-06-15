@@ -95,7 +95,7 @@ type DataCenter = keyof typeof worldsByDc
 
 const dataCenters = Object.keys(worldsByDc) as DataCenter[]
 
-const voiceChatOptions = ['VC OK', '聞き専', 'VCなし'] as const
+const voiceChatOptions = ['未設定', 'VC OK', '聞き専', 'VCなし'] as const
 
 type VoiceChat = typeof voiceChatOptions[number]
 
@@ -1081,7 +1081,7 @@ function createEmptyCharacter(): CharacterState {
       weekday: { start: 21, end: 24 },
       holiday: { start: 12, end: 3 },
     },
-    vc: 'VC OK',
+    vc: '未設定',
     interests: createDefaultInterests(),
     targets: normalizeTargets([]),
     todoList: [],
@@ -3249,10 +3249,12 @@ function App() {
                 </div>
               </div>
 
+              {character.vc !== '未設定' && (
               <div className="summaryGroup vcSummary">
                 <h3>VC</h3>
                 <div className="vcBadge">{character.vc}</div>
               </div>
+              )}
 
               <div className="editForm">
                 <label>
