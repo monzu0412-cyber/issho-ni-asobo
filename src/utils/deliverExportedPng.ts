@@ -1,8 +1,10 @@
+import { isMobileViewportWidth } from './isMobileViewport'
+
 export type PngDeliveryMethod = 'share' | 'tab' | 'download'
 
 function prefersMobileFriendlyDelivery() {
   return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-    || window.innerWidth <= 768
+    || isMobileViewportWidth()
 }
 
 export async function deliverExportedPng(blob: Blob, filename: string): Promise<PngDeliveryMethod> {

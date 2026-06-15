@@ -1,4 +1,5 @@
 import { type CSSProperties, type SyntheticEvent, useEffect, useRef, useState } from 'react'
+import { CardConfirmModal, type CardConfirmModalPhase } from './components/CardConfirmModal'
 import { getActivityPurposeItem, getActivityPurposeItems } from './data/invite/activityPurposeDictionary'
 import {
   activityColumnMainTitles,
@@ -34,7 +35,10 @@ import {
   type CardDraft,
   type CharacterDraft,
 } from './utils/cardDraftStorage'
+import { captureCardPng, CARD_EXPORT_FILENAME } from './utils/captureCardPng'
+import { deliverExportedPng } from './utils/deliverExportedPng'
 import { exportCardPng } from './utils/exportCardPng'
+import { useMobileViewport } from './utils/isMobileViewport'
 
 type LocationTranslationEntry = {
   en: string
@@ -2378,11 +2382,34 @@ function getImageMoveRange(scale: number) {
   return Math.round((scale - 1) * 90)
 }
 
+function getConfirmCaptureErrorMessage(error: unknown): string {
+  if (error instanceof Error) {
+    if (error.message.includes('no dimensions')) {
+      return 'カードの表示準備ができていません。'
+    }
+
+    if (error.message.includes('final PNG width')) {
+      return '画像生成の形式が正しくありません。ページを再読み込みしてください。'
+    }
+  }
+
+  return '生成に失敗しました。もう一度お試しください。'
+}
+
 function App() {
   const [character, setCharacter] = useState<CharacterState>(() => getInitialAppState().character)
   const [isPreviewMode, setIsPreviewMode] = useState(false)
+  const [isCapturePreview, setIsCapturePreview] = useState(false)
+  const [confirmModalPhase, setConfirmModalPhase] = useState<CardConfirmModalPhase | 'closed'>('closed')
+  const [confirmPreviewUrl, setConfirmPreviewUrl] = useState<string | null>(null)
+  const [confirmPreviewBlob, setConfirmPreviewBlob] = useState<Blob | null>(null)
+  const [confirmErrorMessage, setConfirmErrorMessage] = useState<string | null>(null)
+  const [confirmSaveErrorMessage, setConfirmSaveErrorMessage] = useState<string | null>(null)
+  const [isSavingPng, setIsSavingPng] = useState(false)
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false)
   const [isExportingCard, setIsExportingCard] = useState(false)
+  const isMobileViewport = useMobileViewport()
+  const isDesktopPreviewMode = isPreviewMode && !isMobileViewport
   const cardRef = useRef<HTMLElement>(null)
   const [hasTargetFrame, setHasTargetFrame] = useState(false)
   const [isSaveEnabled, setIsSaveEnabled] = useState(() => getInitialAppState().isSaveEnabled)
@@ -2708,12 +2735,104 @@ function App() {
     contentSelections,
   ])
 
+  useEffect(() => {
+    return () => {
+      if (confirmPreviewUrl) {
+        URL.revokeObjectURL(confirmPreviewUrl)
+      }
+    }
+  }, [confirmPreviewUrl])
+
   function handlePostOnX() {
     window.open(getXPostIntentUrl(), '_blank', 'noopener,noreferrer')
   }
 
+  function revokeConfirmPreviewUrl(url: string | null = confirmPreviewUrl) {
+    if (url) {
+      URL.revokeObjectURL(url)
+    }
+  }
+
+  function resetConfirmModalState() {
+    revokeConfirmPreviewUrl()
+    setConfirmPreviewUrl(null)
+    setConfirmPreviewBlob(null)
+    setConfirmErrorMessage(null)
+    setConfirmSaveErrorMessage(null)
+    setConfirmModalPhase('closed')
+    setIsSavingPng(false)
+  }
+
+  function handleCloseConfirmModal() {
+    if (confirmModalPhase === 'generating') {
+      return
+    }
+
+    resetConfirmModalState()
+  }
+
+  async function handleMobileConfirm() {
+    if (!isMobileViewport || !cardRef.current || confirmModalPhase === 'generating') {
+      return
+    }
+
+    setConfirmModalPhase('generating')
+    setConfirmErrorMessage(null)
+    setConfirmSaveErrorMessage(null)
+    revokeConfirmPreviewUrl()
+    setConfirmPreviewUrl(null)
+    setConfirmPreviewBlob(null)
+
+    setIsCapturePreview(true)
+    document.body.classList.add('card-png-export')
+
+    try {
+      await new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => resolve())
+        })
+      })
+
+      const cardElement = cardRef.current
+      cardElement.scrollIntoView({ block: 'start', inline: 'nearest' })
+      void cardElement.offsetHeight
+
+      const captureResult = await captureCardPng(cardElement)
+      const previewUrl = URL.createObjectURL(captureResult.blob)
+
+      setConfirmPreviewBlob(captureResult.blob)
+      setConfirmPreviewUrl(previewUrl)
+      setConfirmModalPhase('ready')
+    } catch (error) {
+      console.error('Failed to capture card PNG for confirm modal', error)
+      setConfirmErrorMessage(getConfirmCaptureErrorMessage(error))
+      setConfirmModalPhase('error')
+    } finally {
+      setIsCapturePreview(false)
+      document.body.classList.remove('card-png-export')
+    }
+  }
+
+  async function handleConfirmModalSave() {
+    if (!confirmPreviewBlob || isSavingPng) {
+      return
+    }
+
+    setIsSavingPng(true)
+    setConfirmSaveErrorMessage(null)
+
+    try {
+      await deliverExportedPng(confirmPreviewBlob, CARD_EXPORT_FILENAME)
+    } catch (error) {
+      console.error('Failed to save PNG from confirm modal', error)
+      setConfirmSaveErrorMessage('保存に失敗しました。')
+    } finally {
+      setIsSavingPng(false)
+    }
+  }
+
   async function handleExportCardPng() {
-    if (!isPreviewMode || !cardRef.current || isExportingCard) {
+    if (!isDesktopPreviewMode || !cardRef.current || isExportingCard) {
       return
     }
 
@@ -2739,7 +2858,8 @@ function App() {
   const interests = character.interests ?? []
   const todoList = normalizeContentList(character.todoList ?? [])
   const unfinishedList = normalizeContentList(character.unfinishedList ?? [])
-  const contentDisplayLimit = isPreviewMode ? CARD_CONTENT_DISPLAY_LIMIT : EDIT_CONTENT_DISPLAY_LIMIT
+  const effectivePreviewMode = isDesktopPreviewMode || isCapturePreview
+  const contentDisplayLimit = effectivePreviewMode ? CARD_CONTENT_DISPLAY_LIMIT : EDIT_CONTENT_DISPLAY_LIMIT
   const imageUrl = character.imageUrl ?? ''
   const imageSettings = character.imageSettings ?? { scale: 1, x: 0, y: 0 }
   const imageMoveRange = getImageMoveRange(imageSettings.scale)
@@ -2754,25 +2874,27 @@ function App() {
   const targetFrameUrl = getTargetFrameUrl(topTarget, targetFrameTheme)
 
   return (
-    <main className={`app ${isPreviewMode ? 'previewMode' : 'editMode'} cardColor-${cardColorTheme}`}>
+    <main className={`app ${effectivePreviewMode ? 'previewMode' : 'editMode'} cardColor-${cardColorTheme}`}>
       <div className="modeSwitcher" aria-label="表示モード切替">
         <button
-          className={!isPreviewMode ? 'active' : ''}
+          className={!isDesktopPreviewMode ? 'active' : ''}
           type="button"
-          aria-pressed={!isPreviewMode}
+          aria-pressed={!isDesktopPreviewMode}
           onClick={() => setIsPreviewMode(false)}
         >
           編集モード
         </button>
-        <button
-          className={isPreviewMode ? 'active' : ''}
-          type="button"
-          aria-pressed={isPreviewMode}
-          onClick={() => setIsPreviewMode(true)}
-        >
-          プレビューモード
-        </button>
-        {isPreviewMode && (
+        {!isMobileViewport && (
+          <button
+            className={isDesktopPreviewMode ? 'active' : ''}
+            type="button"
+            aria-pressed={isDesktopPreviewMode}
+            onClick={() => setIsPreviewMode(true)}
+          >
+            プレビューモード
+          </button>
+        )}
+        {isDesktopPreviewMode && (
           <>
             <button
               className="cardExportButton"
@@ -2791,8 +2913,18 @@ function App() {
             </button>
           </>
         )}
-        {!isPreviewMode && (
+        {!isDesktopPreviewMode && (
           <>
+            {isMobileViewport && (
+              <button
+                className="cardConfirmButton"
+                type="button"
+                onClick={() => void handleMobileConfirm()}
+                disabled={confirmModalPhase === 'generating'}
+              >
+                {confirmModalPhase === 'generating' ? '生成中…' : '確認'}
+              </button>
+            )}
             <label className="cardThemePicker">
               カード背景
               <select
@@ -2841,7 +2973,7 @@ function App() {
         )}
       </div>
 
-      {isPreviewMode && (
+      {isDesktopPreviewMode && (
         <p className="cardXPostNotice">
           画像を保存してから「Xで投稿」を押してください。
           <br />
@@ -2849,7 +2981,7 @@ function App() {
         </p>
       )}
 
-      {!isPreviewMode && (
+      {!isDesktopPreviewMode && (
         <section className="draftSavePanel" aria-label="ブラウザ保存">
           <div className="draftSaveToggle">
             <span>入力内容をこのブラウザに保存</span>
@@ -2878,7 +3010,7 @@ function App() {
         className="card"
         style={getCardBaseBackgroundStyle(cardBaseBackground)}
       >
-        {!isPreviewMode && (
+        {!isDesktopPreviewMode && (
           <header className="cardHeader">
             <div className="cardHeaderTitleRow">
               <h1>いっしょに あ・そ・ぼ！</h1>
@@ -2940,7 +3072,7 @@ function App() {
               />
             </label>
 
-            {!isPreviewMode && restoredFromDraft && !imageUrl && (
+            {!isDesktopPreviewMode && restoredFromDraft && !imageUrl && (
               <p className="profileImageNotice" role="status">
                 画像は保存されません。再アップロードしてください。
               </p>
@@ -3012,10 +3144,10 @@ function App() {
                 ) : null}
                 {topTarget.title ? <h2>{topTarget.title}</h2> : null}
               </div>
-              {isPreviewMode && topTarget.comment ? (
+              {effectivePreviewMode && topTarget.comment ? (
                 <p>{topTarget.comment}</p>
               ) : null}
-              {(topTarget.title || isPreviewMode) && (
+              {(topTarget.title || effectivePreviewMode) && (
                 <div className="categoryBadge">{topTarget.category} / {topTarget.subcategory}</div>
               )}
               {topTarget.title ? <TargetDetails target={topTarget} isCompact /> : null}
@@ -3257,7 +3389,7 @@ function App() {
                       />
                     )}
                     <div className={`wantSlotTitleGroup ${getWantTitleSizeClass(target.title)}`}>
-                      {isPreviewMode && (
+                      {effectivePreviewMode && (
                         target.iconUrl ? (
                           <img className="wantSlotIcon" src={target.iconUrl} alt="" crossOrigin={getImageCrossOrigin(target.iconUrl)} />
                         ) : target.icon ? (
@@ -3303,7 +3435,7 @@ function App() {
                     </div>
                     <Stars
                       level={interest.level}
-                      isEditable={!isPreviewMode}
+                      isEditable={!effectivePreviewMode}
                       onChange={(level) => updateInterestLevel(interest.name, level)}
                     />
                   </div>
@@ -3318,7 +3450,7 @@ function App() {
               <ActivityColumnHeader
                 columnKey="want"
                 subtitle={sectionTitles.want}
-                isPreviewMode={isPreviewMode}
+                isPreviewMode={effectivePreviewMode}
                 onSubtitleChange={(value) => updateActivitySubtitle('want', value)}
               />
 
@@ -3331,7 +3463,7 @@ function App() {
               <ul className="simpleList">
                 {todoList.slice(0, contentDisplayLimit).map((todo) => (
                   <li
-                    className={`todoSummary${isPreviewMode ? ` ${getTodoTitleSizeClass(todo)}` : ''}`}
+                    className={`todoSummary${effectivePreviewMode ? ` ${getTodoTitleSizeClass(todo)}` : ''}`}
                     key={getTodoItemKey(todo)}
                   >
                     {renderTodoItemLines(todo)}
@@ -3350,7 +3482,7 @@ function App() {
               <ActivityColumnHeader
                 columnKey="help"
                 subtitle={sectionTitles.help}
-                isPreviewMode={isPreviewMode}
+                isPreviewMode={effectivePreviewMode}
                 onSubtitleChange={(value) => updateActivitySubtitle('help', value)}
               />
 
@@ -3363,7 +3495,7 @@ function App() {
               <ul className="simpleList">
                 {unfinishedList.slice(0, contentDisplayLimit).map((item) => (
                   <li
-                    className={`todoSummary${isPreviewMode ? ` ${getTodoTitleSizeClass(item)}` : ''}`}
+                    className={`todoSummary${effectivePreviewMode ? ` ${getTodoTitleSizeClass(item)}` : ''}`}
                     key={getTodoItemKey(item)}
                   >
                     {renderTodoItemLines(item)}
@@ -3382,7 +3514,7 @@ function App() {
               style={getCardSectionBackgroundStyle('row4')}
             >
               <div className="sectionTitle">ひとこと</div>
-              {isPreviewMode ? (
+              {effectivePreviewMode ? (
                 character.message ? <p>{character.message}</p> : null
               ) : (
                 <div className="editForm messageEditForm">
@@ -3404,6 +3536,20 @@ function App() {
           </section>
         </div>
       </section>
+
+      {confirmModalPhase !== 'closed' && (
+        <CardConfirmModal
+          phase={confirmModalPhase}
+          previewUrl={confirmPreviewUrl}
+          errorMessage={confirmErrorMessage}
+          isSaving={isSavingPng}
+          saveErrorMessage={confirmSaveErrorMessage}
+          onClose={handleCloseConfirmModal}
+          onRetry={() => void handleMobileConfirm()}
+          onSave={() => void handleConfirmModalSave()}
+          onPostX={handlePostOnX}
+        />
+      )}
 
       <HelpModal
         isOpen={isHelpModalOpen}
