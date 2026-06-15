@@ -15,6 +15,7 @@ import {
   getInviteMiddleItem,
   getInviteMiddleItems,
   inviteMajorCategories,
+  inviteMajorGroups,
 } from './data/invite/inviteContentDictionary'
 import type { InviteContentSelection, InviteMajorId } from './data/invite/inviteDictionaryTypes'
 import searchDictionary from './data/reverse-search/generated/search_dictionary.generated.json'
@@ -1366,8 +1367,16 @@ function InviteContentPicker({
           value={selection.majorId}
           onChange={(event) => onSelectionChange('majorId', event.target.value)}
         >
-          {inviteMajorCategories.map((category) => (
-            <option key={category.id} value={category.id}>{category.label}</option>
+          {inviteMajorGroups.map((group) => (
+            <optgroup key={group.id} label={group.label}>
+              {group.majorIds.map((majorId) => {
+                const category = getInviteMajorCategory(majorId)
+
+                return (
+                  <option key={category.id} value={category.id}>{category.label}</option>
+                )
+              })}
+            </optgroup>
           ))}
         </select>
       </label>

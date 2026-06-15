@@ -1,3 +1,9 @@
+export type InviteMajorGroupId =
+  | 'high-difficulty'
+  | 'content'
+  | 'exploration'
+  | 'social-life'
+
 export type InviteMajorId =
   | 'savage'
   | 'ultimate'
@@ -39,6 +45,12 @@ export type InviteMajorCategory = {
   id: InviteMajorId
   label: string
   middleItems: InviteDictionaryItem[]
+}
+
+export type InviteMajorGroup = {
+  id: InviteMajorGroupId
+  label: string
+  majorIds: readonly InviteMajorId[]
 }
 
 export type InviteContentSelection = {

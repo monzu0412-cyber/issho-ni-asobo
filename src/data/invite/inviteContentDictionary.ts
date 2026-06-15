@@ -1,5 +1,5 @@
 import { contentCategories } from '../contentCategories'
-import type { InviteDictionaryItem, InviteMajorCategory, InviteMajorId } from './inviteDictionaryTypes'
+import type { InviteDictionaryItem, InviteMajorCategory, InviteMajorGroup, InviteMajorId } from './inviteDictionaryTypes'
 
 function createMiddleItems(prefix: string, labels: readonly string[]): InviteDictionaryItem[] {
   return labels.map((label, index) => ({
@@ -441,6 +441,63 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     id: 'event',
     label: 'イベント',
     middleItems: eventMiddleItems,
+  },
+]
+
+export const inviteMajorGroups: InviteMajorGroup[] = [
+  {
+    id: 'high-difficulty',
+    label: '高難度・討滅',
+    majorIds: [
+      'savage',
+      'ultimate',
+      'extreme-arr',
+      'extreme-heavensward',
+      'extreme-stormblood',
+      'extreme-shadowbringers',
+      'extreme-endwalker',
+      'extreme-dawntrail',
+      'unreal',
+      'mettle',
+    ],
+  },
+  {
+    id: 'content',
+    label: 'コンテンツ',
+    majorIds: [
+      'alliance',
+      'normal-raid',
+      'vd',
+      'deep-dungeon',
+      'dungeon-arr',
+      'dungeon-heavensward',
+      'dungeon-stormblood',
+      'dungeon-shadowbringers',
+      'dungeon-endwalker',
+      'dungeon-dawntrail',
+    ],
+  },
+  {
+    id: 'exploration',
+    label: '探索・収集',
+    majorIds: [
+      'eureka',
+      'bozja',
+      'treasure-map',
+      'fate',
+      'blue-mage',
+      'fishing',
+    ],
+  },
+  {
+    id: 'social-life',
+    label: '交流・生活',
+    majorIds: [
+      'social',
+      'screenshot',
+      'housing',
+      'event',
+    ],
   },
 ]
 
