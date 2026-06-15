@@ -3010,7 +3010,7 @@ function App() {
         className="card"
         style={getCardBaseBackgroundStyle(cardBaseBackground)}
       >
-        {!isDesktopPreviewMode && (
+        {!effectivePreviewMode && (
           <header className="cardHeader">
             <div className="cardHeaderTitleRow">
               <h1>いっしょに あ・そ・ぼ！</h1>
@@ -3072,7 +3072,7 @@ function App() {
               />
             </label>
 
-            {!isDesktopPreviewMode && restoredFromDraft && !imageUrl && (
+            {!effectivePreviewMode && restoredFromDraft && !imageUrl && (
               <p className="profileImageNotice" role="status">
                 画像は保存されません。再アップロードしてください。
               </p>
