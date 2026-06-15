@@ -1,8 +1,8 @@
 .app {
   --layout-profile-image-size: 280px;
   --layout-main-want-height: calc(var(--layout-profile-image-size) * 1.5);
-  --layout-row2-min-height: 380px;
-  --layout-row3-height: 510px;
+  --layout-row2-min-height: 420px;
+  --layout-row3-height: 480px;
   --item-card-bg: #fff4dc;
   --item-card-border: #efd39b;
   --item-card-heading: #102a54;
@@ -2015,9 +2015,23 @@
   min-height: var(--layout-row2-min-height);
 }
 
+.previewMode .middleRow .characterSummary {
+  box-sizing: border-box;
+  min-height: var(--layout-row2-min-height);
+}
+
 .previewMode .middleRow .wantSlotItem {
-  flex: 1;
-  min-height: 0;
+  flex: 1 1 auto;
+  min-height: min-content;
+}
+
+.previewMode .middleRow .wantSlotTitleGroup,
+.previewMode .middleRow .wantSlotCategory,
+.previewMode .middleRow .wantSlotItem .targetDetails,
+.previewMode .middleRow .wantSlotItem .targetContentName,
+.previewMode .middleRow .wantSlotItem .routeList,
+.previewMode .middleRow .wantSlotItem .routeItem {
+  flex-shrink: 0;
 }
 
 .previewMode .middleRow .targetDetails,
@@ -2286,23 +2300,31 @@ body.card-png-export .previewMode .card {
   width: 1024px;
 }
 
+.previewMode .bottomRow {
+  gap: 8px;
+}
+
 .previewMode .messageBox {
-  padding: 12px;
+  padding: 10px;
 }
 
 .previewMode .messageBox p {
-  font-size: 18px;
-  line-height: 1.55;
-  padding: 12px 16px;
+  font-size: 17px;
+  line-height: 1.5;
+  padding: 10px 14px;
 }
 
 .previewMode .cardCopyright {
-  padding: 0 16px 4px;
+  padding: 0 16px 2px;
 }
 
 .previewMode .cardCopyrightLine {
   font-size: 10px;
-  line-height: 1.45;
+  line-height: 1.4;
+}
+
+.previewMode .cardCopyrightLine + .cardCopyrightLine {
+  margin-top: 1px;
 }
 
 /* Edit mode: mobile layout (preview / PNG export unchanged) */
