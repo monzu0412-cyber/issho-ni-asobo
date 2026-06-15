@@ -617,6 +617,10 @@
   margin: 0;
 }
 
+.vcSummary--unset {
+  visibility: hidden;
+}
+
 .summaryGroup h3 {
   color: #102a54;
   font-size: 13px;

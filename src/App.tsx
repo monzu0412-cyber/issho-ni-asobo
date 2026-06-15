@@ -3249,12 +3249,13 @@ function App() {
                 </div>
               </div>
 
-              {character.vc !== '未設定' && (
-              <div className="summaryGroup vcSummary">
+              <div
+                className={`summaryGroup vcSummary${character.vc === '未設定' ? ' vcSummary--unset' : ''}`}
+                aria-hidden={character.vc === '未設定'}
+              >
                 <h3>VC</h3>
                 <div className="vcBadge">{character.vc}</div>
               </div>
-              )}
 
               <div className="editForm">
                 <label>
