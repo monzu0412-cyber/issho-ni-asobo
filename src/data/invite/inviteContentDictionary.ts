@@ -305,6 +305,13 @@ const fishingMiddleItems = createMiddleItems('fishing', [
   '釣り手帳埋め',
 ])
 
+const socialMiddleItems = createMiddleItems('social', [
+  ...extractMiddleLabelsFromSubCategoryIds(['chat']),
+  'フレンド募集',
+  'FC活動',
+  'CWLS活動',
+])
+
 export const inviteMajorCategories: InviteMajorCategory[] = [
   {
     id: 'savage',
@@ -377,6 +384,11 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     id: 'fishing',
     label: '釣り',
     middleItems: fishingMiddleItems,
+  },
+  {
+    id: 'social',
+    label: '交流',
+    middleItems: socialMiddleItems,
   },
 ]
 

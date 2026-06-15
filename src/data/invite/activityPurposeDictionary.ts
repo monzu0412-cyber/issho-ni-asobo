@@ -26,6 +26,14 @@ const idPurposeLabels = [
   'お手伝い',
 ] as const
 
+const socialPurposeLabels = [
+  '一緒に',
+  '募集',
+  'お手伝い',
+  '初心者歓迎',
+  '復帰者歓迎',
+] as const
+
 export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
   savage: [
     '攻略',
@@ -180,6 +188,7 @@ export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
     '初心者歓迎',
     '復帰者歓迎',
   ],
+  social: socialPurposeLabels,
 }
 
 function createPurposeItems(prefix: string, labels: readonly string[]): InviteDictionaryItem[] {
