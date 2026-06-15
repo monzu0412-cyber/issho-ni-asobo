@@ -1485,6 +1485,25 @@
   padding: 4px 8px;
 }
 
+.wantSlotComment {
+  color: var(--item-card-subtext);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.35;
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.previewMode .wantSlotComment {
+  display: -webkit-box;
+  margin-top: 6px;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-align: center;
+}
+
 .targetList,
 .simpleList {
   display: flex;
@@ -2026,6 +2045,7 @@
 }
 
 .previewMode .middleRow .wantSlotTitleGroup,
+.previewMode .middleRow .wantSlotComment,
 .previewMode .middleRow .wantSlotCategory,
 .previewMode .middleRow .wantSlotItem .targetDetails,
 .previewMode .middleRow .wantSlotItem .targetContentName,

@@ -160,6 +160,12 @@ function readString(value: unknown, fallback = ''): string {
   return typeof value === 'string' ? value : fallback
 }
 
+export const SECONDARY_TARGET_COMMENT_MAX_LENGTH = 30
+
+export function normalizeSecondaryTargetComment(comment: string): string {
+  return readString(comment).replace(/\r?\n/g, ' ').trim().slice(0, SECONDARY_TARGET_COMMENT_MAX_LENGTH)
+}
+
 function readBoolean(value: unknown, fallback = false): boolean {
   return typeof value === 'boolean' ? value : fallback
 }
@@ -364,6 +370,21 @@ function sanitizeCharacterDraft(value: unknown, fallback: CharacterDraft): Chara
       .map(sanitizeTargetItem)
       .filter((item): item is TargetItemDraft => item !== null)
       .slice(0, 3)
+      .map((target, targetIndex) => {
+        if (targetIndex === 0 || !target.comment) {
+          return target
+        }
+
+        const comment = normalizeSecondaryTargetComment(target.comment)
+
+        if (!comment) {
+          const nextTarget = { ...target }
+          delete nextTarget.comment
+          return nextTarget
+        }
+
+        return { ...target, comment }
+      })
     : fallback.targets
 
   const todoList = Array.isArray(value.todoList)
@@ -515,15 +536,18 @@ export function buildCharacterDraft(
     }),
     vc: character.vc,
     interests: character.interests.map(({ name, level }) => ({ name, level })),
-    targets: (character.targets ?? []).slice(0, 3).map((target) => {
+    targets: (character.targets ?? []).slice(0, 3).map((target, targetIndex) => {
       const iconUrl = isUnsafeImageReference(target.iconUrl) ? null : target.iconUrl ?? null
+      const comment = targetIndex === 0
+        ? target.comment
+        : (target.comment ? normalizeSecondaryTargetComment(target.comment) : undefined)
 
       return {
         title: target.title,
         category: target.category,
         subcategory: target.subcategory,
         icon: target.icon,
-        comment: target.comment,
+        comment,
         iconUrl,
         sourceDictionaryId: target.sourceDictionaryId,
         contentName: target.contentName,

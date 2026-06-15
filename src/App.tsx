@@ -29,8 +29,10 @@ import {
   buildCharacterDraft,
   CARD_DRAFT_VERSION,
   clearCardDraft,
+  normalizeSecondaryTargetComment,
   readCardDraft,
   readSaveEnabled,
+  SECONDARY_TARGET_COMMENT_MAX_LENGTH,
   writeCardDraft,
   writeSaveEnabled,
   type CardDraft,
@@ -2587,6 +2589,18 @@ function App() {
     }))
   }
 
+  function updateSecondaryTargetComment(targetIndex: number, comment: string) {
+    const sanitizedComment = normalizeSecondaryTargetComment(comment)
+
+    setCharacter((currentCharacter) => ({
+      ...currentCharacter,
+      targets: updateTargetAtIndex(currentCharacter.targets, targetIndex, (target) => ({
+        ...target,
+        comment: sanitizedComment,
+      })),
+    }))
+  }
+
   function updateTargetFrameTheme(targetFrameTheme: TargetFrameTheme) {
     setCharacter((currentCharacter) => ({
       ...currentCharacter,
@@ -3415,12 +3429,26 @@ function App() {
                       )}
                       <strong className="wantSlotTitle">{target.title}</strong>
                     </div>
+                    {effectivePreviewMode && target.comment?.trim() ? (
+                      <p className="wantSlotComment">{target.comment.trim()}</p>
+                    ) : null}
                     <div className={`wantSlotCategory ${getWantTitleSizeClass(`${target.category} / ${target.subcategory}`)}`}>
                       {target.category} / {target.subcategory}
                     </div>
                     <TargetDetails target={target} />
 
                     <div className="targetEditForm">
+                      <label>
+                        一言コメント
+                        <input
+                          type="text"
+                          maxLength={SECONDARY_TARGET_COMMENT_MAX_LENGTH}
+                          value={target.comment ?? ''}
+                          onChange={(event) => updateSecondaryTargetComment(index, event.target.value)}
+                          placeholder="例: 余裕あればお譲りください"
+                        />
+                      </label>
+
                       <TargetSearch
                         query={targetSearchQueries[index] ?? ''}
                         onQueryChange={(query) => updateTargetSearchQuery(index, query)}
