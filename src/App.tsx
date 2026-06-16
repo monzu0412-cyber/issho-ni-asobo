@@ -2451,6 +2451,8 @@ function App() {
   const [hasTargetFrame, setHasTargetFrame] = useState(false)
   const [isSaveEnabled, setIsSaveEnabled] = useState(() => getInitialAppState().isSaveEnabled)
   const [restoredFromDraft, setRestoredFromDraft] = useState(() => getInitialAppState().restoredFromDraft)
+  const [isImageAdjustOpen, setIsImageAdjustOpen] = useState(false)
+  const profileImageInputRef = useRef<HTMLInputElement>(null)
   const [cardColorTheme, setCardColorTheme] = useState<CardColorTheme>(() => getInitialAppState().cardColorTheme)
   const [cardBaseBackground, setCardBaseBackground] = useState<CardBaseBackground>(() => getInitialAppState().cardBaseBackground)
   const [cardSectionTheme, setCardSectionTheme] = useState<CardSectionTheme>(() => getInitialAppState().cardSectionTheme)
@@ -2493,6 +2495,16 @@ function App() {
         rotation: 0,
       },
     }))
+    setIsImageAdjustOpen(true)
+  }
+
+  function handleProfileImageFileChange(event: SyntheticEvent<HTMLInputElement>) {
+    updateCharacterImage(event.currentTarget.files?.[0])
+    event.currentTarget.value = ''
+  }
+
+  function openImageAdjustPanel() {
+    setIsImageAdjustOpen(true)
   }
 
   function updateImageSetting(field: keyof ImageSettings, value: number) {
@@ -3136,48 +3148,65 @@ function App() {
         <div className="cardBody">
           <div className="heroLayout">
           <section className="topRow">
-            <label
-              className={`profileImage${imageUrl ? ' profileImage--hasPhoto' : ''}`}
+            <div
+              className={`profileImageColumn${isImageAdjustOpen ? ' profileImageColumn--adjustOpen' : ''}`}
             >
+              <input
+                ref={profileImageInputRef}
+                className="profileImageFileInput"
+                id="profile-image-file"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                onChange={handleProfileImageFileChange}
+              />
+
               {imageUrl ? (
-                <div
-                  className="profilePhotoViewport"
-                  style={{
-                    transform: `translate(${imageSettings.x}px, ${imageSettings.y}px)`,
-                  }}
-                >
+                <div className="profileImage profileImage--hasPhoto">
                   <div
-                    className="profilePhotoScaleWrap"
+                    className="profilePhotoViewport"
                     style={{
-                      transform: `scale(${imageSettings.scale}) rotate(${imageSettings.rotation}deg)`,
+                      transform: `translate(${imageSettings.x}px, ${imageSettings.y}px)`,
                     }}
                   >
-                    <img
-                      className="profilePhoto"
-                      src={imageUrl}
-                      alt="キャラクター画像"
-                      crossOrigin={getImageCrossOrigin(imageUrl)}
-                    />
+                    <div
+                      className="profilePhotoScaleWrap"
+                      style={{
+                        transform: `scale(${imageSettings.scale}) rotate(${imageSettings.rotation}deg)`,
+                      }}
+                    >
+                      <img
+                        className="profilePhoto"
+                        src={imageUrl}
+                        alt="キャラクター画像"
+                        crossOrigin={getImageCrossOrigin(imageUrl)}
+                      />
+                    </div>
                   </div>
                 </div>
               ) : (
-                <span>画像</span>
+                <label className="profileImage" htmlFor="profile-image-file">
+                  <span>画像</span>
+                </label>
               )}
-              <input
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-                onChange={(event) => updateCharacterImage(event.target.files?.[0])}
-              />
-            </label>
 
-            {!effectivePreviewMode && restoredFromDraft && !imageUrl && (
-              <p className="profileImageNotice" role="status">
-                画像は保存されません。再アップロードしてください。
-              </p>
-            )}
+              {!effectivePreviewMode && restoredFromDraft && !imageUrl && (
+                <p className="profileImageNotice" role="status">
+                  画像は保存されません。再アップロードしてください。
+                </p>
+              )}
 
-            {imageUrl && (
-            <div className="imageAdjustForm">
+              {imageUrl && !isImageAdjustOpen && !effectivePreviewMode && (
+                <button
+                  className="imageAdjustReopen"
+                  type="button"
+                  onClick={openImageAdjustPanel}
+                >
+                  再編集
+                </button>
+              )}
+
+              {imageUrl && isImageAdjustOpen && !effectivePreviewMode && (
+                <div className="imageAdjustForm">
                   <label>
                     拡大率
                     <input
@@ -3233,8 +3262,25 @@ function App() {
                   >
                     回転リセット
                   </button>
+
+                  <button
+                    className="imageAdjustChangeImage"
+                    type="button"
+                    onClick={() => profileImageInputRef.current?.click()}
+                  >
+                    画像を変更
+                  </button>
+
+                  <button
+                    className="imageAdjustDone"
+                    type="button"
+                    onClick={() => setIsImageAdjustOpen(false)}
+                  >
+                    編集完了
+                  </button>
+                </div>
+              )}
             </div>
-            )}
 
             <section
               className={`mainWant ${hasTargetFrame ? 'hasTargetFrame' : ''}`}
