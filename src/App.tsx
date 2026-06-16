@@ -2985,6 +2985,24 @@ function App() {
   const isDesktopImageAdjustUi = !isMobileViewport && !effectivePreviewMode
   const showImageAdjustPanel = Boolean(imageUrl && !effectivePreviewMode && (isMobileViewport || isImageAdjustOpen))
   const showImageAdjustReopen = isDesktopImageAdjustUi && Boolean(imageUrl && !isImageAdjustOpen)
+  const showMobileConfirmButton = isMobileViewport && !effectivePreviewMode
+
+  function renderMobileConfirmButton() {
+    if (!showMobileConfirmButton) {
+      return null
+    }
+
+    return (
+      <button
+        className="cardConfirmButton"
+        type="button"
+        onClick={() => void handleMobileConfirm()}
+        disabled={confirmModalPhase === 'generating'}
+      >
+        {confirmModalPhase === 'generating' ? '生成中…' : '確認'}
+      </button>
+    )
+  }
 
   return (
     <main className={`app ${effectivePreviewMode ? 'previewMode' : 'editMode'} cardColor-${cardColorTheme}`}>
@@ -3028,16 +3046,7 @@ function App() {
         )}
         {!isDesktopPreviewMode && (
           <>
-            {isMobileViewport && (
-              <button
-                className="cardConfirmButton"
-                type="button"
-                onClick={() => void handleMobileConfirm()}
-                disabled={confirmModalPhase === 'generating'}
-              >
-                {confirmModalPhase === 'generating' ? '生成中…' : '確認'}
-              </button>
-            )}
+            {renderMobileConfirmButton()}
             <label className="cardThemePicker">
               カード背景
               <select
@@ -3753,6 +3762,12 @@ function App() {
           </section>
         </div>
       </section>
+
+      {showMobileConfirmButton && (
+        <div className="mobileConfirmBar">
+          {renderMobileConfirmButton()}
+        </div>
+      )}
 
       {confirmModalPhase !== 'closed' && (
         <CardConfirmModal
