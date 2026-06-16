@@ -137,6 +137,13 @@ export type ImageSettings = {
   rotation: number
 }
 
+export type LayoutMode = 'want' | 'character'
+
+export const layoutModeOptions: Array<{ value: LayoutMode; label: string }> = [
+  { value: 'want', label: 'ほしいもの優先' },
+  { value: 'character', label: 'キャラクター優先' },
+]
+
 export type ImageFrameTheme = 'simple' | 'cute' | 'stylish' | 'cool' | 'mechanical'
 export type TargetFrameTheme = 'simple' | 'cute' | 'stylish'
 export type TargetFrameCategory = 'fish' | 'mount' | 'minion' | 'gear' | 'music' | 'housing'

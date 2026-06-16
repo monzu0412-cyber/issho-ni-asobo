@@ -2718,3 +2718,64 @@ body.card-png-export .previewMode .card {
   background-repeat: no-repeat;
   padding-right: 28px;
 }
+
+.sectionTitle.wantRankTitle--gold {
+  background: linear-gradient(135deg, #fff4c2 0%, #e6b422 100%);
+  color: #4a3200;
+}
+
+.cardBody--layout-character .heroLayout .characterSummary {
+  align-self: start;
+  grid-column: 2;
+  grid-row: 1;
+  max-height: var(--layout-main-want-height);
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.previewMode .cardBody--layout-character .heroLayout {
+  grid-template-rows: minmax(var(--layout-main-want-height), auto);
+}
+
+.previewMode .cardBody--layout-character .heroLayout .characterSummary {
+  box-sizing: border-box;
+  max-height: none;
+  min-height: var(--layout-main-want-height);
+  overflow: visible;
+}
+
+.previewMode .cardBody--layout-character .middleRow {
+  align-items: stretch;
+  min-height: var(--layout-row2-min-height);
+}
+
+.previewMode .cardBody--layout-character .middleRow .wantSlotColumn {
+  height: auto;
+  min-height: var(--layout-row2-min-height);
+  overflow: visible;
+}
+
+.previewMode .cardBody--layout-character .middleRow .wantSlotItem {
+  flex: 1 1 auto;
+  min-height: min-content;
+}
+
+.previewMode .cardBody--layout-character .middleRow .wantSlotTitleGroup,
+.previewMode .cardBody--layout-character .middleRow .wantSlotComment,
+.previewMode .cardBody--layout-character .middleRow .wantSlotCategory,
+.previewMode .cardBody--layout-character .middleRow .wantSlotItem .targetDetails,
+.previewMode .cardBody--layout-character .middleRow .wantSlotItem .targetContentName,
+.previewMode .cardBody--layout-character .middleRow .wantSlotItem .routeList,
+.previewMode .cardBody--layout-character .middleRow .wantSlotItem .routeItem {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .editMode .cardBody--layout-character .heroLayout .characterSummary {
+    grid-column: 1;
+    grid-row: auto;
+    max-height: none;
+    min-width: 0;
+    width: 100%;
+  }
+}

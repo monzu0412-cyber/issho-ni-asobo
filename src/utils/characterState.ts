@@ -171,6 +171,7 @@ function createDefaultCardDraft(worldsByDc: Record<DataCenter, readonly string[]
 
   return {
     version: CARD_DRAFT_VERSION,
+    layoutMode: 'want',
     character: buildCharacterDraft(initialCharacter),
     cardColorTheme: 'beige',
     cardBaseBackground: '01',
@@ -218,6 +219,7 @@ function loadPersistedAppState(worldsByDc: Record<DataCenter, readonly string[]>
       cardBaseBackground: defaultDraft.cardBaseBackground,
       cardSectionTheme: defaultDraft.cardSectionTheme,
       cardSectionStyle: defaultDraft.cardSectionStyle,
+      layoutMode: defaultDraft.layoutMode,
       targetSearchQueries: [...defaultDraft.targetSearchQueries],
       contentSelections: { ...defaultDraft.contentSelections },
     }
@@ -234,6 +236,7 @@ function loadPersistedAppState(worldsByDc: Record<DataCenter, readonly string[]>
       cardBaseBackground: defaultDraft.cardBaseBackground,
       cardSectionTheme: defaultDraft.cardSectionTheme,
       cardSectionStyle: defaultDraft.cardSectionStyle,
+      layoutMode: defaultDraft.layoutMode,
       targetSearchQueries: [...defaultDraft.targetSearchQueries],
       contentSelections: { ...defaultDraft.contentSelections },
     }
@@ -247,6 +250,7 @@ function loadPersistedAppState(worldsByDc: Record<DataCenter, readonly string[]>
     cardBaseBackground: draft.cardBaseBackground,
     cardSectionTheme: draft.cardSectionTheme,
     cardSectionStyle: draft.cardSectionStyle,
+    layoutMode: draft.layoutMode,
     targetSearchQueries: [...draft.targetSearchQueries],
     contentSelections: { ...draft.contentSelections },
   }

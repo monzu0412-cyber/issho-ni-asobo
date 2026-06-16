@@ -27,15 +27,17 @@ import {
   resolveTargetIconUrl,
   sourceItemById,
 } from './components/target/targetSearchHelpers'
-import type {
-  ActivityCategory,
-  CardSectionName,
-  ContentSelection,
-  ImageSettings,
-  PlayTime,
-  SearchDictionaryItem,
-  TargetFrameTheme,
-  TimeRange,
+import {
+  layoutModeOptions,
+  type ActivityCategory,
+  type CardSectionName,
+  type ContentSelection,
+  type ImageSettings,
+  type LayoutMode,
+  type PlayTime,
+  type SearchDictionaryItem,
+  type TargetFrameTheme,
+  type TimeRange,
 } from './types/card'
 import {
   CARD_CONTENT_DISPLAY_LIMIT,
@@ -290,6 +292,7 @@ function App() {
   const [cardBaseBackground, setCardBaseBackground] = useState<CardBaseBackground>(() => getInitialAppState(worldsByDc).cardBaseBackground)
   const [cardSectionTheme, setCardSectionTheme] = useState<CardSectionTheme>(() => getInitialAppState(worldsByDc).cardSectionTheme)
   const [cardSectionStyle, setCardSectionStyle] = useState<CardSectionStyle>(() => getInitialAppState(worldsByDc).cardSectionStyle)
+  const [layoutMode, setLayoutMode] = useState<LayoutMode>(() => getInitialAppState(worldsByDc).layoutMode)
   const getCardSectionBackgroundStyle = useCardSectionBackgroundStyles(cardSectionTheme, cardSectionStyle)
   const [targetSearchQueries, setTargetSearchQueries] = useState(() => getInitialAppState(worldsByDc).targetSearchQueries)
   const [contentSelections, setContentSelections] = useState<{
@@ -644,6 +647,7 @@ function App() {
     setCardBaseBackground(defaultDraft.cardBaseBackground)
     setCardSectionTheme(defaultDraft.cardSectionTheme)
     setCardSectionStyle(defaultDraft.cardSectionStyle)
+    setLayoutMode(defaultDraft.layoutMode)
     setTargetSearchQueries([...defaultDraft.targetSearchQueries])
     setContentSelections({ ...defaultDraft.contentSelections })
   }
@@ -655,6 +659,7 @@ function App() {
 
     writeCardDraft({
       version: CARD_DRAFT_VERSION,
+      layoutMode,
       character: buildCharacterDraft(character),
       cardColorTheme,
       cardBaseBackground,
@@ -670,6 +675,7 @@ function App() {
   }, [
     isSaveEnabled,
     character,
+    layoutMode,
     cardColorTheme,
     cardBaseBackground,
     cardSectionTheme,
@@ -924,6 +930,17 @@ function App() {
                 ))}
               </select>
             </label>
+            <label className="cardThemePicker">
+              レイアウト
+              <select
+                value={layoutMode}
+                onChange={(event) => setLayoutMode(event.target.value as LayoutMode)}
+              >
+                {layoutModeOptions.map((option) => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </label>
           </>
         )}
       </div>
@@ -991,6 +1008,7 @@ function App() {
         )}
 
         <CardBody
+          layoutMode={layoutMode}
           imageUrl={imageUrl}
           imageSettings={imageSettings}
           isMobileViewport={isMobileViewport}

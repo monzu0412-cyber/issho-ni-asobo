@@ -7,6 +7,7 @@ import {
 } from '../data/activityColumnTitles'
 import { inviteMajorIds, migrateLegacyInviteContentSelection } from '../data/invite/inviteContentDictionary'
 import type { InviteContentSelection, InviteMajorId } from '../data/invite/inviteDictionaryTypes'
+import type { LayoutMode } from '../types/card'
 
 export const CARD_DRAFT_STORAGE_KEY = 'issho-asobo-card-draft'
 export const CARD_SAVE_ENABLED_KEY = 'issho-asobo-card-save-enabled'
@@ -32,6 +33,7 @@ const cardColorThemeOptions = ['white', 'blue', 'lightblue', 'red', 'pink', 'gre
 const cardBaseBackgroundOptions = ['01', '02', '03', '04', '05'] as const
 const cardSectionThemeOptions = ['fish', 'mount', 'minion', 'music', 'housing', 'adventure'] as const
 const cardSectionStyleOptions = ['simple', 'cute', 'stylish'] as const
+const layoutModeOptions = ['want', 'character'] as const
 const imageFrameThemes = ['simple', 'cute', 'stylish', 'cool', 'mechanical'] as const
 const targetFrameThemes = ['simple', 'cute', 'stylish'] as const
 const sectionTitleOptions = {
@@ -125,6 +127,7 @@ export type CharacterDraft = {
 
 export type CardDraft = {
   version: typeof CARD_DRAFT_VERSION
+  layoutMode: LayoutMode
   character: CharacterDraft
   cardColorTheme: typeof cardColorThemeOptions[number]
   cardBaseBackground: typeof cardBaseBackgroundOptions[number]
@@ -454,6 +457,7 @@ export function parseCardDraft(raw: string, fallback: CardDraft): CardDraft | nu
 
     return {
       version: CARD_DRAFT_VERSION,
+      layoutMode: readEnumValue(parsed.layoutMode, layoutModeOptions, fallback.layoutMode),
       character,
       cardColorTheme: readEnumValue(parsed.cardColorTheme, cardColorThemeOptions, fallback.cardColorTheme),
       cardBaseBackground: readEnumValue(parsed.cardBaseBackground, cardBaseBackgroundOptions, fallback.cardBaseBackground),
