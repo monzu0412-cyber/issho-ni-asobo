@@ -56,6 +56,13 @@ export const HELP_SLIDE_CONTENT: Record<string, HelpSlideContent> = {
       '③ 詳細',
       '',
       'の順に選択できます。',
+      '',
+      '辞書にないものは',
+      '「未対応アイテム」を選び、',
+      '',
+      'アピールコメントや',
+      '一言コメントに',
+      'アイテム名を書いてね！',
     ].join('\n'),
   },
   '03': {
