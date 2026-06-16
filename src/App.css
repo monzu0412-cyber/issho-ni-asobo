@@ -2645,7 +2645,30 @@ body.card-png-export .previewMode .card {
   .editMode .infoBox,
   .editMode .activityColumn,
   .editMode .interestBox,
-  .editMode .messageBox {
+  .editMode .messageBox,
+  .editMode .imageAdjustForm {
+    min-width: 0;
+  }
+
+  .editMode .imageAdjustForm {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .editMode .imageAdjustForm label,
+  .editMode .imageAdjustForm input[type='range'],
+  .editMode .imageAdjustForm select,
+  .editMode .imageAdjustForm button {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .editMode .profileImageColumn,
+  .editMode .profileImageColumn--mobileStack {
+    box-sizing: border-box;
+    max-width: 100%;
     min-width: 0;
   }
 
@@ -2829,7 +2852,8 @@ body.card-png-export .previewMode .card {
   .editMode .cardBody--layout-character .heroLayout .profileImageColumn {
     grid-column: 1;
     grid-row: auto;
-    max-width: none;
+    max-width: 100%;
+    min-width: 0;
     width: 100%;
   }
 
@@ -2950,7 +2974,8 @@ body.card-png-export .previewMode .card {
   .editMode .cardBody--layout-asobo .heroLayout .profileImageColumn {
     grid-column: 1;
     grid-row: auto;
-    max-width: none;
+    max-width: 100%;
+    min-width: 0;
     width: 100%;
   }
 
