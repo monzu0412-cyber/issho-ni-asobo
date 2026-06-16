@@ -57,6 +57,14 @@ const housingPurposeLabels = [
   '初心者歓迎',
 ] as const
 
+const craftingPurposeLabels = [
+  '製作依頼',
+  '製作できます',
+  '素材持ち込み可',
+  '相談したい',
+  'お手伝い',
+] as const
+
 const eventPurposeLabels = [
   '参加',
   '一緒に',
@@ -221,6 +229,7 @@ export const purposesByMajor: Record<InviteMajorId, readonly string[]> = {
   social: socialPurposeLabels,
   screenshot: screenshotShootingPurposeLabels,
   housing: housingPurposeLabels,
+  crafting: craftingPurposeLabels,
   event: eventPurposeLabels,
 }
 

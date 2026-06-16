@@ -344,6 +344,17 @@ const housingMiddleItems = createMiddleItems('housing', [
   'ハウジング相談',
 ])
 
+const craftingMiddleItems = createMiddleItems('crafting', [
+  '新式装備',
+  '潜水艦・飛空艇パーツ',
+  'ハウジング外装',
+  '家具',
+  'おしゃれ装備',
+  '食事・薬',
+  '素材加工',
+  'カンパニークラフト',
+])
+
 const eventMiddleItems = createMiddleItems('event', [
   ...extractSubCategoryLabels(['user-event', 'shop-tour', 'concert']),
   'RPイベント',
@@ -438,6 +449,11 @@ export const inviteMajorCategories: InviteMajorCategory[] = [
     middleItems: housingMiddleItems,
   },
   {
+    id: 'crafting',
+    label: '製作',
+    middleItems: craftingMiddleItems,
+  },
+  {
     id: 'event',
     label: 'イベント',
     middleItems: eventMiddleItems,
@@ -496,6 +512,7 @@ export const inviteMajorGroups: InviteMajorGroup[] = [
       'social',
       'screenshot',
       'housing',
+      'crafting',
       'event',
     ],
   },

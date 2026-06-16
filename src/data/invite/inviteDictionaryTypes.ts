@@ -34,6 +34,7 @@ export type InviteMajorId =
   | 'social'
   | 'screenshot'
   | 'housing'
+  | 'crafting'
   | 'event'
 
 export type InviteDictionaryItem = {
