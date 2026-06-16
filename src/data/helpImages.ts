@@ -1,5 +1,5 @@
 /**
- * Help slides in `src/assets/help/` (`help_01.webp`, `help_05.jpg`, …).
+ * Help slides in `src/assets/help/` (`help_01.webp`, `help_05.jpg`, `help_08.webp`, …).
  *
  * Display order is defined by platform playlists below — not by filename sort.
  * Set `HELP_IMAGES_PLACEHOLDER` to `false` once real images are ready.
@@ -16,8 +16,8 @@ export type HelpSlide = HelpSlideContent & {
   imageUrl: string
 }
 
-export const HELP_DESKTOP_SLIDE_IDS = ['01', '02', '03', '04'] as const
-export const HELP_MOBILE_SLIDE_IDS = ['05', '02', '06', '07'] as const
+export const HELP_DESKTOP_SLIDE_IDS = ['01', '02', '08', '03', '04'] as const
+export const HELP_MOBILE_SLIDE_IDS = ['05', '02', '08', '06', '07'] as const
 
 const HELP_INPUT_INTRO_SLIDE: HelpSlideContent = {
   title: 'まずは入力してみよう！',
@@ -63,6 +63,21 @@ export const HELP_SLIDE_CONTENT: Record<string, HelpSlideContent> = {
       'アピールコメントや',
       '一言コメントに',
       'アイテム名を書いてね！',
+    ].join('\n'),
+  },
+  '08': {
+    title: 'キャラクター画像を設定しよう！',
+    description: [
+      '画像をタップすると',
+      '',
+      '① 拡大・縮小',
+      '② 位置調整',
+      '③ 回転',
+      '',
+      'ができます。',
+      '',
+      '画像は保存されないので',
+      '安心して使ってね！',
     ].join('\n'),
   },
   '03': {
