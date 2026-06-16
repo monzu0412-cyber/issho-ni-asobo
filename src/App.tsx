@@ -2982,6 +2982,9 @@ function App() {
 
   const topTarget = targets[0]
   const targetFrameUrl = getTargetFrameUrl(topTarget, targetFrameTheme)
+  const isDesktopImageAdjustUi = !isMobileViewport && !effectivePreviewMode
+  const showImageAdjustPanel = Boolean(imageUrl && !effectivePreviewMode && (isMobileViewport || isImageAdjustOpen))
+  const showImageAdjustReopen = isDesktopImageAdjustUi && Boolean(imageUrl && !isImageAdjustOpen)
 
   return (
     <main className={`app ${effectivePreviewMode ? 'previewMode' : 'editMode'} cardColor-${cardColorTheme}`}>
@@ -3149,7 +3152,9 @@ function App() {
           <div className="heroLayout">
           <section className="topRow">
             <div
-              className={`profileImageColumn${isImageAdjustOpen ? ' profileImageColumn--adjustOpen' : ''}`}
+              className={`profileImageColumn${
+                isDesktopImageAdjustUi && isImageAdjustOpen ? ' profileImageColumn--adjustOpen' : ''
+              }${isMobileViewport ? ' profileImageColumn--mobileStack' : ''}`}
             >
               <input
                 ref={profileImageInputRef}
@@ -3161,28 +3166,53 @@ function App() {
               />
 
               {imageUrl ? (
-                <div className="profileImage profileImage--hasPhoto">
-                  <div
-                    className="profilePhotoViewport"
-                    style={{
-                      transform: `translate(${imageSettings.x}px, ${imageSettings.y}px)`,
-                    }}
-                  >
+                isMobileViewport ? (
+                  <label className="profileImage profileImage--hasPhoto" htmlFor="profile-image-file">
                     <div
-                      className="profilePhotoScaleWrap"
+                      className="profilePhotoViewport"
                       style={{
-                        transform: `scale(${imageSettings.scale}) rotate(${imageSettings.rotation}deg)`,
+                        transform: `translate(${imageSettings.x}px, ${imageSettings.y}px)`,
                       }}
                     >
-                      <img
-                        className="profilePhoto"
-                        src={imageUrl}
-                        alt="キャラクター画像"
-                        crossOrigin={getImageCrossOrigin(imageUrl)}
-                      />
+                      <div
+                        className="profilePhotoScaleWrap"
+                        style={{
+                          transform: `scale(${imageSettings.scale}) rotate(${imageSettings.rotation}deg)`,
+                        }}
+                      >
+                        <img
+                          className="profilePhoto"
+                          src={imageUrl}
+                          alt="キャラクター画像"
+                          crossOrigin={getImageCrossOrigin(imageUrl)}
+                        />
+                      </div>
+                    </div>
+                  </label>
+                ) : (
+                  <div className="profileImage profileImage--hasPhoto">
+                    <div
+                      className="profilePhotoViewport"
+                      style={{
+                        transform: `translate(${imageSettings.x}px, ${imageSettings.y}px)`,
+                      }}
+                    >
+                      <div
+                        className="profilePhotoScaleWrap"
+                        style={{
+                          transform: `scale(${imageSettings.scale}) rotate(${imageSettings.rotation}deg)`,
+                        }}
+                      >
+                        <img
+                          className="profilePhoto"
+                          src={imageUrl}
+                          alt="キャラクター画像"
+                          crossOrigin={getImageCrossOrigin(imageUrl)}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
+                )
               ) : (
                 <label className="profileImage" htmlFor="profile-image-file">
                   <span>画像</span>
@@ -3195,7 +3225,7 @@ function App() {
                 </p>
               )}
 
-              {imageUrl && !isImageAdjustOpen && !effectivePreviewMode && (
+              {showImageAdjustReopen && (
                 <button
                   className="imageAdjustReopen"
                   type="button"
@@ -3205,7 +3235,7 @@ function App() {
                 </button>
               )}
 
-              {imageUrl && isImageAdjustOpen && !effectivePreviewMode && (
+              {showImageAdjustPanel && (
                 <div className="imageAdjustForm">
                   <label>
                     拡大率
@@ -3263,21 +3293,25 @@ function App() {
                     回転リセット
                   </button>
 
-                  <button
-                    className="imageAdjustChangeImage"
-                    type="button"
-                    onClick={() => profileImageInputRef.current?.click()}
-                  >
-                    画像を変更
-                  </button>
+                  {isDesktopImageAdjustUi && (
+                    <button
+                      className="imageAdjustChangeImage"
+                      type="button"
+                      onClick={() => profileImageInputRef.current?.click()}
+                    >
+                      画像を変更
+                    </button>
+                  )}
 
-                  <button
-                    className="imageAdjustDone"
-                    type="button"
-                    onClick={() => setIsImageAdjustOpen(false)}
-                  >
-                    編集完了
-                  </button>
+                  {isDesktopImageAdjustUi && (
+                    <button
+                      className="imageAdjustDone"
+                      type="button"
+                      onClick={() => setIsImageAdjustOpen(false)}
+                    >
+                      編集完了
+                    </button>
+                  )}
                 </div>
               )}
             </div>

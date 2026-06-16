@@ -435,7 +435,7 @@
   z-index: 5;
 }
 
-.heroLayout .imageAdjustForm {
+.heroLayout .profileImageColumn:not(.profileImageColumn--mobileStack) .imageAdjustForm {
   border-width: 2px;
   bottom: 8px;
   box-sizing: border-box;
@@ -450,7 +450,24 @@
   z-index: 3;
 }
 
-.heroLayout .imageAdjustForm label {
+.heroLayout .profileImageColumn--mobileStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: auto;
+}
+
+.heroLayout .profileImageColumn--mobileStack .imageAdjustForm {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: #ffffff;
+  max-height: none;
+  overflow-y: visible;
+  position: static;
+  width: 100%;
+}
+
+.heroLayout .profileImageColumn:not(.profileImageColumn--mobileStack) .imageAdjustForm label {
   font-size: 11px;
 }
 
@@ -497,6 +514,10 @@
 .profileImage--hasPhoto {
   background: #ffffff;
   cursor: default;
+}
+
+.profileImageColumn--mobileStack .profileImage--hasPhoto {
+  cursor: pointer;
 }
 
 .profileImageColumn {
@@ -2549,13 +2570,6 @@ body.card-png-export .previewMode .card {
     min-height: 0;
     min-width: 0;
     width: 100%;
-  }
-
-  .editMode .heroLayout .imageAdjustForm {
-    bottom: 8px;
-    left: 8px;
-    margin: 0;
-    right: 8px;
   }
 
   .editMode .mainWant,
