@@ -32,8 +32,8 @@ export const interestIconUrls: Record<ActivityCategory, string> = {
 
 export const IMAGE_SCALE_MIN = 1
 export const IMAGE_SCALE_MAX = 4.5
-export const IMAGE_ROTATION_MIN = -30
-export const IMAGE_ROTATION_MAX = 30
+export const IMAGE_ROTATION_MIN = 0
+export const IMAGE_ROTATION_MAX = 270
 export const CARD_CONTENT_DISPLAY_LIMIT = 5
 export const EDIT_CONTENT_DISPLAY_LIMIT = 5
 

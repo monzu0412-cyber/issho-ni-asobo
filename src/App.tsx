@@ -825,6 +825,9 @@ function App() {
   const showImageAdjustPanel = Boolean(imageUrl && !effectivePreviewMode && (isMobileViewport || isImageAdjustOpen))
   const showImageAdjustReopen = isDesktopImageAdjustUi && Boolean(imageUrl && !isImageAdjustOpen)
   const showMobileConfirmButton = isMobileViewport && !effectivePreviewMode
+  const showMobileHorizontalImageHint = isMobileViewport
+    && !effectivePreviewMode
+    && (layoutMode === 'character' || layoutMode === 'asobo')
 
   function renderMobileConfirmButton() {
     if (!showMobileConfirmButton) {
@@ -1019,6 +1022,7 @@ function App() {
           showImageAdjustPanel={showImageAdjustPanel}
           showImageAdjustReopen={showImageAdjustReopen}
           imageMoveRange={imageMoveRange}
+          showMobileHorizontalImageHint={showMobileHorizontalImageHint}
           profileImageInputRef={profileImageInputRef}
           onProfileImageFileChange={handleProfileImageFileChange}
           openImageAdjustPanel={openImageAdjustPanel}

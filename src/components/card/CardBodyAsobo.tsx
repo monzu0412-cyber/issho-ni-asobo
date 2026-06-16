@@ -20,6 +20,7 @@ export function CardBodyAsobo(props: CardBodyProps) {
     showImageAdjustPanel,
     showImageAdjustReopen,
     imageMoveRange,
+    showMobileHorizontalImageHint,
     profileImageInputRef,
     onProfileImageFileChange,
     openImageAdjustPanel,
@@ -83,6 +84,7 @@ export function CardBodyAsobo(props: CardBodyProps) {
             showImageAdjustPanel={showImageAdjustPanel}
             showImageAdjustReopen={showImageAdjustReopen}
             imageMoveRange={imageMoveRange}
+            showMobileHorizontalImageHint={showMobileHorizontalImageHint}
             profileImageInputRef={profileImageInputRef}
             onProfileImageFileChange={onProfileImageFileChange}
             openImageAdjustPanel={openImageAdjustPanel}

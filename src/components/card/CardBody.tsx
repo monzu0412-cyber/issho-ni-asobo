@@ -33,6 +33,7 @@ export type CardBodyProps = {
   showImageAdjustPanel: boolean
   showImageAdjustReopen: boolean
   imageMoveRange: number
+  showMobileHorizontalImageHint: boolean
   profileImageInputRef: RefObject<HTMLInputElement | null>
   onProfileImageFileChange: (event: ChangeEvent<HTMLInputElement>) => void
   openImageAdjustPanel: () => void

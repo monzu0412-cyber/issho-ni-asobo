@@ -8,6 +8,7 @@ import {
 import { inviteMajorIds, migrateLegacyInviteContentSelection } from '../data/invite/inviteContentDictionary'
 import type { InviteContentSelection, InviteMajorId } from '../data/invite/inviteDictionaryTypes'
 import type { LayoutMode } from '../types/card'
+import { IMAGE_ROTATION_MAX, IMAGE_ROTATION_MIN } from './cardDisplayUtils'
 
 export const CARD_DRAFT_STORAGE_KEY = 'issho-asobo-card-draft'
 export const CARD_SAVE_ENABLED_KEY = 'issho-asobo-card-save-enabled'
@@ -15,8 +16,6 @@ export const CARD_DRAFT_VERSION = 1
 
 const IMAGE_SCALE_MIN = 1
 const IMAGE_SCALE_MAX = 4.5
-const IMAGE_ROTATION_MIN = -30
-const IMAGE_ROTATION_MAX = 30
 
 const dataCenters = ['Elemental', 'Gaia', 'Mana', 'Meteor'] as const
 type DataCenter = typeof dataCenters[number]
@@ -220,11 +219,17 @@ function sanitizeImageSettings(value: unknown, fallback: ImageSettings): ImageSe
   const scale = clampNumber(readNumber(value.scale, fallback.scale), IMAGE_SCALE_MIN, IMAGE_SCALE_MAX)
   const moveRange = Math.round((scale - 1) * 90)
 
+  const rawRotation = readNumber(value.rotation, fallback.rotation)
+
   return {
     scale,
     x: clampNumber(readNumber(value.x, fallback.x), -moveRange, moveRange),
     y: clampNumber(readNumber(value.y, fallback.y), -moveRange, moveRange),
-    rotation: clampNumber(readNumber(value.rotation, fallback.rotation), IMAGE_ROTATION_MIN, IMAGE_ROTATION_MAX),
+    rotation: clampNumber(
+      rawRotation < 0 ? 0 : rawRotation,
+      IMAGE_ROTATION_MIN,
+      IMAGE_ROTATION_MAX,
+    ),
   }
 }
 

@@ -19,6 +19,7 @@ type ProfileImageColumnProps = {
   showImageAdjustPanel: boolean
   showImageAdjustReopen: boolean
   imageMoveRange: number
+  showMobileHorizontalImageHint: boolean
   profileImageInputRef: RefObject<HTMLInputElement | null>
   onProfileImageFileChange: (event: ChangeEvent<HTMLInputElement>) => void
   openImageAdjustPanel: () => void
@@ -38,6 +39,7 @@ export function ProfileImageColumn({
   showImageAdjustPanel,
   showImageAdjustReopen,
   imageMoveRange,
+  showMobileHorizontalImageHint,
   profileImageInputRef,
   onProfileImageFileChange,
   openImageAdjustPanel,
@@ -45,6 +47,11 @@ export function ProfileImageColumn({
   resetImageRotation,
   setIsImageAdjustOpen,
 }: ProfileImageColumnProps) {
+  const rotationSliderValue = Math.min(
+    IMAGE_ROTATION_MAX,
+    Math.max(IMAGE_ROTATION_MIN, imageSettings.rotation),
+  )
+
   return (
     <div
       className={`profileImageColumn${
@@ -120,6 +127,12 @@ export function ProfileImageColumn({
         </p>
       )}
 
+      {showMobileHorizontalImageHint && (
+        <p className="profileImageMobileHorizontalHint" role="note">
+          ※完成画像は横表示になります。この枠の向き・切り取りでPNGに反映されます。
+        </p>
+      )}
+
       {showImageAdjustReopen && (
         <button
           className="imageAdjustReopen"
@@ -169,13 +182,13 @@ export function ProfileImageColumn({
           </label>
 
           <label>
-            回転
+            回転（{rotationSliderValue}°）
             <input
               type="range"
               min={IMAGE_ROTATION_MIN}
               max={IMAGE_ROTATION_MAX}
               step="1"
-              value={imageSettings.rotation}
+              value={rotationSliderValue}
               onChange={(event) => updateImageSetting('rotation', Number(event.target.value))}
             />
           </label>

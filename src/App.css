@@ -2829,15 +2829,16 @@ body.card-png-export .previewMode .card {
   .editMode .cardBody--layout-character .heroLayout .profileImageColumn {
     grid-column: 1;
     grid-row: auto;
-    max-width: var(--layout-profile-image-size);
+    max-width: none;
     width: 100%;
   }
 
   .editMode .cardBody--layout-character .heroLayout .profileImage {
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 690 / 420;
     height: auto;
+    margin-inline: 0;
     max-height: none;
-    max-width: var(--layout-profile-image-size);
+    max-width: none;
     min-height: 0;
     min-width: 0;
     width: 100%;
@@ -2949,17 +2950,26 @@ body.card-png-export .previewMode .card {
   .editMode .cardBody--layout-asobo .heroLayout .profileImageColumn {
     grid-column: 1;
     grid-row: auto;
-    max-width: var(--layout-profile-image-size);
+    max-width: none;
     width: 100%;
   }
 
   .editMode .cardBody--layout-asobo .heroLayout .profileImage {
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 690 / 420;
     height: auto;
+    margin-inline: 0;
     max-height: none;
-    max-width: var(--layout-profile-image-size);
+    max-width: none;
     min-height: 0;
     min-width: 0;
     width: 100%;
+  }
+
+  .editMode .profileImageMobileHorizontalHint {
+    color: #40516d;
+    font-size: 11px;
+    line-height: 1.45;
+    margin: 0;
+    text-align: left;
   }
 }
