@@ -23,6 +23,14 @@ import locationTranslationDictionary from './data/reverse-search/manual/location
 import fishTermTranslationDictionary from './data/reverse-search/manual/fish_term_translation_dictionary.json'
 import contentTranslationDictionary from './data/reverse-search/manual/content_translation_dictionary.json'
 import sourceDictionary from './data/reverse-search/manual/source_dictionary.json'
+import {
+  isUnsupportedTargetItem,
+  UNSUPPORTED_TARGET_CATEGORY,
+  UNSUPPORTED_TARGET_ICON,
+  UNSUPPORTED_TARGET_SOURCE_ID,
+  UNSUPPORTED_TARGET_SUBCATEGORY,
+  UNSUPPORTED_TARGET_TITLE,
+} from './data/unsupportedTargetItem'
 import './App.css'
 import { HelpModal } from './components/HelpModal'
 import {
@@ -2092,6 +2100,10 @@ function FishRouteDetails({ route }: { route: AcquisitionRoute }) {
 }
 
 function TargetDetails({ target, isCompact = false }: { target: TargetItem; isCompact?: boolean }) {
+  if (isUnsupportedTargetItem(target)) {
+    return null
+  }
+
   const routes = deduplicateAcquisitionRoutes(target.acquisitionRoutes ?? [])
   const priorityConditionKeys = ['area', 'location', 'weather', 'time']
   const isFish = isFishTarget(target)
@@ -2326,10 +2338,12 @@ function TargetSearch({
   query,
   onQueryChange,
   onSelect,
+  onSelectUnsupported,
 }: {
   query: string
   onQueryChange: (value: string) => void
   onSelect: (item: SearchDictionaryItem) => void
+  onSelectUnsupported: () => void
 }) {
   const [isForwardOpen, setIsForwardOpen] = useState(false)
   const results = getSearchResults(query)
@@ -2346,6 +2360,14 @@ function TargetSearch({
           onChange={(event) => onQueryChange(event.target.value)}
         />
       </label>
+
+      <button
+        className="unsupportedTargetSelect"
+        type="button"
+        onClick={onSelectUnsupported}
+      >
+        辞書にないもの → 未対応アイテム
+      </button>
 
       <button
         className="forwardSearchToggle"
@@ -2577,6 +2599,24 @@ function App() {
       })),
     }))
     updateTargetSearchQuery(targetIndex, item.name)
+  }
+
+  function selectUnsupportedTarget(targetIndex: number) {
+    setCharacter((currentCharacter) => ({
+      ...currentCharacter,
+      targets: updateTargetAtIndex(currentCharacter.targets, targetIndex, (target) => ({
+        ...target,
+        title: UNSUPPORTED_TARGET_TITLE,
+        category: UNSUPPORTED_TARGET_CATEGORY,
+        subcategory: UNSUPPORTED_TARGET_SUBCATEGORY,
+        icon: UNSUPPORTED_TARGET_ICON,
+        iconUrl: null,
+        sourceDictionaryId: UNSUPPORTED_TARGET_SOURCE_ID,
+        contentName: null,
+        acquisitionRoutes: [],
+      })),
+    }))
+    updateTargetSearchQuery(targetIndex, '')
   }
 
   function updateTopTargetComment(comment: string) {
@@ -3194,6 +3234,7 @@ function App() {
                   query={targetSearchQueries[0] ?? ''}
                   onQueryChange={(query) => updateTargetSearchQuery(0, query)}
                   onSelect={(item) => selectSearchTarget(0, item)}
+                  onSelectUnsupported={() => selectUnsupportedTarget(0)}
                 />
 
                 <label>
@@ -3453,6 +3494,7 @@ function App() {
                         query={targetSearchQueries[index] ?? ''}
                         onQueryChange={(query) => updateTargetSearchQuery(index, query)}
                         onSelect={(item) => selectSearchTarget(index, item)}
+                        onSelectUnsupported={() => selectUnsupportedTarget(index)}
                       />
                     </div>
                   </div>

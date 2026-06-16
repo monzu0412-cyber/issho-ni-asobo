@@ -1619,6 +1619,23 @@
   width: 100%;
 }
 
+.unsupportedTargetSelect {
+  align-self: flex-start;
+  background: #f5f7fb;
+  border: 2px solid #9aa8bc;
+  border-radius: 999px;
+  color: #102a54;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 6px 14px;
+}
+
+.unsupportedTargetSelect:hover {
+  background: #e8edf5;
+}
+
 .forwardSearchToggle {
   align-self: flex-start;
   background: #fff4dc;
