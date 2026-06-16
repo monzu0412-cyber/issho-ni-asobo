@@ -1024,59 +1024,60 @@
   padding: 12px;
 }
 
-.activityBox .interestBox {
+.activityBox > .activityColumn.interestBox {
   padding: 16px;
 }
 
-.activityBox .interestBox .sectionTitle {
-  margin-bottom: 10px;
+.activityBox > .activityColumn.interestBox .sectionTitle {
+  margin-bottom: 8px;
 }
 
-.activityBox .interestGrid {
+.activityBox > .activityColumn.interestBox .interestGrid {
   flex: 0 0 auto;
+  gap: 3px;
   grid-template-columns: repeat(3, 1fr);
   min-height: 0;
 }
 
-.activityBox .interestItem {
+.activityBox > .activityColumn.interestBox .interestItem {
   gap: 0;
-  height: 78px;
-  min-height: 78px;
-  padding: 1px 2px 2px;
+  height: 74px;
+  min-height: 74px;
+  padding: 1px 2px 1px;
 }
 
-.activityBox .interestName {
+.activityBox > .activityColumn.interestBox .interestName {
   align-items: center;
   flex: 1 1 auto;
   height: auto;
   justify-content: center;
-  min-height: 64px;
+  min-height: 56px;
   padding: 0;
 }
 
-.activityBox .interestIconImage {
+.activityBox > .activityColumn.interestBox .interestIconImage {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 95%;
+  background-size: 92%;
   display: block;
   flex-shrink: 0;
-  height: 64px;
-  max-height: 64px;
+  height: 56px;
+  max-height: 56px;
   max-width: 100%;
   position: relative;
   transform: none;
-  width: 76px;
+  width: 68px;
   z-index: 1;
 }
 
-.activityBox .interestName strong {
-  font-size: 10px;
-  line-height: 1.05;
+.activityBox > .activityColumn.interestBox .interestName strong {
+  font-size: 9px;
+  line-height: 1;
 }
 
-.activityBox .stars {
+.activityBox > .activityColumn.interestBox .stars {
   flex-shrink: 0;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1;
 }
 
@@ -2172,11 +2173,6 @@
   gap: 4px;
 }
 
-.previewMode .activityBox .interestGrid {
-  gap: 4px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
 .previewMode .activityBox .sectionHeader {
   margin-bottom: 10px;
 }
@@ -2195,49 +2191,43 @@
   font-size: 10px;
 }
 
-.previewMode .activityBox .interestItem {
-  gap: 0;
-  height: 78px;
-  min-height: 78px;
-  padding: 1px 2px 2px;
+.previewMode .activityBox > .activityColumn.interestBox {
+  min-height: var(--layout-row3-height);
+  padding: 12px 14px;
 }
 
-.previewMode .activityBox .interestName {
+.previewMode .activityBox > .activityColumn.interestBox .interestGrid {
+  gap: 3px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.previewMode .activityBox > .activityColumn.interestBox .interestItem {
+  gap: 0;
+  height: 74px;
+  min-height: 74px;
+  padding: 1px 2px 1px;
+}
+
+.previewMode .activityBox > .activityColumn.interestBox .interestName {
   flex-basis: auto;
   height: auto;
-  min-height: 64px;
+  min-height: 56px;
 }
 
-.previewMode .activityBox .stars {
-  font-size: 11px;
+.previewMode .activityBox > .activityColumn.interestBox .stars {
+  font-size: 10px;
   line-height: 1;
 }
 
-.previewMode .interestItem {
-  border-radius: 14px;
-  height: 86px;
-  min-height: 86px;
-  padding: 2px 2px 5px;
-}
-
-.previewMode .interestName {
-  flex-basis: 66px;
-  font-size: 12px;
-  gap: 0;
-  height: 66px;
-  margin-bottom: 0;
-  min-height: 0;
-}
-
-.previewMode .activityBox .interestIconImage {
+.previewMode .activityBox > .activityColumn.interestBox .interestIconImage {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 95%;
-  height: 64px;
-  max-height: 64px;
+  background-size: 92%;
+  height: 56px;
+  max-height: 56px;
   max-width: 100%;
   transform: none;
-  width: 76px;
+  width: 68px;
 }
 
 .previewMode .stars {
@@ -2268,10 +2258,6 @@
   max-height: none;
   min-height: var(--layout-row3-height);
   overflow: visible;
-}
-
-.previewMode .activityBox > .activityColumn.interestBox {
-  min-height: var(--layout-row3-height);
 }
 
 .previewMode .todoSummary strong {
