@@ -14,6 +14,8 @@ export const CARD_DRAFT_VERSION = 1
 
 const IMAGE_SCALE_MIN = 1
 const IMAGE_SCALE_MAX = 4.5
+const IMAGE_ROTATION_MIN = -30
+const IMAGE_ROTATION_MAX = 30
 
 const dataCenters = ['Elemental', 'Gaia', 'Mana', 'Meteor'] as const
 type DataCenter = typeof dataCenters[number]
@@ -61,6 +63,7 @@ type ImageSettings = {
   scale: number
   x: number
   y: number
+  rotation: number
 }
 
 type TimeRange = {
@@ -218,6 +221,7 @@ function sanitizeImageSettings(value: unknown, fallback: ImageSettings): ImageSe
     scale,
     x: clampNumber(readNumber(value.x, fallback.x), -moveRange, moveRange),
     y: clampNumber(readNumber(value.y, fallback.y), -moveRange, moveRange),
+    rotation: clampNumber(readNumber(value.rotation, fallback.rotation), IMAGE_ROTATION_MIN, IMAGE_ROTATION_MAX),
   }
 }
 
@@ -526,7 +530,7 @@ export function buildCharacterDraft(
     name: character.name,
     dc: character.dc,
     world: character.world,
-    imageSettings: sanitizeImageSettings(character.imageSettings, { scale: 1, x: 0, y: 0 }),
+    imageSettings: sanitizeImageSettings(character.imageSettings, { scale: 1, x: 0, y: 0, rotation: 0 }),
     imageFrameTheme: character.imageFrameTheme,
     targetFrameTheme: character.targetFrameTheme,
     roles: { ...character.roles },

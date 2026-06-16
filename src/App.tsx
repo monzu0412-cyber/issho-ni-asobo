@@ -411,6 +411,7 @@ type ImageSettings = {
   scale: number
   x: number
   y: number
+  rotation: number
 }
 
 type ImageFrameTheme = 'simple' | 'cute' | 'stylish' | 'cool' | 'mechanical'
@@ -985,6 +986,8 @@ function getStepLabel(type: string | undefined) {
 
 const IMAGE_SCALE_MIN = 1
 const IMAGE_SCALE_MAX = 4.5
+const IMAGE_ROTATION_MIN = -30
+const IMAGE_ROTATION_MAX = 30
 const CARD_CONTENT_DISPLAY_LIMIT = 5
 const EDIT_CONTENT_DISPLAY_LIMIT = 5
 
@@ -1080,6 +1083,7 @@ function createEmptyCharacter(): CharacterState {
       scale: 1,
       x: 0,
       y: 0,
+      rotation: 0,
     },
     imageFrameTheme: 'simple',
     targetFrameTheme: 'simple',
@@ -2486,13 +2490,14 @@ function App() {
         scale: 1,
         x: 0,
         y: 0,
+        rotation: 0,
       },
     }))
   }
 
   function updateImageSetting(field: keyof ImageSettings, value: number) {
     setCharacter((currentCharacter) => {
-      const currentSettings = currentCharacter.imageSettings ?? { scale: 1, x: 0, y: 0 }
+      const currentSettings = currentCharacter.imageSettings ?? { scale: 1, x: 0, y: 0, rotation: 0 }
 
       if (field === 'scale') {
         const nextScale = clampNumber(value, IMAGE_SCALE_MIN, IMAGE_SCALE_MAX)
@@ -2501,9 +2506,20 @@ function App() {
         return {
           ...currentCharacter,
           imageSettings: {
+            ...currentSettings,
             scale: nextScale,
             x: clampNumber(currentSettings.x, -nextMoveRange, nextMoveRange),
             y: clampNumber(currentSettings.y, -nextMoveRange, nextMoveRange),
+          },
+        }
+      }
+
+      if (field === 'rotation') {
+        return {
+          ...currentCharacter,
+          imageSettings: {
+            ...currentSettings,
+            rotation: clampNumber(value, IMAGE_ROTATION_MIN, IMAGE_ROTATION_MAX),
           },
         }
       }
@@ -2515,6 +2531,20 @@ function App() {
         imageSettings: {
           ...currentSettings,
           [field]: clampNumber(value, -moveRange, moveRange),
+        },
+      }
+    })
+  }
+
+  function resetImageRotation() {
+    setCharacter((currentCharacter) => {
+      const currentSettings = currentCharacter.imageSettings ?? { scale: 1, x: 0, y: 0, rotation: 0 }
+
+      return {
+        ...currentCharacter,
+        imageSettings: {
+          ...currentSettings,
+          rotation: 0,
         },
       }
     })
@@ -2929,7 +2959,7 @@ function App() {
   const effectivePreviewMode = isDesktopPreviewMode || isCapturePreview
   const contentDisplayLimit = effectivePreviewMode ? CARD_CONTENT_DISPLAY_LIMIT : EDIT_CONTENT_DISPLAY_LIMIT
   const imageUrl = character.imageUrl ?? ''
-  const imageSettings = character.imageSettings ?? { scale: 1, x: 0, y: 0 }
+  const imageSettings = character.imageSettings ?? { scale: 1, x: 0, y: 0, rotation: 0 }
   const imageMoveRange = getImageMoveRange(imageSettings.scale)
   const targetFrameTheme = character.targetFrameTheme ?? 'simple'
   const playTime = normalizePlayTime(character.playTime)
@@ -3119,7 +3149,7 @@ function App() {
                   <div
                     className="profilePhotoScaleWrap"
                     style={{
-                      transform: `scale(${imageSettings.scale})`,
+                      transform: `scale(${imageSettings.scale}) rotate(${imageSettings.rotation}deg)`,
                     }}
                   >
                     <img
@@ -3183,6 +3213,26 @@ function App() {
                       onChange={(event) => updateImageSetting('y', Number(event.target.value))}
                     />
                   </label>
+
+                  <label>
+                    回転
+                    <input
+                      type="range"
+                      min={IMAGE_ROTATION_MIN}
+                      max={IMAGE_ROTATION_MAX}
+                      step="1"
+                      value={imageSettings.rotation}
+                      onChange={(event) => updateImageSetting('rotation', Number(event.target.value))}
+                    />
+                  </label>
+
+                  <button
+                    className="imageRotationReset"
+                    type="button"
+                    onClick={resetImageRotation}
+                  >
+                    回転リセット
+                  </button>
             </div>
             )}
 
