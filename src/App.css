@@ -2726,11 +2726,55 @@ body.card-png-export .previewMode .card {
 
 .cardBody--layout-character .heroLayout .characterSummary {
   align-self: start;
-  grid-column: 2;
+  box-sizing: border-box;
+  grid-column: 1;
   grid-row: 1;
   max-height: var(--layout-main-want-height);
+  max-width: 100%;
   min-height: 0;
+  min-width: 0;
+  overflow-x: hidden;
   overflow-y: auto;
+  width: 100%;
+}
+
+.cardBody--layout-character .heroLayout .profileImageColumn {
+  align-self: start;
+  box-sizing: border-box;
+  grid-column: 2;
+  grid-row: 1;
+  max-width: none;
+  min-width: 0;
+  width: 100%;
+}
+
+.cardBody--layout-character .heroLayout .profileImage {
+  box-sizing: border-box;
+  height: var(--layout-main-want-height);
+  max-height: var(--layout-main-want-height);
+  max-width: none;
+  min-height: var(--layout-main-want-height);
+  min-width: 0;
+  width: 100%;
+}
+
+.editMode .cardBody--layout-character .heroLayout {
+  align-items: start;
+  grid-template-rows: minmax(var(--layout-main-want-height), auto);
+}
+
+.editMode .cardBody--layout-character .heroLayout .characterSummary {
+  max-height: none;
+  overflow: visible;
+}
+
+.editMode .cardBody--layout-character .heroLayout .profileImageColumn {
+  align-self: start;
+  height: auto;
+}
+
+.editMode .cardBody--layout-character .heroLayout .profileImageColumn:not(.profileImageColumn--mobileStack) .imageAdjustForm {
+  max-height: calc(var(--layout-main-want-height) - 16px);
 }
 
 .previewMode .cardBody--layout-character .heroLayout {
@@ -2740,8 +2784,11 @@ body.card-png-export .previewMode .card {
 .previewMode .cardBody--layout-character .heroLayout .characterSummary {
   box-sizing: border-box;
   max-height: none;
-  min-height: var(--layout-main-want-height);
   overflow: visible;
+}
+
+.previewMode .cardBody--layout-character .heroLayout .profileImage {
+  min-height: var(--layout-main-want-height);
 }
 
 .previewMode .cardBody--layout-character .middleRow {
@@ -2775,6 +2822,23 @@ body.card-png-export .previewMode .card {
     grid-column: 1;
     grid-row: auto;
     max-height: none;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .editMode .cardBody--layout-character .heroLayout .profileImageColumn {
+    grid-column: 1;
+    grid-row: auto;
+    max-width: var(--layout-profile-image-size);
+    width: 100%;
+  }
+
+  .editMode .cardBody--layout-character .heroLayout .profileImage {
+    aspect-ratio: 2 / 3;
+    height: auto;
+    max-height: none;
+    max-width: var(--layout-profile-image-size);
+    min-height: 0;
     min-width: 0;
     width: 100%;
   }
