@@ -15,6 +15,7 @@ import type {
   VoiceChat,
 } from '../../types/card'
 import type { HelpSectionSubtitle, WantSectionSubtitle } from '../../data/activityColumnTitles'
+import { CardBodyAsobo } from './CardBodyAsobo'
 import { CardBodyCharacter } from './CardBodyCharacter'
 import { CardBodyWant } from './CardBodyWant'
 
@@ -94,6 +95,10 @@ export type CardBodyProps = {
 export function CardBody(props: CardBodyProps) {
   if (props.layoutMode === 'character') {
     return <CardBodyCharacter {...props} />
+  }
+
+  if (props.layoutMode === 'asobo') {
+    return <CardBodyAsobo {...props} />
   }
 
   return <CardBodyWant {...props} />

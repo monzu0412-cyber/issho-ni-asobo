@@ -137,11 +137,12 @@ export type ImageSettings = {
   rotation: number
 }
 
-export type LayoutMode = 'want' | 'character'
+export type LayoutMode = 'want' | 'character' | 'asobo'
 
 export const layoutModeOptions: Array<{ value: LayoutMode; label: string }> = [
   { value: 'want', label: 'ほしいもの優先' },
   { value: 'character', label: 'キャラクター優先' },
+  { value: 'asobo', label: 'あそぼ優先' },
 ]
 
 export type ImageFrameTheme = 'simple' | 'cute' | 'stylish' | 'cool' | 'mechanical'

@@ -10,7 +10,7 @@ export function resolveLayoutSectionBackground(
   layoutMode: LayoutMode,
   slot: LayoutPanelSlot,
 ): CardSectionName {
-  if (layoutMode === 'character') {
+  if (layoutMode === 'character' || layoutMode === 'asobo') {
     switch (slot) {
       case 'character':
       case 'wantRank1':
