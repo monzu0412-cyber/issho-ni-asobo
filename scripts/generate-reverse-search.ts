@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { basename, dirname, isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { generateEquipSlotByItemId } from './generate-equip-slot-by-item-id.ts'
 
 type Confidence = 'high' | 'medium' | 'low'
 
@@ -826,9 +827,13 @@ async function main() {
   )
   await validateJsonSyntax(outputPaths)
 
+  const equipSlotResult = await generateEquipSlotByItemId()
+  await validateJsonSyntax([equipSlotResult.outputPath])
+
   console.log(`Generated ${baseItems.length} base items`)
   console.log(`Generated ${searchItems.length} search items`)
   console.log(`Generated ${unclassifiedItems.length} unclassified items`)
+  console.log(`Generated ${equipSlotResult.entryCount} equip slot entries`)
 }
 
 await main()

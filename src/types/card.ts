@@ -63,11 +63,19 @@ export type SearchDictionaryItem = {
 
 export type ForwardAcquisitionCategory = '零式' | '極' | 'ID' | '地図' | '交換' | '釣り' | 'PvP' | 'その他'
 
+export type EquipSlot = '頭' | '胴' | '手' | '脚' | '足'
+
+export type EquipRole = 'タンク' | 'ヒーラー' | 'メレー' | 'レンジ' | 'キャスター' | '共通'
+
+export type EquipTaxonomyKey = EquipSlot | EquipRole
+
 export type EnrichedSearchItem = SearchDictionaryItem & {
   acquisitionCategory: ForwardAcquisitionCategory
   details: string[]
   contentDisplayName: string
   resolvedIconUrl: string | null
+  equipSlot: EquipSlot | null
+  equipRole: EquipRole | null
 }
 
 export type ForwardContentOption = {
@@ -78,6 +86,13 @@ export type ForwardContentOption = {
 export type ForwardDetailOption = {
   key: string
   displayName: string
+}
+
+export type ForwardTaxonomyOption = {
+  key: EquipTaxonomyKey
+  displayName: string
+  kind: 'slot' | 'role'
+  count: number
 }
 
 export type SourceDictionaryItem = {

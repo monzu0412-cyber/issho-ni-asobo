@@ -1,4 +1,5 @@
 import searchDictionary from '../../data/reverse-search/generated/search_dictionary.generated.json'
+import equipSlotByItemIdJson from '../../data/reverse-search/generated/equip_slot_by_item_id.generated.json'
 import locationTranslationDictionary from '../../data/reverse-search/manual/location_translation_dictionary.json'
 import fishTermTranslationDictionary from '../../data/reverse-search/manual/fish_term_translation_dictionary.json'
 import contentTranslationDictionary from '../../data/reverse-search/manual/content_translation_dictionary.json'
@@ -8,9 +9,13 @@ import type {
   ActivityCategory,
   ConditionStep,
   EnrichedSearchItem,
+  EquipRole,
+  EquipSlot,
+  EquipTaxonomyKey,
   ForwardAcquisitionCategory,
   ForwardContentOption,
   ForwardDetailOption,
+  ForwardTaxonomyOption,
   SearchDictionaryItem,
   SourceDictionaryItem,
   TargetItem,
@@ -89,6 +94,80 @@ const forwardAcquisitionCategoryOptions: ForwardAcquisitionCategory[] = [
 const forwardAcquisitionCategoryOrder = new Map(
   forwardAcquisitionCategoryOptions.map((category, index) => [category, index]),
 )
+
+const EQUIP_SLOT_ORDER: EquipSlot[] = ['頭', '胴', '手', '脚', '足']
+
+const EQUIP_ROLE_ORDER: EquipRole[] = ['タンク', 'ヒーラー', 'メレー', 'レンジ', 'キャスター', '共通']
+
+const EQUIP_ROLE_PATTERNS: Array<[EquipRole, string[]]> = [
+  ['タンク', ['ディフェンダー']],
+  ['メレー', ['スレイヤー', 'ストライカー']],
+  ['レンジ', ['レンジャー', 'スカウト']],
+  ['ヒーラー', ['ヒーラー']],
+  ['キャスター', ['キャスター', 'ソーサラー']],
+]
+
+const equipSlotByItemId = new Map<number, EquipSlot>(
+  Object.entries(equipSlotByItemIdJson as Record<string, EquipSlot>).map(([itemId, slot]) => [Number(itemId), slot]),
+)
+
+function mapRawCategoryToEquipSlot(rawCategory: string | null | undefined): EquipSlot | null {
+  if (!rawCategory) {
+    return null
+  }
+
+  if (rawCategory.includes('頭')) {
+    return '頭'
+  }
+
+  if (rawCategory.includes('胴')) {
+    return '胴'
+  }
+
+  if (rawCategory.includes('手')) {
+    return '手'
+  }
+
+  if (rawCategory.includes('脚')) {
+    return '脚'
+  }
+
+  if (rawCategory.includes('足')) {
+    return '足'
+  }
+
+  return null
+}
+
+function resolveEquipSlot(item: SearchDictionaryItem): EquipSlot | null {
+  if (item.id != null) {
+    const fromPrototype = equipSlotByItemId.get(item.id)
+
+    if (fromPrototype) {
+      return fromPrototype
+    }
+  }
+
+  return mapRawCategoryToEquipSlot(item.rawCategory)
+}
+
+function resolveEquipRole(name: string): EquipRole {
+  for (const [role, patterns] of EQUIP_ROLE_PATTERNS) {
+    if (patterns.some((pattern) => name.includes(pattern))) {
+      return role
+    }
+  }
+
+  return '共通'
+}
+
+function isEquipSlotKey(key: string): key is EquipSlot {
+  return (EQUIP_SLOT_ORDER as string[]).includes(key)
+}
+
+function isEquipRoleKey(key: string): key is EquipRole {
+  return (EQUIP_ROLE_ORDER as string[]).includes(key)
+}
 
 export const searchItems = (searchDictionary as Array<SearchDictionaryItem & DictionaryMetadata>)
   .filter((item) => item.type !== 'metadata' && item.sourceDictionaryId)
@@ -312,6 +391,8 @@ function enrichSearchItem(item: SearchDictionaryItem): EnrichedSearchItem {
       sourceItem,
     }),
     resolvedIconUrl: resolveTargetIconUrl(enrichedItem, sourceItem),
+    equipSlot: category1 === '装備' ? resolveEquipSlot(item) : null,
+    equipRole: category1 === '装備' ? resolveEquipRole(item.name) : null,
   }
 }
 
@@ -366,11 +447,80 @@ export function getForwardContentNames(category1: string, acquisitionCategory: s
     .sort((left, right) => left.displayName.localeCompare(right.displayName, 'ja'))
 }
 
+export function getForwardTaxonomyOptions(
+  category1: string,
+  acquisitionCategory: string,
+  contentName: string,
+): ForwardTaxonomyOption[] {
+  if (category1 !== '装備' || !acquisitionCategory || !contentName) {
+    return []
+  }
+
+  const slotCounts = new Map<EquipSlot, number>()
+  const roleCounts = new Map<EquipRole, number>()
+
+  for (const item of enrichedSearchItems) {
+    if (
+      item.category1 !== category1
+      || item.acquisitionCategory !== acquisitionCategory
+      || item.contentName !== contentName
+    ) {
+      continue
+    }
+
+    if (item.equipSlot) {
+      slotCounts.set(item.equipSlot, (slotCounts.get(item.equipSlot) ?? 0) + 1)
+    }
+
+    if (item.equipRole) {
+      roleCounts.set(item.equipRole, (roleCounts.get(item.equipRole) ?? 0) + 1)
+    }
+  }
+
+  const options: ForwardTaxonomyOption[] = []
+
+  for (const slot of EQUIP_SLOT_ORDER) {
+    const count = slotCounts.get(slot) ?? 0
+
+    if (count === 0) {
+      continue
+    }
+
+    options.push({
+      key: slot,
+      displayName: `${slot}（${count}）`,
+      kind: 'slot',
+      count,
+    })
+  }
+
+  for (const role of EQUIP_ROLE_ORDER) {
+    const count = roleCounts.get(role) ?? 0
+
+    if (count === 0) {
+      continue
+    }
+
+    options.push({
+      key: role,
+      displayName: `${role}（${count}）`,
+      kind: 'role',
+      count,
+    })
+  }
+
+  return options
+}
+
 export function getForwardDetails(
   category1: string,
   acquisitionCategory: string,
   contentName: string,
 ): ForwardDetailOption[] {
+  if (category1 === '装備') {
+    return []
+  }
+
   if (!category1 || !acquisitionCategory || !contentName) {
     return []
   }
@@ -410,6 +560,7 @@ export function getForwardSearchCandidates(filters: {
   acquisitionCategory: string
   contentName: string
   detail: string
+  taxonomy?: EquipTaxonomyKey | ''
 }) {
   return enrichedSearchItems.filter((item) => {
     if (filters.category1 && item.category1 !== filters.category1) {
@@ -422,6 +573,16 @@ export function getForwardSearchCandidates(filters: {
 
     if (filters.contentName && item.contentName !== filters.contentName) {
       return false
+    }
+
+    if (filters.category1 === '装備' && filters.taxonomy) {
+      if (isEquipSlotKey(filters.taxonomy) && item.equipSlot !== filters.taxonomy) {
+        return false
+      }
+
+      if (isEquipRoleKey(filters.taxonomy) && item.equipRole !== filters.taxonomy) {
+        return false
+      }
     }
 
     if (filters.detail && !item.details.includes(filters.detail)) {

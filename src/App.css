@@ -1816,6 +1816,11 @@
   opacity: 0.55;
 }
 
+.forwardSearchPanel select optgroup {
+  color: #102a54;
+  font-weight: bold;
+}
+
 .forwardSearchCandidates {
   display: flex;
   flex-direction: column;

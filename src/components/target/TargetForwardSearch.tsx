@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import type { ForwardAcquisitionCategory, SearchDictionaryItem } from '../../types/card'
+import { useMemo, useState } from 'react'
+import type { EquipTaxonomyKey, ForwardAcquisitionCategory, SearchDictionaryItem } from '../../types/card'
 import {
   forwardSearchCategory1Options,
   getForwardAcquisitionCategories,
   getForwardContentNames,
   getForwardDetails,
   getForwardSearchCandidates,
+  getForwardTaxonomyOptions,
   getSearchItemIconUrl,
   withResolvedSearchItem,
 } from './targetSearchHelpers'
@@ -18,17 +19,30 @@ export function TargetForwardSearch({
   const [category1, setCategory1] = useState('')
   const [acquisitionCategory, setAcquisitionCategory] = useState<ForwardAcquisitionCategory | ''>('')
   const [contentName, setContentName] = useState('')
+  const [taxonomy, setTaxonomy] = useState<EquipTaxonomyKey | ''>('')
   const [detail, setDetail] = useState('')
 
   const acquisitionOptions = getForwardAcquisitionCategories(category1)
   const contentOptions = getForwardContentNames(category1, acquisitionCategory)
+  const taxonomyOptions = getForwardTaxonomyOptions(category1, acquisitionCategory, contentName)
   const detailOptions = getForwardDetails(category1, acquisitionCategory, contentName)
-  const candidates = getForwardSearchCandidates({
+  const usesEquipmentTaxonomy = category1 === '装備'
+
+  const candidateFilters = useMemo(() => ({
     category1,
     acquisitionCategory,
     contentName,
     detail,
-  }).slice(0, 40)
+    taxonomy,
+  }), [category1, acquisitionCategory, contentName, detail, taxonomy])
+
+  const allCandidates = getForwardSearchCandidates(candidateFilters)
+  const candidates = allCandidates.slice(0, 40)
+
+  const slotTaxonomyOptions = taxonomyOptions.filter((option) => option.kind === 'slot')
+  const roleTaxonomyOptions = taxonomyOptions.filter((option) => option.kind === 'role')
+
+  const canShowCandidates = Boolean(contentName) && (!usesEquipmentTaxonomy || Boolean(taxonomy))
 
   return (
     <div className="forwardSearchPanel">
@@ -40,6 +54,7 @@ export function TargetForwardSearch({
             setCategory1(event.target.value)
             setAcquisitionCategory('')
             setContentName('')
+            setTaxonomy('')
             setDetail('')
           }}
         >
@@ -58,6 +73,7 @@ export function TargetForwardSearch({
           onChange={(event) => {
             setAcquisitionCategory(event.target.value as ForwardAcquisitionCategory | '')
             setContentName('')
+            setTaxonomy('')
             setDetail('')
           }}
         >
@@ -75,6 +91,7 @@ export function TargetForwardSearch({
           disabled={!acquisitionCategory}
           onChange={(event) => {
             setContentName(event.target.value)
+            setTaxonomy('')
             setDetail('')
           }}
         >
@@ -85,7 +102,36 @@ export function TargetForwardSearch({
         </select>
       </label>
 
-      {detailOptions.length > 0 && (
+      {usesEquipmentTaxonomy && contentName && taxonomyOptions.length > 0 && (
+        <label>
+          ④ 分類
+          <select
+            value={taxonomy}
+            onChange={(event) => {
+              setTaxonomy(event.target.value as EquipTaxonomyKey | '')
+              setDetail('')
+            }}
+          >
+            <option value="">選択してください</option>
+            {slotTaxonomyOptions.length > 0 && (
+              <optgroup label="部位">
+                {slotTaxonomyOptions.map((option) => (
+                  <option key={option.key} value={option.key}>{option.displayName}</option>
+                ))}
+              </optgroup>
+            )}
+            {roleTaxonomyOptions.length > 0 && (
+              <optgroup label="ロール">
+                {roleTaxonomyOptions.map((option) => (
+                  <option key={option.key} value={option.key}>{option.displayName}</option>
+                ))}
+              </optgroup>
+            )}
+          </select>
+        </label>
+      )}
+
+      {!usesEquipmentTaxonomy && detailOptions.length > 0 && (
         <label>
           ④ 詳細
           <select
@@ -103,19 +149,28 @@ export function TargetForwardSearch({
 
       <div className="forwardSearchCandidates">
         <div className="forwardSearchCandidatesTitle">
-          ⑤ 候補
-          {contentName && <span>{candidates.length}件</span>}
+          {usesEquipmentTaxonomy ? '⑤ 候補' : '⑤ 候補'}
+          {canShowCandidates && (
+            <span>
+              {allCandidates.length}件
+              {allCandidates.length > candidates.length ? `（先頭${candidates.length}件を表示）` : ''}
+            </span>
+          )}
         </div>
 
         {!contentName && (
           <p className="forwardSearchHint">種類・入手カテゴリ・コンテンツを選ぶと候補が表示されます。</p>
         )}
 
-        {contentName && candidates.length === 0 && (
+        {contentName && usesEquipmentTaxonomy && !taxonomy && (
+          <p className="forwardSearchHint">分類を選ぶと装備一覧が表示されます。</p>
+        )}
+
+        {canShowCandidates && allCandidates.length === 0 && (
           <p className="forwardSearchHint">条件に一致する候補がありません。</p>
         )}
 
-        {contentName && candidates.length > 0 && (
+        {canShowCandidates && allCandidates.length > 0 && (
           <div className="searchResultList forwardSearchResultList">
             {candidates.map((item) => {
               const iconUrl = item.resolvedIconUrl ?? getSearchItemIconUrl(item)
