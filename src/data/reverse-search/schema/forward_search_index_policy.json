@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "type": "forward_search_index_policy",
+  "phase": "6.1",
+  "description": "Canonical policy for generating forward_search_index v2 from verified acquisition chains, confirmed projected sources, and content_dictionary.navigationPath.",
+  "scope": {
+    "category1": ["装備"],
+    "pilotSeriesKeys": "src/lib/publication-gate.ts PILOT_10_SERIES_KEYS",
+    "nonEquipmentPolicy": "forward_search_index does not cover non-equipment; legacy runtime aggregation remains."
+  },
+  "inputs": {
+    "acquisitionChainRegistry": "src/data/reverse-search/manual/acquisition_chain_registry.json",
+    "sourceDictionary": "src/data/reverse-search/manual/source_dictionary.json",
+    "contentDictionary": "src/data/reverse-search/manual/content_dictionary.json",
+    "equipSlotByItemId": "src/data/reverse-search/generated/equip_slot_by_item_id.generated.json"
+  },
+  "output": {
+    "path": "src/data/reverse-search/generated/forward_search_index.generated.json",
+    "generator": "scripts/generate-forward-search-index.ts"
+  },
+  "inclusionRules": {
+    "chainStatus": ["verified"],
+    "sourceStatus": ["confirmed"],
+    "requireChainIdMatch": true,
+    "requireBoundItemIdMatch": true,
+    "requirePublicationGatePass": true,
+    "excludePendingChain": true,
+    "excludeLegacyWithoutChainId": true,
+    "pilot10Only": true,
+    "requireNavigationPath": true
+  },
+  "hierarchy": [
+    "navigationRoot",
+    "navigationGroup",
+    "contentName",
+    "chainId",
+    "seriesKey",
+    "items"
+  ],
+  "navigationSchema": {
+    "navigationPathSource": "content_dictionary.navigationPath",
+    "navigationRoot": "navigationPath[0]",
+    "navigationGroup": "navigationPath[1]",
+    "contentLeaf": "navigationPath[navigationPath.length - 1] === contentName",
+    "acquisitionCategory": "戦闘系 UI ② 表示用 derived field。category2 / navigationPath から導出。"
+  },
+  "requiredContentFields": [
+    "contentName",
+    "contentDisplayName",
+    "navigationPath",
+    "category2",
+    "acquisitionCategory",
+    "chains"
+  ],
+  "requiredItemFields": [
+    "itemId",
+    "name",
+    "role",
+    "slot",
+    "sourceDictionaryId",
+    "category1",
+    "category2",
+    "publicationStatus",
+    "chainId",
+    "linkId",
+    "routeSummary"
+  ],
+  "requiredChainFields": [
+    "chainId",
+    "chainStatus",
+    "chainTemplate",
+    "category1",
+    "category2",
+    "contentName",
+    "series"
+  ],
+  "uiPolicy": {
+    "exposeChainIdToUser": false,
+    "groupCandidatesBy": "seriesKey",
+    "mergeRoutesInList": true,
+    "routeDetailSource": "source_dictionary.acquisitionRoutes",
+    "step2BattleSource": "acquisitionCategory",
+    "step2ExplorationSource": "navigationRoot=探索",
+    "step3ExplorationGrouping": "navigationGroup optgroup"
+  },
+  "forbidden": [
+    "pending_chain items in index",
+    "confirmed items without chainId",
+    "items not in registry boundItemIds",
+    "non-pilot-10 series",
+    "draft or rejected chains",
+    "contents without navigationPath"
+  ]
+}

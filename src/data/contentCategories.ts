@@ -183,6 +183,69 @@ export const contentCategories = [
         ]),
       },
       {
+        id: 'tomestone-aphorism',
+        label: 'アラガントームストーン：経典',
+        children: createItems('tomestone-aphorism', [
+          'ムーンワード装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-astronomy',
+        label: 'アラガントームストーン：天文',
+        children: createItems('tomestone-astronomy', [
+          'レディアント装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-causality',
+        label: 'アラガントームストーン：因果',
+        children: createItems('tomestone-causality', [
+          'ルナエンヴォイ装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-comedy',
+        label: 'アラガントームストーン：神曲',
+        children: createItems('tomestone-comedy', [
+          'クレデンダム装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-scripture',
+        label: 'アラガントームストーン：聖典',
+        children: createItems('tomestone-scripture', [
+          'イディル装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-verity',
+        label: 'アラガントームストーン：真理',
+        children: createItems('tomestone-verity', [
+          'アラミガン装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-creation',
+        label: 'アラガントームストーン：万物',
+        children: createItems('tomestone-creation', [
+          'ロストアラガン装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-mendacity',
+        label: 'アラガントームストーン：虚構',
+        children: createItems('tomestone-mendacity', [
+          '龍脈装備交換',
+        ]),
+      },
+      {
+        id: 'tomestone-revelation',
+        label: 'アラガントームストーン：黙示',
+        children: createItems('tomestone-revelation', [
+          'クリプトラーカー装備交換',
+        ]),
+      },
+      {
         id: 'alliance-crystal-tower',
         label: 'アライアンスレイド：クリスタルタワー',
         children: createItems('alliance-crystal-tower', ['古代の民の迷宮', 'シルクスの塔', '闇の世界']),
@@ -414,7 +477,12 @@ export const contentCategories = [
       {
         id: 'blue-mage',
         label: '青魔道士',
-        children: createItems('blue-mage', ['青魔ログ', '青魔ラーニング', 'モルボルチャレンジ', '青魔零式']),
+        children: createItems('blue-mage', ['青魔道士', '青魔ログ', '青魔ラーニング', 'モルボルチャレンジ', '青魔零式']),
+      },
+      {
+        id: 'job-quest-gear',
+        label: 'ジョブクエスト装備',
+        children: createItems('job-quest-gear', ['サベージャー', 'リーパー']),
       },
     ],
   },
@@ -565,7 +633,7 @@ export const contentCategories = [
       {
         id: 'fate-farm',
         label: 'F.A.T.E：FATE周回',
-        children: createItems('fate-farm', ['FATE周回']),
+        children: createItems('fate-farm', ['FATE', 'FATE周回']),
       },
     ],
   },
@@ -612,6 +680,11 @@ export const contentCategories = [
         id: 'map-g18',
         label: 'G18地図',
         children: createItems('map-g18', ['みんな', '少人数', 'どっちも']),
+      },
+      {
+        id: 'map-hw-aquapolis',
+        label: 'HW宝探し',
+        children: createItems('map-hw-aquapolis', ['The Aquapolis']),
       },
     ],
   },
@@ -743,6 +816,14 @@ export const contentCategories = [
           '採掘師',
           '漁師',
           '全部',
+        ]),
+      },
+      {
+        id: 'gatherer-crafter-routes',
+        label: 'ギャザクラ装備',
+        children: createItems('gatherer-crafter-routes', [
+          'ギャザラー',
+          'クラフト',
         ]),
       },
     ],

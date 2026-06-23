@@ -1,0 +1,2716 @@
+[
+  {
+    "version": 1,
+    "type": "metadata",
+    "description": "Canonical acquisition chain registry. source_dictionary is projected from verified chains in Phase 4+.",
+    "policy": "src/data/reverse-search/schema/acquisition_chain_registry_policy.json",
+    "seriesAuditPolicy": "src/data/reverse-search/schema/series_audit_policy.json",
+    "generatedAt": "2026-06-17T12:00:00+09:00",
+    "phase": 3.5,
+    "projectionForbidden": true,
+    "phase35Note": "Gap resolution batch: content_dictionary bootstrap + verified promotion for pilot 10 draft chains."
+  },
+  {
+    "chainId": "chain/eden/pilot/edenmorn-savage-aapoc",
+    "seriesKey": "エデンモーン",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：再生編",
+    "difficulty": "Savage",
+    "representativeItemId": 32294,
+    "representativeItemName": "エデンモーン・ディフェンダーマスク",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "siblingPairIds": [
+      "eden-edenmorn-coffer-apocrypha"
+    ],
+    "acquisitionLinks": [
+      {
+        "linkId": "edenmorn-coffer-p4",
+        "dropKind": "coffer",
+        "dutyOrField": "希望の園エデン零式：再生編 4層",
+        "detail": "4層宝箱",
+        "cofferLabel": "Edenmorn Coffer",
+        "boundItemIds": [
+          32294,
+          32295,
+          32296,
+          32297,
+          32298,
+          32306,
+          32312,
+          32318,
+          32324,
+          32330,
+          32336
+        ],
+        "notes": "11件: 各ロール頭装備＋タン5部位＋イヤリング(32336)。武器(35790,44241)は exchange のみ。"
+      },
+      {
+        "linkId": "edenmorn-apocrypha-exchange",
+        "dropKind": "token_exchange",
+        "dutyOrField": "希望の園エデン零式：再生編（断章 NPC）",
+        "detail": "Apocrypha Exchange DoW/DoM I〜III",
+        "tokenOrCurrency": "再生の断章（Eden's Promise Apocrypha）",
+        "exchangeVendor": "Eden's Promise Apocrypha Exchange",
+        "boundItemIds": [
+          32300,
+          32307,
+          32308,
+          32309,
+          32310,
+          32341,
+          35790,
+          44241
+        ],
+        "notes": "exchangeTierMapping: 32300→DoW I/6 Litany; 32307→DoW I/8 Eternity; 32308→DoW I/6 Litany; 32309→DoW II/8 Anamorphosis; 32310→DoW I/6 Litany; 32341→DoW I/4 Umbra; 44241→DoW II/8 Eternity; 35790→DoM II/8 Eternity"
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "eden-exchange-tier-slot",
+          "dimension": "route",
+          "description": "Apocrypha Exchange I/II/III と slot 対応表",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalGarland",
+          "resolvableBy": "auto",
+          "notes": "GamerEscape/ConsoleGamesWiki: DoW I=head+accessory, DoW II=legs+weapon, DoM II=Sage weapon。exchange link notes に tier 表記。"
+        },
+        {
+          "gapId": "eden-coffer-weapon-accessory",
+          "dimension": "itemBinding",
+          "description": "武器・アクセ coffre 層別確認（35790, 44241）",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalGarland",
+          "resolvableBy": "auto",
+          "notes": "35790 Pendulums・44241 Twinfangs は exchange のみ（coffer から除外）。32336 イヤリングは coffre 正。"
+        },
+        {
+          "gapId": "eden-itemid-binding-complete",
+          "dimension": "itemBinding",
+          "description": "全19 item の link 所属最終確認",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "internalCleanup",
+          "resolvableBy": "auto",
+          "notes": "coffer 11 + exchange 8 = 19、非重複。"
+        },
+        {
+          "gapId": "eden-legacy-04-sample",
+          "dimension": "route",
+          "description": "legacy 04仕様例（source 側・投影対象外）",
+          "status": "waived",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "notRequiredForVerify",
+          "resolvableBy": "human",
+          "notes": "registry は itemId 付き19件のみ。legacy は Phase 4 投影時に除外"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Edenmorn Gear; Eden's Promise Apocrypha Exchange"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Edenmorn_Mask_of_Maiming"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Edenmorn_Necklace_of_Fending"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Edenmorn_Pendulums"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "url": "https://ffxiv.consolegameswiki.com/wiki/Edenmorn_Mask_of_Maiming"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/32294"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase35-gap-resolution",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/panda/pilot/asphodelos-savage-mythos",
+    "seriesKey": "アスフォデロース",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "token_exchange",
+    "category1": "装備",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "difficulty": "Savage",
+    "representativeItemId": 35265,
+    "representativeItemName": "アスフォデロース・ディフェンダーサークレット",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "siblingPairIds": [
+      "panda-asphodelos-limbo"
+    ],
+    "acquisitionLinks": [
+      {
+        "linkId": "asph-mythos-exchange",
+        "dropKind": "token_exchange",
+        "dutyOrField": "万魔殿パンデモニウム零式：辺獄編",
+        "detail": "Asphodelos Mythos Exchange",
+        "tokenOrCurrency": "アスフォデロースミトス（Asphodelos Mythos）",
+        "exchangeVendor": "Asphodelos Mythos Exchange (DoW) I",
+        "boundItemIds": [
+          35265,
+          35270,
+          35275,
+          35280,
+          35285,
+          35290,
+          35295
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "asph-limbo-separation",
+          "dimension": "siblingSeparation",
+          "description": "リンボ chain との分離",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "siblingSeparation",
+          "resolvableBy": "auto",
+          "notes": "sibling_pair_registry 登録済み"
+        },
+        {
+          "gapId": "asph-source-route-wrong",
+          "dimension": "route",
+          "description": "source_dictionary L-8e 直ドロップ表記（投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Asphodelos Mythos Exchange (DoW) I"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Asphodelos_Circlet_of_Fending"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/35265"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "零式・辺獄編 agree"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase3-registry-bootstrap",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/panda/pilot/limbo-normal-unsung",
+    "seriesKey": "リンボ",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "token_exchange",
+    "category1": "装備",
+    "category2": "ノーマルレイド",
+    "contentName": "万魔殿パンデモニウム：辺獄編",
+    "difficulty": "Normal Raid",
+    "representativeItemId": 34965,
+    "representativeItemName": "リンボ・ディフェンダーサークレット",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "siblingPairIds": [
+      "panda-asphodelos-limbo"
+    ],
+    "acquisitionLinks": [
+      {
+        "linkId": "limbo-unsung-exchange",
+        "dropKind": "token_exchange",
+        "dutyOrField": "万魔殿パンデモニウム：辺獄編",
+        "detail": "Unsung Relic of Asphodelos Exchange",
+        "tokenOrCurrency": "アンミュートレリック（Unsung Relic of Asphodelos）",
+        "exchangeVendor": "Unsung Relic of Asphodelos Exchange (DoW) I",
+        "boundItemIds": [
+          34965,
+          34970,
+          34975,
+          34980,
+          34985,
+          34990,
+          34995
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "limbo-content-dictionary-missing",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary に万魔殿パンデモニウム：辺獄編（ノーマル）未登録",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 3.5: 万魔殿パンデモニウム：辺獄編 を category2=ノーマルレイド で登録"
+        },
+        {
+          "gapId": "limbo-asph-separation",
+          "dimension": "siblingSeparation",
+          "description": "アスフォデロース chain との分離",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "siblingSeparation",
+          "resolvableBy": "auto"
+        },
+        {
+          "gapId": "limbo-source-wrong",
+          "dimension": "route",
+          "description": "source 誤分類（零式辺獄・投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Unsung Relic of Asphodelos Exchange; Limbo Gear IL580"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Limbo_Circlet_of_Fending"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/34965"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "ノーマル・辺獄編 agree"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase35-gap-resolution",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/alex/pilot/midas-savage-manifesto",
+    "seriesKey": "ミダース",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "token_exchange",
+    "category1": "装備",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：律動編",
+    "difficulty": "Savage",
+    "representativeItemId": 14588,
+    "representativeItemName": "ミダース・ディフェンダーヘッドバンド",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "siblingPairIds": [
+      "alex-midas-protomidas"
+    ],
+    "namingTrap": "系列名ミダース=零式。プロトミダース=ノーマル。",
+    "acquisitionLinks": [
+      {
+        "linkId": "midas-manifesto-exchange",
+        "dropKind": "token_exchange",
+        "dutyOrField": "機工城アレキサンダー零式：律動編",
+        "detail": "Midan Manifesto Exchange",
+        "tokenOrCurrency": "ミダースマニフェスト（Midan Manifesto）",
+        "exchangeVendor": "Midan Manifesto Exchange (DoW) I",
+        "boundItemIds": [
+          14588,
+          14589,
+          14590,
+          14591,
+          14592,
+          14593,
+          14594
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "midas-protomidas-separation",
+          "dimension": "siblingSeparation",
+          "description": "プロトミダース chain との分離",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "siblingSeparation",
+          "resolvableBy": "auto"
+        },
+        {
+          "gapId": "midas-source-route-wrong",
+          "dimension": "route",
+          "description": "source L-8e 直ドロップ表記（投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Midan Manifesto Exchange; Midan Gear IL240-245"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Midan_Headband_of_Fending"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/14588"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "ミダース→零式 マスター確認済み"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase3-registry-bootstrap",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/alex/pilot/protomidas-normal-part",
+    "seriesKey": "プロトミダース",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "token_exchange",
+    "category1": "装備",
+    "category2": "ノーマルレイド",
+    "contentName": "機工城アレキサンダー：律動編",
+    "difficulty": "Normal Raid",
+    "representativeItemId": 14512,
+    "representativeItemName": "プロトミダース・ディフェンダーヘッドバンド",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "siblingPairIds": [
+      "alex-midas-protomidas"
+    ],
+    "namingTrap": "プロト（Prototype）名だがノーマル tier。",
+    "acquisitionLinks": [
+      {
+        "linkId": "protomidas-part-exchange",
+        "dropKind": "token_exchange",
+        "dutyOrField": "機工城アレキサンダー：律動編",
+        "detail": "Midan Part Exchange",
+        "tokenOrCurrency": "ミダースパーツ（Midan Part）",
+        "exchangeVendor": "Midan Part Exchange (DoW) I",
+        "boundItemIds": [
+          14512,
+          14513,
+          14514,
+          14515,
+          14516,
+          14517,
+          14518
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "protomidas-midas-separation",
+          "dimension": "siblingSeparation",
+          "description": "ミダース chain との分離",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "siblingSeparation",
+          "resolvableBy": "auto"
+        },
+        {
+          "gapId": "protomidas-source-wrong",
+          "dimension": "route",
+          "description": "source 誤分類（零式律動・投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Midan Part Exchange; Prototype Midan Gear IL220"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Prototype_Midan_Headband_of_Fending"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/14512"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "プロトミダース→ノーマル マスター確認済み"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase3-registry-bootstrap",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/bozja/pilot/blaze-zadnor-platinum",
+    "seriesKey": "ブレイズ",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "その他",
+    "contentName": "ザトゥノル高原",
+    "difficulty": "Field / Castrum",
+    "representativeItemId": 33613,
+    "representativeItemName": "ブレイズ・ディフェンダーサークレット",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "acquisitionLinks": [
+      {
+        "linkId": "blaze-currency-earn-dalriada",
+        "dropKind": "currency_source",
+        "detail": "ダル・リアータ",
+        "tokenOrCurrency": "ボズヤ古白金貨（Old Bozjan Platinum Coin）",
+        "relatedDuty": "ボズヤ：旗艦ダル・リアータ攻略戦"
+      },
+      {
+        "linkId": "blaze-currency-earn-zadnor-weekly",
+        "dropKind": "currency_source",
+        "detail": "ザトゥノル高原",
+        "tokenOrCurrency": "ボズヤ古白金貨（Old Bozjan Platinum Coin）"
+      },
+      {
+        "linkId": "blaze-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "ザトゥノル高原",
+        "detail": "Blade's Gear Exchange",
+        "tokenOrCurrency": "ボズヤ古白金貨",
+        "exchangeVendor": "Blade's Gear Exchange (Resistance Supplier)",
+        "notes": "NPC: Camp Vrdelnis (35.9, 34.3)。全7 item は head slot、各6 ボズヤ古白金貨。",
+        "boundItemIds": [
+          33613,
+          33618,
+          33623,
+          33628,
+          33633,
+          33638,
+          33643
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "blaze-content-dict-missing",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary ザトゥノル高原登録",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 3 bootstrap で登録"
+        },
+        {
+          "gapId": "blaze-currency-amounts",
+          "dimension": "exchange",
+          "description": "交換必要枚数 / 部位別コスト",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalGarland",
+          "resolvableBy": "auto",
+          "notes": "全 head 装備7件とも Old Bozjan Platinum Coin ×6（GamerEscape item/33613）"
+        },
+        {
+          "gapId": "blaze-npc-location",
+          "dimension": "npc",
+          "description": "Blade's Gear Exchange NPC 座標・場所",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalTeamcraft",
+          "resolvableBy": "auto",
+          "notes": "Resistance Supplier (Zadnor) @ Camp Vrdelnis (35.9, 34.3)"
+        },
+        {
+          "gapId": "blaze-source-wrong",
+          "dimension": "route",
+          "description": "source 誤分類（エデン零式・投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Blade's Gear Exchange"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/33613"
+          },
+          {
+            "type": "GamerEscape",
+            "url": "https://ffxiv.gamerescape.com/wiki/Blade%27s_Circlet_of_Fending"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "ザトゥノル高原・ボズヤ古白金貨（Dalriada + Zadnor 週次）"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase35-gap-resolution",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/pilot/shadowless-heroes-gauntlet",
+    "seriesKey": "シャドウレス",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "漆黒決戦 ノルヴラント",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 30616,
+    "representativeItemName": "シャドウレス・ディフェンダーマスク",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "acquisitionLinks": [
+      {
+        "linkId": "shadowless-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "漆黒決戦 ノルヴラント（The Heroes' Gauntlet）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          30616,
+          30622,
+          30628,
+          30634,
+          30640,
+          30646,
+          30652
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "shadowless-content-dictionary-missing",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary に漆黒決戦 ノルヴラント未登録",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 3.5: 漆黒決戦 ノルヴラント 登録"
+        },
+        {
+          "gapId": "shadowless-source-wrong",
+          "dimension": "route",
+          "description": "source 誤分類（オメガ零式・投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "The Heroes' Gauntlet"
+          },
+          {
+            "type": "Lodestone",
+            "note": "The Heroes' Gauntlet — Dungeons > Shadowbringers"
+          },
+          {
+            "type": "Teamcraft",
+            "note": "漆黒決戦 ノルヴラント"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "ID: 漆黒決戦 ノルヴラント"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase35-gap-resolution",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/pilot/ktiseos-hyperboreia",
+    "seriesKey": "キティセオス",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "ヒュペルボレア造物院",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 34625,
+    "representativeItemName": "キティセオス・ディフェンダーマスク",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "acquisitionLinks": [
+      {
+        "linkId": "ktiseos-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "ヒュペルボレア造物院（Ktisis Hyperboreia）",
+        "detail": "ダンジョン宝箱",
+        "notes": "alias: 創造環境 ヒュペルボレア造物院",
+        "boundItemIds": [
+          34625,
+          34630,
+          34635,
+          34640,
+          34645,
+          34650,
+          34655
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "ktiseos-content-dictionary-missing",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary にヒュペルボレア造物院未登録",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 3.5: ヒュペルボレア造物院 登録"
+        },
+        {
+          "gapId": "ktiseos-content-name-variant",
+          "dimension": "contentName",
+          "description": "表記ゆれ（創造環境 vs ヒュペルボレア造物院）",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "masterVerdict",
+          "resolvableBy": "human",
+          "notes": "canonical=ヒュペルボレア造物院、alias=創造環境 ヒュペルボレア造物院（content_dictionary）"
+        },
+        {
+          "gapId": "ktiseos-source-wrong",
+          "dimension": "route",
+          "description": "source 誤分類（エデン零式共鳴・投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Ktisis Hyperboreia"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Ktisis Hyperboreia — Dungeons > Endwalker"
+          },
+          {
+            "type": "Teamcraft",
+            "note": "創造環境 ヒュペルボレア造物院"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "ID agree; canonical=ヒュペルボレア造物院"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase35-gap-resolution",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/pilot/zormor-worqor",
+    "seriesKey": "ゾーモー",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "山嶺登頂 ウォーコー・ゾーモー",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 42089,
+    "representativeItemName": "ゾーモー・ディフェンダーキャップ",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "acquisitionLinks": [
+      {
+        "linkId": "zormor-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "山嶺登頂 ウォーコー・ゾーモー（Worqor Zormor）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          42089,
+          42094,
+          42099,
+          42104,
+          42109,
+          42114,
+          42119
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "zormor-content-dictionary-missing",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary に山嶺登頂 ウォーコー・ゾーモー未登録",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 3.5: 山嶺登頂 ウォーコー・ゾーモー 登録"
+        },
+        {
+          "gapId": "zormor-source-wrong",
+          "dimension": "route",
+          "description": "source 誤分類（零式煉獄・投影待ち）",
+          "status": "open",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "projection",
+          "resolvableBy": "projection"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Worqor Zormor"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Worqor Zormor — Dungeons > Dawntrail"
+          },
+          {
+            "type": "Teamcraft",
+            "note": "山嶺登頂 ウォーコー・ゾーモー"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "ID agree"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase35-gap-resolution",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/pilot/manushya-zot",
+    "seriesKey": "マヌシャ",
+    "status": "verified",
+    "phase": 3.5,
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "異形楼閣 ゾットの塔",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 34175,
+    "representativeItemName": "マヌシャ・ディフェンダーヘルム",
+    "itemBindingPolicy": "series_prefix_all_slots",
+    "acquisitionLinks": [
+      {
+        "linkId": "manushya-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "異形楼閣 ゾットの塔（The Tower of Zot）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          34175,
+          34180,
+          34185,
+          34190,
+          34195,
+          34200,
+          34205
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "manushya-content-dictionary-missing",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary に異形楼閣 ゾットの塔未登録",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 3.5: 異形楼閣 ゾットの塔 登録"
+        },
+        {
+          "gapId": "manushya-evidence-refresh",
+          "dimension": "evidence",
+          "description": "証跡再掲（任意）",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": false,
+          "resolutionMethod": "externalLodestone",
+          "resolvableBy": "auto",
+          "notes": "Lodestone/Teamcraft 再確認済み"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "The Tower of Zot"
+          },
+          {
+            "type": "Teamcraft",
+            "note": "異形楼閣 ゾットの塔"
+          },
+          {
+            "type": "Lodestone",
+            "url": "https://na.finalfantasyxiv.com/lodestone/playguide/db/dungeon/a0a3bd4c5e1/"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase35-gap-resolution",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/wave-a/paraka-vanaspati",
+    "seriesKey": "パーラカ",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "終末樹海 ヴァナスパティ",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 34475,
+    "representativeItemName": "パーラカ・ディフェンダーヘルム",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "paraka-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "終末樹海 ヴァナスパティ（Vanaspati）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          34475,
+          34480,
+          34485,
+          34490,
+          34495,
+          34500,
+          34505
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "paraka-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier1"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Vanaspati"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/34475"
+          },
+          {
+            "type": "Lodestone",
+            "note": "L-11.3a: パーラカ → 終末樹海 ヴァナスパティ"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase62-tier1",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/panda/wave-a/purgatory-abyssos-mythos",
+    "seriesKey": "パーガトリィ",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "token_exchange",
+    "category1": "装備",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "difficulty": "Savage",
+    "representativeItemId": 37876,
+    "representativeItemName": "パーガトリィ・ディフェンダーヘルム",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "purgatory-mythos-exchange",
+        "dropKind": "token_exchange",
+        "dutyOrField": "万魔殿パンデモニウム零式：煉獄編",
+        "detail": "Abyssos Mythos Exchange",
+        "tokenOrCurrency": "アビュッソスミトス（Abyssos Mythos）",
+        "exchangeVendor": "Abyssos Mythos Exchange (DoW) I",
+        "boundItemIds": [
+          37876,
+          37881,
+          37886,
+          37891,
+          37896,
+          37901,
+          37906
+        ],
+        "notes": "Tier1: パーガトリィ head7。煉獄零式 token exchange。"
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "purgatory-navigation-path",
+          "dimension": "content_dictionary",
+          "description": "煉獄零式 navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier1"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Purgatory Helm of Fending"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/37876"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "verified_candidate: マスター照合agree / 零式断章交換"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase62-tier1",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/panda/wave-a/abyssos-savage-coffer",
+    "seriesKey": "アビュッソス",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "difficulty": "Savage",
+    "representativeItemId": 38101,
+    "representativeItemName": "アビュッソス・ディフェンダーヘルム",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "abyssos-savage-coffer",
+        "dropKind": "coffer",
+        "dutyOrField": "万魔殿パンデモニウム零式：煉獄編",
+        "detail": "零式宝箱",
+        "cofferLabel": "Abyssos Chest Gear Coffer",
+        "boundItemIds": [
+          38101,
+          38106,
+          38111,
+          38116,
+          38121,
+          38126,
+          38131
+        ],
+        "notes": "Tier1: アビュッソス head7。煉獄零式直ドロップ（coffer）。"
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "abyssos-savage-coffer-binding",
+          "dimension": "itemBinding",
+          "description": "head7 boundItemIds 確定",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "internalCleanup",
+          "resolvableBy": "auto",
+          "notes": "Phase 6.2-pre Tier1 head7"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Abyssos Helm of Fending"
+          },
+          {
+            "type": "Teamcraft",
+            "url": "https://ffxivteamcraft.com/db/en/item/38101"
+          },
+          {
+            "type": "masterVerdict",
+            "note": "verified_candidate: マスター照合agree / 零式直ドロップ"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase62-tier1",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/wave-a/vanguard-outpost",
+    "seriesKey": "ヴァンガード",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "外征前哨 ヴァンガード",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 42397,
+    "representativeItemName": "ヴァンガード・ディフェンダーヘルム",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "vanguard-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "外征前哨 ヴァンガード（Vanguard）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          42397,
+          42402,
+          42407,
+          42412,
+          42417,
+          42422,
+          42427
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "vanguard-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier2"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Teamcraft",
+            "note": "外征前哨 ヴァンガード"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Vanguard dungeon"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase62-tier2",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/wave-a/yuweyawata-field-station",
+    "seriesKey": "ユウェヤーワータ",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "廃地討究 ユウェヤーワータ",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 44550,
+    "representativeItemName": "ユウェヤーワータ・ディフェンダーヘアピン",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "yuweyawata-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "廃地討究 ユウェヤーワータ（Yuweyawata Field Station）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          44550,
+          44555,
+          44560,
+          44565,
+          44570,
+          44575,
+          44580
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "yuweyawata-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier2"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Teamcraft",
+            "note": "廃地討究 ユウェヤーワータ"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Yuweyawata Field Station"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase62-tier2",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/wave-a/troia-court",
+    "seriesKey": "トロイアン",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "異界孤城 トロイアコート",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 38156,
+    "representativeItemName": "トロイアン・ディフェンダーサークレット",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "troia-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "異界孤城 トロイアコート（The Fell Court of Troia）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          38156,
+          38161,
+          38166,
+          38171,
+          38176,
+          38181,
+          38186
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "troia-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier2"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Teamcraft",
+            "note": "異界孤城 トロイアコート"
+          },
+          {
+            "type": "Lodestone",
+            "note": "The Fell Court of Troia"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase62-tier2",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/wave-a/lapis-manalis",
+    "seriesKey": "マナリス",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "雪山冥洞 ラピス・マナリス",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 38957,
+    "representativeItemName": "マナリス・ディフェンダーサークレット",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "manalis-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "雪山冥洞 ラピス・マナリス（Lapis Manalis）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          38957,
+          38962,
+          38967,
+          38972,
+          38977,
+          38982,
+          38987
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "manalis-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier2"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Teamcraft",
+            "note": "雪山冥洞 ラピス・マナリス"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Lapis Manalis"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase62-tier2",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/wave-a/matoya-atelier",
+    "seriesKey": "エアルーム",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "魔術工房 マトーヤのアトリエ",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 32578,
+    "representativeItemName": "エアルーム・ディフェンダーサークレット",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "matoya-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "魔術工房 マトーヤのアトリエ（Matoya's Relict）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          32578,
+          32584,
+          32590,
+          32596,
+          32602,
+          32608,
+          32614
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "matoya-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier3a"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-21T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Garland",
+            "note": "Matoya's Relict"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Matoya's Relict"
+          },
+          {
+            "type": "Teamcraft",
+            "note": "魔術工房 マトーヤのアトリエ"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-21T12:00:00+09:00",
+    "verifiedBy": "phase62-tier3a",
+    "updatedAt": "2026-06-21T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/id/wave-a/underkeep-ruins",
+    "seriesKey": "アンダーキープ",
+    "status": "verified",
+    "phase": "6.2",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "duty_drop",
+    "category1": "装備",
+    "category2": "ID",
+    "contentName": "王城旧跡 アンダーキープ",
+    "difficulty": "Expert Dungeon",
+    "representativeItemId": 46344,
+    "representativeItemName": "アンダーキープ・ディフェンダーヘルム",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "underkeep-duty-drop",
+        "dropKind": "duty_drop",
+        "dutyOrField": "王城旧跡 アンダーキープ（The Underkeep）",
+        "detail": "ダンジョン宝箱",
+        "boundItemIds": [
+          46344,
+          46349,
+          46354,
+          46359,
+          46364,
+          46369,
+          46374
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "underkeep-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.2-pre Tier3a"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-21T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Lodestone",
+            "note": "The Underkeep"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-21T12:00:00+09:00",
+    "verifiedBy": "phase62-tier3a",
+    "updatedAt": "2026-06-21T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/ew/moonward-gear",
+    "seriesKey": "ムーンワード",
+    "status": "verified",
+    "phase": "6.3",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "ムーンワード装備交換",
+    "difficulty": "Tomestone / Hunt Exchange",
+    "representativeItemId": 34870,
+    "representativeItemName": "ムーンワード・ディフェンダーサークレット",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "moonward-nuts-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "モブハントの戦利品",
+        "relatedDuty": "The Hunt for Specimens"
+      },
+      {
+        "linkId": "moonward-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "J'lakshai（オールド・シャーレアン）/ Wilmetta（ラザハン）",
+        "detail": "Moonward Gear Exchange",
+        "tokenOrCurrency": "モブハントの戦利品 ×35",
+        "exchangeVendor": "Moonward Gear Exchange (DoW/DoM, IL 570)",
+        "notes": "head 各35モブハントの戦利品。alias: 堅果の袋 / Sack of Nuts。history: 6.0-6.2はアラガントームストーン：経典×245（Cihanti・ラザハン 10.8, 10.4）。英語名: Allagan Tomestones of Aphorism。alias: アフォリズム。6.2で経典廃止。",
+        "boundItemIds": [
+          34870,
+          34875,
+          34880,
+          34885,
+          34890,
+          34895,
+          34900
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "moonward-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.3-pre-exchange"
+        },
+        {
+          "gapId": "moonward-exchange-cost",
+          "dimension": "exchange",
+          "description": "モブハントの戦利品 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各35 Sack of Nuts（ConsoleGamesWiki Moonward Hairpin of Casting）"
+        },
+        {
+          "gapId": "moonward-npc-location",
+          "dimension": "npc",
+          "description": "Moonward Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "J'lakshai Old Sharlayan (11.8, 13.2) / Wilmetta Radz-at-Han (10.5, 7.4)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-22T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Moonward Hairpin of Casting vendor table"
+          },
+          {
+            "type": "Garland",
+            "note": "Moonward Gear Exchange (DoM, IL 570)"
+          },
+          {
+            "type": "GamerEscape",
+            "note": "J'lakshai Moonward Gear Exchange"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-22T12:00:00+09:00",
+    "verifiedBy": "phase63-exchange-moonward",
+    "updatedAt": "2026-06-22T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/ew/radiant-gear",
+    "seriesKey": "レディアント",
+    "status": "verified",
+    "phase": "6.3-radiant",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "レディアント装備交換",
+    "difficulty": "Tomestone / Hunt Exchange",
+    "representativeItemId": 35190,
+    "representativeItemName": "レディアント・ディフェンダーヘルムRE",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "radiant-nuts-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "モブハントの戦利品",
+        "relatedDuty": "The Hunt for Specimens"
+      },
+      {
+        "linkId": "radiant-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "J'lakshai（オールド・シャーレアン）/ Wilmetta（ラザハン）",
+        "detail": "Radiant's Gear Exchange",
+        "tokenOrCurrency": "モブハントの戦利品 ×70",
+        "exchangeVendor": "Radiant's Gear Exchange (DoW/DoM, IL 600)",
+        "notes": "head 各70モブハントの戦利品（Augmented / RE IL600）。alias: 堅果の袋 / Sack of Nuts。history: 6.05〜6.4はアラガントームストーン：天文×495（Cihanti・ラザハン 10.8, 10.4）。base IL590は現在Vendor新規購入不可。",
+        "boundItemIds": [
+          35190,
+          35195,
+          35200,
+          35205,
+          35210,
+          35215,
+          35220
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "radiant-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.3-pre-exchange-radiant"
+        },
+        {
+          "gapId": "radiant-exchange-cost",
+          "dimension": "exchange",
+          "description": "モブハントの戦利品 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各70 Sack of Nuts（ConsoleGamesWiki Augmented Radiant's Helm of Fending）"
+        },
+        {
+          "gapId": "radiant-npc-location",
+          "dimension": "npc",
+          "description": "Radiant's Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "J'lakshai Old Sharlayan (12.0, 13.3) / Wilmetta Radz-at-Han (10.5, 7.4)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-22T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Augmented Radiant's Helm of Fending vendor table"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Allagan Tomestone of Astronomy retirement / Sack of Nuts migration"
+          },
+          {
+            "type": "GamerEscape",
+            "note": "Wilmetta Radiant's Gear (DoW IL 600)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-22T12:00:00+09:00",
+    "verifiedBy": "phase63-exchange-radiant",
+    "updatedAt": "2026-06-22T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/ew/lunar-envoy-gear",
+    "seriesKey": "ルナエンヴォイ",
+    "status": "verified",
+    "phase": "6.4-lunar-envoy",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "ルナエンヴォイ装備交換",
+    "difficulty": "Tomestone Exchange",
+    "representativeItemId": 38026,
+    "representativeItemName": "ルナエンヴォイ・ディフェンダーフェイスガードRE",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "lunar-envoy-poetics-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "アラガントームストーン：詩学"
+      },
+      {
+        "linkId": "lunar-envoy-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "Khaldeen（ラザハン）/ アゴラ商人組合の交易商（オールド・シャーレアン）",
+        "detail": "Lunar Envoy Gear (IL 630)",
+        "tokenOrCurrency": "アラガントームストーン：詩学 ×345",
+        "exchangeVendor": "Lunar Envoy Gear Exchange (DoW/DoM, IL 630)",
+        "notes": "head 各345アラガントームストーン：詩学（Augmented / RE IL630）。history: 6.4〜7.0はアラガントームストーン：因果×495（Khaldeen強化・ラザハン 10.8, 10.4）。base IL620は現在Vendor新規購入不可。7.0以降はアラガントームストーン：詩学でRE直購入。誤候補: ルナエンヴォイの記章（prototype由来・正本にしない）。",
+        "boundItemIds": [
+          38026,
+          38031,
+          38036,
+          38041,
+          38046,
+          38051,
+          38056
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "lunar-envoy-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.4-pre-exchange-lunar-envoy"
+        },
+        {
+          "gapId": "lunar-envoy-exchange-cost",
+          "dimension": "exchange",
+          "description": "アラガントームストーン：詩学 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各345 Poetics（ConsoleGamesWiki Augmented Lunar Envoy's Face Guard of Fending）"
+        },
+        {
+          "gapId": "lunar-envoy-npc-location",
+          "dimension": "npc",
+          "description": "Lunar Envoy Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "Khaldeen Radz-at-Han (10.8, 10.4) / Agora Merchant Consortium Old Sharlayan"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Augmented Lunar Envoy's Face Guard of Fending vendor table"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Allagan Tomestone of Causality retirement / Poetics migration"
+          },
+          {
+            "type": "GamerEscape",
+            "note": "Khaldeen Lunar Envoy Gear (DoW IL 630)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase64-exchange-lunar-envoy",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/ew/credendum-gear",
+    "seriesKey": "クレデンダム",
+    "status": "verified",
+    "phase": "6.4-credendum",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "クレデンダム装備交換",
+    "difficulty": "Tomestone Exchange",
+    "representativeItemId": 40110,
+    "representativeItemName": "クレデンダム・ディフェンダーサークレットRE",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "credendum-poetics-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "アラガントームストーン：詩学"
+      },
+      {
+        "linkId": "credendum-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "キハンティ（ラザハン）/ アゴラ商人組合の交易商（オールド・シャーレアン）",
+        "detail": "Credendum Gear (IL 660)",
+        "tokenOrCurrency": "アラガントームストーン：詩学 ×345",
+        "exchangeVendor": "Credendum Gear Exchange (DoW/DoM, IL 660)",
+        "notes": "head 各345アラガントームストーン：詩学（Augmented / RE IL660）。history: 6.4〜7.0はアラガントームストーン：神曲×495（Khaldeen強化・ラザハン 10.8, 10.4）。base IL650は現在Vendor新規購入不可。7.0以降はアラガントームストーン：詩学でRE直購入。誤候補: クレデンダムの記章（prototype由来・正本にしない）。",
+        "boundItemIds": [
+          40110,
+          40115,
+          40120,
+          40125,
+          40130,
+          40135,
+          40140
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "credendum-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.4-pre-exchange-credendum"
+        },
+        {
+          "gapId": "credendum-exchange-cost",
+          "dimension": "exchange",
+          "description": "アラガントームストーン：詩学 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各345 Poetics（ConsoleGamesWiki Augmented Credendum Circlet of Fending）"
+        },
+        {
+          "gapId": "credendum-npc-location",
+          "dimension": "npc",
+          "description": "Credendum Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "Cihanti Radz-at-Han (10.8, 10.4) / Agora Merchant Consortium Old Sharlayan (11.6, 11.2)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Lodestone",
+            "note": "Augmented Credendum Circlet of Fending vendor table"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Patch 7.0 Comedy retirement / Poetics migration"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Cihanti Credendum Gear (DoW IL 660)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T12:00:00+09:00",
+    "verifiedBy": "phase64-exchange-credendum",
+    "updatedAt": "2026-06-20T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/sb/cryptlurker-gear",
+    "seriesKey": "クリプトラーカー",
+    "status": "verified",
+    "phase": "6.5-cryptlurker",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "クリプトラーカー装備交換",
+    "difficulty": "Tomestone Exchange",
+    "representativeItemId": 32516,
+    "representativeItemName": "クリプトラーカー・ディフェンダーエルモRE",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "cryptlurker-poetics-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "アラガントームストーン：詩学"
+      },
+      {
+        "linkId": "cryptlurker-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "アイマーク（ユールモア）/ モーエン商会の商人（クリスタリウム）",
+        "detail": "Cryptlurker Gear (IL 530)",
+        "tokenOrCurrency": "アラガントームストーン：詩学 ×345",
+        "exchangeVendor": "Cryptlurker Gear Exchange (DoW/DoM, IL 530)",
+        "notes": "head 各345アラガントームストーン：詩学（Augmented / RE IL530）。history: 5.4〜6.0はアラガントームストーン：黙示×495（Shee-Tatch強化・ユールモア 10.3, 12.0）。base IL520は現在Vendor新規購入不可。6.0以降はアラガントームストーン：詩学でRE直購入。誤候補: クリスタルコンフリクト/PvP prototype分類 / 漆黒詩学装備（正本にしない）。",
+        "boundItemIds": [
+          32516,
+          32522,
+          32528,
+          32534,
+          32540,
+          32546,
+          32552
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "cryptlurker-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.5-pre-exchange-cryptlurker"
+        },
+        {
+          "gapId": "cryptlurker-exchange-cost",
+          "dimension": "exchange",
+          "description": "アラガントームストーン：詩学 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各345 Poetics（ConsoleGamesWiki Augmented Cryptlurker Elmo of Fending）"
+        },
+        {
+          "gapId": "cryptlurker-npc-location",
+          "dimension": "npc",
+          "description": "Cryptlurker Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "Aymark Eulmore (10.2, 11.8) / Mowen's Merchant Crystarium (10.1, 11.8)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T14:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Lodestone",
+            "note": "Augmented Cryptlurker Elmo of Fending vendor table"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Patch 6.0 Revelation retirement / Poetics migration"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Aymark Cryptlurker Gear (DoW IL 530)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T14:00:00+09:00",
+    "verifiedBy": "phase65-exchange-cryptlurker",
+    "updatedAt": "2026-06-20T14:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/sb/ryumyaku-gear",
+    "seriesKey": "龍脈",
+    "status": "verified",
+    "phase": "6.6-ryumyaku",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "龍脈装備交換",
+    "difficulty": "Tomestone Exchange",
+    "representativeItemId": 21415,
+    "representativeItemName": "大龍脈鉢金【武士】",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "ryumyaku-poetics-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "アラガントームストーン：詩学"
+      },
+      {
+        "linkId": "ryumyaku-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "エンナ（ラールガーズリーチ）/ ロウェナ商会の商人（クガネ）",
+        "detail": "Ryumyaku Gear (IL 370)",
+        "tokenOrCurrency": "アラガントームストーン：詩学 ×345",
+        "exchangeVendor": "Ryumyaku Gear (DoW/DoM, IL 370)",
+        "notes": "head 各345アラガントームストーン：詩学（Augmented / RE IL370 / 大龍脈）。history: 4.2〜5.3はアラガントームストーン：虚構×495購入→E'bolaff強化（虚構×100・ラールガーズリーチ 13.7, 12.3）。base IL360は現在Vendor新規購入不可。5.3以降はアラガントームストーン：詩学でRE直購入。誤候補: アライアンス装備（prototype誤分類）/ 紅蓮詩学装備（正本にしない）。",
+        "boundItemIds": [
+          21415,
+          21421,
+          21427,
+          21433,
+          21439,
+          21445,
+          21451
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "ryumyaku-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.6-pre-exchange-ryumyaku"
+        },
+        {
+          "gapId": "ryumyaku-exchange-cost",
+          "dimension": "exchange",
+          "description": "アラガントームストーン：詩学 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各345 Poetics（GamerEscape Dai-ryumyaku Hachigane of Fending）"
+        },
+        {
+          "gapId": "ryumyaku-npc-location",
+          "dimension": "npc",
+          "description": "Ryumyaku Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "Enna Rhalgr's Reach (14.0, 11.6) / Rowena's Representative Kugane (12.3, 10.8)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T15:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Lodestone",
+            "note": "Patch 4.2 Mendacity / Ryumyaku gear introduction"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Dai-ryumyaku Hachigane of Fending Poetics vendor table"
+          },
+          {
+            "type": "GamerEscape",
+            "note": "Enna Ryumyaku Gear (DoW IL 370)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T15:00:00+09:00",
+    "verifiedBy": "phase66-exchange-ryumyaku",
+    "updatedAt": "2026-06-20T15:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/hw/idyllshire-gear",
+    "seriesKey": "イディル",
+    "status": "verified",
+    "phase": "6.7-idyllshire",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "イディル装備交換",
+    "difficulty": "Tomestone Exchange",
+    "representativeItemId": 16341,
+    "representativeItemName": "イディル・ガーディアンサークレットRE",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "idyllshire-poetics-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "アラガントームストーン：詩学"
+      },
+      {
+        "linkId": "idyllshire-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "ヒスメナ（イディルシャイア）/ ロウェナ商会の商人（イシュガルド：下層）",
+        "detail": "Shire Gear (IL 270)",
+        "tokenOrCurrency": "アラガントームストーン：詩学 ×345",
+        "exchangeVendor": "Shire Gear (DoW/DoM, IL 270)",
+        "notes": "head 各345アラガントームストーン：詩学（Augmented / RE IL270 / Shire）。history: 3.4〜4.0はアラガントームストーン：聖典×495購入→セイカ強化（紺青強化素材 / 詩学×100・イディルシャイア 6.7, 7.4）。base IL260は現在Vendor新規購入不可。5.3以降はアラガントームストーン：詩学でRE直購入。誤候補: ラザーレット（prototype誤分類）/ 蒼天詩学装備（正本にしない）。",
+        "boundItemIds": [
+          16341,
+          16347,
+          16353,
+          16359,
+          16365,
+          16371,
+          16377
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "idyllshire-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.7-pre-exchange-idyllshire"
+        },
+        {
+          "gapId": "idyllshire-exchange-cost",
+          "dimension": "exchange",
+          "description": "アラガントームストーン：詩学 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各345 Poetics（ConsoleGamesWiki Augmented Shire Custodian's Circlet）"
+        },
+        {
+          "gapId": "idyllshire-npc-location",
+          "dimension": "npc",
+          "description": "Shire Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "Hismena Idyllshire (5.7, 5.2) / Rowena's Representative Foundation (10.5, 11.8)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-20T16:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Lodestone",
+            "note": "Patch 3.4 Scripture / Shire gear introduction"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Patch 5.3 Poetics direct augmented Shire purchase"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Augmented Shire Custodian's Circlet Poetics vendor table"
+          },
+          {
+            "type": "GamerEscape",
+            "note": "Hismena Allagan Tomestones of Poetics (DoW IL 270)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-20T16:00:00+09:00",
+    "verifiedBy": "phase67-exchange-idyllshire",
+    "updatedAt": "2026-06-20T16:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/sb/ala-mhigan-gear",
+    "seriesKey": "アラミガン",
+    "status": "verified",
+    "phase": "6.8-ala-mhigan",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "アラミガン装備交換",
+    "difficulty": "Tomestone / Hunt Exchange",
+    "representativeItemId": 19141,
+    "representativeItemName": "アラミガンディフェンダー・ヘッドギア",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "ala-mhigan-centurio-seal-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "百獣司令官の記章",
+        "relatedDuty": "The Hunt for Specimens"
+      },
+      {
+        "linkId": "ala-mhigan-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "Billebaut（ラールガーズリーチ）/ Satsuya（クガネ）",
+        "detail": "Ala Mhigan Gear (IL 310)",
+        "tokenOrCurrency": "百獣司令官の記章 ×35",
+        "exchangeVendor": "Ala Mhigan Gear Exchange (DoW/DoM, IL 310)",
+        "notes": "head 各35百獣司令官の記章。alias: セントリオ記章 / Centurio Seal。history: 4.0はアラガントームストーン：真理×245（Enna・ラールガーズリーチ 13.0, 11.7 / Satsuya・クガネ 10.4, 10.2）。4.2以降 Centurio Seal 交換へ移行。誤候補: 紅蓮決戦 アラミゴ / アライアンス（正本にしない）。",
+        "boundItemIds": [
+          19141,
+          19147,
+          19153,
+          19159,
+          19165,
+          19171,
+          19177
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "ala-mhigan-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.8-pre-exchange-ala-mhigan"
+        },
+        {
+          "gapId": "ala-mhigan-exchange-cost",
+          "dimension": "exchange",
+          "description": "百獣司令官の記章 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各35 Centurio Seal（ConsoleGamesWiki Ala Mhigan Defender's Headgear）"
+        },
+        {
+          "gapId": "ala-mhigan-npc-location",
+          "dimension": "npc",
+          "description": "Ala Mhigan Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "Billebaut Rhalgr's Reach (13.0, 11.7) / Satsuya Kugane (10.4, 10.2)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Lodestone",
+            "note": "Patch 4.0 Verity / Ala Mhigan gear introduction"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Patch 4.2 Centurio Seal migration"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Ala Mhigan Defender's Headgear Centurio Seal vendor table"
+          },
+          {
+            "type": "GamerEscape",
+            "note": "Billebaut Ala Mhigan Gear (DoW IL 310)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase68-exchange-ala-mhigan",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  },
+  {
+    "chainId": "chain/exchange/sb/lost-allagan-gear",
+    "seriesKey": "ロストアラガン",
+    "status": "verified",
+    "phase": "6.9-lost-allagan",
+    "auditProfile": "combat_gear",
+    "chainTemplate": "multi_link",
+    "category1": "装備",
+    "category2": "交換",
+    "contentName": "ロストアラガン装備交換",
+    "difficulty": "Tomestone / Hunt Exchange",
+    "representativeItemId": 19297,
+    "representativeItemName": "ロストアラガン・ディフェンダーヘルムRE",
+    "itemBindingPolicy": "explicit_item_ids_per_link",
+    "acquisitionLinks": [
+      {
+        "linkId": "lost-allagan-centurio-seal-earn",
+        "dropKind": "currency_source",
+        "tokenOrCurrency": "百獣司令官の記章",
+        "relatedDuty": "The Hunt for Specimens"
+      },
+      {
+        "linkId": "lost-allagan-gear-exchange",
+        "dropKind": "currency_exchange",
+        "dutyOrField": "Billebaut（ラールガーズリーチ）/ Satsuya（クガネ）",
+        "detail": "Lost Allagan Gear (IL 340)",
+        "tokenOrCurrency": "百獣司令官の記章 ×70",
+        "exchangeVendor": "Lost Allagan Gear Exchange (DoW/DoM, IL 340)",
+        "notes": "head 各70百獣司令官の記章。alias: セントリオ記章 / Centurio Seal。history: 4.05〜4.4はアラガントームストーン：万物×495購入→エ・ボラフ強化（万物×100・強化素材 / ラールガーズリーチ 13.6, 12.2）。base IL330は現在Vendor新規購入不可。5.3以降は百獣司令官の記章でRE直購入。誤候補: オンラインストア / 課金（prototype誤分類） / 万物装備（base正本にしない）。",
+        "boundItemIds": [
+          19297,
+          19303,
+          19309,
+          19315,
+          19321,
+          19327,
+          19333
+        ]
+      }
+    ],
+    "audit": {
+      "gaps": [
+        {
+          "gapId": "lost-allagan-content-dictionary-navigation",
+          "dimension": "content_dictionary",
+          "description": "content_dictionary + navigationPath 付与",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "contentDictionaryAdd",
+          "resolvableBy": "human",
+          "notes": "Phase 6.9-pre-exchange-lost-allagan"
+        },
+        {
+          "gapId": "lost-allagan-exchange-cost",
+          "dimension": "exchange",
+          "description": "百獣司令官の記章 必要枚数",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "head 各70 Centurio Seal（ConsoleGamesWiki Lost Allagan Defender's Helm RE）"
+        },
+        {
+          "gapId": "lost-allagan-npc-location",
+          "dimension": "npc",
+          "description": "Lost Allagan Gear Exchange NPC 座標",
+          "status": "resolved",
+          "blockerForRegister": false,
+          "blockerForVerify": true,
+          "resolutionMethod": "externalWiki",
+          "resolvableBy": "auto",
+          "notes": "Billebaut Rhalgr's Reach (13.6, 12.2) / Satsuya Kugane (10.4, 10.2)"
+        }
+      ],
+      "gateEvaluation": {
+        "computedAt": "2026-06-17T12:00:00+09:00",
+        "canRegister": true,
+        "canVerify": true,
+        "canPublish": false,
+        "openRegisterBlockers": 0,
+        "openVerifyBlockers": 0,
+        "stopReasons": []
+      },
+      "evidence": {
+        "level": "A",
+        "sources": [
+          {
+            "type": "Lodestone",
+            "note": "Patch 4.05 Creation / Lost Allagan gear introduction"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Patch 4.4 E'bolaff augmentation"
+          },
+          {
+            "type": "Lodestone",
+            "note": "Patch 5.3 Centurio Seal RE direct purchase"
+          },
+          {
+            "type": "ConsoleGamesWiki",
+            "note": "Lost Allagan Defender's Helm RE Centurio Seal vendor table"
+          },
+          {
+            "type": "GamerEscape",
+            "note": "Billebaut Lost Allagan Gear (DoW IL 340)"
+          }
+        ],
+        "masterConfirmed": true
+      }
+    },
+    "verifiedAt": "2026-06-17T12:00:00+09:00",
+    "verifiedBy": "phase69-exchange-lost-allagan",
+    "updatedAt": "2026-06-17T12:00:00+09:00"
+  }
+]

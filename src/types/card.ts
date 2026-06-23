@@ -61,7 +61,104 @@ export type SearchDictionaryItem = {
   rawCategory?: string | null
 }
 
-export type ForwardAcquisitionCategory = '零式' | '極' | 'ID' | '地図' | '交換' | '釣り' | 'PvP' | 'その他'
+export type ForwardAcquisitionCategory = '零式' | 'ノーマルレイド' | '極' | 'ID' | '地図' | '交換' | '釣り' | 'PvP' | 'その他'
+
+export type ForwardStep2Category = ForwardAcquisitionCategory | '探索'
+
+export type ForwardIndexRouteSummary = {
+  routeType: string
+  detail: string
+  dropKind: string
+  tokenOrCurrency: string | null
+}
+
+export type EquipmentMetadataRoleSource = 'classJobCategory' | 'namePattern'
+export type EquipmentMetadataSlotSource = 'prototype' | 'itemUiCategory' | 'none'
+
+export type EquipmentMetadataEntry = {
+  itemId: number
+  equipLevel: number
+  itemLevel: number
+  equipRole: EquipRole
+  equipJobs: string[]
+  equipJobsJa: string
+  equipSlot: EquipSlot | null
+  itemUiCategory: string
+  classJobCategoryId: number
+  roleSource: EquipmentMetadataRoleSource
+  slotSource: EquipmentMetadataSlotSource
+}
+
+export type ForwardIndexItem = {
+  itemId: number
+  name: string
+  role: EquipRole
+  slot: EquipSlot | null
+  equipLevel: number
+  itemLevel: number
+  equipRole: EquipRole
+  equipJobs: string[]
+  equipJobsJa: string
+  equipSlot: EquipSlot | null
+  itemUiCategory: string
+  classJobCategoryId: number
+  roleSource: EquipmentMetadataRoleSource
+  slotSource: EquipmentMetadataSlotSource
+  sourceDictionaryId: string
+  category1: string
+  category2: string
+  publicationStatus: 'public'
+  chainId: string
+  linkId: string
+  routeSummary: ForwardIndexRouteSummary
+  acquisitionLinkCount: number
+}
+
+export type ForwardIndexSeries = {
+  seriesKey: string
+  representativeItemId: number | null
+  items: ForwardIndexItem[]
+}
+
+export type ForwardIndexChain = {
+  chainId: string
+  chainStatus: string
+  chainTemplate: string
+  category1: string
+  category2: string
+  contentName: string
+  series: ForwardIndexSeries[]
+}
+
+export type ForwardIndexContent = {
+  contentName: string
+  contentDisplayName: string
+  navigationPath: string[]
+  navigationPathSource?: string
+  category2: string
+  acquisitionCategory: ForwardAcquisitionCategory
+  chains: ForwardIndexChain[]
+}
+
+export type ForwardIndexNavigationGroup = {
+  navigationGroup: string
+  acquisitionCategory?: ForwardAcquisitionCategory
+  contents: ForwardIndexContent[]
+}
+
+export type ForwardIndexNavigationRoot = {
+  navigationRoot: string
+  navigationGroups: ForwardIndexNavigationGroup[]
+}
+
+export type ForwardIndexEquipment = {
+  navigationRoots: ForwardIndexNavigationRoot[]
+}
+
+export type ForwardIndexSeriesGroup = {
+  seriesKey: string
+  items: EnrichedSearchItem[]
+}
 
 export type EquipSlot = '頭' | '胴' | '手' | '脚' | '足'
 
@@ -76,11 +173,20 @@ export type EnrichedSearchItem = SearchDictionaryItem & {
   resolvedIconUrl: string | null
   equipSlot: EquipSlot | null
   equipRole: EquipRole | null
+  equipLevel?: number | null
+  itemLevel?: number | null
+  equipJobs?: string[]
+  equipJobsJa?: string
+  itemUiCategory?: string
+  classJobCategoryId?: number
+  roleSource?: EquipmentMetadataRoleSource
+  slotSource?: EquipmentMetadataSlotSource
 }
 
 export type ForwardContentOption = {
   key: string
   displayName: string
+  groupLabel?: string
 }
 
 export type ForwardDetailOption = {
@@ -106,6 +212,9 @@ export type SourceDictionaryItem = {
   contentName: string | null
   acquisitionRoutes: AcquisitionRoute[]
   status: string
+  chainId?: string | null
+  projectedFrom?: string | null
+  projectedAt?: string | null
   icon?: string | null
   iconUrl?: string | null
   image?: string | null
@@ -120,6 +229,9 @@ export type AcquisitionRoute = {
   specialConditions?: Record<string, unknown>
   conditionSteps?: ConditionStep[]
   needsReview?: boolean
+  chainId?: string
+  linkId?: string
+  sources?: Array<{ source: string; method: string; decision: string }>
 }
 
 export type ConditionStep = {

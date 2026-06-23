@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "type": "series_audit_policy",
+  "phase": "3-pre",
+  "description": "Canonical policy for series audit, gap management, gate evaluation, and acquisition chain lifecycle before publication.",
+  "terminology": {
+    "cursorInternal": {
+      "gaps": "不足情報の一覧（未解消・解消済みを含む作業記録）",
+      "blocker": "進行停止条件（gaps から派生。未解消のまま次ゲートへ進めない）",
+      "draft": "下書き登録（acquisition_chain_registry.status=draft）",
+      "verified": "確認済み（acquisition_chain_registry.status=verified）",
+      "publish": "公開（source_dictionary 投影後、publication gate を通過）"
+    },
+    "note": "Cursor 内部名は gaps / blocker / draft / verified / publish のまま。日本語運用は上表に対応。"
+  },
+  "workflow": {
+    "mandatoryOrder": [
+      "series_discovery",
+      "gap_inventory",
+      "blocker_resolution",
+      "draft_registration",
+      "verified_promotion",
+      "source_projection",
+      "publish"
+    ],
+    "forbidden": [
+      "未解消 blocker のまま verified へ昇格",
+      "verified 前の source_dictionary 分類修正（投影以外）",
+      "self_reference_loop のみを根拠にした公開相当の扱い",
+      "兄弟 series の contentName / token / boundItemIds 混在"
+    ],
+    "policyReference": "L-8e 装備事故対策: 不足情報を抱えたまま公開相当へ進むことを禁止"
+  },
+  "relatedPolicies": {
+    "publicationGate": "src/data/reverse-search/schema/publication_gate_policy.json",
+    "equipmentEvidence": "src/data/reverse-search/schema/equipment_evidence_policy.json",
+    "verificationRecord": "src/data/reverse-search/schema/verification_record_policy.json",
+    "acquisitionRoute": "src/data/reverse-search/schema/acquisition_route_policy.json",
+    "siblingPairRegistry": "src/data/reverse-search/schema/sibling_pair_registry.json",
+    "contentDictionaryBootstrap": "src/data/reverse-search/schema/content_dictionary_bootstrap_policy.json"
+  },
+  "auditProfiles": {
+    "combat_gear": {
+      "label": "戦闘装備（零式・ID・討滅・フィールド交換）",
+      "category1": ["装備"],
+      "chainTemplates": ["duty_drop", "token_exchange", "currency_exchange", "multi_link"],
+      "phase3Scope": true
+    },
+    "housing": {
+      "label": "家具・ハウジング",
+      "category1": ["家具"],
+      "chainTemplates": ["vendor_purchase", "craft", "achievement", "seasonal"],
+      "phase3Scope": false,
+      "note": "Phase 4 でプロファイル拡張"
+    },
+    "collectible": {
+      "label": "カード等コレクティブル",
+      "category1": ["カード"],
+      "chainTemplates": ["duty_drop", "achievement", "vendor_purchase"],
+      "phase3Scope": false,
+      "note": "Phase 4 でプロファイル拡張"
+    },
+    "achievement": {
+      "label": "アチーブメント報酬",
+      "category1": ["その他"],
+      "category2": ["その他"],
+      "chainTemplates": ["achievement_unlock"],
+      "phase3Scope": false,
+      "note": "Phase 4 でプロファイル拡張"
+    }
+  },
+  "auditDimensions": [
+    {
+      "id": "content_dictionary",
+      "labelJa": "content_dictionary登録",
+      "registerGate": "required",
+      "verifyGate": "required",
+      "publishGate": "required"
+    },
+    {
+      "id": "contentName",
+      "labelJa": "contentName確定",
+      "registerGate": "required",
+      "verifyGate": "required",
+      "publishGate": "required"
+    },
+    {
+      "id": "category2",
+      "labelJa": "category2確定",
+      "registerGate": "required",
+      "verifyGate": "required",
+      "publishGate": "required"
+    },
+    {
+      "id": "difficulty",
+      "labelJa": "difficulty確定",
+      "registerGate": "required",
+      "verifyGate": "required",
+      "publishGate": "required"
+    },
+    {
+      "id": "duty",
+      "labelJa": "duty確定",
+      "registerGate": "conditional",
+      "verifyGate": "required_if_applicable",
+      "publishGate": "required_if_applicable",
+      "appliesWhen": ["duty_drop", "token_exchange", "multi_link"]
+    },
+    {
+      "id": "field",
+      "labelJa": "field確定",
+      "registerGate": "conditional",
+      "verifyGate": "required_if_applicable",
+      "publishGate": "required_if_applicable",
+      "appliesWhen": ["currency_exchange", "field_content"]
+    },
+    {
+      "id": "token",
+      "labelJa": "token確定",
+      "registerGate": "conditional",
+      "verifyGate": "required_if_applicable",
+      "publishGate": "required_if_applicable",
+      "appliesWhen": ["token_exchange"]
+    },
+    {
+      "id": "currency",
+      "labelJa": "currency確定",
+      "registerGate": "conditional",
+      "verifyGate": "required_if_applicable",
+      "publishGate": "required_if_applicable",
+      "appliesWhen": ["currency_exchange"]
+    },
+    {
+      "id": "exchange",
+      "labelJa": "exchange確定",
+      "registerGate": "conditional",
+      "verifyGate": "required_if_applicable",
+      "publishGate": "required_if_applicable",
+      "appliesWhen": ["token_exchange", "currency_exchange"]
+    },
+    {
+      "id": "npc",
+      "labelJa": "NPC確定",
+      "registerGate": "optional",
+      "verifyGate": "required_for_exchange",
+      "publishGate": "recommended",
+      "appliesWhen": ["token_exchange", "currency_exchange"]
+    },
+    {
+      "id": "route",
+      "labelJa": "route確定（link単位）",
+      "registerGate": "required",
+      "verifyGate": "required",
+      "publishGate": "required"
+    },
+    {
+      "id": "itemBinding",
+      "labelJa": "itemIds紐づけ",
+      "registerGate": "required",
+      "verifyGate": "required",
+      "publishGate": "required"
+    },
+    {
+      "id": "evidence",
+      "labelJa": "evidence確定",
+      "registerGate": "recommended",
+      "verifyGate": "required",
+      "publishGate": "required"
+    },
+    {
+      "id": "siblingSeparation",
+      "labelJa": "兄弟series分離",
+      "registerGate": "conditional",
+      "verifyGate": "required_if_pair",
+      "publishGate": "required_if_pair",
+      "appliesWhen": ["savage_normal", "coffer_exchange"],
+      "registryReference": "sibling_pair_registry.json"
+    },
+    {
+      "id": "patchTag",
+      "labelJa": "パッチ版タグ",
+      "registerGate": "recommended",
+      "verifyGate": "recommended",
+      "publishGate": "optional"
+    }
+  ],
+  "gapSchema": {
+    "description": "acquisition_chain_registry.audit.gaps[] の1行スキーマ（Phase 3 registry 実装時に使用）",
+    "requiredFields": [
+      "gapId",
+      "dimension",
+      "description",
+      "status",
+      "blockerForRegister",
+      "blockerForVerify",
+      "resolutionMethod"
+    ],
+    "optionalFields": [
+      "reason",
+      "resolvableBy",
+      "resolvedAt",
+      "resolvedBy",
+      "evidence",
+      "notes"
+    ],
+    "statusEnum": ["open", "resolved", "waived"],
+    "resolvableByEnum": ["auto", "human", "projection"],
+    "resolutionMethodEnum": [
+      "externalGarland",
+      "externalTeamcraft",
+      "externalLodestone",
+      "externalGamerEscape",
+      "masterVerdict",
+      "internalCleanup",
+      "contentDictionaryAdd",
+      "siblingSeparation",
+      "projection",
+      "xivapi",
+      "notRequiredForVerify"
+    ]
+  },
+  "blockerDerivation": {
+    "description": "進行停止条件（blocker）は gaps と本 policy から派生する。二重管理しない。",
+    "rules": [
+      {
+        "gate": "draft",
+        "blockedWhen": "任意の gap で status=open かつ blockerForRegister=true"
+      },
+      {
+        "gate": "verified",
+        "blockedWhen": "任意の gap で status=open かつ blockerForVerify=true"
+      },
+      {
+        "gate": "publish",
+        "blockedWhen": "chain.status !== verified または projection 未実施"
+      }
+    ],
+    "gateEvaluationCache": {
+      "field": "audit.gateEvaluation",
+      "computedFields": ["canRegister", "canVerify", "canPublish", "stopReasons"],
+      "note": "監査スクリプトが再計算してキャッシュ。正本は gaps + 本 policy。"
+    }
+  },
+  "gateDefinitions": {
+    "draft": {
+      "labelJa": "下書き登録可能",
+      "registryStatus": "draft",
+      "mustHave": [
+        "seriesKey",
+        "chainId",
+        "auditProfile",
+        "chainTemplate",
+        "category1",
+        "category2",
+        "contentName",
+        "representativeItemId",
+        "acquisitionLinks.length >= 1",
+        "itemBindingPolicy",
+        "audit.gaps[]（未解消可。blocker フラグ必須）"
+      ],
+      "mustNotHave": [
+        "sibling_pair_registry 違反（contentName/token/boundItemIds 混在）",
+        "self_reference_loop のみの evidence"
+      ],
+      "registerBlockers": [
+        "category2 未確定",
+        "contentName 未確定",
+        "chainTemplate 未確定",
+        "boundItemIds 0件",
+        "content_dictionary 未登録（currency_exchange / field_content で必須）"
+      ]
+    },
+    "verified": {
+      "labelJa": "確認済み昇格可能",
+      "registryStatus": "verified",
+      "mustHave": [
+        "draft の全条件",
+        "open かつ blockerForVerify=true の gap が 0件",
+        "evidenceLevel A（外部2ソース以上、または master確認+外部1ソース）",
+        "acquisitionLinks ごとの boundItemIds 確定・非重複",
+        "content_dictionary 登録済み",
+        "sibling_pair_registry 分離確認（該当 pair 時）"
+      ],
+      "templateSpecific": {
+        "duty_drop": ["duty確定", "Lodestone duty または Garland duty hint"],
+        "token_exchange": ["token名", "exchange名", "duty（トークン獲得元）"],
+        "currency_exchange": ["currency名", "exchange名", "通貨獲得源>=1", "field or duty"],
+        "multi_link": ["link ごと dropKind 分離", "link 間 itemId 非重複"]
+      }
+    },
+    "publish": {
+      "labelJa": "公開可能",
+      "mustHave": [
+        "chain.status=verified",
+        "source_dictionary へ投影済み",
+        "publication_gate_policy 準拠（装備は status=confirmed）"
+      ],
+      "phase3PreNote": "Phase 3 前準備では投影・公開は行わない"
+    }
+  },
+  "automationVsHuman": {
+    "autoResolvable": [
+      "content_dictionary 登録有無 lookup",
+      "必須フィールド空欄検出",
+      "evidence URL 件数集計",
+      "self_reference_loop 検出",
+      "boundItemIds 重複検出",
+      "sibling_pair_registry 衝突検出",
+      "register/verify blocker 件数集計"
+    ],
+    "humanRequired": [
+      "外部ソース disagree 時の最終裁定",
+      "命名逆転（ミダース/プロトミダース等）の確認",
+      "新 content_dictionary エントリ承認",
+      "フィールド獲得源の表示優先方針",
+      "verified 昇格の最終承認（verifiedBy）"
+    ]
+  },
+  "chainTemplateProfiles": {
+    "duty_drop": {
+      "requiredForVerify": ["contentName", "category2", "duty", "route", "itemBinding", "evidence"],
+      "optional": ["npc", "cofferLayerDetail"]
+    },
+    "token_exchange": {
+      "requiredForVerify": ["contentName", "category2", "duty", "token", "exchange", "route", "itemBinding", "evidence"],
+      "optional": ["npc", "tokenEarnLayerDetail"]
+    },
+    "currency_exchange": {
+      "requiredForVerify": ["contentName", "category2", "fieldOrDuty", "currency", "exchange", "route", "itemBinding", "evidence"],
+      "optional": ["npcLocation", "costPerSlot", "primaryEarnSourceDisplay"]
+    },
+    "multi_link": {
+      "requiredForVerify": ["上記合成", "link間itemId非重複", "siblingSeparation"],
+      "optional": []
+    }
+  },
+  "evidenceContract": {
+    "policyReference": "equipment_evidence_policy.json",
+    "verifiedMinimum": {
+      "levelA": "真外部ソース2件以上一致",
+      "levelAAlternate": "masterVerdict + 真外部ソース1件以上"
+    },
+    "trueExternalSourcePatterns": [
+      "Lodestone",
+      "Teamcraft",
+      "Garland",
+      "Gamer Escape",
+      "Console Games Wiki"
+    ]
+  },
+  "registryContract": {
+    "targetFile": "src/data/reverse-search/manual/acquisition_chain_registry.json",
+    "phase3PreStatus": "registry data file created in Phase 3",
+    "projectionTarget": "source_dictionary",
+    "projectionPhase": "Phase 3+ after verified",
+    "seriesDictionaryRole": "auxiliary_inference_only"
+  }
+}

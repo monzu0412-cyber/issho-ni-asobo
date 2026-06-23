@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "type": "human_review_policy",
+  "description": "Phase L-9 Human Review policy. Separates Master screen-review findings from automated display audit.",
+  "phase": "L-9-human-review",
+  "scopes": {
+    "automatedAudit": {
+      "script": "scripts/audit-phase-l9-head-gear-display.ts",
+      "template": "scripts/equipment-display-audit-template.ts",
+      "detects": [
+        "english_remainder",
+        "spelling_variant",
+        "content_name_error",
+        "route_type_misclass",
+        "legacy_provenance_method",
+        "detail_misclass",
+        "reward_unnatural",
+        "abbreviation_mix",
+        "content_route_mismatch"
+      ],
+      "doesNotDetect": [
+        "ff14_lore_odd",
+        "acquisition_feels_wrong",
+        "display_unclear",
+        "subjective_other_bucket_escape"
+      ]
+    },
+    "humanReview": {
+      "template": "scripts/equipment-human-review-template.ts",
+      "registryPerSlot": "src/data/reverse-search/manual/{slot}_human_review_cases.json",
+      "heuristicSeedPerSlot": "src/data/reverse-search/manual/{slot}_human_review_queue.json",
+      "reportScript": "scripts/report-human-review-case.ts",
+      "statusScript": "scripts/audit-phase-l9-human-review-status.ts"
+    }
+  },
+  "workflow": [
+    {
+      "step": 1,
+      "action": "Master報告",
+      "command": "node --experimental-strip-types scripts/report-human-review-case.ts --slot 頭 --itemId <id> --reason <code> --report \"<text>\""
+    },
+    {
+      "step": 2,
+      "action": "原因調査",
+      "outputField": "investigation"
+    },
+    {
+      "step": 3,
+      "action": "修正案作成",
+      "outputField": "fixProposal"
+    },
+    {
+      "step": 4,
+      "action": "同系列横展開調査",
+      "outputField": "seriesSurvey"
+    },
+    {
+      "step": 5,
+      "action": "正本辞書反映",
+      "fixLayers": [
+        "content_dictionary.json",
+        "series_dictionary.json",
+        "equipment-display-rules.ts",
+        "source_dictionary.json"
+      ]
+    }
+  ],
+  "fixDeclaration": {
+    "rule": "頭装備FIX宣言は Human Review 全 case が resolved/rejected/deferred になってから行う",
+    "blockedUntil": "human_review_cases_resolved"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "type": "acquisition_route_policy",
+  "description": "Canonical policy for source_dictionary acquisitionRoutes.sources fields. Shared by equipment import, display audit, and UI.",
+  "sourcesFields": {
+    "source": "Import phase label or research origin (e.g. Phase L-8c head gear batch import, L-1a pilot). May be English.",
+    "method": "Display routeType aligned with category2 (e.g. 零式, クラフト, その他). MUST NOT store English provenance text.",
+    "decision": "Human-readable adoption rationale and research provenance (e.g. Gamer Escape item page, IL tier note)."
+  },
+  "displayRouteType": [
+    "零式",
+    "極",
+    "絶",
+    "ID",
+    "アライアンス",
+    "クラフト",
+    "採集",
+    "クエスト",
+    "AF",
+    "トークン",
+    "交換",
+    "PvP",
+    "イベント",
+    "課金",
+    "その他",
+    "NPC購入",
+    "レイド",
+    "ノーマルレイド",
+    "地図"
+  ],
+  "provenancePatterns": [
+    "item page",
+    "acquisition section",
+    "armor set",
+    "vendor /",
+    "manifesto exchange"
+  ],
+  "generatorContract": {
+    "script": "scripts/generate-equipment-source-dictionary.ts",
+    "rule": "sources.method = normalized.routeType",
+    "provenanceGoesTo": ["sources.source", "sources.decision"]
+  },
+  "auditContract": {
+    "script": "scripts/equipment-display-audit-template.ts",
+    "issueCode": "legacy_provenance_method",
+    "resolver": "resolveDisplayRouteType(category2, rawMethod)"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "type": "publication_gate_policy",
+  "phase": "1",
+  "description": "Card UI publication gate. Equipment-only; non-equipment categories keep legacy behavior.",
+  "scope": {
+    "gatedCategory1": ["装備"],
+    "legacyPassThroughCategory1": [
+      "マウント",
+      "ミニオン",
+      "譜面",
+      "髪型",
+      "エモート",
+      "ファッションアクセサリー",
+      "魚",
+      "カード",
+      "家具",
+      "素材",
+      "その他"
+    ]
+  },
+  "equipmentPublication": {
+    "cardUiPublicStatuses": ["confirmed"],
+    "nonPublicStatuses": ["pending_chain"],
+    "auditOnlyStatuses": ["pending_chain", "needs_review"]
+  },
+  "pilotWhitelist": {
+    "phase": 1,
+    "seriesKeys": [
+      "エデンモーン",
+      "アスフォデロース",
+      "リンボ",
+      "ミダース",
+      "プロトミダース",
+      "ブレイズ",
+      "シャドウレス",
+      "キティセオス",
+      "ゾーモー",
+      "マヌシャ"
+    ],
+    "note": "Phase 1 keeps these series confirmed. Phase 2+ will require chain verified."
+  },
+  "pendingChainBatch": {
+    "importPhasePattern": "^L-8[e-i]$",
+    "prototypeNotePattern": "p0:series_dictionary",
+    "sourceRoutePattern": "Phase L-8[e-i]"
+  }
+}

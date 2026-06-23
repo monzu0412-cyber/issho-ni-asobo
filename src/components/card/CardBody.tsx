@@ -15,6 +15,11 @@ import type {
   VoiceChat,
 } from '../../types/card'
 import type { HelpSectionSubtitle, WantSectionSubtitle } from '../../data/activityColumnTitles'
+import type {
+  JobUserSelection,
+  LeftColumnDisplayMode,
+  LodestoneCharacterProfile,
+} from '../../types/lodestone'
 import { CardBodyAsobo } from './CardBodyAsobo'
 import { CardBodyCharacter } from './CardBodyCharacter'
 import { CardBodyWant } from './CardBodyWant'
@@ -91,6 +96,21 @@ export type CardBodyProps = {
   removeContentItem: (listKey: 'todoList' | 'unfinishedList', itemKey: string) => void
   characterMessage: string
   updateCharacterMessage: (message: string) => void
+  lodestoneInput: string
+  lodestoneFetchError: string | null
+  lodestoneApplyMessage: string | null
+  lodestoneApplyError: string | null
+  isLodestoneFetching: boolean
+  leftColumnDisplayMode: LeftColumnDisplayMode
+  lodestoneProfile: LodestoneCharacterProfile | null
+  jobSelections: Record<string, JobUserSelection>
+  updateLodestoneInput: (value: string) => void
+  fetchLodestoneProfile: () => void
+  refetchLodestoneProfile: () => void
+  savedLodestoneCharacterId: string | null
+  applyLodestoneProfileToCard: (overwrite: boolean) => void
+  onLeftColumnDisplayModeChange: (mode: LeftColumnDisplayMode) => void
+  onJobSelectionChange: (jobId: string, selection: JobUserSelection) => void
 }
 
 export function CardBody(props: CardBodyProps) {

@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "type": "sibling_pair_registry",
+  "phase": "3-pre",
+  "description": "Brother series pairs that must not share contentName, token, currency, or boundItemIds across chains. Used for gap audit and verified gate evaluation.",
+  "policyReference": "src/data/reverse-search/schema/series_audit_policy.json",
+  "pairTypes": {
+    "savage_normal": {
+      "labelJa": "零式 / ノーマルレイド兄弟",
+      "rule": "別 chainId・別 contentName・別 token。category2 も異なること。",
+      "distinguishBy": ["contentName", "token", "category2"]
+    },
+    "coffer_exchange": {
+      "labelJa": "同一 series 内 coffer直ドロップ / 断章・トークン交換",
+      "rule": "同一 chainId 内で acquisitionLink を分離。boundItemIds は非重複。",
+      "distinguishBy": ["dropKind", "boundItemIds"]
+    }
+  },
+  "validationRules": [
+    {
+      "id": "no_shared_contentName_across_pair",
+      "severity": "blocker",
+      "appliesTo": ["savage_normal"],
+      "message": "兄弟 series が同一 contentName を共有している"
+    },
+    {
+      "id": "no_shared_token_across_pair",
+      "severity": "blocker",
+      "appliesTo": ["savage_normal"],
+      "message": "兄弟 series が同一 token/currency を共有している"
+    },
+    {
+      "id": "no_overlapping_boundItemIds_within_pair",
+      "severity": "blocker",
+      "appliesTo": ["coffer_exchange"],
+      "message": "coffer link と exchange link の boundItemIds が重複している"
+    },
+    {
+      "id": "separate_chainId_for_savage_normal",
+      "severity": "blocker",
+      "appliesTo": ["savage_normal"],
+      "message": "零式/ノーマル兄弟が同一 chainId に登録されている"
+    }
+  ],
+  "pairs": [
+    {
+      "pairId": "panda-asphodelos-limbo",
+      "pairType": "savage_normal",
+      "labelJa": "万魔殿辺獄編 零式/ノーマル",
+      "savage": {
+        "seriesKey": "アスフォデロース",
+        "chainId": "chain/panda/pilot/asphodelos-savage-mythos",
+        "category2": "零式",
+        "contentName": "万魔殿パンデモニウム零式：辺獄編",
+        "token": "アスフォデロースミトス（Asphodelos Mythos）",
+        "exchange": "Asphodelos Mythos Exchange (DoW) I",
+        "representativeItemId": 35265
+      },
+      "normal": {
+        "seriesKey": "リンボ",
+        "chainId": "chain/panda/pilot/limbo-normal-unsung",
+        "category2": "ノーマルレイド",
+        "contentName": "万魔殿パンデモニウム：辺獄編",
+        "token": "アンミュートレリック（Unsung Relic of Asphodelos）",
+        "exchange": "Unsung Relic of Asphodelos Exchange (DoW) I",
+        "representativeItemId": 34965
+      },
+      "phase3Pilot": true
+    },
+    {
+      "pairId": "alex-midas-protomidas",
+      "pairType": "savage_normal",
+      "labelJa": "機工城アレキサンダー律動編 零式/ノーマル（名称逆転注意）",
+      "namingTrap": "系列名ミダース=零式、プロトミダース=ノーマル",
+      "savage": {
+        "seriesKey": "ミダース",
+        "chainId": "chain/alex/pilot/midas-savage-manifesto",
+        "category2": "零式",
+        "contentName": "機工城アレキサンダー零式：律動編",
+        "token": "ミダースマニフェスト（Midan Manifesto）",
+        "exchange": "Midan Manifesto Exchange (DoW) I",
+        "representativeItemId": 14588
+      },
+      "normal": {
+        "seriesKey": "プロトミダース",
+        "chainId": "chain/alex/pilot/protomidas-normal-part",
+        "category2": "ノーマルレイド",
+        "contentName": "機工城アレキサンダー：律動編",
+        "token": "ミダースパーツ（Midan Part）",
+        "exchange": "Midan Part Exchange (DoW) I",
+        "representativeItemId": 14512
+      },
+      "phase3Pilot": true
+    },
+    {
+      "pairId": "eden-edenmorn-coffer-apocrypha",
+      "pairType": "coffer_exchange",
+      "labelJa": "エデンモーン coffer / 断章交換（同一 series 内 link 分離）",
+      "seriesKey": "エデンモーン",
+      "chainId": "chain/eden/pilot/edenmorn-savage-aapoc",
+      "shared": {
+        "category2": "零式",
+        "contentName": "希望の園エデン零式：再生編"
+      },
+      "links": [
+        {
+          "linkId": "edenmorn-coffer-p4",
+          "role": "coffer",
+          "dropKind": "coffer",
+          "detail": "4層宝箱",
+          "boundItemIds": [32294, 32295, 32296, 32297, 32298, 32306, 32312, 32318, 32324, 32330, 32336]
+        },
+        {
+          "linkId": "edenmorn-apocrypha-exchange",
+          "role": "exchange",
+          "dropKind": "token_exchange",
+          "token": "再生の断章（Eden's Promise Apocrypha）",
+          "exchange": "Eden's Promise Apocrypha Exchange",
+          "detail": "Apocrypha Exchange DoW/DoM I〜III",
+          "boundItemIds": [32300, 32307, 32308, 32309, 32310, 32341, 35790, 44241]
+        }
+      ],
+      "phase3Pilot": true
+    }
+  ]
+}

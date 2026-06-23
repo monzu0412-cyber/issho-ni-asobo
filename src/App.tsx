@@ -24,6 +24,7 @@ import { CardBody } from './components/card/CardBody'
 import {
   getActivityCategoryFromDictionary,
   getTargetIconFromDictionary,
+  isSearchTargetCardUiPublic,
   resolveTargetIconUrl,
   sourceItemById,
 } from './components/target/targetSearchHelpers'
@@ -39,6 +40,10 @@ import {
   type TargetFrameTheme,
   type TimeRange,
 } from './types/card'
+import type { JobUserSelection, LeftColumnDisplayMode } from './types/lodestone'
+import { applyLodestoneProfileToCharacter } from './lib/lodestone/applyLodestoneProfileToCharacter'
+import { mergeLodestoneProfileOnRefetch } from './lib/lodestone/mergeLodestoneProfileOnRefetch'
+import { fetchLodestoneCharacterProfile, normalizeLodestoneInput } from './lib/lodestone/fetchLodestoneCharacter'
 import {
   CARD_CONTENT_DISPLAY_LIMIT,
   EDIT_CONTENT_DISPLAY_LIMIT,
@@ -299,6 +304,10 @@ function App() {
     todoList: ContentSelection
     unfinishedList: ContentSelection
   }>(() => getInitialAppState(worldsByDc).contentSelections)
+  const [lodestoneFetchError, setLodestoneFetchError] = useState<string | null>(null)
+  const [lodestoneApplyMessage, setLodestoneApplyMessage] = useState<string | null>(null)
+  const [lodestoneApplyError, setLodestoneApplyError] = useState<string | null>(null)
+  const [isLodestoneFetching, setIsLodestoneFetching] = useState(false)
 
   function updateCharacterName(value: string) {
     setCharacter((currentCharacter) => ({
@@ -458,6 +467,11 @@ function App() {
 
   function selectSearchTarget(targetIndex: number, item: SearchDictionaryItem) {
     const sourceItem = item.sourceDictionaryId ? sourceItemById.get(item.sourceDictionaryId) : undefined
+
+    if (!isSearchTargetCardUiPublic(item, sourceItem)) {
+      return
+    }
+
     const category = getActivityCategoryFromDictionary(sourceItem?.category ?? item.category)
     const subcategory = sourceItem?.subCategory ?? item.subCategory ?? ''
     const iconUrl = resolveTargetIconUrl(item, sourceItem)
@@ -533,6 +547,147 @@ function App() {
         interest.name === interestName ? { ...interest, level } : interest
       )),
     }))
+  }
+
+  function updateLodestoneInput(value: string) {
+    setLodestoneFetchError(null)
+    setCharacter((currentCharacter) => ({
+      ...currentCharacter,
+      lodestone: {
+        ...currentCharacter.lodestone,
+        input: value,
+      },
+    }))
+  }
+
+  function updateLeftColumnDisplayMode(mode: LeftColumnDisplayMode) {
+    setCharacter((currentCharacter) => ({
+      ...currentCharacter,
+      lodestone: {
+        ...currentCharacter.lodestone,
+        leftColumnDisplayMode: mode,
+      },
+    }))
+  }
+
+  function updateJobSelection(jobId: string, selection: JobUserSelection) {
+    setCharacter((currentCharacter) => ({
+      ...currentCharacter,
+      lodestone: {
+        ...currentCharacter.lodestone,
+        jobSelections: {
+          ...currentCharacter.lodestone.jobSelections,
+          [jobId]: selection,
+        },
+      },
+    }))
+  }
+
+  async function fetchLodestoneProfileById(characterId: string, options?: { isRefetch?: boolean }) {
+    setLodestoneFetchError(null)
+    setLodestoneApplyMessage(null)
+    setLodestoneApplyError(null)
+
+    setIsLodestoneFetching(true)
+
+    try {
+      const result = await fetchLodestoneCharacterProfile(characterId)
+
+      if (!result.ok) {
+        setLodestoneFetchError(result.error.message)
+        return
+      }
+
+      setCharacter((currentCharacter) => ({
+        ...currentCharacter,
+        lodestone: mergeLodestoneProfileOnRefetch(currentCharacter.lodestone, result.data.profile),
+      }))
+
+      setLodestoneApplyMessage(
+        options?.isRefetch
+          ? 'ロードストーン情報を再取得しました。ジョブの手動選択は維持しています。'
+          : 'ロードストーン情報を取得しました。「カードへ反映」で基本情報へ反映できます。',
+      )
+    } catch {
+      setLodestoneFetchError('ロードストーンAPIへの接続に失敗しました。')
+    } finally {
+      setIsLodestoneFetching(false)
+    }
+  }
+
+  async function fetchLodestoneProfile() {
+    const characterId = normalizeLodestoneInput(character.lodestone.input)
+
+    if (!characterId) {
+      setLodestoneFetchError('キャラクターIDまたはロードストーンURLを入力してください。')
+      return
+    }
+
+    await fetchLodestoneProfileById(characterId)
+  }
+
+  async function refetchLodestoneProfile() {
+    const characterId = character.lodestone.characterId.trim()
+
+    if (!characterId) {
+      setLodestoneFetchError('保存済みのキャラクターIDがありません。先にロードストーン取得を実行してください。')
+      return
+    }
+
+    await fetchLodestoneProfileById(characterId, { isRefetch: true })
+  }
+
+  function applyLodestoneProfileToCard(overwrite: boolean) {
+    const profile = character.lodestone.profile
+
+    setLodestoneApplyMessage(null)
+    setLodestoneApplyError(null)
+
+    if (!profile) {
+      setLodestoneApplyError('先にロードストーン取得を実行してください。')
+      return
+    }
+
+    const result = applyLodestoneProfileToCharacter(
+      {
+        name: character.name,
+        dc: character.dc,
+        world: character.world,
+      },
+      profile,
+      worldsByDc,
+      dataCenters,
+      { overwrite },
+    )
+
+    if (result.appliedFields.length === 0) {
+      if (result.skippedFields.length > 0 && !overwrite) {
+        setLodestoneApplyError('反映対象がありません。上書きする場合はチェックを入れて再度実行してください。')
+      } else if (result.warnings.length > 0) {
+        setLodestoneApplyError(result.warnings.join(' '))
+      } else {
+        setLodestoneApplyMessage('カードの基本情報はすでにロードストーンと一致しています。')
+      }
+      return
+    }
+
+    setCharacter((currentCharacter) => ({
+      ...currentCharacter,
+      name: result.name,
+      dc: result.dc,
+      world: result.world,
+    }))
+
+    const fieldLabels: Record<string, string> = {
+      name: '名前',
+      dc: 'DC',
+      world: 'World',
+    }
+
+    const appliedLabel = result.appliedFields.map((field) => fieldLabels[field] ?? field).join('・')
+    const warningSuffix = result.warnings.length > 0 ? `（${result.warnings.join(' ')}）` : ''
+
+    setLodestoneApplyMessage(`カードへ反映しました: ${appliedLabel}${warningSuffix}`)
   }
 
   function updateActivitySubtitle(
@@ -1076,6 +1231,21 @@ function App() {
           removeContentItem={removeContentItem}
           characterMessage={character.message}
           updateCharacterMessage={updateCharacterMessage}
+          lodestoneInput={character.lodestone.input}
+          lodestoneFetchError={lodestoneFetchError}
+          lodestoneApplyMessage={lodestoneApplyMessage}
+          lodestoneApplyError={lodestoneApplyError}
+          isLodestoneFetching={isLodestoneFetching}
+          leftColumnDisplayMode={character.lodestone.leftColumnDisplayMode}
+          lodestoneProfile={character.lodestone.profile}
+          jobSelections={character.lodestone.jobSelections}
+          updateLodestoneInput={updateLodestoneInput}
+          fetchLodestoneProfile={() => void fetchLodestoneProfile()}
+          refetchLodestoneProfile={() => void refetchLodestoneProfile()}
+          savedLodestoneCharacterId={character.lodestone.characterId || null}
+          applyLodestoneProfileToCard={applyLodestoneProfileToCard}
+          onLeftColumnDisplayModeChange={updateLeftColumnDisplayMode}
+          onJobSelectionChange={updateJobSelection}
         />
       </section>
 

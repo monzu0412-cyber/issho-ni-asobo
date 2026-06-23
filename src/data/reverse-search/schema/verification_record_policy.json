@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "type": "verification_record_policy",
+  "description": "Phase L-10 external verification record schema. L-10.1 URL seeds; L-10.2 external fetch pilot updates externalVerification only.",
+  "phase": "L-10",
+  "recordType": "verification_record",
+  "storage": {
+    "perSlotBatch": "src/data/reverse-search/manual/verification_records/{slot}/{slot}_gear_verification_records.json",
+    "report": "scripts/output/phase-l10-{slot}-verification-report.json"
+  },
+  "provisionalConfidenceGrades": {
+    "A": "series_dictionary 確定 + content_dictionary/04ツリー確定 + audit pass（外部照合前の暫定最高信頼）",
+    "B": "series または content の片方確定 + audit pass",
+    "C": "XIVAPI + 推論のみ、または汎用フォールバックバケット",
+    "D": "既知誤名・series/content 不一致・audit 異常"
+  },
+  "provisionalGradeSeparation": {
+    "warning": "provisionalConfidence.grade の A は外部確認済みではない。実入手元の監査には equipmentClassificationAudit.evidenceLevel を使う。",
+    "mustNotConflate": [
+      "verification.provisionalConfidence.grade",
+      "equipmentClassificationAudit.evidenceLevel"
+    ],
+    "policyReference": "src/data/reverse-search/schema/equipment_evidence_policy.json"
+  },
+  "equipmentClassificationAudit": {
+    "phase": "L-11.1",
+    "policyReference": "src/data/reverse-search/schema/equipment_evidence_policy.json",
+    "reportScript": "scripts/run-phase-l11-1-equipment-classification-audit.ts",
+    "reportOutput": "scripts/output/phase-l11-1-equipment-classification-audit-report.json",
+    "evidenceLevels": {
+      "A": "外部ソース2件以上一致（Lodestone / Teamcraft / Garland / Wiki 等）",
+      "B": "外部ソース1件",
+      "C": "series_dictionary / item_override / 内部辞書依存 / confirmed_external_mismatch / self_reference_loop",
+      "D": "inference / heuristic / prototype 未検証",
+      "E": "fallback バケット"
+    },
+    "flags": {
+      "self_reference_loop": "series_dictionary → prototype → source(内部) → verification(外部 pending) の自己完結",
+      "confirmed_external_mismatch": "外部根拠で内部分類不一致が確定した系列（例: マヌシャ / パーラカ）"
+    }
+  },
+  "confirmedPromotionRule": {
+    "note": "L-10.1 では source_dictionary.status を変更しない。評価・準備のみ。",
+    "autoConfirmedAfterExternal": {
+      "A": "Garland + Teamcraft 一致後",
+      "B": "Garland または Teamcraft 一致後（零式/極は spot-check）"
+    }
+  },
+  "crossReferenceTemplates": {
+    "garlandUrl": "https://www.garlandtools.org/db/#item/{itemId}",
+    "teamcraftUrl": "https://ffxivteamcraft.com/db/en/item/{itemId}",
+    "consoleGamesWikiUrl": "https://console.gameswiki.gg/ffxiv/Search?search={nameEnEncoded}",
+    "gamerEscapeUrl": "https://ffxiv.gamerescape.com/wiki/Special:Search?search={nameEnEncoded}"
+  },
+  "externalVerificationStatuses": [
+    "pending",
+    "fetched",
+    "agree",
+    "disagree",
+    "inconclusive",
+    "skipped"
+  ],
+  "hrCandidateRules": [
+    "provisionalConfidence.grade = D",
+    "provisionalConfidence.grade = C かつ category2 ∈ {零式, 極, 絶, ID, アライアンス}",
+    "provisionalConfidence.grade = C かつ fallbackBucket = true",
+    "displayAuditFindings に high severity あり",
+    "comprehensiveAudit P1 バケット所属"
+  ],
+  "fetchPriorityOrder": [
+    "D + category2 戦闘系",
+    "C + category2 戦闘系",
+    "D + その他",
+    "C + fallbackBucket",
+    "B + 零式/極/絶 spot-check"
+  ],
+  "recordFields": {
+    "required": [
+      "itemId",
+      "nameJa",
+      "classified.contentName",
+      "classified.category2",
+      "classified.seriesKey",
+      "crossReferences",
+      "provisionalConfidence.grade",
+      "hrCandidate"
+    ],
+    "optional": [
+      "nameEn",
+      "classified.classifiedBy",
+      "classified.sourceStatus",
+      "provisionalConfidence.signals",
+      "provisionalConfidence.reasons",
+      "hrReasonCodes",
+      "externalVerification",
+      "fetchPriority"
+    ]
+  }
+}

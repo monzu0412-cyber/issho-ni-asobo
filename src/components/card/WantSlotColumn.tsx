@@ -79,7 +79,11 @@ export function WantSlotColumn({
         <div className={`wantSlotCategory ${getWantTitleSizeClass(`${target.category} / ${target.subcategory}`)}`}>
           {target.category} / {target.subcategory}
         </div>
-        <TargetDetails target={target} />
+        <TargetDetails
+          target={target}
+          showEquipmentMetadata={!effectivePreviewMode}
+          showCurrencyEarn={!effectivePreviewMode}
+        />
 
         <div className="targetEditForm">
           <label>

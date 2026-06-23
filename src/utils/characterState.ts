@@ -15,11 +15,14 @@ import type {
   TodoItem,
   VoiceChat,
 } from '../types/card'
+import type { LodestoneCardState } from '../types/lodestone'
+import { createDefaultLodestoneCardState } from '../types/lodestone'
 import {
   buildCharacterDraft,
   CARD_DRAFT_VERSION,
   readCardDraft,
   readSaveEnabled,
+  sanitizeLodestoneCardState,
   type CardDraft,
   type CharacterDraft,
 } from './cardDraftStorage'
@@ -49,6 +52,7 @@ export type CharacterState = {
   sectionTitles: SectionTitles
   tags: string[]
   message: string
+  lodestone: LodestoneCardState
 }
 
 export type RoleKey = keyof CharacterState['roles']
@@ -163,6 +167,7 @@ export function createEmptyCharacter(worldsByDc: Record<DataCenter, readonly str
     },
     tags: [],
     message: '',
+    lodestone: createDefaultLodestoneCardState(),
   }
 }
 
@@ -203,6 +208,7 @@ function restoreCharacterFromDraft(
       ...target,
       acquisitionRoutes: (target.acquisitionRoutes ?? []) as AcquisitionRoute[],
     }))),
+    lodestone: sanitizeLodestoneCardState(characterDraft.lodestone, emptyCharacter.lodestone),
   }
 }
 

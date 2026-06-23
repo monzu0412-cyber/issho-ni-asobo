@@ -7,10 +7,361 @@
       "id": 16479,
       "name": "アレキサンダー・ディフェンダーバイザー",
       "category1": "装備",
-      "category2": null,
-      "contentName": null,
-      "needsReview": true,
-      "note": "アレキサンダー系。起動/律動/天動の確定待ち。item_overrideで管理する。"
+      "category2": "零式",
+      "contentName": "機工城アレキサンダー零式：天動編",
+      "needsReview": false,
+      "note": "P1: 天動編 IL270（classifyAlexander / item override）"
+    },
+    {
+      "id": 16509,
+      "name": "アレキサンダー・ヒーラーフード",
+      "category1": "装備",
+      "category2": "零式",
+      "contentName": "機工城アレキサンダー零式：天動編",
+      "needsReview": false,
+      "note": "P1: 天動編（直ドロップ宝箱名）"
+    },
+    {
+      "id": 16485,
+      "name": "アレキサンダー・スレイヤーバイザー",
+      "category1": "装備",
+      "category2": "零式",
+      "contentName": "機工城アレキサンダー零式：起動編",
+      "needsReview": false,
+      "note": "P1: 起動編（直ドロップ宝箱名）"
+    },
+    {
+      "id": 16491,
+      "name": "アレキサンダー・ストライカーマスク",
+      "category1": "装備",
+      "category2": "零式",
+      "contentName": "機工城アレキサンダー零式：起動編",
+      "needsReview": false,
+      "note": "P1: 起動編（直ドロップ宝箱名）"
+    },
+    {
+      "id": 16497,
+      "name": "アレキサンダー・レンジャーサークレット",
+      "category1": "装備",
+      "category2": "零式",
+      "contentName": "機工城アレキサンダー零式：起動編",
+      "needsReview": false,
+      "note": "P1: 起動編（直ドロップ宝箱名）"
+    },
+    {
+      "id": 16503,
+      "name": "アレキサンダー・スカウトマスク",
+      "category1": "装備",
+      "category2": "零式",
+      "contentName": "機工城アレキサンダー零式：起動編",
+      "needsReview": false,
+      "note": "P1: 起動編（直ドロップ宝箱名）"
+    },
+    {
+      "id": 16515,
+      "name": "アレキサンダー・キャスターフード",
+      "category1": "装備",
+      "category2": "零式",
+      "contentName": "機工城アレキサンダー零式：起動編",
+      "needsReview": false,
+      "note": "P1: 起動編（直ドロップ宝箱名）"
+    },
+    {
+      "id": 42892,
+      "name": "オールドキングダム・ディフェンダーヘルム",
+      "category1": "装備",
+      "category2": "零式",
+      "contentName": "万魔殿パンデモニウム零式：天獄編",
+      "needsReview": false,
+      "note": "L-10.4: source_dictionary confirmed 煉獄編 vs Everkeep/AAC 天獄編"
+    },
+    {
+      "id": 17787,
+      "name": "影隠総面【劣】",
+      "category1": "装備",
+      "category2": "その他",
+      "contentName": "禁断の地 エウレカ",
+      "needsReview": false,
+      "note": "L-10.12b: Antiquated Eureka AF entry (NIN)"
+    },
+    {
+      "id": 17807,
+      "name": "明珍陣笠【劣】",
+      "category1": "装備",
+      "category2": "その他",
+      "contentName": "禁断の地 エウレカ",
+      "needsReview": false,
+      "note": "L-10.12b: Antiquated Eureka AF entry (SAM)"
+    },
+    {
+      "id": 2946,
+      "name": "アラガンヘルム",
+      "category1": "装備",
+      "category2": "絶",
+      "contentName": "絶バハムート攻略",
+      "needsReview": false,
+      "note": "L-10.16a: Binding Coil T5 — アラガンヘルム prefix は coil 専用（Garland explicit）"
+    },
+    {
+      "id": 6225,
+      "name": "アラガンスレイヤーバイザー",
+      "category1": "装備",
+      "category2": "絶",
+      "contentName": "絶バハムート攻略",
+      "needsReview": false,
+      "note": "L-10.16a: Binding Coil T4 — アラガンスレイヤー prefix（Garland explicit）"
+    },
+    {
+      "id": 27186,
+      "name": "オヴィムギャザラーターバン",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.16a: Ovim Wool Turban of Gathering — crafted gatherer head（XIVAPI/Garland/Teamcraft 一致）"
+    },
+    {
+      "id": 19722,
+      "name": "アラミガンギャザラーターバン",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.17b: Ala Mhigan Turban of Gathering — crafted gatherer head（L-10.16a オヴィム同型）"
+    },
+    {
+      "id": 19762,
+      "name": "アラミガンギャザラーターバンSP",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.17b: Augmented Ala Mhigan Turban of Gathering — crafted gatherer head（L-10.16a オヴィム同型）"
+    },
+    {
+      "id": 25658,
+      "name": "ホワイトヘンプ・ストライカーフード",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: Brightlinen crafted combat head — series prefix unsafe (turban spillover)"
+    },
+    {
+      "id": 25664,
+      "name": "ホワイトヘンプ・レンジャーフード",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: Brightlinen crafted combat head"
+    },
+    {
+      "id": 25676,
+      "name": "ホワイトヘンプ・ヒーラーキャップ",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: Brightlinen crafted combat head"
+    },
+    {
+      "id": 25682,
+      "name": "ホワイトヘンプ・キャスターキャップ",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: Brightlinen crafted combat head"
+    },
+    {
+      "id": 18985,
+      "name": "クロマイトディフェンダーヘルム",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 19652,
+      "name": "サージニットキャップ",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 19657,
+      "name": "サージフード",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 25652,
+      "name": "ストーンゴールド・スレイヤーサークレット",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 25812,
+      "name": "イリディセントスレイヤーフード",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 25818,
+      "name": "イリディセントストライカーハット",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 25824,
+      "name": "イリディセントレンジャーハット",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 25830,
+      "name": "イリディセントスカウトハット",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 25836,
+      "name": "イリディセントヒーラーハット",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 25842,
+      "name": "イリディセントキャスターハット",
+      "category1": "装備",
+      "category2": "クラフト",
+      "contentName": "クラフト",
+      "needsReview": false,
+      "note": "L-10.20c: misc crafted-only head"
+    },
+    {
+      "id": 26138,
+      "name": "オヴィムストライカーウシャンカ",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.20b: Ovim Wool combat head — オヴィム series unsafe (27186 spillover), L-10.16a gatherer pattern"
+    },
+    {
+      "id": 26144,
+      "name": "オヴィムレンジャーウシャンカ",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.20b: Ovim Wool combat head — item_override whitelist"
+    },
+    {
+      "id": 26156,
+      "name": "オヴィムヒーラーマフメット",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.20b: Ovim Wool combat head — item_override whitelist"
+    },
+    {
+      "id": 26162,
+      "name": "オヴィムキャスターマフメット",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.20b: Ovim Wool combat head — item_override whitelist"
+    },
+    {
+      "id": 27181,
+      "name": "オヴィムクラフターターバン",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.20b: Ovim Wool crafter head — L-10.16a 27186同型 bucket"
+    },
+    {
+      "id": 32793,
+      "name": "スカイワーカー・ヘルメット",
+      "category1": "装備",
+      "category2": "採集",
+      "contentName": "ギャザラー",
+      "needsReview": false,
+      "note": "L-10.20b: Skyworker's Helmet — Skybuilders' Scrips explicit (single item)"
+    },
+    {
+      "id": 9299,
+      "name": "イミテイト・ミストビアドマスク",
+      "category1": "装備",
+      "category2": "トレジャーハント",
+      "contentName": "The Aquapolis",
+      "needsReview": false,
+      "note": "L-10.22a: Unhidden Leather Map / The Aquapolis treasure hunt head"
+    },
+    {
+      "id": 22974,
+      "name": "オプチカルハット",
+      "category1": "装備",
+      "category2": "その他",
+      "contentName": "FATE",
+      "needsReview": false,
+      "note": "L-10.22a: FATE The Wobbler in Darkness head"
+    },
+    {
+      "id": 32646,
+      "name": "ミラージュハット",
+      "category1": "装備",
+      "category2": "クエスト",
+      "contentName": "青魔道士",
+      "needsReview": false,
+      "note": "L-10.22a: BLU Master of Mimicry job quest head"
+    },
+    {
+      "id": 36015,
+      "name": "ブックウィルム・スペクタクルズ",
+      "category1": "装備",
+      "category2": "クエスト",
+      "contentName": "サベージャー",
+      "needsReview": false,
+      "note": "L-10.22a: SGE Bookwyrm job quest coffer head"
+    },
+    {
+      "id": 36020,
+      "name": "ムジークアイガード",
+      "category1": "装備",
+      "category2": "クエスト",
+      "contentName": "リーパー",
+      "needsReview": false,
+      "note": "L-10.22a: RPR Muzhik job quest coffer head"
     }
   ]
 }

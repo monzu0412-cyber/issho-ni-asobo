@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "type": "equipment_evidence_policy",
+  "phase": "L-11.1",
+  "description": "装備分類の evidenceLevel 定義。provisionalConfidence.grade とは別軸。外部照合前の暫定 grade を外部確認済みと混同しないこと。",
+  "evidenceLevels": {
+    "A": {
+      "label": "外部ソース複数一致",
+      "definition": "Lodestone / Teamcraft / Garland / Gamer Escape / Console Games Wiki 等の真外部ソースが source_dictionary に 2件以上記録されている、または externalVerification.status=agree かつ真外部ソース 2件以上。"
+    },
+    "B": {
+      "label": "外部ソース1件",
+      "definition": "真外部ソースが 1件のみ。または externalVerification.status=agree かつ真外部ソース 1件。"
+    },
+    "C": {
+      "label": "内部辞書依存",
+      "definition": "series_dictionary / item_override_dictionary 依存、辞書自己参照ループ、または confirmed_external_mismatch 系列。"
+    },
+    "D": {
+      "label": "推論のみ",
+      "definition": "inference / heuristic / prototype 未検証で真外部ソースなし。"
+    },
+    "E": {
+      "label": "fallback",
+      "definition": "汎用 fallback バケット（ダンジョン / 初期装備 / ギャザラー等の contentName）。"
+    }
+  },
+  "provisionalGradeSeparation": {
+    "warning": "provisionalConfidence.grade の A は外部確認済みではない。",
+    "provisionalGradeA": "series_dictionary 確定 + content_dictionary/04ツリー確定 + audit pass（外部照合前の暫定最高信頼）",
+    "evidenceLevelA": "真外部ソース 2件以上の一致、または externalVerification agree + 複数外部",
+    "mustNotConflate": [
+      "verification.provisionalConfidence.grade",
+      "equipmentClassificationAudit.evidenceLevel"
+    ],
+    "note": "L-10 verification_record_policy の provisional A はパイプライン内部整合のみ。L-11 evidenceLevel は実入手元の外部根拠を測る別指標。"
+  },
+  "selfReferenceLoop": {
+    "flag": "self_reference_loop",
+    "definition": "series_dictionary → prototype → source_dictionary(内部のみ) → verification(外部 pending) が外部根拠なしに自己完結している状態。",
+    "conditions": [
+      "classifiedBy === series_dictionary、または prototype.note に series_dictionary",
+      "series_dictionary[seriesPrefix].contentName が prototype.contentName と一致",
+      "source_dictionary に真外部ソース 0件",
+      "verification.externalVerification が pending / inconclusive / skipped、または verification 未作成"
+    ]
+  },
+  "confirmedExternalMismatch": {
+    "flag": "confirmed_external_mismatch",
+    "definition": "外部根拠（Lodestone / Wiki 等）で実入手元が確定し、内部分類 contentName と不一致が確認された系列。",
+    "series": [
+      {
+        "seriesKey": "マヌシャ",
+        "internalContentName": "希望の園エデン零式：覚醒編",
+        "externalContentName": "異形楼閣 ゾットの塔",
+        "externalSources": [
+          "Lodestone",
+          "Console Games Wiki"
+        ],
+        "confirmedInPhase": "L-10.23",
+        "note": "IL520 暁月ID装備。零式覚醒編（エデンゲート IL450）と無関係。"
+      },
+      {
+        "seriesKey": "パーラカ",
+        "internalContentName": "希望の園エデン零式：覚醒編",
+        "externalContentName": "終末樹海 ヴァナスパティ",
+        "externalSources": [
+          "Lodestone",
+          "Console Games Wiki"
+        ],
+        "confirmedInPhase": "L-10.23",
+        "note": "IL536 暁月ID装備。零式覚醒編と無関係。"
+      },
+      {
+        "seriesKey": "アーク",
+        "internalContentName": "機工城アレキサンダー零式：起動編",
+        "externalContentName": "魔航船ヴォイドアーク",
+        "externalSources": [
+          "Lodestone",
+          "Garland",
+          "Teamcraft"
+        ],
+        "confirmedInPhase": "L-11.2",
+        "note": "Void Ark alliance IL175。Alexander 零式起動編と無関係。"
+      },
+      {
+        "seriesKey": "アークエンジェル",
+        "internalContentName": "機工城アレキサンダー零式：起動編",
+        "externalContentName": "ジュノ：ザ・ファーストウォーク",
+        "externalSources": [
+          "Lodestone",
+          "Garland",
+          "Teamcraft"
+        ],
+        "confirmedInPhase": "L-11.3b-1",
+        "note": "Jeuno First Walk alliance。アーク series から分離必須。"
+      }
+    ]
+  },
+  "trueExternalSourcePatterns": [
+    "Lodestone",
+    "Teamcraft",
+    "Garland",
+    "Gamer Escape",
+    "Console Games Wiki",
+    "FFXIV Collect",
+    "Escapist",
+    "Fandom",
+    "Wiki"
+  ],
+  "internalSourcePatterns": [
+    "Phase ",
+    "L-",
+    "pilot",
+    "import",
+    "manual_review",
+    "04仕様",
+    "audit",
+    "generate-equipment",
+    "batch import"
+  ],
+  "fallbackContentNames": [
+    "零式装備",
+    "アライアンス装備",
+    "初期装備",
+    "クラフトギルド",
+    "トークン交換",
+    "ダンジョン",
+    "ギャザラー",
+    "クラフト",
+    "FATE",
+    "FATE周回"
+  ]
+}

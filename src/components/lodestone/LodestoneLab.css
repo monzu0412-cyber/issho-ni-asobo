@@ -1,0 +1,113 @@
+.lodestoneLab {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  font-family: inherit;
+  color: #1f2937;
+}
+
+.lodestoneLabHeader h1 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.lodestoneLabHeader p {
+  margin: 0 0 12px;
+  color: #4b5563;
+}
+
+.lodestoneLabBackLink {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.lodestoneLabBackLink:hover {
+  text-decoration: underline;
+}
+
+.lodestoneLabPanel {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.lodestoneLabField {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.lodestoneLabField input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.lodestoneLabFetchButton {
+  justify-self: start;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.lodestoneLabFetchButton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.lodestoneLabResult {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.lodestoneLabResult--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.lodestoneLabResult--success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.lodestoneLabSummary {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.lodestoneLabSummary div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+}
+
+.lodestoneLabSummary dt {
+  margin: 0;
+  font-weight: 600;
+}
+
+.lodestoneLabSummary dd {
+  margin: 0;
+}
+
+.lodestoneLabJobList {
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+
+.lodestoneLabJobList--compact {
+  max-height: 320px;
+  overflow: auto;
+}
+
+.lodestoneLabEmpty {
+  margin: 0 0 16px;
+  color: #6b7280;
+}

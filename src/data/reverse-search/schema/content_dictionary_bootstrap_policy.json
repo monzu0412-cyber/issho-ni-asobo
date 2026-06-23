@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "type": "content_dictionary_bootstrap_policy",
+  "phase": "3-pre",
+  "description": "Procedure to register new content in content_dictionary before chain draft registration. Prevents chain registration while content_dictionary is missing.",
+  "policyReference": "src/data/reverse-search/schema/series_audit_policy.json",
+  "terminology": {
+    "gapDimension": "content_dictionary",
+    "registerBlocker": "content_dictionary 未登録のまま draft 登録禁止（currency_exchange / field_content）",
+    "verifyBlocker": "content_dictionary 未登録のまま verified 昇格禁止（全 combat_gear profile）"
+  },
+  "workflow": {
+    "steps": [
+      {
+        "step": 1,
+        "id": "candidate_contentName",
+        "labelJa": "contentName候補の確定",
+        "actions": [
+          "代表 item の Garland / Teamcraft / Lodestone から duty または field 名を抽出",
+          "公式日本語名と英語名の対応を記録",
+          "表記ゆれがある場合は canonical と aliases を分離"
+        ],
+        "outputs": ["contentNameCandidate", "aliasesCandidate", "externalEvidenceUrls"]
+      },
+      {
+        "step": 2,
+        "id": "category2_and_tree",
+        "labelJa": "category2 / categoryTree 確定",
+        "actions": [
+          "reverse_search_enums.json の category2 に適合する値を選定",
+          "04 ツリー（戦闘コンテンツ > 零式 等）を決定",
+          "フィールドコンテンツは category2=その他、subCategory=ボズヤ 等を検討"
+        ],
+        "outputs": ["category2", "categoryTree"]
+      },
+      {
+        "step": 3,
+        "id": "external_evidence",
+        "labelJa": "外部根拠の収集",
+        "minimum": "真外部ソース2件以上（equipment_evidence_policy Level A）",
+        "sources": ["Garland", "Teamcraft", "Lodestone", "Gamer Escape", "Console Games Wiki"],
+        "outputs": ["evidenceLevel", "evidenceUrls"]
+      },
+      {
+        "step": 4,
+        "id": "master_verdict",
+        "labelJa": "master確認（該当時）",
+        "requiredWhen": [
+          "外部ソースが disagree",
+          "フィールド通貨の獲得源が複数",
+          "category2 が自動推論と不一致"
+        ],
+        "outputs": ["masterVerdict", "masterConfirmedAt"]
+      },
+      {
+        "step": 5,
+        "id": "dictionary_write",
+        "labelJa": "content_dictionary 登録",
+        "targets": [
+          "src/data/reverse-search/manual/content_dictionary.json",
+          "src/data/reverse-search/manual/content_translation_dictionary.json（必要時）"
+        ],
+        "entrySchema": {
+          "required": ["contentName", "category2", "categoryTree"],
+          "recommended": ["keywords", "aliases"]
+        },
+        "note": "Phase 3 前準備では手順正本のみ。実際の辞書追記は gap 解消バッチで実施"
+      },
+      {
+        "step": 6,
+        "id": "gap_resolution",
+        "labelJa": "不足情報解消",
+        "actions": [
+          "acquisition_chain_registry.audit.gaps 内の content_dictionary 関連 gap を status=resolved に",
+          "gateEvaluation を再計算",
+          "register blocker が解消されたことを確認"
+        ]
+      }
+    ],
+    "forbidden": [
+      "content_dictionary 未登録のまま currency_exchange chain の draft 登録",
+      "推論のみ（series_dictionary）で contentName を確定したとみなすこと"
+    ]
+  },
+  "gapTemplate": {
+    "gapIdPattern": "{seriesKey}-content-dictionary-missing",
+    "dimension": "content_dictionary",
+    "blockerForRegister": true,
+    "blockerForVerify": true,
+    "resolutionMethod": "contentDictionaryAdd",
+    "resolvableBy": "human"
+  },
+  "referenceCases": [
+    {
+      "caseId": "blaze-zadnor-plateau",
+      "seriesKey": "ブレイズ",
+      "status": "pending_bootstrap",
+      "contentNameCandidate": "ザトゥノル高原",
+      "category2": "その他",
+      "categoryTree": ["戦闘コンテンツ", "ボズヤ"],
+      "aliases": ["Zadnor", "ザトゥノル高原"],
+      "keywords": ["ブレイズ", "Blade's Gear Exchange", "ボズヤ古白金貨", "Old Bozjan Platinum Coin"],
+      "relatedDuty": "ボズヤ：旗艦ダル・リアータ攻略戦",
+      "relatedField": "ザトゥノル高原",
+      "currency": "ボズヤ古白金貨",
+      "exchange": "Blade's Gear Exchange",
+      "externalEvidence": {
+        "garland": "Blade's Gear Exchange",
+        "teamcraft": "item/33613",
+        "masterConfirmed": "ザトゥノル高原・ボズヤ古白金貨（Dalriada + Zadnor 週次）"
+      },
+      "masterVerdictRequired": true,
+      "gapIds": [
+        "blaze-content-dict-missing",
+        "blaze-currency-sources",
+        "blaze-exchange-npc-cost"
+      ],
+      "note": "本 policy で draft 登録 blocker を定義。辞書追記後に gap 解消 → draft 可"
+    }
+  ],
+  "autoChecks": [
+    {
+      "id": "content_dictionary_lookup",
+      "description": "contentName が content_dictionary に存在するか",
+      "automated": true
+    },
+    {
+      "id": "keyword_coverage",
+      "description": "seriesKey が keywords に含まれるか",
+      "automated": true,
+      "recommended": true
+    },
+    {
+      "id": "alias_collision",
+      "description": "aliases が既存 contentName と衝突しないか",
+      "automated": true
+    }
+  ],
+  "humanChecks": [
+    "公式日本語名の最終選択（創造環境 vs ヒュペルボレア造物院 等）",
+    "categoryTree の 04 ツリー整合",
+    "master 承認記録の付与"
+  ],
+  "integration": {
+    "seriesAuditPolicy": "auditDimensions.content_dictionary",
+    "siblingPairRegistry": "兄弟 series とは独立。content_dictionary はコンテンツ正本",
+    "phase3PreNote": "辞書ファイルへの書き込みは Phase 3 gap 解消バッチまで保留可。本 policy は手順と blocker 定義が正本。"
+  }
+}

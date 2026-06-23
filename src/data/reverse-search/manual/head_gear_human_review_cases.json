@@ -1,0 +1,224 @@
+{
+  "version": 1,
+  "type": "human_review_registry",
+  "phase": "L-9-human-review",
+  "slot": "頭",
+  "description": "頭装備 Human Review 管理レジストリ。Master画面確認で見つかった違和感のみを cases に登録。",
+  "generatedAt": "2026-06-17T14:00:00.000Z",
+  "fixDeclaration": {
+    "headGearComplete": false,
+    "note": "頭装備FIX宣言は Human Review 完了後に行う"
+  },
+  "separationPolicy": {
+    "autoAuditScript": "scripts/audit-phase-l9-head-gear-display.ts",
+    "heuristicSeedQueue": "src/data/reverse-search/manual/head_gear_human_review_queue.json",
+    "masterCasesFile": "src/data/reverse-search/manual/head_gear_human_review_cases.json",
+    "rule": "Master報告 case のみ本 registry で workflow 管理。heuristic seed（1141件）は参照用で自動修正しない。"
+  },
+  "management": {
+    "policy": "src/data/reverse-search/schema/human_review_policy.json",
+    "template": "scripts/equipment-human-review-template.ts",
+    "reportScript": "scripts/report-human-review-case.ts",
+    "statusScript": "scripts/audit-phase-l9-human-review-status.ts"
+  },
+  "workflow": [
+    {
+      "step": 1,
+      "id": "report",
+      "label": "Master報告",
+      "description": "Master が画面確認で違和感を見つけ、case として登録",
+      "targetStatus": "reported"
+    },
+    {
+      "step": 2,
+      "id": "investigate",
+      "label": "原因調査",
+      "description": "発生元（seed / 手動登録 / バッチルール）と影響フィールドを特定",
+      "targetStatus": "investigating"
+    },
+    {
+      "step": 3,
+      "id": "propose_fix",
+      "label": "修正案作成",
+      "description": "before/after と fixLayer を明記",
+      "targetStatus": "fix_proposed"
+    },
+    {
+      "step": 4,
+      "id": "series_survey",
+      "label": "同系列横展開調査",
+      "description": "prefix / seriesKey で同型を洗い出し、一括修正可否を判断",
+      "targetStatus": "series_survey"
+    },
+    {
+      "step": 5,
+      "id": "apply_canonical",
+      "label": "正本辞書反映",
+      "description": "content / series / display-rules を更新し source へ反映",
+      "targetStatus": "canonical_applied"
+    }
+  ],
+  "reasonCodes": {
+    "ff14_lore_odd": {
+      "label": "FF14的に変",
+      "description": "ゲーム内の入手感・世界観・用語として不自然",
+      "autoAuditDetects": false
+    },
+    "acquisition_feels_wrong": {
+      "label": "入手先違和感",
+      "description": "実際の入手先として画面表示が不自然",
+      "autoAuditDetects": false
+    },
+    "display_unclear": {
+      "label": "表示が分かりにくい",
+      "description": "分類は合っているが、ユーザーにとって入手先が伝わりにくい",
+      "autoAuditDetects": false
+    },
+    "other_bucket_escape": {
+      "label": "その他逃げ",
+      "description": "「その他」や汎用ラベルに逃げすぎている",
+      "autoAuditDetects": false
+    },
+    "classification_too_coarse": {
+      "label": "分類が雑",
+      "description": "LE帯フォールバック等で分類が粗い",
+      "autoAuditDetects": false
+    }
+  },
+  "fixLayers": [
+    "content_dictionary.json",
+    "content_translation_dictionary.json",
+    "series_dictionary.json",
+    "equipment-display-rules.ts",
+    "source_dictionary.json",
+    "item_override_dictionary.json",
+    "manual_review"
+  ],
+  "totals": {
+    "cases": 1,
+    "byStatus": {
+      "reported": 0,
+      "investigating": 0,
+      "fix_proposed": 0,
+      "series_survey": 0,
+      "canonical_applied": 0,
+      "source_applied": 0,
+      "resolved": 1,
+      "rejected": 0,
+      "deferred": 0
+    },
+    "byReason": {
+      "ff14_lore_odd": 0,
+      "acquisition_feels_wrong": 0,
+      "display_unclear": 1,
+      "other_bucket_escape": 0,
+      "classification_too_coarse": 0
+    }
+  },
+  "cases": [
+    {
+      "caseId": "HR-頭-0001",
+      "kind": "master_case",
+      "slot": "頭",
+      "itemId": 23582,
+      "sourceDictionaryId": "source_23582",
+      "nameJa": "オメガ・ディフェンダーサークレット",
+      "reasonCode": "display_unclear",
+      "masterReport": "条件から探す→装備→零式でオメガデルタ編が見当たらない。シグマ編・アルファ編は存在。オメガ・ディフェンダーサークレット等のデルタ編装備がアルファ編に分類されている可能性。",
+      "displaySnapshot": {
+        "category2": "零式",
+        "contentName": "次元の狭間オメガ零式：デルタ編",
+        "routeType": "零式",
+        "routeTypeDetail": "直ドロップ",
+        "detail": "4層",
+        "reward": null
+      },
+      "investigation": {
+        "rootCause": "PREFIX_ROUTES の `オメガ` 接頭辞が「アルファ編」に誤マッピング。FF14ではデルタ編装備の接頭辞は「オメガ・」であり「デルタ・」ではない。content_dictionary にもデルタ編エントリ欠落。",
+        "origin": "batch_import",
+        "affectedFields": [
+          "contentName",
+          "acquisitionRoutes[].contentName",
+          "search_dictionary.generated.json contentName候補"
+        ],
+        "relatedSeriesKey": "omega_savage_delta",
+        "notes": "scripts/build-head-gear-batch2-candidates.ts L121: { prefix: 'オメガ', contentName: '...アルファ編' }。登録データは存在するが分類先が誤り、条件から探すの零式候補にデルタ編が出ない。"
+      },
+      "fixProposal": {
+        "summary": "オメガ・接頭辞12件をデルタ編へ再分類し、content_dictionary にデルタ編を追加、PREFIX_ROUTES を修正後 search 再生成",
+        "before": {
+          "category2": "零式",
+          "contentName": "次元の狭間オメガ零式：アルファ編",
+          "routeType": "零式",
+          "routeTypeDetail": "直ドロップ",
+          "detail": "4層",
+          "reward": null
+        },
+        "after": {
+          "category2": "零式",
+          "contentName": "次元の狭間オメガ零式：デルタ編",
+          "routeType": "零式",
+          "routeTypeDetail": "直ドロップ",
+          "detail": "4層",
+          "reward": null
+        },
+        "fixLayer": "content_dictionary.json",
+        "autoApplySafe": true
+      },
+      "seriesSurvey": {
+        "seriesKey": "omega_savage_by_prefix",
+        "prefix": "オメガ",
+        "matchingItemIds": [
+          23582, 23583, 23584, 23585, 23586, 23624,
+          23588, 23594, 23600, 23606, 23612, 23618
+        ],
+        "sameSlotCount": 7,
+        "crossSlotCount": 12,
+        "applyToAll": true,
+        "notes": "全部位12件が同一誤分類。シグマ(アナムネーシス・7件)・アルファ(ナバスアレン・7+シャドウレス・7=14件)は正しい。監査出力: scripts/output/phase-l9-hr1-omega-delta-audit.json"
+      },
+      "status": "resolved",
+      "statusHistory": [
+        {
+          "at": "2026-06-17T12:46:45.717Z",
+          "status": "reported",
+          "actor": "master",
+          "note": "条件から探す→装備→零式でオメガデルタ編が見当たらない。シグマ編・アルファ編は存在。オメガ・ディフェンダーサークレット等のデルタ編装備がアルファ編に分類されている可能性。"
+        },
+        {
+          "at": "2026-06-17T13:00:00.000Z",
+          "status": "investigating",
+          "actor": "agent",
+          "note": "source_dictionary / search_dictionary / content_dictionary / PREFIX_ROUTES を横断調査"
+        },
+        {
+          "at": "2026-06-17T13:00:00.000Z",
+          "status": "fix_proposed",
+          "actor": "agent",
+          "note": "分類ミス→表示欠落と判定。データ自体は12件登録済み"
+        },
+        {
+          "at": "2026-06-17T13:00:00.000Z",
+          "status": "series_survey",
+          "actor": "agent",
+          "note": "オメガ・接頭辞12件（頭7+他部位5+アクセ1）が全てアルファ編に誤分類"
+        },
+        {
+          "at": "2026-06-17T14:00:00.000Z",
+          "status": "canonical_applied",
+          "actor": "script",
+          "note": "apply-phase-l9-hr1-omega-delta-fix.ts + generate-reverse-search.ts"
+        },
+        {
+          "at": "2026-06-17T14:00:00.000Z",
+          "status": "resolved",
+          "actor": "agent",
+          "note": "条件検索零式候補にデルタ編12件出現を確認"
+        }
+      ],
+      "linkedHeuristicQueueItem": false,
+      "createdAt": "2026-06-17T12:46:45.717Z",
+      "updatedAt": "2026-06-17T14:00:00.000Z"
+    }
+  ]
+}

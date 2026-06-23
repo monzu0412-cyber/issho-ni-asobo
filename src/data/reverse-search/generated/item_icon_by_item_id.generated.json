@@ -1,0 +1,1259 @@
+{
+  "version": 1,
+  "type": "metadata",
+  "phase": "6.2-icon",
+  "generatedAt": "2026-06-20T23:58:10.213Z",
+  "source": "garlandtools.org",
+  "scope": "forward_index_public_equipment",
+  "targetItemCount": 208,
+  "items": [
+    {
+      "itemId": 14512,
+      "iconPath": "ui/icon/040000/040710.tex",
+      "iconPathHr1": "ui/icon/040000/040710_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040710_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14513,
+      "iconPath": "ui/icon/040000/040474.tex",
+      "iconPathHr1": "ui/icon/040000/040474_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040474_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14514,
+      "iconPath": "ui/icon/040000/040475.tex",
+      "iconPathHr1": "ui/icon/040000/040475_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040475_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14515,
+      "iconPath": "ui/icon/040000/040477.tex",
+      "iconPathHr1": "ui/icon/040000/040477_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040477_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14516,
+      "iconPath": "ui/icon/040000/040476.tex",
+      "iconPathHr1": "ui/icon/040000/040476_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040476_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14517,
+      "iconPath": "ui/icon/040000/040711.tex",
+      "iconPathHr1": "ui/icon/040000/040711_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040711_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14518,
+      "iconPath": "ui/icon/040000/040712.tex",
+      "iconPathHr1": "ui/icon/040000/040712_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040712_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14588,
+      "iconPath": "ui/icon/040000/040710.tex",
+      "iconPathHr1": "ui/icon/040000/040710_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040710_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14589,
+      "iconPath": "ui/icon/040000/040474.tex",
+      "iconPathHr1": "ui/icon/040000/040474_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040474_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14590,
+      "iconPath": "ui/icon/040000/040475.tex",
+      "iconPathHr1": "ui/icon/040000/040475_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040475_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14591,
+      "iconPath": "ui/icon/040000/040477.tex",
+      "iconPathHr1": "ui/icon/040000/040477_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040477_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14592,
+      "iconPath": "ui/icon/040000/040476.tex",
+      "iconPathHr1": "ui/icon/040000/040476_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040476_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14593,
+      "iconPath": "ui/icon/040000/040711.tex",
+      "iconPathHr1": "ui/icon/040000/040711_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040711_hr1.tex&format=png"
+    },
+    {
+      "itemId": 14594,
+      "iconPath": "ui/icon/040000/040712.tex",
+      "iconPathHr1": "ui/icon/040000/040712_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040712_hr1.tex&format=png"
+    },
+    {
+      "itemId": 16341,
+      "iconPath": "ui/icon/040000/040731.tex",
+      "iconPathHr1": "ui/icon/040000/040731_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040731_hr1.tex&format=png"
+    },
+    {
+      "itemId": 16347,
+      "iconPath": "ui/icon/040000/040732.tex",
+      "iconPathHr1": "ui/icon/040000/040732_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040732_hr1.tex&format=png"
+    },
+    {
+      "itemId": 16353,
+      "iconPath": "ui/icon/040000/040733.tex",
+      "iconPathHr1": "ui/icon/040000/040733_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040733_hr1.tex&format=png"
+    },
+    {
+      "itemId": 16359,
+      "iconPath": "ui/icon/041000/041334.tex",
+      "iconPathHr1": "ui/icon/041000/041334_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041334_hr1.tex&format=png"
+    },
+    {
+      "itemId": 16365,
+      "iconPath": "ui/icon/040000/040734.tex",
+      "iconPathHr1": "ui/icon/040000/040734_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040734_hr1.tex&format=png"
+    },
+    {
+      "itemId": 16371,
+      "iconPath": "ui/icon/041000/041335.tex",
+      "iconPathHr1": "ui/icon/041000/041335_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041335_hr1.tex&format=png"
+    },
+    {
+      "itemId": 16377,
+      "iconPath": "ui/icon/041000/041336.tex",
+      "iconPathHr1": "ui/icon/041000/041336_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041336_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19141,
+      "iconPath": "ui/icon/040000/040264.tex",
+      "iconPathHr1": "ui/icon/040000/040264_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040264_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19147,
+      "iconPath": "ui/icon/040000/040265.tex",
+      "iconPathHr1": "ui/icon/040000/040265_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040265_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19153,
+      "iconPath": "ui/icon/041000/041688.tex",
+      "iconPathHr1": "ui/icon/041000/041688_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041688_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19159,
+      "iconPath": "ui/icon/041000/041357.tex",
+      "iconPathHr1": "ui/icon/041000/041357_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041357_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19165,
+      "iconPath": "ui/icon/040000/040749.tex",
+      "iconPathHr1": "ui/icon/040000/040749_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040749_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19171,
+      "iconPath": "ui/icon/040000/040267.tex",
+      "iconPathHr1": "ui/icon/040000/040267_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040267_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19177,
+      "iconPath": "ui/icon/040000/040266.tex",
+      "iconPathHr1": "ui/icon/040000/040266_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040266_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19297,
+      "iconPath": "ui/icon/040000/040746.tex",
+      "iconPathHr1": "ui/icon/040000/040746_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040746_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19303,
+      "iconPath": "ui/icon/040000/040747.tex",
+      "iconPathHr1": "ui/icon/040000/040747_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040747_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19309,
+      "iconPath": "ui/icon/040000/040748.tex",
+      "iconPathHr1": "ui/icon/040000/040748_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040748_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19315,
+      "iconPath": "ui/icon/040000/040270.tex",
+      "iconPathHr1": "ui/icon/040000/040270_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040270_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19321,
+      "iconPath": "ui/icon/040000/040504.tex",
+      "iconPathHr1": "ui/icon/040000/040504_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040504_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19327,
+      "iconPath": "ui/icon/040000/040269.tex",
+      "iconPathHr1": "ui/icon/040000/040269_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040269_hr1.tex&format=png"
+    },
+    {
+      "itemId": 19333,
+      "iconPath": "ui/icon/040000/040268.tex",
+      "iconPathHr1": "ui/icon/040000/040268_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040268_hr1.tex&format=png"
+    },
+    {
+      "itemId": 21415,
+      "iconPath": "ui/icon/040000/040795.tex",
+      "iconPathHr1": "ui/icon/040000/040795_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040795_hr1.tex&format=png"
+    },
+    {
+      "itemId": 21421,
+      "iconPath": "ui/icon/040000/040796.tex",
+      "iconPathHr1": "ui/icon/040000/040796_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040796_hr1.tex&format=png"
+    },
+    {
+      "itemId": 21427,
+      "iconPath": "ui/icon/040000/040797.tex",
+      "iconPathHr1": "ui/icon/040000/040797_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040797_hr1.tex&format=png"
+    },
+    {
+      "itemId": 21433,
+      "iconPath": "ui/icon/040000/040798.tex",
+      "iconPathHr1": "ui/icon/040000/040798_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040798_hr1.tex&format=png"
+    },
+    {
+      "itemId": 21439,
+      "iconPath": "ui/icon/040000/040799.tex",
+      "iconPathHr1": "ui/icon/040000/040799_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040799_hr1.tex&format=png"
+    },
+    {
+      "itemId": 21445,
+      "iconPath": "ui/icon/041000/041407.tex",
+      "iconPathHr1": "ui/icon/041000/041407_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041407_hr1.tex&format=png"
+    },
+    {
+      "itemId": 21451,
+      "iconPath": "ui/icon/041000/041406.tex",
+      "iconPathHr1": "ui/icon/041000/041406_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041406_hr1.tex&format=png"
+    },
+    {
+      "itemId": 30616,
+      "iconPath": "ui/icon/040000/040554.tex",
+      "iconPathHr1": "ui/icon/040000/040554_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040554_hr1.tex&format=png"
+    },
+    {
+      "itemId": 30622,
+      "iconPath": "ui/icon/040000/040556.tex",
+      "iconPathHr1": "ui/icon/040000/040556_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040556_hr1.tex&format=png"
+    },
+    {
+      "itemId": 30628,
+      "iconPath": "ui/icon/040000/040557.tex",
+      "iconPathHr1": "ui/icon/040000/040557_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040557_hr1.tex&format=png"
+    },
+    {
+      "itemId": 30634,
+      "iconPath": "ui/icon/040000/040558.tex",
+      "iconPathHr1": "ui/icon/040000/040558_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040558_hr1.tex&format=png"
+    },
+    {
+      "itemId": 30640,
+      "iconPath": "ui/icon/040000/040559.tex",
+      "iconPathHr1": "ui/icon/040000/040559_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040559_hr1.tex&format=png"
+    },
+    {
+      "itemId": 30646,
+      "iconPath": "ui/icon/040000/040555.tex",
+      "iconPathHr1": "ui/icon/040000/040555_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040555_hr1.tex&format=png"
+    },
+    {
+      "itemId": 30652,
+      "iconPath": "ui/icon/040000/040553.tex",
+      "iconPathHr1": "ui/icon/040000/040553_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040553_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32294,
+      "iconPath": "ui/icon/040000/040566.tex",
+      "iconPathHr1": "ui/icon/040000/040566_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040566_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32295,
+      "iconPath": "ui/icon/043000/043550.tex",
+      "iconPathHr1": "ui/icon/043000/043550_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/043000/043550_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32296,
+      "iconPath": "ui/icon/048000/048848.tex",
+      "iconPathHr1": "ui/icon/048000/048848_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/048000/048848_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32297,
+      "iconPath": "ui/icon/047000/047776.tex",
+      "iconPathHr1": "ui/icon/047000/047776_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/047000/047776_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32298,
+      "iconPath": "ui/icon/047000/047257.tex",
+      "iconPathHr1": "ui/icon/047000/047257_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/047000/047257_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32300,
+      "iconPath": "ui/icon/040000/040567.tex",
+      "iconPathHr1": "ui/icon/040000/040567_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040567_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32306,
+      "iconPath": "ui/icon/040000/040988.tex",
+      "iconPathHr1": "ui/icon/040000/040988_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040988_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32307,
+      "iconPath": "ui/icon/042000/042715.tex",
+      "iconPathHr1": "ui/icon/042000/042715_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/042000/042715_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32308,
+      "iconPath": "ui/icon/044000/044832.tex",
+      "iconPathHr1": "ui/icon/044000/044832_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/044000/044832_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32309,
+      "iconPath": "ui/icon/047000/047779.tex",
+      "iconPathHr1": "ui/icon/047000/047779_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/047000/047779_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32310,
+      "iconPath": "ui/icon/049000/049302.tex",
+      "iconPathHr1": "ui/icon/049000/049302_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/049000/049302_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32312,
+      "iconPath": "ui/icon/040000/040568.tex",
+      "iconPathHr1": "ui/icon/040000/040568_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040568_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32318,
+      "iconPath": "ui/icon/040000/040989.tex",
+      "iconPathHr1": "ui/icon/040000/040989_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040989_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32324,
+      "iconPath": "ui/icon/041000/041518.tex",
+      "iconPathHr1": "ui/icon/041000/041518_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041518_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32330,
+      "iconPath": "ui/icon/041000/041517.tex",
+      "iconPathHr1": "ui/icon/041000/041517_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041517_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32336,
+      "iconPath": "ui/icon/055000/055467.tex",
+      "iconPathHr1": "ui/icon/055000/055467_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/055000/055467_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32341,
+      "iconPath": "ui/icon/055000/055033.tex",
+      "iconPathHr1": "ui/icon/055000/055033_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/055000/055033_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32516,
+      "iconPath": "ui/icon/040000/040372.tex",
+      "iconPathHr1": "ui/icon/040000/040372_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040372_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32522,
+      "iconPath": "ui/icon/040000/040562.tex",
+      "iconPathHr1": "ui/icon/040000/040562_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040562_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32528,
+      "iconPath": "ui/icon/040000/040563.tex",
+      "iconPathHr1": "ui/icon/040000/040563_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040563_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32534,
+      "iconPath": "ui/icon/040000/040564.tex",
+      "iconPathHr1": "ui/icon/040000/040564_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040564_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32540,
+      "iconPath": "ui/icon/040000/040565.tex",
+      "iconPathHr1": "ui/icon/040000/040565_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040565_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32546,
+      "iconPath": "ui/icon/040000/040561.tex",
+      "iconPathHr1": "ui/icon/040000/040561_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040561_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32552,
+      "iconPath": "ui/icon/040000/040560.tex",
+      "iconPathHr1": "ui/icon/040000/040560_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040560_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32578,
+      "iconPath": "ui/icon/040000/040862.tex",
+      "iconPathHr1": "ui/icon/040000/040862_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040862_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32584,
+      "iconPath": "ui/icon/040000/040863.tex",
+      "iconPathHr1": "ui/icon/040000/040863_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040863_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32590,
+      "iconPath": "ui/icon/040000/040864.tex",
+      "iconPathHr1": "ui/icon/040000/040864_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040864_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32596,
+      "iconPath": "ui/icon/041000/041513.tex",
+      "iconPathHr1": "ui/icon/041000/041513_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041513_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32602,
+      "iconPath": "ui/icon/040000/040865.tex",
+      "iconPathHr1": "ui/icon/040000/040865_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040865_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32608,
+      "iconPath": "ui/icon/041000/041512.tex",
+      "iconPathHr1": "ui/icon/041000/041512_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041512_hr1.tex&format=png"
+    },
+    {
+      "itemId": 32614,
+      "iconPath": "ui/icon/041000/041511.tex",
+      "iconPathHr1": "ui/icon/041000/041511_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041511_hr1.tex&format=png"
+    },
+    {
+      "itemId": 33613,
+      "iconPath": "ui/icon/041000/041810.tex",
+      "iconPathHr1": "ui/icon/041000/041810_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041810_hr1.tex&format=png"
+    },
+    {
+      "itemId": 33618,
+      "iconPath": "ui/icon/041000/041812.tex",
+      "iconPathHr1": "ui/icon/041000/041812_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041812_hr1.tex&format=png"
+    },
+    {
+      "itemId": 33623,
+      "iconPath": "ui/icon/041000/041813.tex",
+      "iconPathHr1": "ui/icon/041000/041813_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041813_hr1.tex&format=png"
+    },
+    {
+      "itemId": 33628,
+      "iconPath": "ui/icon/041000/041814.tex",
+      "iconPathHr1": "ui/icon/041000/041814_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041814_hr1.tex&format=png"
+    },
+    {
+      "itemId": 33633,
+      "iconPath": "ui/icon/041000/041815.tex",
+      "iconPathHr1": "ui/icon/041000/041815_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041815_hr1.tex&format=png"
+    },
+    {
+      "itemId": 33638,
+      "iconPath": "ui/icon/041000/041811.tex",
+      "iconPathHr1": "ui/icon/041000/041811_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041811_hr1.tex&format=png"
+    },
+    {
+      "itemId": 33643,
+      "iconPath": "ui/icon/041000/041809.tex",
+      "iconPathHr1": "ui/icon/041000/041809_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041809_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34175,
+      "iconPath": "ui/icon/041000/041940.tex",
+      "iconPathHr1": "ui/icon/041000/041940_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041940_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34180,
+      "iconPath": "ui/icon/041000/041943.tex",
+      "iconPathHr1": "ui/icon/041000/041943_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041943_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34185,
+      "iconPath": "ui/icon/041000/041945.tex",
+      "iconPathHr1": "ui/icon/041000/041945_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041945_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34190,
+      "iconPath": "ui/icon/041000/041941.tex",
+      "iconPathHr1": "ui/icon/041000/041941_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041941_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34195,
+      "iconPath": "ui/icon/041000/041944.tex",
+      "iconPathHr1": "ui/icon/041000/041944_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041944_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34200,
+      "iconPath": "ui/icon/041000/041942.tex",
+      "iconPathHr1": "ui/icon/041000/041942_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041942_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34205,
+      "iconPath": "ui/icon/041000/041939.tex",
+      "iconPathHr1": "ui/icon/041000/041939_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041939_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34475,
+      "iconPath": "ui/icon/040000/040388.tex",
+      "iconPathHr1": "ui/icon/040000/040388_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040388_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34480,
+      "iconPath": "ui/icon/040000/040389.tex",
+      "iconPathHr1": "ui/icon/040000/040389_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040389_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34485,
+      "iconPath": "ui/icon/040000/040392.tex",
+      "iconPathHr1": "ui/icon/040000/040392_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040392_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34490,
+      "iconPath": "ui/icon/040000/040393.tex",
+      "iconPathHr1": "ui/icon/040000/040393_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040393_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34495,
+      "iconPath": "ui/icon/040000/040394.tex",
+      "iconPathHr1": "ui/icon/040000/040394_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040394_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34500,
+      "iconPath": "ui/icon/040000/040391.tex",
+      "iconPathHr1": "ui/icon/040000/040391_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040391_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34505,
+      "iconPath": "ui/icon/040000/040390.tex",
+      "iconPathHr1": "ui/icon/040000/040390_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040390_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34625,
+      "iconPath": "ui/icon/041000/041889.tex",
+      "iconPathHr1": "ui/icon/041000/041889_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041889_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34630,
+      "iconPath": "ui/icon/041000/041890.tex",
+      "iconPathHr1": "ui/icon/041000/041890_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041890_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34635,
+      "iconPath": "ui/icon/040000/040571.tex",
+      "iconPathHr1": "ui/icon/040000/040571_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040571_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34640,
+      "iconPath": "ui/icon/040000/040572.tex",
+      "iconPathHr1": "ui/icon/040000/040572_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040572_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34645,
+      "iconPath": "ui/icon/040000/040573.tex",
+      "iconPathHr1": "ui/icon/040000/040573_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040573_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34650,
+      "iconPath": "ui/icon/040000/040570.tex",
+      "iconPathHr1": "ui/icon/040000/040570_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040570_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34655,
+      "iconPath": "ui/icon/040000/040569.tex",
+      "iconPathHr1": "ui/icon/040000/040569_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040569_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34870,
+      "iconPath": "ui/icon/040000/040869.tex",
+      "iconPathHr1": "ui/icon/040000/040869_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040869_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34875,
+      "iconPath": "ui/icon/040000/040870.tex",
+      "iconPathHr1": "ui/icon/040000/040870_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040870_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34880,
+      "iconPath": "ui/icon/041000/041867.tex",
+      "iconPathHr1": "ui/icon/041000/041867_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041867_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34885,
+      "iconPath": "ui/icon/041000/041869.tex",
+      "iconPathHr1": "ui/icon/041000/041869_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041869_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34890,
+      "iconPath": "ui/icon/041000/041868.tex",
+      "iconPathHr1": "ui/icon/041000/041868_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041868_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34895,
+      "iconPath": "ui/icon/040000/040872.tex",
+      "iconPathHr1": "ui/icon/040000/040872_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040872_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34900,
+      "iconPath": "ui/icon/040000/040871.tex",
+      "iconPathHr1": "ui/icon/040000/040871_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040871_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34965,
+      "iconPath": "ui/icon/041000/041911.tex",
+      "iconPathHr1": "ui/icon/041000/041911_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041911_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34970,
+      "iconPath": "ui/icon/041000/041912.tex",
+      "iconPathHr1": "ui/icon/041000/041912_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041912_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34975,
+      "iconPath": "ui/icon/041000/041913.tex",
+      "iconPathHr1": "ui/icon/041000/041913_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041913_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34980,
+      "iconPath": "ui/icon/041000/041914.tex",
+      "iconPathHr1": "ui/icon/041000/041914_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041914_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34985,
+      "iconPath": "ui/icon/041000/041915.tex",
+      "iconPathHr1": "ui/icon/041000/041915_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041915_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34990,
+      "iconPath": "ui/icon/041000/041910.tex",
+      "iconPathHr1": "ui/icon/041000/041910_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041910_hr1.tex&format=png"
+    },
+    {
+      "itemId": 34995,
+      "iconPath": "ui/icon/041000/041909.tex",
+      "iconPathHr1": "ui/icon/041000/041909_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041909_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35190,
+      "iconPath": "ui/icon/040000/040381.tex",
+      "iconPathHr1": "ui/icon/040000/040381_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040381_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35195,
+      "iconPath": "ui/icon/040000/040382.tex",
+      "iconPathHr1": "ui/icon/040000/040382_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040382_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35200,
+      "iconPath": "ui/icon/040000/040386.tex",
+      "iconPathHr1": "ui/icon/040000/040386_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040386_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35205,
+      "iconPath": "ui/icon/040000/040387.tex",
+      "iconPathHr1": "ui/icon/040000/040387_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040387_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35210,
+      "iconPath": "ui/icon/040000/040385.tex",
+      "iconPathHr1": "ui/icon/040000/040385_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040385_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35215,
+      "iconPath": "ui/icon/040000/040384.tex",
+      "iconPathHr1": "ui/icon/040000/040384_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040384_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35220,
+      "iconPath": "ui/icon/040000/040383.tex",
+      "iconPathHr1": "ui/icon/040000/040383_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/040000/040383_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35265,
+      "iconPath": "ui/icon/041000/041911.tex",
+      "iconPathHr1": "ui/icon/041000/041911_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041911_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35270,
+      "iconPath": "ui/icon/041000/041912.tex",
+      "iconPathHr1": "ui/icon/041000/041912_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041912_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35275,
+      "iconPath": "ui/icon/041000/041913.tex",
+      "iconPathHr1": "ui/icon/041000/041913_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041913_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35280,
+      "iconPath": "ui/icon/041000/041914.tex",
+      "iconPathHr1": "ui/icon/041000/041914_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041914_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35285,
+      "iconPath": "ui/icon/041000/041915.tex",
+      "iconPathHr1": "ui/icon/041000/041915_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041915_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35290,
+      "iconPath": "ui/icon/041000/041910.tex",
+      "iconPathHr1": "ui/icon/041000/041910_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041910_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35295,
+      "iconPath": "ui/icon/041000/041909.tex",
+      "iconPathHr1": "ui/icon/041000/041909_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/041000/041909_hr1.tex&format=png"
+    },
+    {
+      "itemId": 35790,
+      "iconPath": "ui/icon/037000/037010.tex",
+      "iconPathHr1": "ui/icon/037000/037010_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/037000/037010_hr1.tex&format=png"
+    },
+    {
+      "itemId": 37876,
+      "iconPath": "ui/icon/056000/056500.tex",
+      "iconPathHr1": "ui/icon/056000/056500_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056500_hr1.tex&format=png"
+    },
+    {
+      "itemId": 37881,
+      "iconPath": "ui/icon/056000/056501.tex",
+      "iconPathHr1": "ui/icon/056000/056501_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056501_hr1.tex&format=png"
+    },
+    {
+      "itemId": 37886,
+      "iconPath": "ui/icon/056000/056504.tex",
+      "iconPathHr1": "ui/icon/056000/056504_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056504_hr1.tex&format=png"
+    },
+    {
+      "itemId": 37891,
+      "iconPath": "ui/icon/056000/056506.tex",
+      "iconPathHr1": "ui/icon/056000/056506_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056506_hr1.tex&format=png"
+    },
+    {
+      "itemId": 37896,
+      "iconPath": "ui/icon/056000/056505.tex",
+      "iconPathHr1": "ui/icon/056000/056505_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056505_hr1.tex&format=png"
+    },
+    {
+      "itemId": 37901,
+      "iconPath": "ui/icon/056000/056502.tex",
+      "iconPathHr1": "ui/icon/056000/056502_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056502_hr1.tex&format=png"
+    },
+    {
+      "itemId": 37906,
+      "iconPath": "ui/icon/056000/056503.tex",
+      "iconPathHr1": "ui/icon/056000/056503_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056503_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38026,
+      "iconPath": "ui/icon/056000/056516.tex",
+      "iconPathHr1": "ui/icon/056000/056516_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056516_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38031,
+      "iconPath": "ui/icon/056000/056519.tex",
+      "iconPathHr1": "ui/icon/056000/056519_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056519_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38036,
+      "iconPath": "ui/icon/056000/056517.tex",
+      "iconPathHr1": "ui/icon/056000/056517_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056517_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38041,
+      "iconPath": "ui/icon/056000/056518.tex",
+      "iconPathHr1": "ui/icon/056000/056518_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056518_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38046,
+      "iconPath": "ui/icon/056000/056520.tex",
+      "iconPathHr1": "ui/icon/056000/056520_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056520_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38051,
+      "iconPath": "ui/icon/056000/056515.tex",
+      "iconPathHr1": "ui/icon/056000/056515_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056515_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38056,
+      "iconPath": "ui/icon/056000/056514.tex",
+      "iconPathHr1": "ui/icon/056000/056514_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056514_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38101,
+      "iconPath": "ui/icon/056000/056500.tex",
+      "iconPathHr1": "ui/icon/056000/056500_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056500_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38106,
+      "iconPath": "ui/icon/056000/056501.tex",
+      "iconPathHr1": "ui/icon/056000/056501_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056501_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38111,
+      "iconPath": "ui/icon/056000/056504.tex",
+      "iconPathHr1": "ui/icon/056000/056504_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056504_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38116,
+      "iconPath": "ui/icon/056000/056506.tex",
+      "iconPathHr1": "ui/icon/056000/056506_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056506_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38121,
+      "iconPath": "ui/icon/056000/056505.tex",
+      "iconPathHr1": "ui/icon/056000/056505_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056505_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38126,
+      "iconPath": "ui/icon/056000/056502.tex",
+      "iconPathHr1": "ui/icon/056000/056502_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056502_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38131,
+      "iconPath": "ui/icon/056000/056503.tex",
+      "iconPathHr1": "ui/icon/056000/056503_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056503_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38156,
+      "iconPath": "ui/icon/056000/056507.tex",
+      "iconPathHr1": "ui/icon/056000/056507_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056507_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38161,
+      "iconPath": "ui/icon/056000/056508.tex",
+      "iconPathHr1": "ui/icon/056000/056508_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056508_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38166,
+      "iconPath": "ui/icon/056000/056511.tex",
+      "iconPathHr1": "ui/icon/056000/056511_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056511_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38171,
+      "iconPath": "ui/icon/056000/056513.tex",
+      "iconPathHr1": "ui/icon/056000/056513_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056513_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38176,
+      "iconPath": "ui/icon/056000/056512.tex",
+      "iconPathHr1": "ui/icon/056000/056512_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056512_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38181,
+      "iconPath": "ui/icon/056000/056509.tex",
+      "iconPathHr1": "ui/icon/056000/056509_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056509_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38186,
+      "iconPath": "ui/icon/056000/056510.tex",
+      "iconPathHr1": "ui/icon/056000/056510_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056510_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38957,
+      "iconPath": "ui/icon/056000/056551.tex",
+      "iconPathHr1": "ui/icon/056000/056551_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056551_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38962,
+      "iconPath": "ui/icon/056000/056565.tex",
+      "iconPathHr1": "ui/icon/056000/056565_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056565_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38967,
+      "iconPath": "ui/icon/056000/056548.tex",
+      "iconPathHr1": "ui/icon/056000/056548_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056548_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38972,
+      "iconPath": "ui/icon/056000/056552.tex",
+      "iconPathHr1": "ui/icon/056000/056552_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056552_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38977,
+      "iconPath": "ui/icon/056000/056549.tex",
+      "iconPathHr1": "ui/icon/056000/056549_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056549_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38982,
+      "iconPath": "ui/icon/056000/056553.tex",
+      "iconPathHr1": "ui/icon/056000/056553_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056553_hr1.tex&format=png"
+    },
+    {
+      "itemId": 38987,
+      "iconPath": "ui/icon/056000/056550.tex",
+      "iconPathHr1": "ui/icon/056000/056550_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056550_hr1.tex&format=png"
+    },
+    {
+      "itemId": 40110,
+      "iconPath": "ui/icon/056000/056572.tex",
+      "iconPathHr1": "ui/icon/056000/056572_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056572_hr1.tex&format=png"
+    },
+    {
+      "itemId": 40115,
+      "iconPath": "ui/icon/056000/056573.tex",
+      "iconPathHr1": "ui/icon/056000/056573_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056573_hr1.tex&format=png"
+    },
+    {
+      "itemId": 40120,
+      "iconPath": "ui/icon/056000/056578.tex",
+      "iconPathHr1": "ui/icon/056000/056578_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056578_hr1.tex&format=png"
+    },
+    {
+      "itemId": 40125,
+      "iconPath": "ui/icon/056000/056576.tex",
+      "iconPathHr1": "ui/icon/056000/056576_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056576_hr1.tex&format=png"
+    },
+    {
+      "itemId": 40130,
+      "iconPath": "ui/icon/056000/056577.tex",
+      "iconPathHr1": "ui/icon/056000/056577_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056577_hr1.tex&format=png"
+    },
+    {
+      "itemId": 40135,
+      "iconPath": "ui/icon/056000/056574.tex",
+      "iconPathHr1": "ui/icon/056000/056574_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056574_hr1.tex&format=png"
+    },
+    {
+      "itemId": 40140,
+      "iconPath": "ui/icon/056000/056575.tex",
+      "iconPathHr1": "ui/icon/056000/056575_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056575_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42089,
+      "iconPath": "ui/icon/056000/056779.tex",
+      "iconPathHr1": "ui/icon/056000/056779_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056779_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42094,
+      "iconPath": "ui/icon/056000/056783.tex",
+      "iconPathHr1": "ui/icon/056000/056783_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056783_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42099,
+      "iconPath": "ui/icon/056000/056780.tex",
+      "iconPathHr1": "ui/icon/056000/056780_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056780_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42104,
+      "iconPath": "ui/icon/056000/056778.tex",
+      "iconPathHr1": "ui/icon/056000/056778_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056778_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42109,
+      "iconPath": "ui/icon/056000/056781.tex",
+      "iconPathHr1": "ui/icon/056000/056781_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056781_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42114,
+      "iconPath": "ui/icon/056000/056777.tex",
+      "iconPathHr1": "ui/icon/056000/056777_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056777_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42119,
+      "iconPath": "ui/icon/056000/056782.tex",
+      "iconPathHr1": "ui/icon/056000/056782_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056782_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42397,
+      "iconPath": "ui/icon/056000/056764.tex",
+      "iconPathHr1": "ui/icon/056000/056764_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056764_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42402,
+      "iconPath": "ui/icon/056000/056765.tex",
+      "iconPathHr1": "ui/icon/056000/056765_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056765_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42407,
+      "iconPath": "ui/icon/056000/056769.tex",
+      "iconPathHr1": "ui/icon/056000/056769_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056769_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42412,
+      "iconPath": "ui/icon/056000/056770.tex",
+      "iconPathHr1": "ui/icon/056000/056770_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056770_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42417,
+      "iconPath": "ui/icon/056000/056768.tex",
+      "iconPathHr1": "ui/icon/056000/056768_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056768_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42422,
+      "iconPath": "ui/icon/056000/056766.tex",
+      "iconPathHr1": "ui/icon/056000/056766_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056766_hr1.tex&format=png"
+    },
+    {
+      "itemId": 42427,
+      "iconPath": "ui/icon/056000/056767.tex",
+      "iconPathHr1": "ui/icon/056000/056767_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056767_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44241,
+      "iconPath": "ui/icon/037000/037410.tex",
+      "iconPathHr1": "ui/icon/037000/037410_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/037000/037410_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44550,
+      "iconPath": "ui/icon/056000/056797.tex",
+      "iconPathHr1": "ui/icon/056000/056797_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056797_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44555,
+      "iconPath": "ui/icon/056000/056800.tex",
+      "iconPathHr1": "ui/icon/056000/056800_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056800_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44560,
+      "iconPath": "ui/icon/056000/056798.tex",
+      "iconPathHr1": "ui/icon/056000/056798_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056798_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44565,
+      "iconPath": "ui/icon/056000/056799.tex",
+      "iconPathHr1": "ui/icon/056000/056799_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056799_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44570,
+      "iconPath": "ui/icon/056000/056801.tex",
+      "iconPathHr1": "ui/icon/056000/056801_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056801_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44575,
+      "iconPath": "ui/icon/056000/056796.tex",
+      "iconPathHr1": "ui/icon/056000/056796_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056796_hr1.tex&format=png"
+    },
+    {
+      "itemId": 44580,
+      "iconPath": "ui/icon/056000/056795.tex",
+      "iconPathHr1": "ui/icon/056000/056795_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056795_hr1.tex&format=png"
+    },
+    {
+      "itemId": 46344,
+      "iconPath": "ui/icon/056000/056850.tex",
+      "iconPathHr1": "ui/icon/056000/056850_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056850_hr1.tex&format=png"
+    },
+    {
+      "itemId": 46349,
+      "iconPath": "ui/icon/056000/056853.tex",
+      "iconPathHr1": "ui/icon/056000/056853_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056853_hr1.tex&format=png"
+    },
+    {
+      "itemId": 46354,
+      "iconPath": "ui/icon/056000/056854.tex",
+      "iconPathHr1": "ui/icon/056000/056854_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056854_hr1.tex&format=png"
+    },
+    {
+      "itemId": 46359,
+      "iconPath": "ui/icon/056000/056855.tex",
+      "iconPathHr1": "ui/icon/056000/056855_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056855_hr1.tex&format=png"
+    },
+    {
+      "itemId": 46364,
+      "iconPath": "ui/icon/056000/056856.tex",
+      "iconPathHr1": "ui/icon/056000/056856_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056856_hr1.tex&format=png"
+    },
+    {
+      "itemId": 46369,
+      "iconPath": "ui/icon/056000/056852.tex",
+      "iconPathHr1": "ui/icon/056000/056852_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056852_hr1.tex&format=png"
+    },
+    {
+      "itemId": 46374,
+      "iconPath": "ui/icon/056000/056851.tex",
+      "iconPathHr1": "ui/icon/056000/056851_hr1.tex",
+      "iconUrl": "https://v2.xivapi.com/api/asset?path=ui/icon/056000/056851_hr1.tex&format=png"
+    }
+  ]
+}

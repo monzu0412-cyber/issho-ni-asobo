@@ -69,6 +69,21 @@ export function CardBodyWant(props: CardBodyProps) {
     removeContentItem,
     characterMessage,
     updateCharacterMessage,
+    lodestoneInput,
+    lodestoneFetchError,
+    lodestoneApplyMessage,
+    lodestoneApplyError,
+    isLodestoneFetching,
+    leftColumnDisplayMode,
+    lodestoneProfile,
+    jobSelections,
+    updateLodestoneInput,
+    fetchLodestoneProfile,
+    refetchLodestoneProfile,
+    savedLodestoneCharacterId,
+    applyLodestoneProfileToCard,
+    onLeftColumnDisplayModeChange,
+    onJobSelectionChange,
   } = props
 
   return (
@@ -132,6 +147,17 @@ export function CardBodyWant(props: CardBodyProps) {
           updateRole={updateRole}
           updatePlayTime={updatePlayTime}
           updateVoiceChat={updateVoiceChat}
+          lodestoneInput={lodestoneInput}
+          lodestoneFetchError={lodestoneFetchError}
+          lodestoneApplyMessage={lodestoneApplyMessage}
+          lodestoneApplyError={lodestoneApplyError}
+          isLodestoneFetching={isLodestoneFetching}
+          lodestoneProfile={lodestoneProfile}
+          updateLodestoneInput={updateLodestoneInput}
+          fetchLodestoneProfile={fetchLodestoneProfile}
+          refetchLodestoneProfile={refetchLodestoneProfile}
+          savedLodestoneCharacterId={savedLodestoneCharacterId}
+          applyLodestoneProfileToCard={applyLodestoneProfileToCard}
         />
 
         <WantSlotPanel
@@ -163,6 +189,11 @@ export function CardBodyWant(props: CardBodyProps) {
         updateContentSelection={updateContentSelection}
         addContentItem={addContentItem}
         removeContentItem={removeContentItem}
+        leftColumnDisplayMode={leftColumnDisplayMode}
+        lodestoneProfile={lodestoneProfile}
+        jobSelections={jobSelections}
+        onLeftColumnDisplayModeChange={onLeftColumnDisplayModeChange}
+        onJobSelectionChange={onJobSelectionChange}
       />
 
       <CardBottomRow

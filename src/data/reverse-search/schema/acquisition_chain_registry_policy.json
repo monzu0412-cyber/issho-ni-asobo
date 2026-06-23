@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "type": "acquisition_chain_registry_policy",
+  "phase": 3,
+  "description": "Schema and lifecycle contract for acquisition_chain_registry.json. Chains are canonical acquisition paths; source_dictionary is a projection target after verified.",
+  "policyReferences": {
+    "seriesAudit": "src/data/reverse-search/schema/series_audit_policy.json",
+    "siblingPairs": "src/data/reverse-search/schema/sibling_pair_registry.json",
+    "contentBootstrap": "src/data/reverse-search/schema/content_dictionary_bootstrap_policy.json",
+    "publicationGate": "src/data/reverse-search/schema/publication_gate_policy.json",
+    "equipmentEvidence": "src/data/reverse-search/schema/equipment_evidence_policy.json"
+  },
+  "dataFile": "src/data/reverse-search/manual/acquisition_chain_registry.json",
+  "terminology": {
+    "gaps": "不足情報（audit.gaps[]）",
+    "blocker": "進行停止条件（open gap + blockerForRegister/Verify）",
+    "draft": "下書き登録（status=draft）",
+    "verified": "確認済み（status=verified）",
+    "rejected": "除外（status=rejected）",
+    "publish": "公開（投影後・publication gate 通過）"
+  },
+  "statusEnum": ["draft", "verified", "rejected", "deprecated"],
+  "chainTemplateEnum": ["duty_drop", "token_exchange", "currency_exchange", "multi_link"],
+  "itemBindingPolicyEnum": ["series_prefix_all_slots", "explicit_item_ids_per_link"],
+  "chainEntrySchema": {
+    "required": [
+      "chainId",
+      "seriesKey",
+      "status",
+      "auditProfile",
+      "chainTemplate",
+      "category1",
+      "category2",
+      "contentName",
+      "difficulty",
+      "representativeItemId",
+      "representativeItemName",
+      "itemBindingPolicy",
+      "acquisitionLinks",
+      "audit"
+    ],
+    "optional": [
+      "siblingPairIds",
+      "namingTrap",
+      "masterVerdict",
+      "verifiedAt",
+      "verifiedBy",
+      "notes",
+      "phase"
+    ]
+  },
+  "acquisitionLinkSchema": {
+    "required": ["linkId", "dropKind", "boundItemIds"],
+    "optional": [
+      "dutyOrField",
+      "detail",
+      "tokenOrCurrency",
+      "exchangeVendor",
+      "cofferLabel",
+      "relatedDuty",
+      "notes"
+    ],
+    "dropKindEnum": [
+      "coffer",
+      "duty_drop",
+      "token_exchange",
+      "currency_source",
+      "currency_exchange"
+    ]
+  },
+  "auditSchema": {
+    "required": ["gaps", "gateEvaluation", "evidence"],
+    "gaps": {
+      "description": "不足情報一覧。status=open かつ blocker=true の行が進行停止条件になる。",
+      "itemRequired": [
+        "gapId",
+        "dimension",
+        "description",
+        "status",
+        "blockerForRegister",
+        "blockerForVerify",
+        "resolutionMethod",
+        "resolvableBy"
+      ],
+      "gapStatusEnum": ["open", "resolved", "waived"]
+    },
+    "gateEvaluation": {
+      "description": "進行停止条件の派生キャッシュ。gaps + series_audit_policy から再計算可能。",
+      "fields": {
+        "computedAt": "ISO8601",
+        "canRegister": "draft 登録ゲート通過",
+        "canVerify": "verified 昇格ゲート通過",
+        "canPublish": "投影・公開ゲート通過（Phase 3 では常に false）",
+        "openRegisterBlockers": "件数",
+        "openVerifyBlockers": "件数",
+        "stopReasons": [{ "gate": "draft|verified|publish", "gapId": "string", "message": "string" }]
+      }
+    },
+    "evidence": {
+      "fields": {
+        "level": "A|B|C|D|E（equipment_evidence_policy 準拠）",
+        "sources": [{ "type": "Garland|Teamcraft|Lodestone|GamerEscape|masterVerdict", "url": "string?", "note": "string?" }],
+        "masterConfirmed": "boolean"
+      }
+    }
+  },
+  "lifecycle": {
+    "draft": {
+      "labelJa": "下書き登録",
+      "requires": ["canRegister=true"],
+      "allowsOpenGaps": true
+    },
+    "verified": {
+      "labelJa": "確認済み",
+      "requires": ["canVerify=true", "openVerifyBlockers=0"],
+      "forbidsOpenVerifyBlockers": true
+    },
+    "rejected": {
+      "labelJa": "除外",
+      "note": "監査対象外・誤系列の明示除外"
+    }
+  },
+  "preProjectionValidation": {
+    "description": "source_dictionary 投影前に満たす条件（Phase 4 以降で適用）",
+    "requires": [
+      "status=verified",
+      "canPublish=true（投影バッチ実装後）",
+      "sibling_pair_registry 違反なし",
+      "acquisitionLinks.boundItemIds 非重複（multi_link 時）"
+    ],
+    "forbidden": [
+      "status=draft のまま投影",
+      "openVerifyBlockers > 0 のまま verified 昇格"
+    ],
+    "phase3Note": "Phase 3 では投影を実行しない。本検証条件は registry 設計のみ。"
+  },
+  "projectionContract": {
+    "target": "source_dictionary",
+    "phase": "4+",
+    "rule": "verified chain から acquisitionRoutes を生成。装備 status は publication_gate と連動。",
+    "forbiddenInPhase3": true
+  }
+}

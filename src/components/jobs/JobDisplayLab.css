@@ -1,0 +1,196 @@
+.jobDisplayLab {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  color: #1f2937;
+}
+
+.jobDisplayLabHeader h1 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.jobDisplayLabHeader p {
+  margin: 0 0 12px;
+  color: #4b5563;
+}
+
+.jobDisplayLabBackLink {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.jobDisplayLabBackLink:hover {
+  text-decoration: underline;
+}
+
+.jobDisplayLabControls {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.jobDisplayLabControls fieldset {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+.jobDisplayLabControls legend {
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+.jobDisplayLabControls label {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.jobDisplayLabResetButton,
+.jobDisplayLabControls button {
+  background: #102a54;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 12px;
+  width: fit-content;
+}
+
+.jobDisplayLabResetButton:disabled,
+.jobDisplayLabControls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.jobDisplayLabError {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #b91c1c;
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+
+.jobDisplayLabStats,
+.jobDisplayLabLegend {
+  color: #374151;
+  font-size: 0.92rem;
+  margin-top: 12px;
+}
+
+.jobDisplayLabLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.jobDisplayLabLegendItem {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.jobDisplayLabSwatch {
+  border: 2px solid transparent;
+  border-radius: 6px;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+}
+
+.jobDisplayLabSwatch--gray {
+  background: #d1d5db;
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+
+.jobDisplayLabSwatch--faded {
+  background: #9ca3af;
+  filter: grayscale(0.35) saturate(0.65);
+  opacity: 0.72;
+}
+
+.jobDisplayLabSwatch--normal {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.jobDisplayLabSwatch--gold {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 1px #f6e27a;
+}
+
+.jobDisplayLabCardFrame {
+  margin-top: 20px;
+}
+
+.jobDisplayLab--viewport-pc .jobDisplayLabCardFrame {
+  max-width: 920px;
+}
+
+.jobDisplayLab--viewport-mobile .jobDisplayLabCardFrame {
+  border: 1px dashed #9ca3af;
+  margin-inline: auto;
+  max-width: 375px;
+  padding: 8px;
+}
+
+.jobDisplayLabActivityBox {
+  width: 100%;
+}
+
+.jobDisplayLabPlaceholderColumn {
+  opacity: 0.72;
+}
+
+.jobDisplayLabPlaceholderText {
+  color: #6b7280;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.activityBox > .activityColumn.jobBox {
+  padding: 16px;
+}
+
+.jobDisplayLab .jobIconLabel {
+  color: #102a54;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 52px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jobDisplayLab--viewport-mobile .jobRoleRow {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.jobDisplayLab--viewport-mobile.editMode .activityBox {
+  grid-template-columns: 1fr;
+  height: auto;
+  min-height: 0;
+}
+
+.jobDisplayLab--viewport-mobile.editMode .activityBox > .activityColumn {
+  height: auto;
+  max-height: none;
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  .jobDisplayLabLegend {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

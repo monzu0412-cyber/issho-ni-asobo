@@ -30,7 +30,7 @@
   },
   {
     "seriesKey": "アレキサンダー",
-    "category2": null,
+    "category2": "零式",
     "contentName": null,
     "candidates": [
       "機工城アレキサンダー零式：起動編",
@@ -38,10 +38,13 @@
       "機工城アレキサンダー零式：天動編"
     ],
     "matchType": "ambiguous_name_prefix",
-    "confidence": "low",
-    "needsReview": true,
-    "handling": ["item_override_dictionary", "manual_override", "unclassified_items"],
-    "note": "04判断: 名称だけでは起動/律動/天動を自動判定しない。初期はneedsReview:true。"
+    "confidence": "high",
+    "needsReview": false,
+    "handling": [
+      "item_override_dictionary",
+      "classifyAlexander"
+    ],
+    "note": "P1: edition は item_override_dictionary + classifyAlexander で確定。prefix 単独では判定しない。"
   },
   {
     "seriesKey": "潮衝",
@@ -50,5 +53,1802 @@
     "matchType": "orchestrion_description",
     "confidence": "medium",
     "needsReview": false
+  },
+  {
+    "seriesKey": "トゥルーブラッド",
+    "category2": "極",
+    "contentName": "極スサノオ討滅戦",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Trueblood gear → Susano Extreme"
+  },
+  {
+    "seriesKey": "トゥルーグリフィン",
+    "category2": "極",
+    "contentName": "極ラーヴァナ討滅戦",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "True Griffin gear → Ravana Extreme"
+  },
+  {
+    "seriesKey": "トゥルーリネン",
+    "category2": "極",
+    "contentName": "極女神ソフィア討滅戦",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "True Linen gear → Sophia Extreme"
+  },
+  {
+    "seriesKey": "メガテリウム",
+    "category2": "極",
+    "contentName": "極女神ソフィア討滅戦",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "グレース",
+    "category2": "極",
+    "contentName": "極女神ソフィア討滅戦",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Sophia accessory series"
+  },
+  {
+    "seriesKey": "パラース",
+    "category2": "極",
+    "contentName": "極女神ソフィア討滅戦",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Sophia accessory series"
+  },
+  {
+    "seriesKey": "極王刀",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Crafted Mog weapon, not trial drop"
+  },
+  {
+    "seriesKey": "真・斬鉄",
+    "category2": "その他",
+    "contentName": "グンヒルド・ディルーブラム",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Save the Queen / Delubrum Reginae weapon"
+  },
+  {
+    "seriesKey": "オメガサムライ",
+    "category2": "交換",
+    "contentName": "トライアルトーテム交換",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Trial Totem exchange weapon"
+  },
+  {
+    "seriesKey": "エデンゲート",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：覚醒編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Edengate savage (Eden's Gate)"
+  },
+  {
+    "seriesKey": "ワーグ",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：共鳴編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Warg savage (Eden's Verse)"
+  },
+  {
+    "seriesKey": "エデンコーラス",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：共鳴編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Edenchoir savage (Eden's Verse)"
+  },
+  {
+    "seriesKey": "エデンマーシー",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：再生編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": true,
+    "note": "Edenmete (Eden's Promise Antique). Shares 再生編 with Edenmorn; block series_dictionary inference until acquisition_chain_registry is verified."
+  },
+  {
+    "seriesKey": "ハイダリウム",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "High Durium crafted gear"
+  },
+  {
+    "seriesKey": "アルマスティ",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Almasty crafted gear"
+  },
+  {
+    "seriesKey": "ガジャ",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ピューター",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ビスマス",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "サイガ",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "エクサーク",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Abyssos savage"
+  },
+  {
+    "seriesKey": "ライトヘビー",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "AAC Light-heavy savage tier 1"
+  },
+  {
+    "seriesKey": "オールドキングダム",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "AAC Light-heavy savage"
+  },
+  {
+    "seriesKey": "ネオキングダム",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "オミクロン",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "フォーギヴン",
+    "category2": "ID",
+    "contentName": "ダンジョン",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Mt. Gulg / dungeon drops"
+  },
+  {
+    "seriesKey": "レイクランド",
+    "category2": "ID",
+    "contentName": "殺戮郷舎 ホルミンスター",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": true,
+    "note": "Lakeland dungeon gear (Holminster Switch). Was misclassified as Eden 再生編; needsReview blocks L-8 inference until content_dictionary entry is verified."
+  },
+  {
+    "seriesKey": "エターゲート",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：覚醒編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": true,
+    "note": "Etgate; was misclassified as 再生編. needsReview until tier is confirmed."
+  },
+  {
+    "seriesKey": "エテュコーラス",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：覚醒編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "エデンマーチー",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：覚醒編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "バハムート",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "プロトゴルド",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：起動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Gordias"
+  },
+  {
+    "seriesKey": "ゴルディオン",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：起動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "プロトミダース",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：律動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Midas"
+  },
+  {
+    "seriesKey": "ミダース",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：律動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "プロトアレキ",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：天動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ドラヴァニアン",
+    "category2": "アライアンス",
+    "contentName": "魔航船ヴォイドアーク",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ゴーストバーク",
+    "category2": "アライアンス",
+    "contentName": "闇の世界",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Weeping City of Mhach"
+  },
+  {
+    "seriesKey": "ディアボリック",
+    "category2": "アライアンス",
+    "contentName": "闇の世界",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ヴァルキリー",
+    "category2": "アライアンス",
+    "contentName": "シルクスの塔",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "サンストリーク",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：天動編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "サンバースト",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：天動編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ヤフェーム",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：律動編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "フィリバスター",
+    "category2": "アライアンス",
+    "contentName": "シルクスの塔",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "オメガ",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：デルタ編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "FF14: Deltascape savage uses オメガ・ prefix (not デルタ・). Longer keys like オメガサムライ take precedence."
+  },
+  {
+    "seriesKey": "ナバスアレン",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：アルファ編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "アナムネーシス",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：シグマ編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "シャドウレス",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：アルファ編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "パガルザン",
+    "category2": "ID",
+    "contentName": "永久幽界 パガルザン",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": true,
+    "note": "Paglth'an dungeon gear. Was misclassified as Eden 再生編; needsReview blocks L-8 inference until content_dictionary entry is verified."
+  },
+  {
+    "seriesKey": "キマイラフェルト",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "カエアンビロード",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "オーソドックス",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "シャーレアン",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ガーロンド",
+    "category2": "PvP",
+    "contentName": "フロントライン",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Garlond Ironworks PvP/RE gear"
+  },
+  {
+    "seriesKey": "インペリアル",
+    "category2": "交換",
+    "contentName": "ラザーレット",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Allied seals / tomestone"
+  },
+  {
+    "seriesKey": "デモンズ",
+    "category2": "アライアンス",
+    "contentName": "闇の世界",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "アーク",
+    "category2": "アライアンス",
+    "contentName": "魔航船ヴォイドアーク",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-11.3b: Void Ark alliance (Garland/Teamcraft/Lodestone confirmed L-11.3b-1)"
+  },
+  {
+    "seriesKey": "ボランティア",
+    "category2": "ID",
+    "contentName": "ダンジョン",
+    "matchType": "name_prefix",
+    "confidence": "low",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "クルーザー",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ヘビーウェイト",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "エアルーム",
+    "category2": "ID",
+    "contentName": "魔術工房 マトーヤのアトリエ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ブレイズ",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：再生編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "マヌシャ",
+    "category2": "ID",
+    "contentName": "異形楼閣 ゾットの塔",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-11.3a: Endwalker dungeon The Tower of Zot (Lodestone/Teamcraft confirmed)"
+  },
+  {
+    "seriesKey": "パーラカ",
+    "category2": "ID",
+    "contentName": "終末樹海 ヴァナスパティ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-11.3a: Endwalker dungeon Vanaspati (Lodestone/Teamcraft confirmed)"
+  },
+  {
+    "seriesKey": "キティセオス",
+    "category2": "零式",
+    "contentName": "希望の園エデン零式：共鳴編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ムーンワード",
+    "category2": "交換",
+    "contentName": "ムーンワード装備交換",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "レディアント",
+    "category2": "交換",
+    "contentName": "レディアント装備交換",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Phase 6.3-radiant: Augmented / RE IL600 head7 exchange via モブハントの戦利品 (alias: Sack of Nuts)"
+  },
+  {
+    "seriesKey": "ルナエンヴォイ",
+    "category2": "交換",
+    "contentName": "ルナエンヴォイ装備交換",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Phase 6.4-lunar-envoy: Augmented / RE IL630 head7 exchange via Poetics"
+  },
+  {
+    "seriesKey": "クレデンダム",
+    "category2": "交換",
+    "contentName": "クレデンダム装備交換",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Phase 6.4-credendum: Augmented / RE IL660 head7 exchange via Poetics"
+  },
+  {
+    "seriesKey": "リンボ",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "アスフォデロース",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "パンテオン",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ダーバー",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "パーガトリィ",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "アビュッソス",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "トロイアン",
+    "category2": "ID",
+    "contentName": "異界孤城 トロイアコート",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "マナリス",
+    "category2": "ID",
+    "contentName": "雪山冥洞 ラピス・マナリス",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ヒュポスタシス",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "アナバセイオス",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ディスタンス",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "テオゴニアー",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "リバーズブレス",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ゾーモー",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ヴァンガード",
+    "category2": "ID",
+    "contentName": "外征前哨 ヴァンガード",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ダークホースチャンピオン",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ユウェヤーワータ",
+    "category2": "ID",
+    "contentName": "廃地討究 ユウェヤーワータ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "アンダーキープ",
+    "category2": "ID",
+    "contentName": "王城旧跡 アンダーキープ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ベビーフェイスチャンピオン",
+    "category2": "零式",
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "グリダニアン",
+    "category2": "その他",
+    "contentName": "クラフトギルド",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Twin Adder GC vendor"
+  },
+  {
+    "seriesKey": "ロミンサン",
+    "category2": "その他",
+    "contentName": "クラフトギルド",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Immortal Flames GC vendor"
+  },
+  {
+    "seriesKey": "オルタード",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "カーバンクル",
+    "category2": "イベント",
+    "contentName": "モグモグ★コレクション",
+    "matchType": "name_prefix",
+    "confidence": "low",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ホーリーレインボー",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "デニムシルク",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "魔戒",
+    "category2": "クエスト",
+    "contentName": "AF装備",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Early job quest gear"
+  },
+  {
+    "seriesKey": "セネシャル",
+    "category2": "その他",
+    "contentName": "初期装備",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ガーディアン",
+    "category2": "アライアンス",
+    "contentName": "シルクスの塔",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.18d: Guardian Syrcus Tower head whitelist 8310/8316 — alliance chest drop"
+  },
+  {
+    "seriesKey": "カーボンクロス",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "ダークディヴィニティ",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "low",
+    "needsReview": false
+  },
+  {
+    "seriesKey": "風魔",
+    "category2": "クエスト",
+    "contentName": "AF装備",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "Samurai quest gear"
+  },
+  {
+    "seriesKey": "クリムゾンハット",
+    "category2": "アライアンス",
+    "contentName": "古代の民の迷宮",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.4: CT1 Labyrinth of the Ancients"
+  },
+  {
+    "seriesKey": "クリムゾン",
+    "category2": "アライアンス",
+    "contentName": "古代の民の迷宮",
+    "matchType": "name_prefix",
+    "confidence": "medium",
+    "needsReview": false,
+    "note": "L-10.4: Crimson prestige variants"
+  },
+  {
+    "seriesKey": "ミストフォール",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.4: Binding Coil Turn 1 spoils"
+  },
+  {
+    "seriesKey": "ディープミスト",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.4: Binding Coil Turn 2 spoils"
+  },
+  {
+    "seriesKey": "ミストブレイク",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.4: Binding Coil Turn 3 spoils"
+  },
+  {
+    "seriesKey": "スカイパイレーツ",
+    "category2": "アライアンス",
+    "contentName": "機工城アレキサンダー：起動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.4: Alexander Gordias token craft"
+  },
+  {
+    "seriesKey": "スカイラット",
+    "category2": "アライアンス",
+    "contentName": "機工城アレキサンダー：律動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.4: Alexander Midas token craft"
+  },
+  {
+    "seriesKey": "アラミガン",
+    "category2": "交換",
+    "contentName": "アラミガン装備交換",
+    "matchType": "explicit_item_ids",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Phase 6.8-ala-mhigan: IL310 head7 exchange via Centurio Seal"
+  },
+  {
+    "seriesKey": "ロストアラガン",
+    "category2": "交換",
+    "contentName": "ロストアラガン装備交換",
+    "matchType": "explicit_item_ids",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Phase 6.9-lost-allagan: Augmented / RE IL340 head7 exchange via Centurio Seal"
+  },
+  {
+    "seriesKey": "プレスティージ・クリムゾン",
+    "category2": "アライアンス",
+    "contentName": "古代の民の迷宮",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.8: Prestige Crimson Hat — both external sources agree CT"
+  },
+  {
+    "seriesKey": "イヴァリース・スカイパイレーツ",
+    "category2": "アライアンス",
+    "contentName": "機工城アレキサンダー：起動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.8: Ivalician Sky Pirate hat — both external sources agree Gordias"
+  },
+  {
+    "seriesKey": "ハイアラガン",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.8: Second Coil drops — Binding Coil explicit"
+  },
+  {
+    "seriesKey": "アラガンストライカー",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.8: Binding Coil Turn 4 — avoids Monster Fight アラガンヘルム"
+  },
+  {
+    "seriesKey": "アラガンキャスター",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.8: Binding Coil Turn 1"
+  },
+  {
+    "seriesKey": "アラガンレンジャー",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.8: Binding Coil Turn 2"
+  },
+  {
+    "seriesKey": "アラガンヒーラー",
+    "category2": "絶",
+    "contentName": "絶バハムート攻略",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.8: Binding Coil Turn 2"
+  },
+  {
+    "seriesKey": "源氏之",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：デルタ編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.10: Genji Datalog token head (7)"
+  },
+  {
+    "seriesKey": "源太",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：デルタ編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.10: Genta Part Exchange head (7)"
+  },
+  {
+    "seriesKey": "ダイヤ・",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：シグマ編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.10: Diamond Datalog token head (7)"
+  },
+  {
+    "seriesKey": "カーボランダム・",
+    "category2": "零式",
+    "contentName": "次元の狭間オメガ零式：シグマ編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.10: Carborundum Part Exchange head (7)"
+  },
+  {
+    "seriesKey": "シヴァルラスサークレット",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (PLD)"
+  },
+  {
+    "seriesKey": "パシフィストサークレット",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (MNK)"
+  },
+  {
+    "seriesKey": "ブルータルバイザー",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (WAR)"
+  },
+  {
+    "seriesKey": "ストーリーテラーシャポー",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (BRD)"
+  },
+  {
+    "seriesKey": "セブンスヘブンサークレット",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (WHM)"
+  },
+  {
+    "seriesKey": "セブンスヘルペタソス",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (BLM)"
+  },
+  {
+    "seriesKey": "チャンネリングホーン",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (SMN)"
+  },
+  {
+    "seriesKey": "オラターボード",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (SCH)"
+  },
+  {
+    "seriesKey": "アビスバーゴネット",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (DRK)"
+  },
+  {
+    "seriesKey": "ガンナーゴーグル",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (MCH)"
+  },
+  {
+    "seriesKey": "コンステレーションターバン",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (AST)"
+  },
+  {
+    "seriesKey": "デュエルシャポー",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment head (RDM)"
+  },
+  {
+    "seriesKey": "影隠総面【風】",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka Anemos elemental (NIN)"
+  },
+  {
+    "seriesKey": "明珍陣笠【風】",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka Anemos elemental (SAM)"
+  },
+  {
+    "seriesKey": "影隠総面+2",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment +2 (NIN)"
+  },
+  {
+    "seriesKey": "明珍陣笠+2",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment +2 (SAM)"
+  },
+  {
+    "seriesKey": "影隠総面+1",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment +1 (NIN)"
+  },
+  {
+    "seriesKey": "明珍陣笠+1",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka augment +1 (SAM)"
+  },
+  {
+    "seriesKey": "影隠総面",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka AF base (NIN)"
+  },
+  {
+    "seriesKey": "明珍陣笠",
+    "category2": "その他",
+    "contentName": "禁断の地 エウレカ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.12: Eureka AF base (SAM)"
+  },
+  {
+    "seriesKey": "ボズヤン",
+    "category2": "アライアンス",
+    "contentName": "南方ボズヤ戦線",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15a: Bozjan gear head (base + RE via ボズヤン・*RE naming)"
+  },
+  {
+    "seriesKey": "スカイディープ",
+    "category2": "アライアンス",
+    "contentName": "遺産踏査 天深きセノーテ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15f: Skydeep alliance head (7 jobs)"
+  },
+  {
+    "seriesKey": "ミストウェイク",
+    "category2": "アライアンス",
+    "contentName": "遺忘行路 ミストウェイク",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15g: Mistwake alliance head (7 jobs)"
+  },
+  {
+    "seriesKey": "イヴァリーススクワイア",
+    "category2": "アライアンス",
+    "contentName": "失われた都 ラバナスタ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15h: Rabanastre alliance head (イヴァリーススクワイア)"
+  },
+  {
+    "seriesKey": "イヴァリースランサー",
+    "category2": "アライアンス",
+    "contentName": "失われた都 ラバナスタ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15h: Rabanastre alliance head (イヴァリースランサー)"
+  },
+  {
+    "seriesKey": "イヴァリースサムライ",
+    "category2": "アライアンス",
+    "contentName": "失われた都 ラバナスタ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15h: Rabanastre alliance head (イヴァリースサムライ)"
+  },
+  {
+    "seriesKey": "イヴァリースガンナー",
+    "category2": "アライアンス",
+    "contentName": "失われた都 ラバナスタ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15h: Rabanastre alliance head (イヴァリースガンナー)"
+  },
+  {
+    "seriesKey": "イヴァリースブドウカ",
+    "category2": "アライアンス",
+    "contentName": "失われた都 ラバナスタ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15h: Rabanastre alliance head (イヴァリースブドウカ)"
+  },
+  {
+    "seriesKey": "イヴァリースアストロロジャー",
+    "category2": "アライアンス",
+    "contentName": "失われた都 ラバナスタ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15h: Rabanastre alliance head (イヴァリースアストロロジャー)"
+  },
+  {
+    "seriesKey": "イヴァリースエンチャンター",
+    "category2": "アライアンス",
+    "contentName": "失われた都 ラバナスタ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15h: Rabanastre alliance head (イヴァリースエンチャンター)"
+  },
+  {
+    "seriesKey": "イヴァリースウーラン",
+    "category2": "アライアンス",
+    "contentName": "封じられた聖塔 リドルアナ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15i: Ridorana alliance head (イヴァリースウーラン)"
+  },
+  {
+    "seriesKey": "イヴァリースシカリ",
+    "category2": "アライアンス",
+    "contentName": "封じられた聖塔 リドルアナ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15i: Ridorana alliance head (イヴァリースシカリ)"
+  },
+  {
+    "seriesKey": "イヴァリースアーチャー",
+    "category2": "アライアンス",
+    "contentName": "封じられた聖塔 リドルアナ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15i: Ridorana alliance head (イヴァリースアーチャー)"
+  },
+  {
+    "seriesKey": "イヴァリースシーフ",
+    "category2": "アライアンス",
+    "contentName": "封じられた聖塔 リドルアナ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15i: Ridorana alliance head (イヴァリースシーフ)"
+  },
+  {
+    "seriesKey": "イヴァリースケミスト",
+    "category2": "アライアンス",
+    "contentName": "封じられた聖塔 リドルアナ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15i: Ridorana alliance head (イヴァリースケミスト)"
+  },
+  {
+    "seriesKey": "イヴァリースアリスメティシャン",
+    "category2": "アライアンス",
+    "contentName": "封じられた聖塔 リドルアナ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15i: Ridorana alliance head (イヴァリースアリスメティシャン)"
+  },
+  {
+    "seriesKey": "スカラディフェンダー",
+    "category2": "ID",
+    "contentName": "悪地討伐 スカラ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15j: Skalla ID head (スカラディフェンダー)"
+  },
+  {
+    "seriesKey": "スカラスレイヤー",
+    "category2": "ID",
+    "contentName": "悪地討伐 スカラ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15j: Skalla ID head (スカラスレイヤー)"
+  },
+  {
+    "seriesKey": "スカラストライカー",
+    "category2": "ID",
+    "contentName": "悪地討伐 スカラ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15j: Skalla ID head (スカラストライカー)"
+  },
+  {
+    "seriesKey": "スカラレンジャー",
+    "category2": "ID",
+    "contentName": "悪地討伐 スカラ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15j: Skalla ID head (スカラレンジャー)"
+  },
+  {
+    "seriesKey": "スカラローグ",
+    "category2": "ID",
+    "contentName": "悪地討伐 スカラ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15j: Skalla ID head (スカラローグ)"
+  },
+  {
+    "seriesKey": "スカラヒーラー",
+    "category2": "ID",
+    "contentName": "悪地討伐 スカラ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15j: Skalla ID head (スカラヒーラー)"
+  },
+  {
+    "seriesKey": "スカラキャスター",
+    "category2": "ID",
+    "contentName": "悪地討伐 スカラ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15j: Skalla ID head (スカラキャスター)"
+  },
+  {
+    "seriesKey": "フォーレンディフェンダー",
+    "category2": "ID",
+    "contentName": "紅玉火山 獄之蓋",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15k: Hells' Lid ID head (フォーレンディフェンダー)"
+  },
+  {
+    "seriesKey": "フォーレンスレイヤー",
+    "category2": "ID",
+    "contentName": "紅玉火山 獄之蓋",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15k: Hells' Lid ID head (フォーレンスレイヤー)"
+  },
+  {
+    "seriesKey": "フォーレンストライカー",
+    "category2": "ID",
+    "contentName": "紅玉火山 獄之蓋",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15k: Hells' Lid ID head (フォーレンストライカー)"
+  },
+  {
+    "seriesKey": "フォーレンレンジャー",
+    "category2": "ID",
+    "contentName": "紅玉火山 獄之蓋",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15k: Hells' Lid ID head (フォーレンレンジャー)"
+  },
+  {
+    "seriesKey": "フォーレンスカウト",
+    "category2": "ID",
+    "contentName": "紅玉火山 獄之蓋",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15k: Hells' Lid ID head (フォーレンスカウト)"
+  },
+  {
+    "seriesKey": "フォーレンヒーラー",
+    "category2": "ID",
+    "contentName": "紅玉火山 獄之蓋",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15k: Hells' Lid ID head (フォーレンヒーラー)"
+  },
+  {
+    "seriesKey": "フォーレンキャスター",
+    "category2": "ID",
+    "contentName": "紅玉火山 獄之蓋",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.15k: Hells' Lid ID head (フォーレンキャスター)"
+  },
+  {
+    "seriesKey": "羅漢兜",
+    "category2": "ID",
+    "contentName": "壊神修行 星導山寺院",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17c: Temple of the Fist ID head (羅漢兜)"
+  },
+  {
+    "seriesKey": "羅漢半頬",
+    "category2": "ID",
+    "contentName": "壊神修行 星導山寺院",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17c: Temple of the Fist ID head (羅漢半頬)"
+  },
+  {
+    "seriesKey": "羅漢三度笠",
+    "category2": "ID",
+    "contentName": "壊神修行 星導山寺院",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17c: Temple of the Fist ID head (羅漢三度笠)"
+  },
+  {
+    "seriesKey": "大龍脈鉢金",
+    "category2": "交換",
+    "contentName": "紅蓮詩学装備",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17d: Stormblood Poetics IL370 head (大龍脈鉢金)"
+  },
+  {
+    "seriesKey": "大龍脈額当",
+    "category2": "交換",
+    "contentName": "紅蓮詩学装備",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17d: Stormblood Poetics IL370 head (大龍脈額当)"
+  },
+  {
+    "seriesKey": "大龍脈制帽",
+    "category2": "交換",
+    "contentName": "紅蓮詩学装備",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17d: Stormblood Poetics IL370 head (大龍脈制帽)"
+  },
+  {
+    "seriesKey": "イヴァリースアークナイト",
+    "category2": "アライアンス",
+    "contentName": "封じられた聖塔 リドルアナ",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.18a: Ridorana alliance head (イヴァリースアークナイト)"
+  },
+  {
+    "seriesKey": "クリプトラーカー",
+    "category2": "交換",
+    "contentName": "クリプトラーカー装備交換",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "candidates": [
+      "漆黒詩学装備",
+      "クリスタルコンフリクト"
+    ],
+    "note": "L-10.18b-prime: Shadowbringers Poetics IL530 head RE7 whitelist; base IL520 remains CC until audit"
+  },
+  {
+    "seriesKey": "龍脈",
+    "category2": "交換",
+    "contentName": "龍脈装備交換",
+    "matchType": "explicit_item_ids",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Phase 6.6-ryumyaku: Augmented / RE IL370 head7 exchange via Poetics"
+  },
+  {
+    "seriesKey": "イディル",
+    "category2": "交換",
+    "contentName": "イディル装備交換",
+    "matchType": "explicit_item_ids",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "Phase 6.7-idyllshire: Augmented / RE IL270 head7 exchange via Poetics"
+  },
+  {
+    "seriesKey": "ディープゴールド",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20c: Deepgold crafted leveling head whitelist 25646/25670/25806"
+  },
+  {
+    "seriesKey": "ブルースピリット",
+    "category2": "クラフト",
+    "contentName": "クラフト",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20c: Bluespirit crafted leveling head whitelist 25966/25972/26002"
+  },
+  {
+    "seriesKey": "龍脈鉢金",
+    "category2": "交換",
+    "contentName": "紅蓮詩学装備",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17d-followup: Stormblood Poetics base Ryumyaku head (龍脈鉢金)"
+  },
+  {
+    "seriesKey": "龍脈額当",
+    "category2": "交換",
+    "contentName": "紅蓮詩学装備",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17d-followup: Stormblood Poetics base Ryumyaku head (龍脈額当)"
+  },
+  {
+    "seriesKey": "龍脈制帽",
+    "category2": "交換",
+    "contentName": "紅蓮詩学装備",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.17d-followup: Stormblood Poetics base Ryumyaku head (龍脈制帽)"
+  },
+  {
+    "seriesKey": "ボーン",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20a: Bonewicca collectable craft head whitelist 22748-22784"
+  },
+  {
+    "seriesKey": "鬼師",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20a: Onishi master craft head whitelist 22905/23107"
+  },
+  {
+    "seriesKey": "山師",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20a: Yamashi master craft head whitelist 22910/23112"
+  },
+  {
+    "seriesKey": "羅刹",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20a: Rakshasa scrip token craft head whitelist 23784-23820"
+  },
+  {
+    "seriesKey": "夜摩",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20a: Yama Rakshasa-token upgrade head whitelist 24926-24962"
+  },
+  {
+    "seriesKey": "ミルキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: ミルキング Skybuilders scrip head whitelist 19662/21219"
+  },
+  {
+    "seriesKey": "フォージキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: フォージキング Skybuilders scrip head whitelist 19667/21224"
+  },
+  {
+    "seriesKey": "ハンマーキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: ハンマーキング Skybuilders scrip head whitelist 19672/21229"
+  },
+  {
+    "seriesKey": "ジェムキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: ジェムキング Skybuilders scrip head whitelist 19677/21234"
+  },
+  {
+    "seriesKey": "ハイドキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: ハイドキング Skybuilders scrip head whitelist 19682/21239"
+  },
+  {
+    "seriesKey": "ボルトキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: ボルトキング Skybuilders scrip head whitelist 19687/21244"
+  },
+  {
+    "seriesKey": "コルドロンキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: コルドロンキング Skybuilders scrip head whitelist 19692/21249"
+  },
+  {
+    "seriesKey": "ガリーキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: ガリーキング Skybuilders scrip head whitelist 19697/21254"
+  },
+  {
+    "seriesKey": "マインキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: マインキング Skybuilders scrip head whitelist 19702/21259"
+  },
+  {
+    "seriesKey": "フィールドキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: フィールドキング Skybuilders scrip head whitelist 19707/21264"
+  },
+  {
+    "seriesKey": "タックルキング",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: タックルキング Skybuilders scrip head whitelist 19712/21269"
+  },
+  {
+    "seriesKey": "キングハンド",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: キングハンド Skybuilders scrip head whitelist 23087"
+  },
+  {
+    "seriesKey": "キングランド",
+    "category2": "採集",
+    "contentName": "ギャザラー",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.20b: キングランド Skybuilders scrip head whitelist 23092"
+  },
+  {
+    "seriesKey": "ナイトスチール",
+    "category2": "その他",
+    "contentName": "南方ボズヤ戦線",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-10.21b: Nightsteel Resistance Token head whitelist 21711/21717/23247/23253"
+  },
+  {
+    "seriesKey": "アークエンジェル",
+    "category2": "アライアンス",
+    "contentName": "ジュノ：ザ・ファーストウォーク",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-11.3b: Jeuno First Walk alliance — separate from アーク series entry"
+  },
+  {
+    "seriesKey": "アークデーモンホーン",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：起動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-11.3b guard: longer prefix blocks アーク→Void Ark spillover"
+  },
+  {
+    "seriesKey": "アークメイジ",
+    "category2": "零式",
+    "contentName": "機工城アレキサンダー零式：起動編",
+    "matchType": "name_prefix",
+    "confidence": "high",
+    "needsReview": false,
+    "note": "L-11.3b guard: longer prefix blocks アーク→Void Ark spillover"
   }
 ]

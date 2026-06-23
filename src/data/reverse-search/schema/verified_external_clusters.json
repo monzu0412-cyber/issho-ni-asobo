@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "type": "verified_external_clusters",
+  "phase": "L-11.6",
+  "description": "外部照合済み・内部分類一致クラスタの正式昇格レジストリ。equipment_mismatch_patterns（誤分類ケーススタディ）とは別管理。",
+  "distinctionFromMismatchPatterns": {
+    "verified_external_clusters": "internal === external、修正不要、evidence A 昇格対象",
+    "equipment_mismatch_patterns": "internal !== external、修正 apply 対象、再発検知ルール"
+  },
+  "slotExpansion": {
+    "supportedSlots": [
+      "accessory",
+      "body",
+      "feet",
+      "hands",
+      "head",
+      "legs",
+      "weapon"
+    ],
+    "plannedSlots": [
+      "body",
+      "hands",
+      "legs",
+      "feet",
+      "weapon",
+      "accessory"
+    ],
+    "reusePattern": "seriesKey + slot + itemId whitelist + expectedContentName per cluster entry"
+  },
+  "clusters": [
+    {
+      "id": "exarch_head",
+      "seriesKey": "エクサーク",
+      "label": "エクサーク",
+      "slot": "head",
+      "itemIds": [
+        31830,
+        31831,
+        31832,
+        31833,
+        31834,
+        31835,
+        31837,
+        31843,
+        31849,
+        31855,
+        31861,
+        31867,
+        31878,
+        31883,
+        33377,
+        33383,
+        33389,
+        33395,
+        33401,
+        33407,
+        33413
+      ],
+      "contentName": "万魔殿パンデモニウム零式：煉獄編",
+      "category2": "零式",
+      "evidenceLevel": "A",
+      "externalSources": [
+        "Garland",
+        "Teamcraft",
+        "Lodestone",
+        "Console Games Wiki"
+      ],
+      "verifiedInPhase": "L-11.2",
+      "promotedInPhase": "L-11.6",
+      "itemCount": 21,
+      "note": "L-11.6 sibling bucket fix — expanded from head-only to multi-slot verified cluster"
+    },
+    {
+      "id": "old_kingdom_head",
+      "seriesKey": "オールドキングダム",
+      "label": "オールドキングダム",
+      "slot": "head",
+      "itemIds": [
+        42892,
+        42893,
+        42894,
+        42895,
+        42896,
+        42897,
+        42902,
+        42907,
+        42912,
+        42917,
+        42922,
+        42941,
+        44766,
+        44771,
+        44776,
+        44781,
+        44786,
+        44791,
+        44796
+      ],
+      "contentName": "万魔殿パンデモニウム零式：天獄編",
+      "category2": "零式",
+      "evidenceLevel": "A",
+      "externalSources": [
+        "Garland",
+        "Teamcraft",
+        "Lodestone",
+        "Console Games Wiki"
+      ],
+      "verifiedInPhase": "L-11.2",
+      "promotedInPhase": "L-11.6",
+      "itemCount": 19,
+      "note": "L-11.6 sibling bucket fix — expanded from head-only to multi-slot verified cluster"
+    },
+    {
+      "id": "edenchoir_head",
+      "seriesKey": "エデンコール",
+      "label": "エデンコール",
+      "slot": "head",
+      "itemIds": [
+        29117,
+        29123,
+        29129,
+        29135,
+        29141,
+        29147,
+        29153
+      ],
+      "contentName": "希望の園エデン零式：共鳴編",
+      "category2": "零式",
+      "evidenceLevel": "A",
+      "externalSources": [
+        "Garland",
+        "Teamcraft",
+        "Lodestone",
+        "Console Games Wiki"
+      ],
+      "verifiedInPhase": "L-11.2",
+      "promotedInPhase": "L-11.4",
+      "itemCount": 7,
+      "note": "L-11.4 evidence A promotion — internal classification matches external duty hints"
+    }
+  ]
+}

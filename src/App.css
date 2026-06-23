@@ -1210,6 +1210,324 @@
   line-height: 1;
 }
 
+.leftColumnDisplayToggle {
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 0 0 8px;
+  padding: 0;
+}
+
+.leftColumnDisplayToggle legend {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0;
+  width: 100%;
+}
+
+.leftColumnDisplayToggle label {
+  align-items: center;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 4px;
+}
+
+.activityBox > .activityColumn.jobBox {
+  --job-grid-frame-size: 62px;
+  --job-grid-gap: 2px;
+  --job-icon-inset: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 5px 6px 4px;
+}
+
+.activityBox > .activityColumn.jobBox .leftColumnDisplayToggle {
+  flex-shrink: 0;
+  gap: 4px 10px;
+  margin: 0 0 2px;
+}
+
+.activityBox > .activityColumn.jobBox .leftColumnDisplayToggle legend {
+  font-size: 10px;
+  margin-bottom: 0;
+}
+
+.activityBox > .activityColumn.jobBox .leftColumnDisplayToggle label {
+  font-size: 10px;
+}
+
+.activityBox > .activityColumn.jobBox .jobBoxTitle {
+  align-self: center;
+  background: rgba(16, 42, 84, 0.08);
+  border: 1px solid rgba(16, 42, 84, 0.28);
+  border-radius: 999px;
+  color: #102a54;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 auto 1px;
+  padding: 1px 8px;
+  width: fit-content;
+}
+
+.activityBox > .activityColumn.jobBox .jobRoleGrid {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: flex-start;
+  min-height: 0;
+  overflow-y: auto;
+  padding-top: 1px;
+}
+
+.activityBox > .activityColumn.jobBox .jobRoleSection {
+  --job-grid-columns: 4;
+  --job-grid-row-width: calc(
+    var(--job-grid-frame-size) * var(--job-grid-columns) +
+      var(--job-grid-gap) * (var(--job-grid-columns) - 1)
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-height: 0;
+}
+
+.activityBox > .activityColumn.jobBox .jobRoleSection--dps {
+  --job-grid-columns: 5;
+}
+
+.activityBox > .activityColumn.jobBox .jobRoleSection--gatherer {
+  --job-grid-columns: 3;
+}
+
+.activityBox > .activityColumn.jobBox .jobRoleRow {
+  display: grid;
+  gap: var(--job-grid-gap);
+  grid-template-columns: repeat(var(--job-grid-columns), var(--job-grid-frame-size));
+  justify-content: start;
+  margin-inline: auto;
+  min-height: 0;
+  width: var(--job-grid-row-width);
+}
+
+.activityBox > .activityColumn.jobBox .jobIconCell {
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 1px;
+  justify-content: center;
+  min-height: 0;
+  padding: 0;
+  touch-action: manipulation;
+}
+
+.activityBox > .activityColumn.jobBox .jobIconButton:focus-visible {
+  outline: none;
+}
+
+.activityBox > .activityColumn.jobBox .jobIconButton:focus-visible .jobIconFrame {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}
+
+.activityBox > .activityColumn.jobBox .jobIconFrame {
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  height: var(--job-grid-frame-size);
+  justify-content: center;
+  justify-self: center;
+  width: var(--job-grid-frame-size);
+}
+
+.activityBox > .activityColumn.jobBox .jobIconImage {
+  display: block;
+  height: calc(var(--job-grid-frame-size) - var(--job-icon-inset));
+  object-fit: contain;
+  width: calc(var(--job-grid-frame-size) - var(--job-icon-inset));
+}
+
+.activityBox > .activityColumn.jobBox .jobIconFrame--gray {
+  background: rgba(108, 116, 128, 0.14);
+}
+
+.activityBox > .activityColumn.jobBox .jobIconFrame--gray .jobIconImage {
+  filter: grayscale(1) saturate(0) brightness(0.68) contrast(0.88);
+  opacity: 0.32;
+}
+
+.activityBox > .activityColumn.jobBox .jobIconFrame--faded .jobIconImage {
+  filter: grayscale(0.25) saturate(0.55) brightness(0.92);
+  opacity: 0.68;
+}
+
+.activityBox > .activityColumn.jobBox .jobIconFrame--normal .jobIconImage {
+  filter: none;
+  opacity: 1;
+}
+
+.activityBox > .activityColumn.jobBox .jobIconFrame--gold {
+  border-color: #d4af37;
+  border-width: 2px;
+  box-shadow:
+    0 0 0 1px #f6e27a,
+    0 0 5px rgba(212, 175, 55, 0.4);
+}
+
+.activityBox > .activityColumn.jobBox .jobIconFrame--gold .jobIconImage {
+  filter: none;
+  opacity: 1;
+}
+
+.lodestoneEditForm .lodestoneFetchButton {
+  background: #102a54;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 8px;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+.lodestoneEditForm .lodestoneFetchButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.lodestoneRefetchRow {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.lodestoneSavedId {
+  color: #374151;
+  flex: 1 1 auto;
+  font-size: 11px;
+  margin: 0;
+  min-width: 0;
+}
+
+.lodestoneRefetchButton {
+  background: #fff;
+  border: 1px solid #102a54;
+  border-radius: 8px;
+  color: #102a54;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+}
+
+.lodestoneRefetchButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.lodestoneFetchError {
+  color: #b91c1c;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.lodestoneFetchSuccess {
+  color: #166534;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.lodestoneApplyPanel {
+  border-top: 1px solid #d1d5db;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.lodestoneApplyPreviewList {
+  font-size: 11px;
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.lodestoneApplyPreviewItem {
+  align-items: center;
+  display: grid;
+  gap: 4px 6px;
+  grid-template-columns: 3.5rem 1fr auto 1fr auto;
+  margin-bottom: 4px;
+}
+
+.lodestoneApplyPreviewItem--apply {
+  color: #166534;
+}
+
+.lodestoneApplyPreviewItem--conflict {
+  color: #b45309;
+}
+
+.lodestoneApplyPreviewItem--skip {
+  color: #6b7280;
+}
+
+.lodestoneApplyPreviewStatus {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.lodestoneApplyOverwrite {
+  align-items: center;
+  display: flex;
+  font-size: 11px;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.lodestoneApplyButton {
+  background: #166534;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 8px;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+.lodestoneApplyButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.lodestoneApplyHint {
+  color: #b45309;
+  font-size: 11px;
+  margin: 6px 0 0;
+}
+
+.lodestoneApplySuccess {
+  color: #166534;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
 .interestBox .sectionTitle {
   margin-bottom: 12px;
 }
@@ -1849,8 +2167,78 @@
   margin: 0;
 }
 
+.forwardSearchMeta {
+  color: #4a6288;
+  display: block;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
 .forwardSearchResultList {
   max-height: 220px;
+}
+
+.forwardSearchSeriesPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.forwardSearchSeriesToolbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forwardSearchSeriesToggle {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #c9d7ef;
+  border-radius: 8px;
+  color: #102a54;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+.forwardSearchSeriesToggle:hover {
+  border-color: #d6a23a;
+}
+
+.forwardSearchSeriesGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.forwardSearchSeriesGroupTitle,
+.forwardSearchSeriesSectionHeading {
+  color: #102a54;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.forwardSearchSeriesGroupTitle span,
+.forwardSearchSeriesSectionHeading span {
+  color: #40516d;
+  font-size: 11px;
+  font-weight: normal;
+  margin-left: 4px;
+}
+
+.forwardSearchSeriesRelatedSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.forwardSearchSeriesCollapsedSummary {
+  color: #40516d;
+  font-size: 11px;
+  margin: 0;
+}
+
+.forwardSearchSeriesResultList {
+  max-height: 160px;
 }
 
 .searchResultList {
@@ -1903,6 +2291,38 @@
   font-size: 14px;
 }
 
+.equipmentMetadata {
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(239, 211, 155, 0.78);
+  border-radius: 10px;
+  display: grid;
+  gap: 4px 10px;
+  grid-template-columns: max-content 1fr;
+  margin: 0;
+  padding: 6px 8px;
+}
+
+.equipmentMetadata > div {
+  display: contents;
+}
+
+.equipmentMetadata dt {
+  color: var(--item-card-subtext);
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.equipmentMetadata dd {
+  font-size: 12px;
+  margin: 0;
+}
+
+.previewMode .equipmentMetadata,
+body.card-png-export .equipmentMetadata {
+  display: none !important;
+}
+
 .targetContentName {
   color: var(--item-card-subtext);
   font-size: 13px;
@@ -1952,6 +2372,45 @@
 
 .routeDetailLine {
   font-weight: normal;
+}
+
+.routeRequiredCurrency {
+  color: var(--item-card-subtext);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.routeRequiredCurrencyLabel {
+  font-weight: bold;
+  margin-right: 0.35em;
+}
+
+.routeCurrencyEarn {
+  display: grid;
+  gap: 2px;
+  margin: 4px 0 0;
+}
+
+.routeCurrencyEarn div {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 4.5em 1fr;
+}
+
+.routeCurrencyEarn dt {
+  color: var(--item-card-heading);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.routeCurrencyEarn dd {
+  font-size: 12px;
+  margin: 0;
+}
+
+.previewMode .routeCurrencyEarn,
+body.card-png-export .routeCurrencyEarn {
+  display: none !important;
 }
 
 .specialConditions {
@@ -2382,6 +2841,70 @@
   width: 68px;
 }
 
+.previewMode .activityBox > .activityColumn.jobBox {
+  --job-grid-frame-size: 55px;
+  --job-grid-gap: 2px;
+  --job-icon-inset: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: var(--layout-row3-height);
+  overflow: hidden;
+  padding: 3px 5px 4px;
+}
+
+.activityBox > .activityColumn.jobBox .jobBoxTitle--reserve {
+  pointer-events: none;
+  user-select: none;
+  visibility: hidden;
+}
+
+.previewMode .activityBox > .activityColumn.jobBox .jobBoxTitle {
+  font-size: 10px;
+  line-height: 1.1;
+  margin-bottom: 0;
+  padding: 1px 7px;
+}
+
+.previewMode .activityBox > .activityColumn.jobBox .jobRoleGrid {
+  flex: 1 1 auto;
+  gap: 1px;
+  justify-content: flex-start;
+  min-height: 0;
+  overflow: hidden;
+  padding-top: 0;
+}
+
+.previewMode .activityBox > .activityColumn.jobBox .jobRoleSection {
+  flex: 0 0 auto;
+  gap: 0;
+  justify-content: flex-start;
+  min-height: 0;
+}
+
+.previewMode .activityBox > .activityColumn.jobBox .jobRoleRow {
+  flex: 0 0 auto;
+}
+
+.previewMode .activityBox > .activityColumn.jobBox .jobIconFrame {
+  height: var(--job-grid-frame-size);
+  max-height: var(--job-grid-frame-size);
+  max-width: var(--job-grid-frame-size);
+  width: var(--job-grid-frame-size);
+}
+
+.previewMode .activityBox > .activityColumn.jobBox .jobIconImage {
+  height: calc(var(--job-grid-frame-size) - var(--job-icon-inset));
+  width: calc(var(--job-grid-frame-size) - var(--job-icon-inset));
+}
+
+.previewMode .activityBox > .activityColumn.jobBox .jobIconFrame--gold {
+  border-width: 1.5px;
+  box-shadow:
+    0 0 0 1px #f6e27a,
+    0 0 4px rgba(212, 175, 55, 0.38);
+}
+
 .previewMode .stars {
   font-size: 15px;
 }
@@ -2622,6 +3145,12 @@ body.card-png-export .previewMode .card {
   .editMode .activityBox .interestGrid,
   .editMode .interestGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .editMode .activityBox > .activityColumn.jobBox {
+    --job-grid-frame-size: 52px;
+    --job-icon-inset: 5px;
+    padding: 5px 5px 4px;
   }
 
   .editMode .activityColumnTitleMain {

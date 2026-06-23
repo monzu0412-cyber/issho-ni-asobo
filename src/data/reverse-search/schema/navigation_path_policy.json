@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "type": "navigation_path_policy",
+  "phase": "6.0",
+  "description": "Canonical policy for aligning reverse-search content navigation with card UI contentCategories.",
+  "canonicalSources": {
+    "userNavigationMaster": {
+      "path": "src/data/contentCategories.ts",
+      "export": "contentCategories",
+      "role": "ユーザー向けナビの真正本。カード「いっしょにあ・そ・ぼ！」のコンテンツ分類ツリー。"
+    },
+    "dictionaryNavigationProjection": {
+      "path": "src/data/reverse-search/manual/content_dictionary.json",
+      "field": "navigationPath",
+      "role": "最強辞書側のナビ写像。各 contentName がカードツリーのどこに載るかを記録する。"
+    },
+    "auditLegacyTree": {
+      "path": "src/data/reverse-search/manual/content_dictionary.json",
+      "field": "categoryTree",
+      "role": "04系統の監査・レガシー補助。ナビ正本ではない。Phase6.0 では一括修正しない。"
+    },
+    "routeType": {
+      "path": "src/data/reverse-search/manual/content_dictionary.json",
+      "field": "category2",
+      "role": "入手ルート種別（零式/ID/その他等）。ナビ分類とは独立。"
+    }
+  },
+  "dependencyRules": [
+    "navigationPath の各段は contentCategories の label と一致すること",
+    "navigationPath の末尾（leaf）は contentName と一致すること",
+    "contentCategories の leaf と contentName が異なる場合、aliases 経由で整合を確認できること",
+    "categoryTree は navigationPath と矛盾しても Phase6.0 では修正しない（監査で warn）",
+    "category2 は navigationPath を決定しない"
+  ],
+  "navigationPathSchema": {
+    "type": "array",
+    "items": "string",
+    "minLength": 2,
+    "leafRule": "navigationPath[navigationPath.length - 1] === contentName",
+    "optionalFields": {
+      "navigationPathSource": "contentCategories 上の id パス（例: exploration/bozja/bozja-02）。監査トレース用。"
+    }
+  },
+  "explorationTree": {
+    "root": "探索",
+    "bozja": {
+      "middle": "ボズヤ",
+      "leaves": [
+        "南方ボズヤ戦線",
+        "ザトゥノル高原",
+        "グンヒルド・ディルーブラム",
+        "グンヒルド・ディルーブラム零式"
+      ],
+      "navigationPathSource": "contentCategories:exploration/bozja"
+    },
+    "eureka": {
+      "middle": "エウレカ",
+      "leaves": [
+        "禁断の地 エウレカ：アネモス編",
+        "禁断の地 エウレカ：パゴス編",
+        "禁断の地 エウレカ：ピューロス編",
+        "禁断の地 エウレカ：ヒュダトス編"
+      ],
+      "navigationPathSource": "contentCategories:exploration/eureka"
+    }
+  },
+  "pilot10ContentNames": [
+    "希望の園エデン零式：再生編",
+    "万魔殿パンデモニウム零式：辺獄編",
+    "万魔殿パンデモニウム：辺獄編",
+    "機工城アレキサンダー零式：律動編",
+    "機工城アレキサンダー：律動編",
+    "ザトゥノル高原",
+    "漆黒決戦 ノルヴラント",
+    "ヒュペルボレア造物院",
+    "山嶺登頂 ウォーコー・ゾーモー",
+    "異形楼閣 ゾットの塔"
+  ],
+  "newContentRegistrationProcedure": [
+    "contentCategories に葉（label）が存在するか確認する",
+    "content_dictionary に contentName を登録する",
+    "navigationPath を contentCategories に沿って付与する",
+    "category2 / categoryTree は監査用に従来どおり維持する",
+    "verify-navigation-path-alignment.ts で整合を確認する"
+  ],
+  "phase60Scope": {
+    "includes": [
+      "navigation_path_policy.json",
+      "content_dictionary.navigationPath 付与",
+      "verify-navigation-path-alignment.ts",
+      "phase6-navigation-path-report.json"
+    ],
+    "excludes": [
+      "forward_search_index v2",
+      "順引き UI 変更",
+      "source_dictionary 変更",
+      "search_dictionary 再生成",
+      "chain 変更",
+      "series 拡張",
+      "categoryTree 一括修正"
+    ]
+  },
+  "audit": {
+    "script": "scripts/verify-navigation-path-alignment.ts",
+    "report": "scripts/output/phase6-navigation-path-report.json",
+    "categoryTreeMismatchSeverity": "warn"
+  }
+}

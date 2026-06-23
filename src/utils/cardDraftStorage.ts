@@ -8,6 +8,14 @@ import {
 import { inviteMajorIds, migrateLegacyInviteContentSelection } from '../data/invite/inviteContentDictionary'
 import type { InviteContentSelection, InviteMajorId } from '../data/invite/inviteDictionaryTypes'
 import type { LayoutMode } from '../types/card'
+import {
+  createDefaultLodestoneCardState,
+  type JobUserSelection,
+  type LeftColumnDisplayMode,
+  type LodestoneCardState,
+  type LodestoneCharacterJob,
+  type LodestoneCharacterProfile,
+} from '../types/lodestone'
 import { IMAGE_ROTATION_MAX, IMAGE_ROTATION_MIN } from './cardDisplayUtils'
 
 export const CARD_DRAFT_STORAGE_KEY = 'issho-asobo-card-draft'
@@ -122,6 +130,15 @@ export type CharacterDraft = {
   }
   tags: string[]
   message: string
+  lodestone?: LodestoneCardDraft
+}
+
+type LodestoneCardDraft = {
+  characterId?: string
+  input?: string
+  leftColumnDisplayMode?: LeftColumnDisplayMode
+  profile?: LodestoneCharacterProfile | null
+  jobSelections?: Record<string, JobUserSelection>
 }
 
 export type CardDraft = {
@@ -361,6 +378,117 @@ function sanitizeSectionTitles(value: unknown, fallback: CharacterDraft['section
   }
 }
 
+function sanitizeJobUserSelection(value: unknown): JobUserSelection | null {
+  return value === 'baseline' || value === 'playable' || value === 'main' ? value : null
+}
+
+function sanitizeJobSelections(value: unknown): Record<string, JobUserSelection> {
+  if (!isRecord(value)) {
+    return {}
+  }
+
+  const selections: Record<string, JobUserSelection> = {}
+
+  for (const [jobId, selection] of Object.entries(value)) {
+    const sanitized = sanitizeJobUserSelection(selection)
+
+    if (jobId.trim() && sanitized) {
+      selections[jobId] = sanitized
+    }
+  }
+
+  return selections
+}
+
+function sanitizeLodestoneJob(value: unknown): LodestoneCharacterJob | null {
+  if (!isRecord(value)) {
+    return null
+  }
+
+  const jobId = readString(value.jobId).trim()
+  const jobName = readString(value.jobName).trim()
+  const level = clampNumber(Math.round(readNumber(value.level, 0)), 0, 100)
+
+  if (!jobId || !jobName) {
+    return null
+  }
+
+  return {
+    jobId,
+    jobName,
+    level,
+    isCapped: readBoolean(value.isCapped, level >= 100),
+  }
+}
+
+function sanitizeLodestoneProfile(value: unknown): LodestoneCharacterProfile | null {
+  if (!isRecord(value)) {
+    return null
+  }
+
+  const characterId = readString(value.characterId).trim()
+  const name = readString(value.name).trim()
+  const world = readString(value.world).trim()
+
+  if (!characterId || !name || !world) {
+    return null
+  }
+
+  const jobs = Array.isArray(value.jobs)
+    ? value.jobs
+      .map(sanitizeLodestoneJob)
+      .filter((job): job is LodestoneCharacterJob => job !== null)
+    : []
+
+  if (jobs.length === 0) {
+    return null
+  }
+
+  const dataCenter = readString(value.dataCenter).trim()
+
+  return {
+    characterId,
+    name,
+    world,
+    dataCenter: dataCenter || undefined,
+    jobs,
+  }
+}
+
+export function sanitizeLodestoneCardState(value: unknown, fallback: LodestoneCardState): LodestoneCardState {
+  if (!isRecord(value)) {
+    return fallback
+  }
+
+  const characterId = readString(value.characterId, fallback.characterId).trim()
+  const input = readString(value.input, characterId || fallback.input).trim()
+  const leftColumnDisplayMode = value.leftColumnDisplayMode === 'jobs' ? 'jobs' : 'interests'
+  const profile = sanitizeLodestoneProfile(value.profile) ?? (value.profile === null ? null : fallback.profile)
+  const jobSelections = isRecord(value.jobSelections)
+    ? sanitizeJobSelections(value.jobSelections)
+    : fallback.jobSelections
+
+  return {
+    characterId,
+    input,
+    profile,
+    jobSelections,
+    leftColumnDisplayMode,
+  }
+}
+
+function sanitizeLodestoneCardDraft(value: unknown, fallback: LodestoneCardState): LodestoneCardDraft {
+  const sanitized = sanitizeLodestoneCardState(value, fallback)
+
+  return {
+    characterId: sanitized.characterId || undefined,
+    input: sanitized.input || undefined,
+    leftColumnDisplayMode: sanitized.leftColumnDisplayMode,
+    profile: sanitized.profile,
+    jobSelections: sanitized.jobSelections,
+  }
+}
+
 function sanitizeCharacterDraft(value: unknown, fallback: CharacterDraft): CharacterDraft | null {
   if (!isRecord(value)) {
     return null
@@ -438,6 +566,7 @@ function sanitizeCharacterDraft(value: unknown, fallback: CharacterDraft): Chara
     sectionTitles: sanitizeSectionTitles(value.sectionTitles, fallback.sectionTitles),
     tags,
     message: readString(value.message, fallback.message),
+    lodestone: sanitizeLodestoneCardDraft(value.lodestone, createDefaultLodestoneCardState()),
   }
 }
 
@@ -575,5 +704,6 @@ export function buildCharacterDraft(
     }),
     tags: [...(character.tags ?? [])],
     message: character.message,
+    lodestone: sanitizeLodestoneCardState(character.lodestone, createDefaultLodestoneCardState()),
   }
 }

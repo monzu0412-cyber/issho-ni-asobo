@@ -1,0 +1,3854 @@
+{
+  "version": 1,
+  "type": "equipment_metadata",
+  "phase": "7.1",
+  "generatedAt": "2026-06-21T10:17:33.718Z",
+  "generator": "scripts/generate-equipment-metadata-by-item-id.ts",
+  "inputs": {
+    "forwardSearchIndex": "src/data/reverse-search/generated/forward_search_index.generated.json",
+    "equipSlotByItemId": "src/data/reverse-search/generated/equip_slot_by_item_id.generated.json",
+    "xivapiPrototype": "src/data/reverse-search/prototype/xivapi_extraction_sample.json"
+  },
+  "xivapiSchema": "exdschema@2:rev:75f674655bb89d6172effa3a5a2d93bcfc7deb51",
+  "xivapiVersion": "9183b12d5dfc05bf",
+  "counts": {
+    "items": 208,
+    "equipLevel": 208,
+    "itemLevel": 208,
+    "equipRole": 208,
+    "equipJobs": 208,
+    "equipSlot": 204
+  },
+  "items": {
+    "14512": {
+      "itemId": 14512,
+      "equipLevel": 60,
+      "itemLevel": 220,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14513": {
+      "itemId": 14513,
+      "equipLevel": 60,
+      "itemLevel": 220,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14514": {
+      "itemId": 14514,
+      "equipLevel": 60,
+      "itemLevel": 220,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14515": {
+      "itemId": 14515,
+      "equipLevel": 60,
+      "itemLevel": 220,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14516": {
+      "itemId": 14516,
+      "equipLevel": 60,
+      "itemLevel": 220,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14517": {
+      "itemId": 14517,
+      "equipLevel": 60,
+      "itemLevel": 220,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14518": {
+      "itemId": 14518,
+      "equipLevel": 60,
+      "itemLevel": 220,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14588": {
+      "itemId": 14588,
+      "equipLevel": 60,
+      "itemLevel": 240,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14589": {
+      "itemId": 14589,
+      "equipLevel": 60,
+      "itemLevel": 240,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14590": {
+      "itemId": 14590,
+      "equipLevel": 60,
+      "itemLevel": 240,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14591": {
+      "itemId": 14591,
+      "equipLevel": 60,
+      "itemLevel": 240,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14592": {
+      "itemId": 14592,
+      "equipLevel": 60,
+      "itemLevel": 240,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14593": {
+      "itemId": 14593,
+      "equipLevel": 60,
+      "itemLevel": 240,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "14594": {
+      "itemId": 14594,
+      "equipLevel": 60,
+      "itemLevel": 240,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "16341": {
+      "itemId": 16341,
+      "equipLevel": 60,
+      "itemLevel": 270,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "16347": {
+      "itemId": 16347,
+      "equipLevel": 60,
+      "itemLevel": 270,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "16353": {
+      "itemId": 16353,
+      "equipLevel": 60,
+      "itemLevel": 270,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "16359": {
+      "itemId": 16359,
+      "equipLevel": 60,
+      "itemLevel": 270,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "16365": {
+      "itemId": 16365,
+      "equipLevel": 60,
+      "itemLevel": 270,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "16371": {
+      "itemId": 16371,
+      "equipLevel": 60,
+      "itemLevel": 270,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "16377": {
+      "itemId": 16377,
+      "equipLevel": 60,
+      "itemLevel": 270,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19141": {
+      "itemId": 19141,
+      "equipLevel": 70,
+      "itemLevel": 310,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19147": {
+      "itemId": 19147,
+      "equipLevel": 70,
+      "itemLevel": 310,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19153": {
+      "itemId": 19153,
+      "equipLevel": 70,
+      "itemLevel": 310,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19159": {
+      "itemId": 19159,
+      "equipLevel": 70,
+      "itemLevel": 310,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19165": {
+      "itemId": 19165,
+      "equipLevel": 70,
+      "itemLevel": 310,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19171": {
+      "itemId": 19171,
+      "equipLevel": 70,
+      "itemLevel": 310,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19177": {
+      "itemId": 19177,
+      "equipLevel": 70,
+      "itemLevel": 310,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19297": {
+      "itemId": 19297,
+      "equipLevel": 70,
+      "itemLevel": 340,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19303": {
+      "itemId": 19303,
+      "equipLevel": 70,
+      "itemLevel": 340,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19309": {
+      "itemId": 19309,
+      "equipLevel": 70,
+      "itemLevel": 340,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19315": {
+      "itemId": 19315,
+      "equipLevel": 70,
+      "itemLevel": 340,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19321": {
+      "itemId": 19321,
+      "equipLevel": 70,
+      "itemLevel": 340,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19327": {
+      "itemId": 19327,
+      "equipLevel": 70,
+      "itemLevel": 340,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "19333": {
+      "itemId": 19333,
+      "equipLevel": 70,
+      "itemLevel": 340,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "21415": {
+      "itemId": 21415,
+      "equipLevel": 70,
+      "itemLevel": 370,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "21421": {
+      "itemId": 21421,
+      "equipLevel": 70,
+      "itemLevel": 370,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "21427": {
+      "itemId": 21427,
+      "equipLevel": 70,
+      "itemLevel": 370,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "21433": {
+      "itemId": 21433,
+      "equipLevel": 70,
+      "itemLevel": 370,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "21439": {
+      "itemId": 21439,
+      "equipLevel": 70,
+      "itemLevel": 370,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "21445": {
+      "itemId": 21445,
+      "equipLevel": 70,
+      "itemLevel": 370,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "21451": {
+      "itemId": 21451,
+      "equipLevel": 70,
+      "itemLevel": 370,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "30616": {
+      "itemId": 30616,
+      "equipLevel": 80,
+      "itemLevel": 475,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "30622": {
+      "itemId": 30622,
+      "equipLevel": 80,
+      "itemLevel": 475,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "30628": {
+      "itemId": 30628,
+      "equipLevel": 80,
+      "itemLevel": 475,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "30634": {
+      "itemId": 30634,
+      "equipLevel": 80,
+      "itemLevel": 475,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "30640": {
+      "itemId": 30640,
+      "equipLevel": 80,
+      "itemLevel": 475,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "30646": {
+      "itemId": 30646,
+      "equipLevel": 80,
+      "itemLevel": 475,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "30652": {
+      "itemId": 30652,
+      "equipLevel": 80,
+      "itemLevel": 475,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32294": {
+      "itemId": 32294,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32295": {
+      "itemId": 32295,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "胴",
+      "itemUiCategory": "胴防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32296": {
+      "itemId": 32296,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "手",
+      "itemUiCategory": "手防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32297": {
+      "itemId": 32297,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "脚",
+      "itemUiCategory": "脚防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32298": {
+      "itemId": 32298,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "足",
+      "itemUiCategory": "足防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32300": {
+      "itemId": 32300,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32306": {
+      "itemId": 32306,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32307": {
+      "itemId": 32307,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "胴",
+      "itemUiCategory": "胴防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32308": {
+      "itemId": 32308,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "手",
+      "itemUiCategory": "手防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32309": {
+      "itemId": 32309,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "脚",
+      "itemUiCategory": "脚防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32310": {
+      "itemId": 32310,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "足",
+      "itemUiCategory": "足防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32312": {
+      "itemId": 32312,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32318": {
+      "itemId": 32318,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32324": {
+      "itemId": 32324,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32330": {
+      "itemId": 32330,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32336": {
+      "itemId": 32336,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": null,
+      "itemUiCategory": "耳飾り",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "none"
+    },
+    "32341": {
+      "itemId": 32341,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": null,
+      "itemUiCategory": "首飾り",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "none"
+    },
+    "32516": {
+      "itemId": 32516,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32522": {
+      "itemId": 32522,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32528": {
+      "itemId": 32528,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32534": {
+      "itemId": 32534,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32540": {
+      "itemId": 32540,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32546": {
+      "itemId": 32546,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32552": {
+      "itemId": 32552,
+      "equipLevel": 80,
+      "itemLevel": 530,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32578": {
+      "itemId": 32578,
+      "equipLevel": 80,
+      "itemLevel": 485,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32584": {
+      "itemId": 32584,
+      "equipLevel": 80,
+      "itemLevel": 485,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32590": {
+      "itemId": 32590,
+      "equipLevel": 80,
+      "itemLevel": 485,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32596": {
+      "itemId": 32596,
+      "equipLevel": 80,
+      "itemLevel": 485,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32602": {
+      "itemId": 32602,
+      "equipLevel": 80,
+      "itemLevel": 485,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32608": {
+      "itemId": 32608,
+      "equipLevel": 80,
+      "itemLevel": 485,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "32614": {
+      "itemId": 32614,
+      "equipLevel": 80,
+      "itemLevel": 485,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "33613": {
+      "itemId": 33613,
+      "equipLevel": 80,
+      "itemLevel": 525,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "33618": {
+      "itemId": 33618,
+      "equipLevel": 80,
+      "itemLevel": 525,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "33623": {
+      "itemId": 33623,
+      "equipLevel": 80,
+      "itemLevel": 525,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "33628": {
+      "itemId": 33628,
+      "equipLevel": 80,
+      "itemLevel": 525,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "33633": {
+      "itemId": 33633,
+      "equipLevel": 80,
+      "itemLevel": 525,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "33638": {
+      "itemId": 33638,
+      "equipLevel": 80,
+      "itemLevel": 525,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "33643": {
+      "itemId": 33643,
+      "equipLevel": 80,
+      "itemLevel": 525,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34175": {
+      "itemId": 34175,
+      "equipLevel": 81,
+      "itemLevel": 520,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34180": {
+      "itemId": 34180,
+      "equipLevel": 81,
+      "itemLevel": 520,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34185": {
+      "itemId": 34185,
+      "equipLevel": 81,
+      "itemLevel": 520,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34190": {
+      "itemId": 34190,
+      "equipLevel": 81,
+      "itemLevel": 520,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34195": {
+      "itemId": 34195,
+      "equipLevel": 81,
+      "itemLevel": 520,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34200": {
+      "itemId": 34200,
+      "equipLevel": 81,
+      "itemLevel": 520,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34205": {
+      "itemId": 34205,
+      "equipLevel": 81,
+      "itemLevel": 520,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34475": {
+      "itemId": 34475,
+      "equipLevel": 85,
+      "itemLevel": 536,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34480": {
+      "itemId": 34480,
+      "equipLevel": 85,
+      "itemLevel": 536,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34485": {
+      "itemId": 34485,
+      "equipLevel": 85,
+      "itemLevel": 536,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34490": {
+      "itemId": 34490,
+      "equipLevel": 85,
+      "itemLevel": 536,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34495": {
+      "itemId": 34495,
+      "equipLevel": 85,
+      "itemLevel": 536,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34500": {
+      "itemId": 34500,
+      "equipLevel": 85,
+      "itemLevel": 536,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34505": {
+      "itemId": 34505,
+      "equipLevel": 85,
+      "itemLevel": 536,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34625": {
+      "itemId": 34625,
+      "equipLevel": 87,
+      "itemLevel": 542,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34630": {
+      "itemId": 34630,
+      "equipLevel": 87,
+      "itemLevel": 542,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34635": {
+      "itemId": 34635,
+      "equipLevel": 87,
+      "itemLevel": 542,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34640": {
+      "itemId": 34640,
+      "equipLevel": 87,
+      "itemLevel": 542,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34645": {
+      "itemId": 34645,
+      "equipLevel": 87,
+      "itemLevel": 542,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34650": {
+      "itemId": 34650,
+      "equipLevel": 87,
+      "itemLevel": 542,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34655": {
+      "itemId": 34655,
+      "equipLevel": 87,
+      "itemLevel": 542,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34870": {
+      "itemId": 34870,
+      "equipLevel": 90,
+      "itemLevel": 570,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34875": {
+      "itemId": 34875,
+      "equipLevel": 90,
+      "itemLevel": 570,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34880": {
+      "itemId": 34880,
+      "equipLevel": 90,
+      "itemLevel": 570,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34885": {
+      "itemId": 34885,
+      "equipLevel": 90,
+      "itemLevel": 570,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34890": {
+      "itemId": 34890,
+      "equipLevel": 90,
+      "itemLevel": 570,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34895": {
+      "itemId": 34895,
+      "equipLevel": 90,
+      "itemLevel": 570,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34900": {
+      "itemId": 34900,
+      "equipLevel": 90,
+      "itemLevel": 570,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34965": {
+      "itemId": 34965,
+      "equipLevel": 90,
+      "itemLevel": 580,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34970": {
+      "itemId": 34970,
+      "equipLevel": 90,
+      "itemLevel": 580,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34975": {
+      "itemId": 34975,
+      "equipLevel": 90,
+      "itemLevel": 580,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34980": {
+      "itemId": 34980,
+      "equipLevel": 90,
+      "itemLevel": 580,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34985": {
+      "itemId": 34985,
+      "equipLevel": 90,
+      "itemLevel": 580,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34990": {
+      "itemId": 34990,
+      "equipLevel": 90,
+      "itemLevel": 580,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "34995": {
+      "itemId": 34995,
+      "equipLevel": 90,
+      "itemLevel": 580,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35190": {
+      "itemId": 35190,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35195": {
+      "itemId": 35195,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35200": {
+      "itemId": 35200,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35205": {
+      "itemId": 35205,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35210": {
+      "itemId": 35210,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35215": {
+      "itemId": 35215,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35220": {
+      "itemId": 35220,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35265": {
+      "itemId": 35265,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35270": {
+      "itemId": 35270,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35275": {
+      "itemId": 35275,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35280": {
+      "itemId": 35280,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35285": {
+      "itemId": 35285,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35290": {
+      "itemId": 35290,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35295": {
+      "itemId": 35295,
+      "equipLevel": 90,
+      "itemLevel": 600,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "35790": {
+      "itemId": 35790,
+      "equipLevel": 80,
+      "itemLevel": 535,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "SGE"
+      ],
+      "equipJobsJa": "賢者",
+      "equipSlot": null,
+      "itemUiCategory": "賢具",
+      "classJobCategoryId": 181,
+      "roleSource": "classJobCategory",
+      "slotSource": "none"
+    },
+    "37876": {
+      "itemId": 37876,
+      "equipLevel": 90,
+      "itemLevel": 610,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "37881": {
+      "itemId": 37881,
+      "equipLevel": 90,
+      "itemLevel": 610,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "37886": {
+      "itemId": 37886,
+      "equipLevel": 90,
+      "itemLevel": 610,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "37891": {
+      "itemId": 37891,
+      "equipLevel": 90,
+      "itemLevel": 610,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "37896": {
+      "itemId": 37896,
+      "equipLevel": 90,
+      "itemLevel": 610,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "37901": {
+      "itemId": 37901,
+      "equipLevel": 90,
+      "itemLevel": 610,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "37906": {
+      "itemId": 37906,
+      "equipLevel": 90,
+      "itemLevel": 610,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38026": {
+      "itemId": 38026,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38031": {
+      "itemId": 38031,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38036": {
+      "itemId": 38036,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38041": {
+      "itemId": 38041,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38046": {
+      "itemId": 38046,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38051": {
+      "itemId": 38051,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38056": {
+      "itemId": 38056,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38101": {
+      "itemId": 38101,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38106": {
+      "itemId": 38106,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38111": {
+      "itemId": 38111,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38116": {
+      "itemId": 38116,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38121": {
+      "itemId": 38121,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38126": {
+      "itemId": 38126,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38131": {
+      "itemId": 38131,
+      "equipLevel": 90,
+      "itemLevel": 630,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38156": {
+      "itemId": 38156,
+      "equipLevel": 90,
+      "itemLevel": 595,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38161": {
+      "itemId": 38161,
+      "equipLevel": 90,
+      "itemLevel": 595,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38166": {
+      "itemId": 38166,
+      "equipLevel": 90,
+      "itemLevel": 595,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38171": {
+      "itemId": 38171,
+      "equipLevel": 90,
+      "itemLevel": 595,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38176": {
+      "itemId": 38176,
+      "equipLevel": 90,
+      "itemLevel": 595,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38181": {
+      "itemId": 38181,
+      "equipLevel": 90,
+      "itemLevel": 595,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38186": {
+      "itemId": 38186,
+      "equipLevel": 90,
+      "itemLevel": 595,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38957": {
+      "itemId": 38957,
+      "equipLevel": 90,
+      "itemLevel": 605,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38962": {
+      "itemId": 38962,
+      "equipLevel": 90,
+      "itemLevel": 605,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38967": {
+      "itemId": 38967,
+      "equipLevel": 90,
+      "itemLevel": 605,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38972": {
+      "itemId": 38972,
+      "equipLevel": 90,
+      "itemLevel": 605,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38977": {
+      "itemId": 38977,
+      "equipLevel": 90,
+      "itemLevel": 605,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38982": {
+      "itemId": 38982,
+      "equipLevel": 90,
+      "itemLevel": 605,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "38987": {
+      "itemId": 38987,
+      "equipLevel": 90,
+      "itemLevel": 605,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "40110": {
+      "itemId": 40110,
+      "equipLevel": 90,
+      "itemLevel": 660,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "40115": {
+      "itemId": 40115,
+      "equipLevel": 90,
+      "itemLevel": 660,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "40120": {
+      "itemId": 40120,
+      "equipLevel": 90,
+      "itemLevel": 660,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "40125": {
+      "itemId": 40125,
+      "equipLevel": 90,
+      "itemLevel": 660,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "40130": {
+      "itemId": 40130,
+      "equipLevel": 90,
+      "itemLevel": 660,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "40135": {
+      "itemId": 40135,
+      "equipLevel": 90,
+      "itemLevel": 660,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "40140": {
+      "itemId": 40140,
+      "equipLevel": 90,
+      "itemLevel": 660,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42089": {
+      "itemId": 42089,
+      "equipLevel": 93,
+      "itemLevel": 660,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42094": {
+      "itemId": 42094,
+      "equipLevel": 93,
+      "itemLevel": 660,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42099": {
+      "itemId": 42099,
+      "equipLevel": 93,
+      "itemLevel": 660,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42104": {
+      "itemId": 42104,
+      "equipLevel": 93,
+      "itemLevel": 660,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42109": {
+      "itemId": 42109,
+      "equipLevel": 93,
+      "itemLevel": 660,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42114": {
+      "itemId": 42114,
+      "equipLevel": 93,
+      "itemLevel": 660,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42119": {
+      "itemId": 42119,
+      "equipLevel": 93,
+      "itemLevel": 660,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42397": {
+      "itemId": 42397,
+      "equipLevel": 97,
+      "itemLevel": 672,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42402": {
+      "itemId": 42402,
+      "equipLevel": 97,
+      "itemLevel": 672,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42407": {
+      "itemId": 42407,
+      "equipLevel": 97,
+      "itemLevel": 672,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42412": {
+      "itemId": 42412,
+      "equipLevel": 97,
+      "itemLevel": 672,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42417": {
+      "itemId": 42417,
+      "equipLevel": 97,
+      "itemLevel": 672,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42422": {
+      "itemId": 42422,
+      "equipLevel": 97,
+      "itemLevel": 672,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "42427": {
+      "itemId": 42427,
+      "equipLevel": 97,
+      "itemLevel": 672,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "44241": {
+      "itemId": 44241,
+      "equipLevel": 80,
+      "itemLevel": 535,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "VPR"
+      ],
+      "equipJobsJa": "ヴァイパー",
+      "equipSlot": null,
+      "itemUiCategory": "二刀流武器",
+      "classJobCategoryId": 196,
+      "roleSource": "classJobCategory",
+      "slotSource": "none"
+    },
+    "44550": {
+      "itemId": 44550,
+      "equipLevel": 100,
+      "itemLevel": 705,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "44555": {
+      "itemId": 44555,
+      "equipLevel": 100,
+      "itemLevel": 705,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "44560": {
+      "itemId": 44560,
+      "equipLevel": 100,
+      "itemLevel": 705,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "44565": {
+      "itemId": 44565,
+      "equipLevel": 100,
+      "itemLevel": 705,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "44570": {
+      "itemId": 44570,
+      "equipLevel": 100,
+      "itemLevel": 705,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "44575": {
+      "itemId": 44575,
+      "equipLevel": 100,
+      "itemLevel": 705,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "44580": {
+      "itemId": 44580,
+      "equipLevel": 100,
+      "itemLevel": 705,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "46344": {
+      "itemId": 46344,
+      "equipLevel": 100,
+      "itemLevel": 725,
+      "equipRole": "タンク",
+      "equipJobs": [
+        "DRK",
+        "GLA",
+        "GNB",
+        "MRD",
+        "PLD",
+        "WAR"
+      ],
+      "equipJobsJa": "剣術士 斧術士 ナイト 戦士 暗黒騎士 ガンブレイカー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 59,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "46349": {
+      "itemId": 46349,
+      "equipLevel": 100,
+      "itemLevel": 725,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "DRG",
+        "LNC",
+        "RPR"
+      ],
+      "equipJobsJa": "槍術士 竜騎士 リーパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 76,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "46354": {
+      "itemId": 46354,
+      "equipLevel": 100,
+      "itemLevel": 725,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "MNK",
+        "PGL",
+        "SAM"
+      ],
+      "equipJobsJa": "格闘士 モンク 侍 魔獣使い",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 65,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "46359": {
+      "itemId": 46359,
+      "equipLevel": 100,
+      "itemLevel": 725,
+      "equipRole": "レンジ",
+      "equipJobs": [
+        "ARC",
+        "BRD",
+        "DNC",
+        "MCH"
+      ],
+      "equipJobsJa": "弓術士 吟遊詩人 機工士 踊り子",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 66,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "46364": {
+      "itemId": 46364,
+      "equipLevel": 100,
+      "itemLevel": 725,
+      "equipRole": "メレー",
+      "equipJobs": [
+        "NIN",
+        "ROG",
+        "VPR"
+      ],
+      "equipJobsJa": "双剣士 忍者 ヴァイパー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 103,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "46369": {
+      "itemId": 46369,
+      "equipLevel": 100,
+      "itemLevel": 725,
+      "equipRole": "ヒーラー",
+      "equipJobs": [
+        "AST",
+        "CNJ",
+        "SCH",
+        "SGE",
+        "WHM"
+      ],
+      "equipJobsJa": "幻術士 白魔道士 学者 占星術師 賢者",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 64,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    },
+    "46374": {
+      "itemId": 46374,
+      "equipLevel": 100,
+      "itemLevel": 725,
+      "equipRole": "キャスター",
+      "equipJobs": [
+        "ACN",
+        "BLM",
+        "BLU",
+        "PCT",
+        "RDM",
+        "SMN",
+        "THM"
+      ],
+      "equipJobsJa": "呪術士 巴術士 黒魔道士 召喚士 赤魔道士 青魔道士 ピクトマンサー",
+      "equipSlot": "頭",
+      "itemUiCategory": "頭防具",
+      "classJobCategoryId": 63,
+      "roleSource": "classJobCategory",
+      "slotSource": "prototype"
+    }
+  }
+}

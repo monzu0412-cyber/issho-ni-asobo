@@ -4,6 +4,20 @@ import locationTranslationDictionary from '../../data/reverse-search/manual/loca
 import fishTermTranslationDictionary from '../../data/reverse-search/manual/fish_term_translation_dictionary.json'
 import contentTranslationDictionary from '../../data/reverse-search/manual/content_translation_dictionary.json'
 import sourceDictionary from '../../data/reverse-search/manual/source_dictionary.json'
+import { buildChainBackedContentNames, passesChainForwardGuard, resolveSourceChainId } from '../../lib/chain-forward-guard'
+import {
+  getEquipmentMetadataSearchNamesForItem,
+  isEquipmentMetadataSearchToken,
+} from '../../lib/equipment-metadata'
+import {
+  getForwardIndexAcquisitionCategories,
+  getForwardIndexContentNames,
+  getForwardIndexItems,
+  getForwardIndexTaxonomyOptions,
+  usesForwardSearchIndex,
+} from '../../lib/forward-search-index'
+import { isCardUiPublicSearchItem } from '../../lib/publication-gate'
+import { formatCurrencyDisplayText } from '../../lib/currency-display.ts'
 import type {
   AcquisitionRoute,
   ActivityCategory,
@@ -69,6 +83,11 @@ const contentTranslationMap = new Map(
     .map((entry) => [entry.en, entry.ja]),
 )
 
+const equipmentRouteDetailMap = new Map<string, string>([
+  ['Blade\'s Gear Exchange (Resistance Supplier)', 'ブレイズ装備交換（レジスタンス補給兵）'],
+  ['Blade\'s Gear Exchange', 'ブレイズ装備交換'],
+])
+
 export const forwardSearchCategory1Options = [
   '装備',
   'マウント',
@@ -82,6 +101,7 @@ export const forwardSearchCategory1Options = [
 
 const forwardAcquisitionCategoryOptions: ForwardAcquisitionCategory[] = [
   '零式',
+  'ノーマルレイド',
   '極',
   'ID',
   '地図',
@@ -169,13 +189,51 @@ function isEquipRoleKey(key: string): key is EquipRole {
   return (EQUIP_ROLE_ORDER as string[]).includes(key)
 }
 
-export const searchItems = (searchDictionary as Array<SearchDictionaryItem & DictionaryMetadata>)
-  .filter((item) => item.type !== 'metadata' && item.sourceDictionaryId)
-
 const sourceItems = (sourceDictionary as Array<SourceDictionaryItem & DictionaryMetadata>)
   .filter((item) => item.type !== 'metadata')
 
 export const sourceItemById = new Map(sourceItems.map((item) => [item.id, item]))
+
+const chainBackedContentNames = buildChainBackedContentNames(sourceItems)
+
+function shouldIncludeInForwardSearch(item: EnrichedSearchItem): boolean {
+  const sourceItem = item.sourceDictionaryId ? sourceItemById.get(item.sourceDictionaryId) : undefined
+
+  return passesChainForwardGuard(item.contentName, sourceItem, chainBackedContentNames)
+}
+
+export function isChainBackedForwardContentName(contentName: string | null | undefined): boolean {
+  const key = contentName?.trim()
+
+  if (!key) {
+    return false
+  }
+
+  return chainBackedContentNames.has(key)
+}
+
+export function getSourceChainId(sourceDictionaryId: string | null | undefined): string | null {
+  if (!sourceDictionaryId) {
+    return null
+  }
+
+  return resolveSourceChainId(sourceItemById.get(sourceDictionaryId))
+}
+
+const rawSearchItems = (searchDictionary as Array<SearchDictionaryItem & DictionaryMetadata>)
+  .filter((item) => item.type !== 'metadata' && item.sourceDictionaryId)
+
+export const searchItems = rawSearchItems.filter((item) => {
+  const sourceItem = item.sourceDictionaryId ? sourceItemById.get(item.sourceDictionaryId) : undefined
+
+  return isCardUiPublicSearchItem(item.category1, sourceItem)
+})
+
+const searchItemsBySourceId = new Map(
+  searchItems
+    .filter((item) => item.sourceDictionaryId)
+    .map((item) => [item.sourceDictionaryId as string, item]),
+)
 
 function pickIconUrl(value: unknown): string | null {
   if (typeof value !== 'string') {
@@ -409,6 +467,10 @@ export function getForwardAcquisitionCategories(category1: string) {
     return []
   }
 
+  if (usesForwardSearchIndex(category1)) {
+    return getForwardIndexAcquisitionCategories()
+  }
+
   return sortAcquisitionCategories(
     enrichedSearchItems
       .filter((item) => item.category1 === category1)
@@ -416,15 +478,71 @@ export function getForwardAcquisitionCategories(category1: string) {
   )
 }
 
+function resolveEnrichedItemsFromForwardIndex(filters: {
+  step2Category: string
+  contentName: string
+  taxonomy?: EquipTaxonomyKey | ''
+}): EnrichedSearchItem[] {
+  const indexItems = getForwardIndexItems({
+    step2Category: filters.step2Category,
+    contentName: filters.contentName,
+    taxonomy: filters.taxonomy,
+  })
+  const resolved: EnrichedSearchItem[] = []
+
+  for (const indexItem of indexItems) {
+    const searchItem = searchItemsBySourceId.get(indexItem.sourceDictionaryId)
+
+    if (!searchItem) {
+      continue
+    }
+
+    const enriched = enrichSearchItem(searchItem)
+
+    resolved.push({
+      ...enriched,
+      equipSlot: indexItem.equipSlot ?? indexItem.slot ?? enriched.equipSlot,
+      equipRole: indexItem.equipRole ?? indexItem.role,
+      equipLevel: indexItem.equipLevel,
+      itemLevel: indexItem.itemLevel,
+      equipJobs: indexItem.equipJobs,
+      equipJobsJa: indexItem.equipJobsJa,
+      itemUiCategory: indexItem.itemUiCategory,
+      classJobCategoryId: indexItem.classJobCategoryId,
+      roleSource: indexItem.roleSource,
+      slotSource: indexItem.slotSource,
+    })
+  }
+
+  return resolved
+}
+
+export {
+  groupForwardIndexCandidatesBySeries,
+  isExchangeStep2Category,
+  isExplorationStep2Category,
+  isIdStep2Category,
+  usesForwardSearchIndex,
+  usesGroupedForwardContentOptions,
+} from '../../lib/forward-search-index'
+
 export function getForwardContentNames(category1: string, acquisitionCategory: string): ForwardContentOption[] {
   if (!category1 || !acquisitionCategory) {
     return []
+  }
+
+  if (usesForwardSearchIndex(category1)) {
+    return getForwardIndexContentNames(acquisitionCategory)
   }
 
   const options = new Map<string, string>()
 
   for (const item of enrichedSearchItems) {
     if (item.category1 !== category1 || item.acquisitionCategory !== acquisitionCategory) {
+      continue
+    }
+
+    if (!shouldIncludeInForwardSearch(item)) {
       continue
     }
 
@@ -456,6 +574,10 @@ export function getForwardTaxonomyOptions(
     return []
   }
 
+  if (usesForwardSearchIndex(category1)) {
+    return getForwardIndexTaxonomyOptions(acquisitionCategory, contentName)
+  }
+
   const slotCounts = new Map<EquipSlot, number>()
   const roleCounts = new Map<EquipRole, number>()
 
@@ -465,6 +587,10 @@ export function getForwardTaxonomyOptions(
       || item.acquisitionCategory !== acquisitionCategory
       || item.contentName !== contentName
     ) {
+      continue
+    }
+
+    if (!shouldIncludeInForwardSearch(item)) {
       continue
     }
 
@@ -536,6 +662,10 @@ export function getForwardDetails(
       continue
     }
 
+    if (!shouldIncludeInForwardSearch(item)) {
+      continue
+    }
+
     const sourceItem = item.sourceDictionaryId ? sourceItemById.get(item.sourceDictionaryId) : undefined
 
     for (const detailKey of item.details) {
@@ -562,7 +692,23 @@ export function getForwardSearchCandidates(filters: {
   detail: string
   taxonomy?: EquipTaxonomyKey | ''
 }) {
+  if (usesForwardSearchIndex(filters.category1)) {
+    if (!filters.acquisitionCategory || !filters.contentName) {
+      return []
+    }
+
+    return resolveEnrichedItemsFromForwardIndex({
+      step2Category: filters.acquisitionCategory,
+      contentName: filters.contentName,
+      taxonomy: filters.taxonomy,
+    })
+  }
+
   return enrichedSearchItems.filter((item) => {
+    if (!shouldIncludeInForwardSearch(item)) {
+      return false
+    }
+
     if (filters.category1 && item.category1 !== filters.category1) {
       return false
     }
@@ -597,12 +743,45 @@ export function normalizeSearchText(value: string) {
   return value.trim().toLowerCase()
 }
 
-function itemMatchesSearchQuery(item: SearchDictionaryItem, normalizedQuery: string) {
-  if (item.name.toLowerCase().includes(normalizedQuery)) {
+export function tokenizeSearchQuery(value: string): string[] {
+  return normalizeSearchText(value).split(/\s+/).filter(Boolean)
+}
+
+function searchTokenMatchesItem(item: SearchDictionaryItem, token: string): boolean {
+  const metadataExactMatch = getEquipmentMetadataSearchNamesForItem(item).some(
+    (searchName) => searchName.toLowerCase() === token,
+  )
+
+  if (isEquipmentMetadataSearchToken(token)) {
+    return metadataExactMatch
+  }
+
+  if (item.name.toLowerCase().includes(token)) {
     return true
   }
 
-  return (item.searchNames ?? []).some((searchName) => searchName.toLowerCase().includes(normalizedQuery))
+  if ((item.searchNames ?? []).some((searchName) => searchName.toLowerCase().includes(token))) {
+    return true
+  }
+
+  return metadataExactMatch
+}
+
+export function itemMatchesSearchQuery(item: SearchDictionaryItem, normalizedQuery: string) {
+  const tokens = normalizedQuery.split(/\s+/).filter(Boolean)
+
+  if (tokens.length === 0) {
+    return false
+  }
+
+  return tokens.every((token) => searchTokenMatchesItem(item, token))
+}
+
+export function isSearchTargetCardUiPublic(
+  item: SearchDictionaryItem,
+  sourceItem: SourceDictionaryItem | undefined,
+): boolean {
+  return isCardUiPublicSearchItem(item.category1, sourceItem)
 }
 
 export function getSearchResults(query: string) {
@@ -680,7 +859,75 @@ export function formatConditionValue(value: unknown): string {
     return value ? 'あり' : 'なし'
   }
 
+  if (typeof value === 'string') {
+    return normalizeDisplayText(value)
+  }
+
   return value == null ? '' : String(value)
+}
+
+function normalizeBilingualJa(text: string): string {
+  const trimmed = text.trim()
+
+  if (!trimmed) {
+    return ''
+  }
+
+  const bilingualMatch = trimmed.match(/^(.+?)（[^）]+）$/)
+
+  if (bilingualMatch && isJapaneseText(bilingualMatch[1])) {
+    return bilingualMatch[1].trim()
+  }
+
+  return trimmed
+}
+
+function normalizeDisplayText(text: string): string {
+  const trimmed = text.trim()
+
+  if (!trimmed) {
+    return ''
+  }
+
+  const normalized = normalizeBilingualJa(trimmed)
+
+  if (isJapaneseText(normalized)) {
+    return formatCurrencyDisplayText(normalized)
+  }
+
+  return translateEquipmentRouteDetail(normalized)
+}
+
+function translateEquipmentRouteDetail(text: string): string {
+  const trimmed = text.trim()
+
+  if (!trimmed) {
+    return ''
+  }
+
+  return equipmentRouteDetailMap.get(trimmed)
+    ?? contentTranslationMap.get(trimmed)
+    ?? trimmed
+}
+
+function localizeRouteDetail(detail: string, translateContent: boolean): string {
+  const trimmed = detail.trim()
+
+  if (!trimmed || isInternalRouteMemo(trimmed)) {
+    return trimmed
+  }
+
+  const normalized = normalizeBilingualJa(trimmed)
+
+  if (isJapaneseText(normalized)) {
+    return normalized
+  }
+
+  if (translateContent) {
+    return translateContentName(normalized, true)
+  }
+
+  return translateEquipmentRouteDetail(normalized)
 }
 
 function translateLocationName(value: unknown): string {
@@ -732,6 +979,7 @@ export function getConditionLabel(key: string) {
     fishEyes: '魚眼',
     surfaceSlap: '撒き餌',
     prizeCatch: '大物狙い',
+    reward: '必要通貨',
   }
 
   return labels[key] ?? key
@@ -745,6 +993,7 @@ export function getStepLabel(type: string | undefined) {
     surfaceSlap: '撒き餌',
     prizeCatch: '大物狙い',
     gig: 'ギグ',
+    currency_earn: '通貨獲得',
   }
 
   return type ? labels[type] ?? type : '条件'
@@ -1023,7 +1272,7 @@ export function getSplitRouteDisplay(route: AcquisitionRoute, translateContent: 
   if (isD1CoreSplitRoute(route)) {
     return {
       contentName: translateContentName(route.contentName, translateContent),
-      detail: translateContentName(route.detail, translateContent),
+      detail: localizeRouteDetail(route.detail ?? '', translateContent),
     }
   }
 
@@ -1038,11 +1287,11 @@ export function getRouteDisplayText(route: AcquisitionRoute, options?: { transla
   const translateContent = options?.translateContent ?? false
 
   if (route.detail && !isInternalRouteMemo(route.detail)) {
-    return translateContentName(route.detail, translateContent)
+    return localizeRouteDetail(route.detail, translateContent)
   }
 
   if (route.contentName && !isInternalRouteMemo(route.contentName)) {
-    return translateContentName(route.contentName, translateContent)
+    return localizeRouteDetail(route.contentName, translateContent)
   }
 
   return `${route.type}入手`
@@ -1102,6 +1351,12 @@ function translateDetailToJapanese(detail: string, category1?: string | null): s
 
   if (translatedContent !== normalized) {
     return translatedContent
+  }
+
+  const translatedEquipmentRoute = translateEquipmentRouteDetail(normalized)
+
+  if (translatedEquipmentRoute !== normalized) {
+    return translatedEquipmentRoute
   }
 
   const translatedLocation = translateLocationName(normalized)
@@ -1284,4 +1539,62 @@ export function getFishPlaceDisplay(route: AcquisitionRoute) {
   const location = translateLocationName(conditions.location)
 
   return [area, location].filter(Boolean).join(': ')
+}
+
+export const ROUTE_PRIORITY_SPECIAL_CONDITION_KEYS = ['area', 'location', 'weather', 'time'] as const
+export const ROUTE_PROMOTED_SPECIAL_CONDITION_KEYS = ['reward'] as const
+
+export function getRouteRequiredCurrency(route: AcquisitionRoute): string | null {
+  const reward = route.specialConditions?.reward
+
+  if (reward == null) {
+    return null
+  }
+
+  const formatted = formatConditionValue(reward)
+
+  return formatted || null
+}
+
+export function hasRouteRequiredCurrency(route: AcquisitionRoute): boolean {
+  return getRouteRequiredCurrency(route) != null
+}
+
+export function getRouteCurrencyEarnSteps(route: AcquisitionRoute): ConditionStep[] {
+  return (route.conditionSteps ?? []).filter((step) => step.type === 'currency_earn')
+}
+
+export function getRouteCollapsibleSpecialConditions(route: AcquisitionRoute): Array<[string, unknown]> {
+  const conditions = route.specialConditions ?? {}
+
+  return Object.entries(conditions).filter(([key, value]) => {
+    if ((ROUTE_PRIORITY_SPECIAL_CONDITION_KEYS as readonly string[]).includes(key)) {
+      return false
+    }
+
+    if ((ROUTE_PROMOTED_SPECIAL_CONDITION_KEYS as readonly string[]).includes(key)) {
+      return false
+    }
+
+    return Boolean(formatConditionValue(value))
+  })
+}
+
+export function getRouteCollapsibleConditionSteps(route: AcquisitionRoute): ConditionStep[] {
+  return (route.conditionSteps ?? []).filter((step) => step.type !== 'currency_earn')
+}
+
+export function shouldShowRouteExtraConditions(route: AcquisitionRoute): boolean {
+  return getRouteCollapsibleSpecialConditions(route).length > 0
+    || getRouteCollapsibleConditionSteps(route).length > 0
+}
+
+export function getRoutePrimaryContentLabel(route: AcquisitionRoute, translateContent: boolean): string {
+  const contentName = route.contentName?.trim()
+
+  if (contentName) {
+    return translateContentName(contentName, translateContent)
+  }
+
+  return getRouteDisplayText(route, { translateContent })
 }

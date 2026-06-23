@@ -65,6 +65,21 @@ export function CardBodyCharacter(props: CardBodyProps) {
     removeContentItem,
     characterMessage,
     updateCharacterMessage,
+    lodestoneInput,
+    lodestoneFetchError,
+    lodestoneApplyMessage,
+    lodestoneApplyError,
+    isLodestoneFetching,
+    leftColumnDisplayMode,
+    lodestoneProfile,
+    jobSelections,
+    updateLodestoneInput,
+    fetchLodestoneProfile,
+    refetchLodestoneProfile,
+    savedLodestoneCharacterId,
+    applyLodestoneProfileToCard,
+    onLeftColumnDisplayModeChange,
+    onJobSelectionChange,
   } = props
 
   const wantRankSlots = ['wantRank1', 'wantRank2', 'wantRank3'] as const
@@ -113,6 +128,17 @@ export function CardBodyCharacter(props: CardBodyProps) {
             updateRole={updateRole}
             updatePlayTime={updatePlayTime}
             updateVoiceChat={updateVoiceChat}
+            lodestoneInput={lodestoneInput}
+            lodestoneFetchError={lodestoneFetchError}
+            lodestoneApplyMessage={lodestoneApplyMessage}
+            lodestoneApplyError={lodestoneApplyError}
+            isLodestoneFetching={isLodestoneFetching}
+            lodestoneProfile={lodestoneProfile}
+            updateLodestoneInput={updateLodestoneInput}
+            fetchLodestoneProfile={fetchLodestoneProfile}
+            refetchLodestoneProfile={refetchLodestoneProfile}
+            savedLodestoneCharacterId={savedLodestoneCharacterId}
+            applyLodestoneProfileToCard={applyLodestoneProfileToCard}
           />
         </section>
       </div>
@@ -156,6 +182,11 @@ export function CardBodyCharacter(props: CardBodyProps) {
         updateContentSelection={updateContentSelection}
         addContentItem={addContentItem}
         removeContentItem={removeContentItem}
+        leftColumnDisplayMode={leftColumnDisplayMode}
+        lodestoneProfile={lodestoneProfile}
+        jobSelections={jobSelections}
+        onLeftColumnDisplayModeChange={onLeftColumnDisplayModeChange}
+        onJobSelectionChange={onJobSelectionChange}
       />
 
       <CardBottomRow

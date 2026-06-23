@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "type": "equipment_mismatch_patterns",
+  "phase": "L-11.3b",
+  "description": "外部照合で確定した誤分類ケーススタディ。再発検知ルールの正本。apply 前に pattern 登録し、修正後は fixedInPhase で履歴保持。",
+  "patterns": [
+    {
+      "id": "edition_mis_absorption_savage",
+      "label": "零式 edition 誤吸収（強化段階系列の誤帰属）",
+      "rootCauses": [
+        "edition_mis_absorption",
+        "series_dictionary_self_reference",
+        "name_prefix_absorption",
+        "provisional_grade_a_without_external"
+      ],
+      "caseStudies": [
+        {
+          "seriesKey": "マヌシャ",
+          "itemIds": [
+            34175,
+            34180,
+            34185,
+            34190,
+            34195,
+            34200,
+            34205
+          ],
+          "slot": "head",
+          "internalContentName": "希望の園エデン零式：覚醒編",
+          "internalCategory2": "零式",
+          "externalContentName": "異形楼閣 ゾットの塔",
+          "externalCategory2": "ID",
+          "externalLodestoneDuty": "The Tower of Zot",
+          "externalSources": [
+            "Lodestone",
+            "Garland",
+            "Teamcraft",
+            "Console Games Wiki"
+          ],
+          "confirmedInPhase": "L-10.23",
+          "fixedInPhase": "L-11.3a"
+        },
+        {
+          "seriesKey": "パーラカ",
+          "itemIds": [
+            34475,
+            34480,
+            34485,
+            34490,
+            34495,
+            34500,
+            34505
+          ],
+          "slot": "head",
+          "internalContentName": "希望の園エデン零式：覚醒編",
+          "internalCategory2": "零式",
+          "externalContentName": "終末樹海 ヴァナスパティ",
+          "externalCategory2": "ID",
+          "externalLodestoneDuty": "Vanaspati",
+          "externalSources": [
+            "Lodestone",
+            "Garland",
+            "Teamcraft",
+            "Console Games Wiki"
+          ],
+          "confirmedInPhase": "L-10.23",
+          "fixedInPhase": "L-11.3a"
+        }
+      ],
+      "detection": {
+        "summary": "内部が零式 edition バケットだが、外部 duty が別 expansion の ID/アライアンス",
+        "conditions": [
+          {
+            "id": "internal_external_content_mismatch",
+            "description": "classified.contentName !== 外部3ソース推論 contentName",
+            "automatable": true
+          },
+          {
+            "id": "category2_tier_mismatch",
+            "description": "内部 category2（零式）と外部 category2（ID/アライアンス）が不一致",
+            "automatable": true
+          },
+          {
+            "id": "self_reference_loop",
+            "description": "series_dictionary 自己参照ループかつ externalVerification pending",
+            "automatable": true
+          },
+          {
+            "id": "il_patch_inconsistent",
+            "description": "同一 seriesPrefix の IL が edition 期待値から ±1 tier 以上乖離",
+            "automatable": "partial"
+          }
+        ]
+      },
+      "auditRuleCandidates": [
+        {
+          "ruleId": "L2-external-duty-vs-series",
+          "layer": "L2",
+          "description": "series_dictionary 更新前に Garland+Teamcraft+Lodestone duty 突合必須",
+          "automatable": true
+        },
+        {
+          "ruleId": "L3-block-confirmed-without-external",
+          "layer": "L3",
+          "description": "evidenceLevel < B の戦闘系は source.status=confirmed 禁止",
+          "automatable": true
+        },
+        {
+          "ruleId": "L4-savage-edition-prefix-guard",
+          "layer": "L4",
+          "description": "零式 edition バケット内の非エデンゲート prefix を週次サンプル再照合",
+          "automatable": true
+        }
+      ],
+      "preventionRules": [
+        "零式 edition 系列は「同名強化段階」解釈を series_dictionary 単独根拠にしない",
+        "新 series 登録時は edition 親コンテンツとの IL/patch 整合を L0 で検証",
+        "覚醒編・共鳴編等の edition バケットは expectedSavageCount と prefix 分布を監査"
+      ]
+    },
+    {
+      "id": "prefix_absorption_alliance_vs_savage",
+      "label": "短い prefix による零式誤吸収（アライアンス装備）",
+      "rootCauses": [
+        "name_prefix_absorption",
+        "series_dictionary_wrong_propagation",
+        "missing_longer_prefix_series_entry",
+        "english_name_japanese_prefix_divergence"
+      ],
+      "caseStudies": [
+        {
+          "seriesKey": "アーク",
+          "itemIds": [
+            13119,
+            13125,
+            13131,
+            13137,
+            13143,
+            13149,
+            13155
+          ],
+          "slot": "head",
+          "internalContentName": "機工城アレキサンダー零式：起動編",
+          "internalCategory2": "零式",
+          "externalContentName": "魔航船ヴォイドアーク",
+          "externalCategory2": "アライアンス",
+          "externalLodestoneDuty": "The Void Ark",
+          "externalSources": [
+            "Lodestone",
+            "Garland",
+            "Teamcraft"
+          ],
+          "confirmedInPhase": "L-11.2",
+          "fixedInPhase": "L-11.3b"
+        },
+        {
+          "seriesKey": "アークエンジェル",
+          "itemIds": [
+            44514,
+            44519,
+            44524,
+            44529,
+            44534,
+            44539,
+            44544
+          ],
+          "slot": "head",
+          "internalContentName": "機工城アレキサンダー零式：起動編",
+          "internalCategory2": "零式",
+          "externalContentName": "ジュノ：ザ・ファーストウォーク",
+          "externalCategory2": "アライアンス",
+          "externalLodestoneDuty": "Jeuno: The First Walk",
+          "externalSources": [
+            "Lodestone",
+            "Garland",
+            "Teamcraft"
+          ],
+          "confirmedInPhase": "L-11.3b-1",
+          "fixedInPhase": "L-11.3b"
+        }
+      ],
+      "detection": {
+        "summary": "日本語 prefix「アーク」が Alexander 零式起動編に固定され、英語名 Void Ark / Ark Angel が示す別アライアンスに未分離",
+        "conditions": [
+          {
+            "id": "internal_external_content_mismatch",
+            "description": "internal=機工城アレキサンダー零式：起動編 かつ external duty が The Void Ark / Jeuno: The First Walk",
+            "automatable": true
+          },
+          {
+            "id": "category2_tier_mismatch",
+            "description": "内部零式 vs 外部アライアンス",
+            "automatable": true
+          },
+          {
+            "id": "longer_prefix_unregistered",
+            "description": "アークエンジェル等の長い prefix に series_dictionary 行が無く短いアークに吸収",
+            "automatable": true
+          },
+          {
+            "id": "three_source_agreement",
+            "description": "Garland + Teamcraft + Lodestone が同一 external contentName に収束",
+            "automatable": true
+          }
+        ]
+      },
+      "auditRuleCandidates": [
+        {
+          "ruleId": "L0-longest-prefix-wins",
+          "layer": "L0",
+          "description": "series_dictionary 登録時、既存短 prefix との衝突を最長一致で検査",
+          "automatable": true
+        },
+        {
+          "ruleId": "L1-english-duty-crosscheck",
+          "layer": "L1",
+          "description": "nameEn の Void Ark / First Walk 等 duty キーワードと series contentName 突合",
+          "automatable": true
+        },
+        {
+          "ruleId": "L2-prefix-collision-registry",
+          "layer": "L2",
+          "description": "同一先頭文字列を持つ seriesKey 群を collision リストで監査",
+          "automatable": true
+        },
+        {
+          "ruleId": "L3-three-source-before-apply",
+          "layer": "L3",
+          "description": "limited apply 前に 3ソース一致を必須（L-11.3b-1 パターン）",
+          "automatable": true
+        }
+      ],
+      "preventionRules": [
+        "アークエンジェルはアークとは別 seriesKey として series_dictionary に独立登録する",
+        "短い prefix（アーク）更新時は excludePrefixes（アークエンジェル/アークデーモン/アークメイジ）を spillover 検査",
+        "series_dictionary に長い prefix ガード行（アークデーモンホーン/アークメイジ）を先に登録してから短いアークを更新",
+        "英語名が Alliance raid を示す場合、零式 Alexander バケットへの自動伝播を禁止",
+        "itemId whitelist apply 後も pattern registry に fixedInPhase を記録し回帰監査"
+      ],
+      "comparisonWith": {
+        "relatedPatternId": "edition_mis_absorption_savage",
+        "commonalities": [
+          "series_dictionary → prototype → source の自己参照で provisional A を通過",
+          "外部照合なしではパイプライン監査だけでは検知不可",
+          "7 ロール揃いのクラスタで一括誤分類",
+          "Garland + Teamcraft + Lodestone 3ソース一致で確定"
+        ],
+        "differences": [
+          "マヌシャ/パーラカは edition 誤吸収（覚醒編）、アーク/アークエンジェルは prefix 誤吸収（起動編）",
+          "前者は category 零式→ID、後者は零式→アライアンス",
+          "アークエンジェルは長い prefix 未登録により短いアークへ吸収",
+          "起動編バケットには正当な零式系列（ゴルディオン等）が残るため spillover リスクが高い"
+        ]
+      }
+    }
+  ]
+}

@@ -7,6 +7,16 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "audit:equipment-classification": "tsx scripts/run-phase-l11-1-equipment-classification-audit.ts",
+    "audit:equipment-external-pilot": "tsx scripts/run-phase-l11-2-external-verification-pilot.ts",
+    "audit:equipment-l11-3b-1": "tsx scripts/run-phase-l11-3b-1-lodestone-evidence-audit.ts",
+    "audit:equipment-mismatch-patterns": "tsx scripts/run-phase-l11-mismatch-pattern-audit.ts",
+    "apply:equipment-l11-3b": "tsx scripts/apply-phase-l11-3b-limited-apply.ts",
+    "audit:equipment-l11-4": "tsx scripts/run-phase-l11-4-external-verification-audit.ts",
+    "audit:equipment-l11-5": "tsx scripts/run-phase-l11-5-sibling-cluster-audit.ts",
+    "apply:equipment-l11-6": "tsx scripts/apply-phase-l11-6-limited-apply.ts",
+    "audit:equipment-l11-7": "tsx scripts/run-phase-l11-7-overall-recount-audit.ts",
+    "apply:equipment-l11-4": "tsx scripts/apply-phase-l11-4-evidence-promotion.ts",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,6 +34,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "tsx": "^4.22.4",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"

@@ -1,6 +1,11 @@
+import { useMemo } from 'react'
 import type { CSSProperties } from 'react'
 import type { ActivityCategory, ContentSelection, InterestItem, SectionTitles, TodoItem } from '../../types/card'
 import type { HelpSectionSubtitle, WantSectionSubtitle } from '../../data/activityColumnTitles'
+import type { LeftColumnDisplayMode, LodestoneCharacterProfile } from '../../types/lodestone'
+import type { JobUserSelection } from '../../types/lodestone'
+import { buildJobRoleGroups } from '../../lib/buildJobGridRows'
+import { JobIconGrid } from '../jobs/JobIconGrid'
 import {
   getInterestIconUrl,
   getTodoItemKey,
@@ -25,11 +30,16 @@ type CardActivityBoxProps = {
   interestSectionStyle: CSSProperties
   wantSectionStyle: CSSProperties
   helpSectionStyle: CSSProperties
+  leftColumnDisplayMode: LeftColumnDisplayMode
+  lodestoneProfile: LodestoneCharacterProfile | null
+  jobSelections: Record<string, JobUserSelection>
   updateInterestLevel: (interestName: ActivityCategory, level: number) => void
   updateActivitySubtitle: (column: 'want' | 'help', value: WantSectionSubtitle | HelpSectionSubtitle) => void
   updateContentSelection: (listKey: 'todoList' | 'unfinishedList', field: keyof ContentSelection, value: string) => void
   addContentItem: (listKey: 'todoList' | 'unfinishedList') => void
   removeContentItem: (listKey: 'todoList' | 'unfinishedList', itemKey: string) => void
+  onLeftColumnDisplayModeChange: (mode: LeftColumnDisplayMode) => void
+  onJobSelectionChange: (jobId: string, selection: JobUserSelection) => void
 }
 
 export function CardActivityBox({
@@ -43,44 +53,95 @@ export function CardActivityBox({
   interestSectionStyle,
   wantSectionStyle,
   helpSectionStyle,
+  leftColumnDisplayMode,
+  lodestoneProfile,
+  jobSelections,
   updateInterestLevel,
   updateActivitySubtitle,
   updateContentSelection,
   addContentItem,
   removeContentItem,
+  onLeftColumnDisplayModeChange,
+  onJobSelectionChange,
 }: CardActivityBoxProps) {
+  const showJobs = leftColumnDisplayMode === 'jobs'
+  const leftColumnClassName = showJobs ? 'activityColumn jobBox' : 'activityColumn interestBox'
+  const leftColumnStyle = interestSectionStyle
+  const jobRoleGroups = useMemo(
+    () => buildJobRoleGroups(lodestoneProfile, jobSelections),
+    [lodestoneProfile, jobSelections],
+  )
+
   return (
     <section className="activityBox">
-      <div
-        className="activityColumn interestBox"
-        style={interestSectionStyle}
-      >
-        <div className="sectionTitle">好きなこと！興味あるもの！</div>
-        <div className="interestGrid">
-          {interests.map((interest) => (
-            <div className="interestItem" key={interest.name}>
-              <div className="interestName">
-                <span
-                  aria-hidden="true"
-                  className="interestIconImage"
-                  style={{ backgroundImage: `url("${getInterestIconUrl(interest)}")` }}
-                />
-                <strong>{interest.name}</strong>
-              </div>
-              <Stars
-                level={interest.level}
-                isEditable={!effectivePreviewMode}
-                onChange={(level) => updateInterestLevel(interest.name, level)}
+      <div className={leftColumnClassName} style={leftColumnStyle}>
+        {!effectivePreviewMode && (
+          <fieldset className="leftColumnDisplayToggle">
+            <legend>表示内容</legend>
+            <label>
+              <input
+                type="radio"
+                name="leftColumnDisplayMode"
+                checked={leftColumnDisplayMode === 'interests'}
+                onChange={() => onLeftColumnDisplayModeChange('interests')}
               />
+              今の興味
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="leftColumnDisplayMode"
+                checked={leftColumnDisplayMode === 'jobs'}
+                onChange={() => onLeftColumnDisplayModeChange('jobs')}
+              />
+              ジョブ
+            </label>
+          </fieldset>
+        )}
+
+        {showJobs ? (
+          <>
+            {effectivePreviewMode ? (
+              <div className="jobBoxTitle jobBoxTitle--reserve" aria-hidden="true">
+                ジョブ
+              </div>
+            ) : (
+              <div className="jobBoxTitle">ジョブ</div>
+            )}
+            <JobIconGrid
+              roleGroups={jobRoleGroups}
+              lodestoneLinked={lodestoneProfile != null}
+              interactive={!effectivePreviewMode}
+              onSelectionChange={onJobSelectionChange}
+            />
+          </>
+        ) : (
+          <>
+            <div className="sectionTitle">好きなこと！興味あるもの！</div>
+            <div className="interestGrid">
+              {interests.map((interest) => (
+                <div className="interestItem" key={interest.name}>
+                  <div className="interestName">
+                    <span
+                      aria-hidden="true"
+                      className="interestIconImage"
+                      style={{ backgroundImage: `url("${getInterestIconUrl(interest)}")` }}
+                    />
+                    <strong>{interest.name}</strong>
+                  </div>
+                  <Stars
+                    level={interest.level}
+                    isEditable={!effectivePreviewMode}
+                    onChange={(level) => updateInterestLevel(interest.name, level)}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
 
-      <div
-        className="activityColumn"
-        style={wantSectionStyle}
-      >
+      <div className="activityColumn" style={wantSectionStyle}>
         <ActivityColumnHeader
           columnKey="want"
           subtitle={sectionTitles.want}
@@ -109,10 +170,7 @@ export function CardActivityBox({
         </ul>
       </div>
 
-      <div
-        className="activityColumn"
-        style={helpSectionStyle}
-      >
+      <div className="activityColumn" style={helpSectionStyle}>
         <ActivityColumnHeader
           columnKey="help"
           subtitle={sectionTitles.help}

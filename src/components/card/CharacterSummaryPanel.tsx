@@ -1,9 +1,18 @@
-import type { CSSProperties } from 'react'
+import { useMemo, useState, type CSSProperties } from 'react'
 import type { PlayTime, VoiceChat } from '../../types/card'
+import {
+  previewLodestoneApply,
+  type DataCenter,
+} from '../../lib/lodestone/applyLodestoneProfileToCharacter'
+import type { LodestoneCharacterProfile } from '../../types/lodestone'
 import { formatHour, formatTimeRange, handleIconError } from '../../utils/cardDisplayUtils'
 import { PlayTimeMeter } from './PlayTimeMeter'
 
-type DataCenter = 'Elemental' | 'Gaia' | 'Mana' | 'Meteor'
+const FIELD_LABELS = {
+  name: '名前',
+  dc: 'DC',
+  world: 'World',
+} as const
 
 type CharacterSummaryPanelProps = {
   name: string
@@ -27,6 +36,17 @@ type CharacterSummaryPanelProps = {
   updateRole: (role: 'tank' | 'healer' | 'dps', active: boolean) => void
   updatePlayTime: (day: 'weekday' | 'holiday', field: 'start' | 'end', value: number) => void
   updateVoiceChat: (vc: VoiceChat) => void
+  lodestoneInput: string
+  lodestoneFetchError: string | null
+  lodestoneApplyMessage: string | null
+  lodestoneApplyError: string | null
+  isLodestoneFetching: boolean
+  lodestoneProfile: LodestoneCharacterProfile | null
+  updateLodestoneInput: (value: string) => void
+  fetchLodestoneProfile: () => void
+  refetchLodestoneProfile: () => void
+  savedLodestoneCharacterId: string | null
+  applyLodestoneProfileToCard: (overwrite: boolean) => void
 }
 
 export function CharacterSummaryPanel({
@@ -47,7 +67,36 @@ export function CharacterSummaryPanel({
   updateRole,
   updatePlayTime,
   updateVoiceChat,
+  lodestoneInput,
+  lodestoneFetchError,
+  lodestoneApplyMessage,
+  lodestoneApplyError,
+  isLodestoneFetching,
+  lodestoneProfile,
+  updateLodestoneInput,
+  fetchLodestoneProfile,
+  refetchLodestoneProfile,
+  savedLodestoneCharacterId,
+  applyLodestoneProfileToCard,
 }: CharacterSummaryPanelProps) {
+  const [applyOverwrite, setApplyOverwrite] = useState(false)
+
+  const applyPreview = useMemo(() => {
+    if (!lodestoneProfile) {
+      return null
+    }
+
+    return previewLodestoneApply(
+      { name, dc, world },
+      lodestoneProfile,
+      worldsByDc,
+      dataCenters,
+      { overwrite: applyOverwrite },
+    )
+  }, [applyOverwrite, dataCenters, dc, lodestoneProfile, name, world, worldsByDc])
+
+  const cappedJobCount = lodestoneProfile?.jobs.filter((job) => job.isCapped).length ?? 0
+
   return (
     <section
       className="infoBox characterSummary"
@@ -222,6 +271,97 @@ export function CharacterSummaryPanel({
             ))}
           </select>
         </label>
+      </div>
+
+      <div className="editForm lodestoneEditForm">
+        <label>
+          ロードストーン キャラクターID / URL
+          <input
+            type="text"
+            value={lodestoneInput}
+            placeholder="例：12345678 または Lodestone URL"
+            onChange={(event) => updateLodestoneInput(event.target.value)}
+          />
+        </label>
+        <button
+          className="lodestoneFetchButton"
+          type="button"
+          onClick={fetchLodestoneProfile}
+          disabled={isLodestoneFetching}
+        >
+          {isLodestoneFetching ? '取得中…' : 'ロードストーン取得'}
+        </button>
+        {savedLodestoneCharacterId && (
+          <div className="lodestoneRefetchRow">
+            <p className="lodestoneSavedId">保存済み ID: {savedLodestoneCharacterId}</p>
+            <button
+              className="lodestoneRefetchButton"
+              type="button"
+              onClick={refetchLodestoneProfile}
+              disabled={isLodestoneFetching}
+            >
+              {isLodestoneFetching ? '取得中…' : '再取得'}
+            </button>
+          </div>
+        )}
+        {lodestoneFetchError && (
+          <p className="lodestoneFetchError" role="alert">{lodestoneFetchError}</p>
+        )}
+        {lodestoneProfile && (
+          <div className="lodestoneApplyPanel">
+            <p className="lodestoneFetchSuccess">
+              取得済み: {lodestoneProfile.name} / {lodestoneProfile.dataCenter ?? '—'} / {lodestoneProfile.world}
+              {cappedJobCount > 0 && `（カンスト ${cappedJobCount} ジョブ）`}
+            </p>
+            {applyPreview && (
+              <ul className="lodestoneApplyPreviewList">
+                {applyPreview.fields.map((field) => (
+                  <li
+                    key={field.field}
+                    className={`lodestoneApplyPreviewItem lodestoneApplyPreviewItem--${field.mode}`}
+                  >
+                    <span>{FIELD_LABELS[field.field]}</span>
+                    <span>{field.current}</span>
+                    <span aria-hidden="true">→</span>
+                    <span>{field.next}</span>
+                    <span className="lodestoneApplyPreviewStatus">
+                      {field.mode === 'apply' && '反映'}
+                      {field.mode === 'skip' && '変更なし'}
+                      {field.mode === 'conflict' && '上書き要'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <label className="lodestoneApplyOverwrite">
+              <input
+                type="checkbox"
+                checked={applyOverwrite}
+                onChange={(event) => setApplyOverwrite(event.target.checked)}
+              />
+              入力済みの名前・DC・Worldも上書きする
+            </label>
+            <button
+              className="lodestoneApplyButton"
+              type="button"
+              onClick={() => applyLodestoneProfileToCard(applyOverwrite)}
+              disabled={!applyPreview?.canApply}
+            >
+              カードへ反映
+            </button>
+            {applyPreview?.hasConflicts && !applyOverwrite && (
+              <p className="lodestoneApplyHint">
+                入力済みの項目があります。上書きする場合はチェックを入れてください。
+              </p>
+            )}
+          </div>
+        )}
+        {lodestoneApplyError && (
+          <p className="lodestoneFetchError" role="alert">{lodestoneApplyError}</p>
+        )}
+        {lodestoneApplyMessage && (
+          <p className="lodestoneApplySuccess">{lodestoneApplyMessage}</p>
+        )}
       </div>
     </section>
   )

@@ -3,8 +3,8 @@
     "version": 1,
     "type": "metadata",
     "description": "English to Japanese translations for acquisition contentName and route detail values.",
-    "generatedAt": "2026-06-13T16:07:12.872Z",
-    "scope": "orchestrion,mount,minion,emote",
+    "generatedAt": "2026-06-15T23:24:16.738Z",
+    "scope": "orchestrion,mount,minion,emote,equipment",
     "sources": [
       "Teamcraft items/places/instances/quests/achievements/fates",
       "XIVAPI Quest (Collect emote related_id)",
@@ -40,9 +40,9 @@
       "keep-english fix"
     ],
     "counts": {
-      "scopedUniqueEnglish": 1221,
-      "dictionaryEntries": 1156,
-      "tier1Exact": 464,
+      "scopedUniqueEnglish": 1223,
+      "dictionaryEntries": 1160,
+      "tier1Exact": 468,
       "tier2Craft": 92,
       "tier3Vendor": 229,
       "tier4Template": 371,
@@ -74,12 +74,29 @@
       "templateDesynthesize": 1,
       "emoteQuestXivapi": 30,
       "englishKeepFix": 9,
-      "englishFallback": 65,
-      "manual": 32
+      "englishFallback": 63,
+      "manual": 45
     }
   },
   {
-    "en": "*The Merchant's Tale*",
+    "en": "Blade's Gear Exchange",
+    "ja": "ブレイズ装備交換",
+    "tier": "tier1-exact",
+    "source": "manual",
+    "types": [
+      "route_detail"
+    ]
+  },
+  {
+    "en": "Blade's Gear Exchange (Resistance Supplier)",
+    "ja": "ブレイズ装備交換（レジスタンス補給兵）",
+    "tier": "tier1-exact",
+    "source": "manual",
+    "types": [
+      "route_detail"
+    ]
+  },
+  {
     "ja": "ザ・マーチャンツ・テイル",
     "tier": "tier1-exact",
     "source": "manual",
@@ -1288,6 +1305,15 @@
     "ja": "記憶幻想 アレクサンドリア",
     "tier": "tier1-exact",
     "source": "teamcraft",
+    "types": [
+      "content_name"
+    ]
+  },
+  {
+    "en": "Alexandrian Weapon Coffer (IL 270)",
+    "ja": "アレキサンダー・武器の宝箱（IL270）",
+    "tier": "tier1-exact",
+    "source": "manual",
     "types": [
       "content_name"
     ]
@@ -7421,6 +7447,15 @@
     ]
   },
   {
+    "en": "Replica upgrade",
+    "ja": "レプリカ強化",
+    "tier": "tier1-exact",
+    "source": "manual",
+    "types": [
+      "content_name"
+    ]
+  },
+  {
     "en": "Resistance Quartermaster - The Bozjan Southern Front / Zadnor - 25 Bozjan Clusters",
     "ja": "レジスタンスの補給兵 - The Bozjan Southern Front/ザトゥノル高原 - 25 ボズヤ・クラスター",
     "tier": "tier3-vendor",
@@ -10281,6 +10316,15 @@
     ]
   },
   {
+    "en": "Tomestones of Causality ×500",
+    "ja": "失因果の蒼星石 ×500",
+    "tier": "tier1-exact",
+    "source": "manual",
+    "types": [
+      "content_name"
+    ]
+  },
+  {
     "en": "Toss Fit Workout",
     "ja": "雪原の投擲者",
     "tier": "tier1-exact",
@@ -10313,6 +10357,15 @@
   {
     "en": "Treasure Hunt",
     "ja": "トレジャーハント",
+    "tier": "tier1-exact",
+    "source": "manual",
+    "types": [
+      "content_name"
+    ]
+  },
+  {
+    "en": "Trial Totem ×10",
+    "ja": "トライアルトーテム ×10",
     "tier": "tier1-exact",
     "source": "manual",
     "types": [
@@ -11212,5 +11265,75 @@
       "content_name",
       "vendor_line"
     ]
+  },
+  {
+    "en": "ボズヤ・ゾーン",
+    "ja": "南方ボズヤ戦線",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "闇の世界ダンジョン",
+    "ja": "闇の世界",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "古代の人の迷宮：水晶塔",
+    "ja": "古代の民の迷宮",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "クリスタルタワー：シルクスの塔",
+    "ja": "シルクスの塔",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "オメガ零式：アルファ編",
+    "ja": "次元の狭間オメガ零式：アルファ編",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "真アナン討滅戦",
+    "ja": "極スサノオ討滅戦",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "真グリフィン討滅戦",
+    "ja": "極ラーヴァナ討滅戦",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "真スカーフェイス討滅戦",
+    "ja": "極女神ソフィア討滅戦",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "真キングベヒモス討滅戦",
+    "ja": "クラフト",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
+  },
+  {
+    "en": "真レドマージュ討滅戦",
+    "ja": "グンヒルド・ディルーブラム",
+    "tier": "tier1-exact",
+    "source": "phase-l8a-content-alias",
+    "types": ["content_name_alias"]
   }
 ]

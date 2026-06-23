@@ -2,30 +2,1479 @@
   {
     "version": 1,
     "type": "metadata",
-    "policy": "04 content tree is canonical. This dictionary maps stable content names to existing tree nodes."
+    "policy": "04 content tree is canonical. This dictionary maps stable content names to existing tree nodes.",
+    "acquisitionRoutePolicy": "src/data/reverse-search/schema/acquisition_route_policy.json",
+    "sourcesMethodRule": "sources.method stores displayRouteType (零式/クラフト等). Research provenance goes in sources.source and sources.decision."
   },
   {
     "contentName": "希望の園エデン零式：再生編",
     "category2": "零式",
-    "categoryTree": ["戦闘コンテンツ", "零式"],
-    "keywords": ["エデンモーン", "ILv530"]
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "エデンモーン",
+      "ILv530"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "零式",
+      "希望の園エデン零式：再生編"
+    ],
+    "navigationPathSource": "contentCategories:battle/savage/savage-09"
+  },
+  {
+    "contentName": "次元の狭間オメガ零式：デルタ編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "aliases": [
+      "オメガ零式：デルタ編"
+    ],
+    "keywords": [
+      "オメガ",
+      "デルタ",
+      "Deltascape"
+    ]
+  },
+  {
+    "contentName": "次元の狭間オメガ零式：アルファ編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "aliases": [
+      "オメガ零式：アルファ編"
+    ],
+    "keywords": [
+      "オメガ",
+      "アルファ",
+      "ナバスアレン",
+      "シャドウレス"
+    ]
+  },
+  {
+    "contentName": "極スサノオ討滅戦",
+    "category2": "極",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "極討滅戦：紅蓮（4.X）"
+    ],
+    "aliases": [
+      "真アナン討滅戦"
+    ],
+    "keywords": [
+      "トゥルーブラッド",
+      "Trueblood"
+    ]
+  },
+  {
+    "contentName": "極ラーヴァナ討滅戦",
+    "category2": "極",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "極討滅戦：蒼天（3.X）"
+    ],
+    "aliases": [
+      "真グリフィン討滅戦"
+    ],
+    "keywords": [
+      "トゥルーグリフィン",
+      "True Griffin"
+    ]
+  },
+  {
+    "contentName": "極女神ソフィア討滅戦",
+    "category2": "極",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "極討滅戦：蒼天（3.X）"
+    ],
+    "aliases": [
+      "真スカーフェイス討滅戦"
+    ],
+    "keywords": [
+      "トゥルーリネン",
+      "メガテリウム",
+      "グレース",
+      "パラース",
+      "True Linen"
+    ]
+  },
+  {
+    "contentName": "グンヒルド・ディルーブラム",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "ボズヤ"
+    ],
+    "aliases": [
+      "真レドマージュ討滅戦"
+    ],
+    "keywords": [
+      "真・斬鉄",
+      "Delubrum Reginae"
+    ],
+    "navigationPath": [
+      "探索",
+      "ボズヤ",
+      "グンヒルド・ディルーブラム"
+    ],
+    "navigationPathSource": "contentCategories:exploration/bozja/bozja-03"
+  },
+  {
+    "contentName": "クラフト",
+    "category2": "クラフト",
+    "categoryTree": [
+      "ギャザクラ",
+      "クラフト"
+    ],
+    "aliases": [
+      "真キングベヒモス討滅戦"
+    ],
+    "keywords": [
+      "極王刀",
+      "製作"
+    ]
+  },
+  {
+    "contentName": "クラフトギルド",
+    "category2": "クラフト",
+    "categoryTree": [
+      "ギャザクラ",
+      "クラフト"
+    ],
+    "keywords": [
+      "ギルド販売",
+      "NPC購入"
+    ]
+  },
+  {
+    "contentName": "ギャザラー",
+    "category2": "採集",
+    "categoryTree": [
+      "ギャザクラ",
+      "採集"
+    ],
+    "aliases": [
+      "ギャザクラ"
+    ],
+    "keywords": [
+      "ギャザラー製作"
+    ]
+  },
+  {
+    "contentName": "トライアルトーテム交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "極討滅戦：紅蓮（4.X）"
+    ],
+    "keywords": [
+      "Trial Totem",
+      "オメガサムライ"
+    ]
+  },
+  {
+    "contentName": "紅蓮詩学装備",
+    "category2": "交換",
+    "categoryTree": [
+      "その他コンテンツ",
+      "トークン交換"
+    ],
+    "aliases": [
+      "大龍脈装備",
+      "詩学交換：紅蓮"
+    ],
+    "keywords": [
+      "Poetics",
+      "詩学",
+      "Ryumyaku",
+      "Dai-ryumyaku",
+      "大龍脈",
+      "IL370",
+      "IL 370",
+      "Enna",
+      "Rhalgr"
+    ]
+  },
+  {
+    "contentName": "南方ボズヤ戦線",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "ボズヤ"
+    ],
+    "aliases": [
+      "ボズヤ・ゾーン"
+    ],
+    "keywords": [
+      "ボズヤン・クラスター"
+    ],
+    "navigationPath": [
+      "探索",
+      "ボズヤ",
+      "南方ボズヤ戦線"
+    ],
+    "navigationPathSource": "contentCategories:exploration/bozja/bozja-01"
+  },
+  {
+    "contentName": "古代の民の迷宮",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：クリスタルタワー"
+    ],
+    "aliases": [
+      "古代の人の迷宮：水晶塔",
+      "古代の人の迷宮"
+    ],
+    "keywords": [
+      "水晶塔",
+      "CT",
+      "Labyrinth of the Ancients",
+      "Crimson"
+    ]
+  },
+  {
+    "contentName": "シルクスの塔",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：クリスタルタワー"
+    ],
+    "aliases": [
+      "クリスタルタワー：シルクスの塔"
+    ],
+    "keywords": [
+      "シルクス"
+    ]
+  },
+  {
+    "contentName": "闇の世界",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：クリスタルタワー"
+    ],
+    "aliases": [
+      "闇の世界ダンジョン"
+    ],
+    "keywords": [
+      "World of Darkness"
+    ]
   },
   {
     "contentName": "古跡探索 キタンナ神影洞",
     "category2": "ID",
-    "categoryTree": ["戦闘コンテンツ", "ID周回：漆黒メインクエストID"],
-    "keywords": ["キタンナ", "LevelEquip=75", "ItemLevel=406"]
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：漆黒メインクエストID"
+    ],
+    "keywords": [
+      "キタンナ",
+      "LevelEquip=75",
+      "ItemLevel=406"
+    ]
   },
   {
     "contentName": "水妖幻園 ドォーヌ・メグ",
     "category2": "ID",
-    "categoryTree": ["戦闘コンテンツ", "ID周回：漆黒メインクエストID"],
-    "keywords": ["フッブート", "LevelEquip=73", "ItemLevel=400"]
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：漆黒メインクエストID"
+    ],
+    "keywords": [
+      "フッブート",
+      "LevelEquip=73",
+      "ItemLevel=400"
+    ]
   },
   {
     "contentName": "逆襲要害 サスタシャ浸食洞(Hard)",
     "category2": "ID",
-    "categoryTree": ["戦闘コンテンツ", "ID周回：新生追加ID"],
-    "keywords": ["潮衝", "サスタシャ", "Orchestrion.Description"]
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：新生追加ID"
+    ],
+    "keywords": [
+      "潮衝",
+      "サスタシャ",
+      "Orchestrion.Description"
+    ]
+  },
+  {
+    "contentName": "万魔殿パンデモニウム零式：天獄編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "オールドキングダム",
+      "ネオキングダム",
+      "クルーザー",
+      "ヘビーウェイト",
+      "AAC"
+    ]
+  },
+  {
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "エクサーク",
+      "Abyssos"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "零式",
+      "万魔殿パンデモニウム零式：煉獄編"
+    ],
+    "navigationPathSource": "contentCategories:battle/savage/savage-11"
+  },
+  {
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "オミクロン",
+      "Omicron"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "零式",
+      "万魔殿パンデモニウム零式：辺獄編"
+    ],
+    "navigationPathSource": "contentCategories:battle/savage/savage-10"
+  },
+  {
+    "contentName": "次元の狭間オメガ零式：シグマ編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "アナムネーシス",
+      "Sigma"
+    ]
+  },
+  {
+    "contentName": "希望の園エデン零式：覚醒編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "エテュコーラス",
+      "エデンマーチー",
+      "エデンリズム",
+      "エデンゲート"
+    ]
+  },
+  {
+    "contentName": "絶バハムート攻略",
+    "category2": "絶",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "絶"
+    ],
+    "keywords": [
+      "バハムート",
+      "Binding Coil",
+      "Spoils Trader",
+      "Mistfall",
+      "Deepmist",
+      "Mistbreak"
+    ]
+  },
+  {
+    "contentName": "機工城アレキサンダー零式：起動編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "プロトゴルド",
+      "ゴルディオン",
+      "Gordias"
+    ]
+  },
+  {
+    "contentName": "機工城アレキサンダー零式：律動編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "プロトミダース",
+      "ミダース",
+      "ヤフェーム",
+      "Midas"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "零式",
+      "機工城アレキサンダー零式：律動編"
+    ],
+    "navigationPathSource": "contentCategories:battle/savage/savage-02"
+  },
+  {
+    "contentName": "魔航船ヴォイドアーク",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド"
+    ],
+    "keywords": [
+      "ドラヴァニアン",
+      "Void Ark"
+    ]
+  },
+  {
+    "contentName": "ダンジョン",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID"
+    ],
+    "keywords": [
+      "フォーギヴン",
+      "ボランティア"
+    ]
+  },
+  {
+    "contentName": "初期装備",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "その他"
+    ],
+    "keywords": [
+      "魔戒",
+      "ウェザード",
+      "†",
+      "オルタード",
+      "バヌバヌ",
+      "セネシャル",
+      "ガーディアン"
+    ]
+  },
+  {
+    "contentName": "禁断の地 エウレカ",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "その他"
+    ],
+    "keywords": [
+      "アネモス",
+      "ピュログ",
+      "エウレカ",
+      "Eureka gear",
+      "Create or augment Eureka"
+    ]
+  },
+  {
+    "contentName": "希望の園エデン零式：共鳴編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "キティセオス",
+      "エデンコール",
+      "ワーグ",
+      "エデンコーラス"
+    ],
+    "aliases": [
+      "希望の園エデン零式：再由編"
+    ]
+  },
+  {
+    "contentName": "機工城アレキサンダー：起動編",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：機工城アレキサンダー"
+    ],
+    "keywords": [
+      "Sky Pirate",
+      "スカイパイレーツ",
+      "Gordias"
+    ]
+  },
+  {
+    "contentName": "機工城アレキサンダー：律動編",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：機工城アレキサンダー"
+    ],
+    "keywords": [
+      "Sky Rat",
+      "スカイラット",
+      "Midas"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ノーマルレイド",
+      "機工城アレキサンダー：律動編"
+    ],
+    "navigationPathSource": "contentCategories:battle/normal-raid/normal-raid-02"
+  },
+  {
+    "contentName": "紅蓮決戦 アラミゴ",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：紅蓮メインクエストID"
+    ],
+    "keywords": [
+      "Ala Mhigo",
+      "Ala Mhigan Gear Exchange"
+    ]
+  },
+  {
+    "contentName": "悪党成敗 クガネ城",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：紅蓮メインクエストID"
+    ],
+    "keywords": [
+      "Kugane Castle"
+    ]
+  },
+  {
+    "contentName": "壊神修行 星導山寺院",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：紅蓮メインクエストID"
+    ],
+    "keywords": [
+      "Temple of the Fist"
+    ]
+  },
+  {
+    "contentName": "万魔殿パンデモニウム零式：辺獄編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "リンボ",
+      "アスフォデロース",
+      "パンテオン",
+      "ダーバー",
+      "ディスタンス",
+      "テオゴニアー"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "零式",
+      "万魔殿パンデモニウム零式：辺獄編"
+    ],
+    "navigationPathSource": "contentCategories:battle/savage/savage-10"
+  },
+  {
+    "contentName": "万魔殿パンデモニウム零式：煉獄編",
+    "category2": "零式",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "零式"
+    ],
+    "keywords": [
+      "パーガトリィ",
+      "アビュッソス",
+      "トロイアン",
+      "マナリス",
+      "ヒュポスタシス",
+      "アナバセイオス",
+      "リバーズブレス",
+      "ゾーモー"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "零式",
+      "万魔殿パンデモニウム零式：煉獄編"
+    ],
+    "navigationPathSource": "contentCategories:battle/savage/savage-11"
+  },
+  {
+    "contentName": "遺産踏査 天深きセノーテ",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：Dawntrail"
+    ],
+    "aliases": [
+      "天深きセノーテ",
+      "The Skydeep Cenote"
+    ],
+    "keywords": [
+      "Skydeep",
+      "セノーテ",
+      "Cenote",
+      "スカイディープ",
+      "遺産踏査"
+    ]
+  },
+  {
+    "contentName": "遺忘行路 ミストウェイク",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：Dawntrail"
+    ],
+    "aliases": [
+      "ミストウェイク",
+      "The Mistwake",
+      "遺忘行路"
+    ],
+    "keywords": [
+      "Mistwake",
+      "遺忘行路",
+      "ミストウェイク"
+    ]
+  },
+  {
+    "contentName": "失われた都 ラバナスタ",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：リターン・トゥ・イヴァリース"
+    ],
+    "aliases": [
+      "ラバナスタ",
+      "Royal City of Rabanastre"
+    ],
+    "keywords": [
+      "Rabanastre",
+      "ラバナスタ",
+      "Ivalice"
+    ]
+  },
+  {
+    "contentName": "封じられた聖塔 リドルアナ",
+    "category2": "アライアンス",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アライアンスレイド：リターン・トゥ・イヴァリース"
+    ],
+    "aliases": [
+      "リドルアナ",
+      "Ridorana Lighthouse"
+    ],
+    "keywords": [
+      "Ridorana",
+      "リドルアナ",
+      "Ivalice"
+    ]
+  },
+  {
+    "contentName": "悪地討伐 スカラ",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：紅蓮メインクエストID"
+    ],
+    "aliases": [
+      "水没遺構 スカラ",
+      "The Drowned City of Skalla",
+      "Skallic"
+    ],
+    "keywords": [
+      "Drowned City",
+      "水没遺構",
+      "Skalla",
+      "スカラ",
+      "Skallic"
+    ]
+  },
+  {
+    "contentName": "紅玉火山 獄之蓋",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：紅蓮追加ID"
+    ],
+    "aliases": [
+      "Hells' Lid",
+      "獄之蓋",
+      "紅玉火山"
+    ],
+    "keywords": [
+      "Hells",
+      "Lid",
+      "獄之蓋",
+      "紅玉火山",
+      "Farlander",
+      "フォーレン"
+    ]
+  },
+  {
+    "contentName": "漆黒詩学装備",
+    "category2": "交換",
+    "categoryTree": [
+      "その他コンテンツ",
+      "トークン交換"
+    ],
+    "aliases": [
+      "クリプトラーカー装備",
+      "詩学交換：漆黒"
+    ],
+    "keywords": [
+      "Poetics",
+      "詩学",
+      "Cryptlurker",
+      "Augmented Cryptlurker",
+      "クリプトラーカー",
+      "IL530",
+      "IL 530",
+      "Aymark",
+      "Eulmore",
+      "Shadowbringers"
+    ]
+  },
+  {
+    "contentName": "ザトゥノル高原",
+    "category2": "その他",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ボズヤ"
+    ],
+    "aliases": [
+      "Zadnor",
+      "The Bozjan Southern Front: Zadnor"
+    ],
+    "keywords": [
+      "ブレイズ",
+      "Blade's Gear Exchange",
+      "ボズヤ古白金貨",
+      "Old Bozjan Platinum Coin",
+      "Blade's Circlet"
+    ],
+    "note": "Phase 3 bootstrap: ブレイズ装備 exchange 正本。南方ボズヤ戦線とは別コンテンツ。",
+    "navigationPath": [
+      "探索",
+      "ボズヤ",
+      "ザトゥノル高原"
+    ],
+    "navigationPathSource": "contentCategories:exploration/bozja/bozja-02"
+  },
+  {
+    "contentName": "万魔殿パンデモニウム：辺獄編",
+    "category2": "ノーマルレイド",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ノーマルレイド"
+    ],
+    "aliases": [
+      "Pandaemonium: Abyssos",
+      "Abyssos (Normal)"
+    ],
+    "keywords": [
+      "リンボ",
+      "Limbo",
+      "Unsung Relic",
+      "Asphodelos",
+      "アンミュートレリック"
+    ],
+    "note": "零式辺獄編（アスフォデロース）とは別コンテンツ。Phase 3.5 bootstrap。",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ノーマルレイド",
+      "万魔殿パンデモニウム：辺獄編"
+    ],
+    "navigationPathSource": "contentCategories:battle/normal-raid/normal-raid-09"
+  },
+  {
+    "contentName": "漆黒決戦 ノルヴラント",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：漆黒メインクエストID"
+    ],
+    "aliases": [
+      "The Heroes' Gauntlet",
+      "Heroes' Gauntlet"
+    ],
+    "keywords": [
+      "シャドウレス",
+      "Shadowless",
+      "Heroes Gauntlet"
+    ],
+    "note": "Phase 3.5 bootstrap。",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：漆黒メインクエストID",
+      "漆黒決戦 ノルヴラント"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-shadowbringers-main/dungeon-shadowbringers-main-09"
+  },
+  {
+    "contentName": "ヒュペルボレア造物院",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：暁メインクエストID"
+    ],
+    "aliases": [
+      "創造環境 ヒュペルボレア造物院",
+      "Ktisis Hyperboreia"
+    ],
+    "keywords": [
+      "キティセオス",
+      "Ktiseos",
+      "Hyperboreia"
+    ],
+    "note": "canonical=ヒュペルボレア造物院。創造環境は alias。Phase 3.5 bootstrap。",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID",
+      "ヒュペルボレア造物院"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-endwalker-main/dungeon-endwalker-main-04"
+  },
+  {
+    "contentName": "山嶺登頂 ウォーコー・ゾーモー",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：ドーントレイルメインクエストID"
+    ],
+    "aliases": [
+      "Worqor Zormor"
+    ],
+    "keywords": [
+      "ゾーモー",
+      "Zormor",
+      "Worqor"
+    ],
+    "note": "Phase 3.5 bootstrap。",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：黄金メインクエストID",
+      "山嶺登頂 ウォーコー・ゾーモー"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-dawntrail-main/dungeon-dawntrail-main-03"
+  },
+  {
+    "contentName": "異形楼閣 ゾットの塔",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：暁メインクエストID"
+    ],
+    "aliases": [
+      "The Tower of Zot",
+      "Tower of Zot"
+    ],
+    "keywords": [
+      "マヌシャ",
+      "Manusya",
+      "Zot"
+    ],
+    "note": "Phase 3.5 bootstrap。",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID",
+      "異形楼閣 ゾットの塔"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-endwalker-main/dungeon-endwalker-main-01"
+  },
+  {
+    "contentName": "グンヒルド・ディルーブラム零式",
+    "navigationPath": [
+      "探索",
+      "ボズヤ",
+      "グンヒルド・ディルーブラム零式"
+    ],
+    "navigationPathSource": "contentCategories:exploration/bozja/bozja-04",
+    "category2": "零式",
+    "categoryTree": [
+      "その他コンテンツ",
+      "ボズヤ"
+    ],
+    "keywords": [
+      "Delubrum Reginae Savage",
+      "真・斬鉄零式"
+    ],
+    "note": "Phase 6.0 bootstrap: 探索ツリー葉として登録。"
+  },
+  {
+    "contentName": "禁断の地 エウレカ：アネモス編",
+    "navigationPath": [
+      "探索",
+      "エウレカ",
+      "禁断の地 エウレカ：アネモス編"
+    ],
+    "navigationPathSource": "contentCategories:exploration/eureka/eureka-01",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "その他"
+    ],
+    "keywords": [
+      "Anemos",
+      "エウレカ"
+    ],
+    "note": "Phase 6.0 bootstrap: 編別 contentName。"
+  },
+  {
+    "contentName": "禁断の地 エウレカ：パゴス編",
+    "navigationPath": [
+      "探索",
+      "エウレカ",
+      "禁断の地 エウレカ：パゴス編"
+    ],
+    "navigationPathSource": "contentCategories:exploration/eureka/eureka-02",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "その他"
+    ],
+    "keywords": [
+      "Pagos",
+      "エウレカ"
+    ],
+    "note": "Phase 6.0 bootstrap: 編別 contentName。"
+  },
+  {
+    "contentName": "禁断の地 エウレカ：ピューロス編",
+    "navigationPath": [
+      "探索",
+      "エウレカ",
+      "禁断の地 エウレカ：ピューロス編"
+    ],
+    "navigationPathSource": "contentCategories:exploration/eureka/eureka-03",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "その他"
+    ],
+    "keywords": [
+      "Pyros",
+      "エウレカ"
+    ],
+    "note": "Phase 6.0 bootstrap: 編別 contentName。"
+  },
+  {
+    "contentName": "禁断の地 エウレカ：ヒュダトス編",
+    "navigationPath": [
+      "探索",
+      "エウレカ",
+      "禁断の地 エウレカ：ヒュダトス編"
+    ],
+    "navigationPathSource": "contentCategories:exploration/eureka/eureka-04",
+    "category2": "その他",
+    "categoryTree": [
+      "その他コンテンツ",
+      "その他"
+    ],
+    "keywords": [
+      "Hydatos",
+      "エウレカ"
+    ],
+    "note": "Phase 6.0 bootstrap: 編別 contentName。"
+  },
+  {
+    "contentName": "終末樹海 ヴァナスパティ",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID",
+      "終末樹海 ヴァナスパティ"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-endwalker-main/dungeon-endwalker-main-03",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID"
+    ],
+    "keywords": [
+      "パーラカ",
+      "Paraka",
+      "Vanaspati"
+    ],
+    "note": "Phase 6.2-pre Tier1: パーラカ正本。"
+  },
+  {
+    "contentName": "外征前哨 ヴァンガード",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：黄金メインクエストID",
+      "外征前哨 ヴァンガード"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-dawntrail-main/dungeon-dawntrail-main-04",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：黄金メインクエストID"
+    ],
+    "keywords": [
+      "ヴァンガード",
+      "Vanguard"
+    ],
+    "note": "Phase 6.2-pre Tier2: ヴァンガード正本。"
+  },
+  {
+    "contentName": "廃地討究 ユウェヤーワータ",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：黄金追加ID",
+      "廃地討究 ユウェヤーワータ"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-dawntrail-extra/dungeon-dawntrail-extra-03",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：黄金追加ID"
+    ],
+    "keywords": [
+      "ユウェヤーワータ",
+      "Yuweyawata"
+    ],
+    "note": "Phase 6.2-pre Tier2: ユウェヤーワータ正本。"
+  },
+  {
+    "contentName": "異界孤城 トロイアコート",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID",
+      "異界孤城 トロイアコート"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-endwalker-main/dungeon-endwalker-main-08",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID"
+    ],
+    "keywords": [
+      "トロイアン",
+      "Troian",
+      "トロイアコート"
+    ],
+    "note": "Phase 6.2-pre Tier2: トロイアン正本。"
+  },
+  {
+    "contentName": "雪山冥洞 ラピス・マナリス",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID",
+      "雪山冥洞 ラピス・マナリス"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-endwalker-main/dungeon-endwalker-main-09",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：暁月メインクエストID"
+    ],
+    "keywords": [
+      "マナリス",
+      "Manalis",
+      "ラピス・マナリス"
+    ],
+    "note": "Phase 6.2-pre Tier2: マナリス正本。"
+  },
+  {
+    "contentName": "魔術工房 マトーヤのアトリエ",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：漆黒メインクエストID",
+      "魔術工房 マトーヤのアトリエ"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-shadowbringers-main/dungeon-shadowbringers-main-10",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：漆黒メインクエストID"
+    ],
+    "keywords": [
+      "エアルーム",
+      "Heirloom",
+      "マトーヤ",
+      "Matoya's Relict"
+    ],
+    "note": "Phase 6.2-pre Tier3a: エアルーム正本。"
+  },
+  {
+    "contentName": "王城旧跡 アンダーキープ",
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "ID周回：黄金追加ID",
+      "王城旧跡 アンダーキープ"
+    ],
+    "navigationPathSource": "contentCategories:battle/dungeon-dawntrail-extra/dungeon-dawntrail-extra-04",
+    "category2": "ID",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "ID周回：黄金追加ID"
+    ],
+    "keywords": [
+      "アンダーキープ",
+      "Underkeep",
+      "王城旧跡"
+    ],
+    "note": "Phase 6.2-pre Tier3a: アンダーキープ正本。"
+  },
+  {
+    "contentName": "ムーンワード装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：経典"
+    ],
+    "keywords": [
+      "ムーンワード",
+      "Moonward",
+      "経典",
+      "Aphorism",
+      "アフォリズム",
+      "モブハントの戦利品",
+      "堅果の袋",
+      "Sack of Nuts"
+    ],
+    "aliases": [
+      "Moonward Gear Exchange",
+      "Allagan Tomestones of Aphorism",
+      "アフォリズム",
+      "堅果の袋",
+      "Sack of Nuts"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：経典",
+      "ムーンワード装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-aphorism/tomestone-aphorism-01",
+    "note": "Phase 6.3: 現在入手はモブハントの戦利品。history: アラガントームストーン：経典（英語名: Allagan Tomestones of Aphorism、alias: アフォリズム / 堅果の袋 / Sack of Nuts）。"
+  },
+  {
+    "contentName": "レディアント装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：天文"
+    ],
+    "keywords": [
+      "レディアント",
+      "Radiant",
+      "Astronomy",
+      "天文",
+      "モブハントの戦利品",
+      "堅果の袋",
+      "Sack of Nuts"
+    ],
+    "aliases": [
+      "Radiant's Gear Exchange",
+      "堅果の袋",
+      "Sack of Nuts"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：天文",
+      "レディアント装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-astronomy/tomestone-astronomy-01",
+    "note": "Phase 6.3-radiant: 現在入手はモブハントの戦利品（Augmented / RE IL600）。history: 天文×495 / Cihanti / 6.05〜6.4。base IL590は現在Vendor新規購入不可（alias: 堅果の袋 / Sack of Nuts）。"
+  },
+  {
+    "contentName": "ルナエンヴォイ装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：因果"
+    ],
+    "keywords": [
+      "ルナエンヴォイ",
+      "Lunar Envoy",
+      "因果",
+      "Causality",
+      "詩学",
+      "Poetics"
+    ],
+    "aliases": [
+      "Lunar Envoy Gear Exchange",
+      "Allagan Tomestones of Poetics",
+      "Allagan Tomestones of Causality",
+      "Poetics",
+      "Causality"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：因果",
+      "ルナエンヴォイ装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-causality/tomestone-causality-01",
+    "note": "Phase 6.4-lunar-envoy: 現在入手はアラガントームストーン：詩学×345（Augmented / RE IL630）。history: アラガントームストーン：因果×495 / Khaldeen強化 / base IL620は現在新規購入不可 / 7.0以降は詩学でRE直購入。誤候補: ルナエンヴォイの記章。"
+  },
+  {
+    "contentName": "クレデンダム装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：神曲"
+    ],
+    "keywords": [
+      "クレデンダム",
+      "Credendum",
+      "神曲",
+      "Comedy",
+      "詩学",
+      "Poetics"
+    ],
+    "aliases": [
+      "Credendum Gear Exchange",
+      "Allagan Tomestones of Poetics",
+      "Allagan Tomestones of Comedy",
+      "Poetics",
+      "Comedy",
+      "神曲装備"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：神曲",
+      "クレデンダム装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-comedy/tomestone-comedy-01",
+    "note": "Phase 6.4-credendum: 現在入手はアラガントームストーン：詩学×345（Augmented / RE IL660）。history: アラガントームストーン：神曲×495 / Khaldeen強化 / base IL650は現在新規購入不可 / 7.0以降は詩学でRE直購入。誤候補: クレデンダムの記章。"
+  },
+  {
+    "contentName": "クリプトラーカー装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：黙示"
+    ],
+    "keywords": [
+      "クリプトラーカー",
+      "Cryptlurker",
+      "黙示",
+      "Revelation",
+      "詩学",
+      "Poetics",
+      "黙示装備"
+    ],
+    "aliases": [
+      "Cryptlurker Gear Exchange",
+      "Allagan Tomestones of Poetics",
+      "Allagan Tomestones of Revelation",
+      "Poetics",
+      "Revelation",
+      "黙示装備"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：黙示",
+      "クリプトラーカー装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-revelation/tomestone-revelation-01",
+    "note": "Phase 6.5-cryptlurker: 現在入手はアラガントームストーン：詩学×345（Augmented / RE IL530）。history: アラガントームストーン：黙示×495 / Shee-Tatch強化 / base IL520は現在新規購入不可 / 6.0以降は詩学でRE直購入。誤候補: PvP/CC prototype分類 / 漆黒詩学装備。"
+  },
+  {
+    "contentName": "龍脈装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：虚構"
+    ],
+    "keywords": [
+      "龍脈",
+      "Ryumyaku",
+      "Dai-ryumyaku",
+      "大龍脈",
+      "虚構",
+      "Mendacity",
+      "詩学",
+      "Poetics",
+      "紅蓮詩学装備"
+    ],
+    "aliases": [
+      "Ryumyaku Gear (IL 370)",
+      "Allagan Tomestones of Poetics (DoW, IL 370)",
+      "Allagan Tomestones of Poetics",
+      "Allagan Tomestones of Mendacity",
+      "Poetics",
+      "Mendacity",
+      "紅蓮詩学装備"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：虚構",
+      "龍脈装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-mendacity/tomestone-mendacity-01",
+    "note": "Phase 6.6-ryumyaku: 現在入手はアラガントームストーン：詩学×345（Augmented / RE IL370 / 大龍脈）。history: アラガントームストーン：虚構×495 / E'bolaff強化 / base IL360は現在新規購入不可 / 5.3以降は詩学でRE直購入。誤候補: アライアンス装備 prototype分類 / 紅蓮詩学装備。"
+  },
+  {
+    "contentName": "イディル装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：聖典"
+    ],
+    "keywords": [
+      "イディル",
+      "Shire",
+      "Idyllshire",
+      "イディルシャイア",
+      "聖典",
+      "Scripture",
+      "詩学",
+      "Poetics",
+      "蒼天詩学装備"
+    ],
+    "aliases": [
+      "Shire Gear (IL 270)",
+      "Allagan Tomestones of Poetics (DoW, IL 270)",
+      "Allagan Tomestones of Poetics",
+      "Allagan Tomestones of Scripture",
+      "Poetics",
+      "Scripture",
+      "蒼天詩学装備"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：聖典",
+      "イディル装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-scripture/tomestone-scripture-01",
+    "note": "Phase 6.7-idyllshire: 現在入手はアラガントームストーン：詩学×345（Augmented / RE IL270）。history: アラガントームストーン：聖典×495 / セイカ強化 / base IL260は現在新規購入不可 / 5.3以降は詩学でRE直購入。誤候補: ラザーレット prototype分類 / 蒼天詩学装備。"
+  },
+  {
+    "contentName": "蒼天詩学装備",
+    "category2": "交換",
+    "categoryTree": [
+      "その他コンテンツ",
+      "トークン交換"
+    ],
+    "aliases": [
+      "イディル装備",
+      "イディルシャイア製装備",
+      "詩学交換：蒼天"
+    ],
+    "keywords": [
+      "Poetics",
+      "詩学",
+      "Shire",
+      "Idyllshire",
+      "イディル",
+      "IL270",
+      "IL 270",
+      "Hismena",
+      "Idyllshire"
+    ]
+  },
+  {
+    "contentName": "アラミガン装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：真理"
+    ],
+    "keywords": [
+      "アラミガン",
+      "Ala Mhigan",
+      "Ala Mhigo",
+      "真理",
+      "Verity",
+      "真理",
+      "百獣司令官の記章",
+      "セントリオ記章",
+      "Centurio Seal"
+    ],
+    "aliases": [
+      "Ala Mhigan Gear (IL 310)",
+      "Allagan Tomestones of Verity",
+      "Centurio Seal",
+      "Verity",
+      "真理",
+      "セントリオ記章",
+      "Centurio Seal"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：真理",
+      "アラミガン装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-verity/tomestone-verity-01",
+    "note": "Phase 6.8-ala-mhigan: 現在入手は百獣司令官の記章×35（IL310 head7）。history: アラガントームストーン：真理×245 / Enna / 4.2以降 Centurio Seal。誤候補: 紅蓮決戦 アラミゴ / アライアンス。"
+  },
+  {
+    "contentName": "ロストアラガン装備交換",
+    "category2": "交換",
+    "categoryTree": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：万物"
+    ],
+    "keywords": [
+      "ロストアラガン",
+      "Lost Allagan",
+      "万物",
+      "Creation",
+      "万物",
+      "百獣司令官の記章",
+      "セントリオ記章",
+      "Centurio Seal",
+      "万物装備"
+    ],
+    "aliases": [
+      "Lost Allagan Gear (IL 340)",
+      "Allagan Tomestones of Creation",
+      "Centurio Seal",
+      "Creation",
+      "万物",
+      "セントリオ記章",
+      "Centurio Seal",
+      "万物装備"
+    ],
+    "navigationPath": [
+      "戦闘コンテンツ",
+      "アラガントームストーン：万物",
+      "ロストアラガン装備交換"
+    ],
+    "navigationPathSource": "contentCategories:battle/tomestone-creation/tomestone-creation-01",
+    "note": "Phase 6.9-lost-allagan: 現在入手は百獣司令官の記章×70（Augmented / RE IL340）。history: アラガントームストーン：万物×495 / エ・ボラフ強化 / base IL330は現在新規購入不可 / 5.3以降 Centurio Seal でRE直購入。誤候補: オンラインストア誤分類。"
+  },
+  {
+    "contentName": "万物装備",
+    "category2": "交換",
+    "categoryTree": [
+      "その他コンテンツ",
+      "トークン交換"
+    ],
+    "aliases": [
+      "Lost Allagan Gear (IL 330)",
+      "Allagan Tomestones of Creation",
+      "Creation",
+      "万物"
+    ],
+    "keywords": [
+      "Lost Allagan",
+      "ロストアラガン",
+      "Creation",
+      "万物",
+      "アラガントームストーン：万物",
+      "IL330",
+      "IL 330"
+    ]
   }
 ]

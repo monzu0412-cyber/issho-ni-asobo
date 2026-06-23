@@ -66,7 +66,14 @@ export function MainWantPanel({
       {(topTarget.title || effectivePreviewMode) && (
         <div className="categoryBadge">{topTarget.category} / {topTarget.subcategory}</div>
       )}
-      {topTarget.title ? <TargetDetails target={topTarget} isCompact /> : null}
+      {topTarget.title ? (
+        <TargetDetails
+          target={topTarget}
+          isCompact
+          showEquipmentMetadata={!effectivePreviewMode}
+          showCurrencyEarn={!effectivePreviewMode}
+        />
+      ) : null}
 
       <div className="mainWantForm">
         <label>
