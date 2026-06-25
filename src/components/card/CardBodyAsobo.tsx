@@ -80,6 +80,7 @@ export function CardBodyAsobo(props: CardBodyProps) {
     applyLodestoneProfileToCard,
     onLeftColumnDisplayModeChange,
     onJobSelectionChange,
+    collectionOwnershipIndex,
   } = props
 
   const wantRankSlots = ['wantRank1', 'wantRank2', 'wantRank3'] as const
@@ -185,6 +186,7 @@ export function CardBodyAsobo(props: CardBodyProps) {
             onCommentChange={(comment) => updateSecondaryTargetComment(targetIndex, comment)}
             showFrameThemeSelect={targetIndex === 0}
             onTargetFrameThemeChange={updateTargetFrameTheme}
+            collectionOwnershipIndex={collectionOwnershipIndex}
           />
         ))}
       </section>

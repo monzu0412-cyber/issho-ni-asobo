@@ -38,6 +38,7 @@ export function createDefaultLodestoneCardState(): LodestoneCardState {
 export type LodestoneApiErrorCode =
   | 'invalid_character_id'
   | 'character_not_found'
+  | 'collection_not_found'
   | 'character_private'
   | 'lodestone_unavailable'
   | 'parse_failed'

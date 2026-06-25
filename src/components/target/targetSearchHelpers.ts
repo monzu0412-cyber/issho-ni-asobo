@@ -1,4 +1,5 @@
 import searchDictionary from '../../data/reverse-search/generated/search_dictionary.generated.json'
+import itemIconByItemIdJson from '../../data/reverse-search/generated/item_icon_by_item_id.generated.json'
 import equipSlotByItemIdJson from '../../data/reverse-search/generated/equip_slot_by_item_id.generated.json'
 import locationTranslationDictionary from '../../data/reverse-search/manual/location_translation_dictionary.json'
 import fishTermTranslationDictionary from '../../data/reverse-search/manual/fish_term_translation_dictionary.json'
@@ -16,6 +17,11 @@ import {
   getForwardIndexTaxonomyOptions,
   usesForwardSearchIndex,
 } from '../../lib/forward-search-index'
+import {
+  isCollectibleForwardSearchCategory1,
+  resolveForwardAcquisitionCategory,
+  sortCollectibleForwardAcquisitionCategories,
+} from '../../lib/collectible-forward-acquisition'
 import { isCardUiPublicSearchItem } from '../../lib/publication-gate'
 import { formatCurrencyDisplayText } from '../../lib/currency-display.ts'
 import type {
@@ -235,6 +241,38 @@ const searchItemsBySourceId = new Map(
     .map((item) => [item.sourceDictionaryId as string, item]),
 )
 
+const searchItemsByItemId = new Map(
+  searchItems
+    .filter((item) => item.id != null)
+    .map((item) => [item.id as number, item]),
+)
+
+export function resolveSearchDictionaryItemBySourceId(sourceDictionaryId: string): SearchDictionaryItem | null {
+  return searchItemsBySourceId.get(sourceDictionaryId) ?? null
+}
+
+export function resolveSearchDictionaryItemByItemId(itemId: number): SearchDictionaryItem | null {
+  return searchItemsByItemId.get(itemId) ?? null
+}
+
+export function buildTargetItemFromSearchDictionaryItem(item: SearchDictionaryItem): TargetItem {
+  const sourceItem = item.sourceDictionaryId ? sourceItemById.get(item.sourceDictionaryId) : undefined
+  const category = getActivityCategoryFromDictionary(sourceItem?.category ?? item.category)
+  const subcategory = sourceItem?.subCategory ?? item.subCategory ?? item.category1 ?? ''
+  const iconUrl = resolveTargetIconUrl(item, sourceItem)
+
+  return {
+    title: item.name,
+    category,
+    subcategory,
+    icon: iconUrl ? '' : getTargetIconFromDictionary(item, sourceItem),
+    iconUrl: iconUrl ?? null,
+    sourceDictionaryId: item.sourceDictionaryId,
+    contentName: sourceItem?.contentName ?? item.contentName ?? null,
+    acquisitionRoutes: sourceItem?.acquisitionRoutes ?? [],
+  }
+}
+
 function pickIconUrl(value: unknown): string | null {
   if (typeof value !== 'string') {
     return null
@@ -273,7 +311,43 @@ function buildIconUrlByItemIdLookup(items: SearchDictionaryItem[]) {
   return iconUrlByItemId
 }
 
-const iconUrlByItemId = buildIconUrlByItemIdLookup(searchItems)
+type ItemIconLookupRecord = {
+  itemId: number
+  iconUrl?: string | null
+}
+
+function loadItemIconLookupByItemId(): Map<number, string> {
+  const iconUrlByItemId = new Map<number, string>()
+  const raw = itemIconByItemIdJson as { items?: ItemIconLookupRecord[] } | ItemIconLookupRecord[]
+  const items = Array.isArray(raw) ? raw : raw.items ?? []
+
+  for (const item of items) {
+    const iconUrl = pickIconUrl(item.iconUrl)
+
+    if (iconUrl) {
+      iconUrlByItemId.set(item.itemId, iconUrl)
+    }
+  }
+
+  return iconUrlByItemId
+}
+
+function mergeIconUrlByItemIdLookups(...lookups: Array<Map<number, string>>): Map<number, string> {
+  const merged = new Map<number, string>()
+
+  for (const lookup of lookups) {
+    for (const [itemId, iconUrl] of lookup) {
+      merged.set(itemId, iconUrl)
+    }
+  }
+
+  return merged
+}
+
+const iconUrlByItemId = mergeIconUrlByItemIdLookups(
+  buildIconUrlByItemIdLookup(rawSearchItems as SearchDictionaryItem[]),
+  loadItemIconLookupByItemId(),
+)
 
 export function resolveTargetIconUrl(
   searchItem: SearchDictionaryItem,
@@ -347,6 +421,10 @@ export function getSearchItemIconUrl(item: SearchDictionaryItem): string | null 
   return resolveTargetIconUrl(item, sourceItem)
 }
 
+export function resolveIconUrlByItemId(itemId: number): string | null {
+  return iconUrlByItemId.get(itemId) ?? null
+}
+
 export function withResolvedSearchItem(item: SearchDictionaryItem): SearchDictionaryItem {
   const sourceItem = item.sourceDictionaryId ? sourceItemById.get(item.sourceDictionaryId) : undefined
   const iconUrl = resolveTargetIconUrl(item, sourceItem)
@@ -361,20 +439,13 @@ export function withResolvedSearchItem(item: SearchDictionaryItem): SearchDictio
   }
 }
 
-function mapToAcquisitionCategory(category2: string | null | undefined): ForwardAcquisitionCategory {
-  if (!category2) {
-    return 'その他'
-  }
-
-  if (category2 === 'トレジャーハント') {
-    return '地図'
-  }
-
-  if ((forwardAcquisitionCategoryOptions as string[]).includes(category2)) {
-    return category2 as ForwardAcquisitionCategory
-  }
-
-  return 'その他'
+function mapToAcquisitionCategory(
+  category1: string,
+  category2: string | null | undefined,
+  contentName: string | null | undefined,
+  name: string,
+): ForwardAcquisitionCategory {
+  return resolveForwardAcquisitionCategory({ category1, category2, contentName, name })
 }
 
 function mapRawCategoryToDetail(rawCategory: string | null | undefined): string | null {
@@ -436,7 +507,7 @@ function enrichSearchItem(item: SearchDictionaryItem): EnrichedSearchItem {
     category1,
     category2,
     contentName,
-    acquisitionCategory: mapToAcquisitionCategory(category2),
+    acquisitionCategory: mapToAcquisitionCategory(category1, category2, contentName, item.name),
     details: [...details].sort((a, b) => a.localeCompare(b, 'ja')),
   }
 
@@ -456,7 +527,11 @@ function enrichSearchItem(item: SearchDictionaryItem): EnrichedSearchItem {
 
 const enrichedSearchItems = searchItems.map(enrichSearchItem)
 
-function sortAcquisitionCategories(categories: Iterable<ForwardAcquisitionCategory>) {
+function sortAcquisitionCategories(category1: string, categories: Iterable<ForwardAcquisitionCategory>) {
+  if (isCollectibleForwardSearchCategory1(category1)) {
+    return sortCollectibleForwardAcquisitionCategories(categories)
+  }
+
   return [...new Set(categories)].sort(
     (left, right) => (forwardAcquisitionCategoryOrder.get(left) ?? 99) - (forwardAcquisitionCategoryOrder.get(right) ?? 99),
   )
@@ -472,6 +547,7 @@ export function getForwardAcquisitionCategories(category1: string) {
   }
 
   return sortAcquisitionCategories(
+    category1,
     enrichedSearchItems
       .filter((item) => item.category1 === category1)
       .map((item) => item.acquisitionCategory),
@@ -826,6 +902,8 @@ function getTargetFallbackIcon(item: SearchDictionaryItem) {
       return '🎭'
     case 'ファッションアクセサリー':
       return '☂'
+    case 'フェイスアクセサリー':
+      return '👓'
     case 'ヌシ':
     case 'オオヌシ':
       return '🐟'

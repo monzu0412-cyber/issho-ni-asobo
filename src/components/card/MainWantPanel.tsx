@@ -1,4 +1,5 @@
 import type { SyntheticEvent } from 'react'
+import type { CollectionOwnershipIndex } from '../../lib/lodestone/collectionOwnershipIndex'
 import type { SearchDictionaryItem, TargetFrameTheme, TargetItem } from '../../types/card'
 import { targetFrameThemeOptions } from '../../types/card'
 import { getImageCrossOrigin, getWantTitleSizeClass } from '../../utils/cardDisplayUtils'
@@ -19,6 +20,7 @@ type MainWantPanelProps = {
   selectSearchTarget: (item: SearchDictionaryItem) => void
   selectUnsupportedTarget: () => void
   updateTargetFrameTheme: (theme: TargetFrameTheme) => void
+  collectionOwnershipIndex: CollectionOwnershipIndex | null
 }
 
 export function MainWantPanel({
@@ -35,6 +37,7 @@ export function MainWantPanel({
   selectSearchTarget,
   selectUnsupportedTarget,
   updateTargetFrameTheme,
+  collectionOwnershipIndex,
 }: MainWantPanelProps) {
   return (
     <section
@@ -90,6 +93,7 @@ export function MainWantPanel({
           onQueryChange={updateTargetSearchQuery}
           onSelect={selectSearchTarget}
           onSelectUnsupported={selectUnsupportedTarget}
+          collectionOwnershipIndex={collectionOwnershipIndex}
         />
 
         <label>

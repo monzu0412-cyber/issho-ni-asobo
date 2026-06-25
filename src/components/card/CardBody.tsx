@@ -15,6 +15,7 @@ import type {
   VoiceChat,
 } from '../../types/card'
 import type { HelpSectionSubtitle, WantSectionSubtitle } from '../../data/activityColumnTitles'
+import type { CollectionOwnershipIndex } from '../../lib/lodestone/collectionOwnershipIndex'
 import type {
   JobUserSelection,
   LeftColumnDisplayMode,
@@ -111,6 +112,7 @@ export type CardBodyProps = {
   applyLodestoneProfileToCard: (overwrite: boolean) => void
   onLeftColumnDisplayModeChange: (mode: LeftColumnDisplayMode) => void
   onJobSelectionChange: (jobId: string, selection: JobUserSelection) => void
+  collectionOwnershipIndex: CollectionOwnershipIndex | null
 }
 
 export function CardBody(props: CardBodyProps) {

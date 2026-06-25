@@ -17,6 +17,7 @@ import type {
 } from '../types/card'
 import type { LodestoneCardState } from '../types/lodestone'
 import { createDefaultLodestoneCardState } from '../types/lodestone'
+import { consumePendingMainWantTarget } from '../lib/wanted/pendingMainWantPatch'
 import {
   buildCharacterDraft,
   CARD_DRAFT_VERSION,
@@ -265,7 +266,27 @@ function loadPersistedAppState(worldsByDc: Record<DataCenter, readonly string[]>
 let initialAppStateCache: ReturnType<typeof loadPersistedAppState> | null = null
 
 export function getInitialAppState(worldsByDc: Record<DataCenter, readonly string[]>) {
-  initialAppStateCache ??= loadPersistedAppState(worldsByDc)
+  if (!initialAppStateCache) {
+    initialAppStateCache = loadPersistedAppState(worldsByDc)
+
+    const pendingMainWant = consumePendingMainWantTarget()
+
+    if (pendingMainWant) {
+      initialAppStateCache = {
+        ...initialAppStateCache,
+        character: {
+          ...initialAppStateCache.character,
+          targets: updateTargetAtIndex(initialAppStateCache.character.targets, 0, () => pendingMainWant),
+        },
+        targetSearchQueries: [
+          pendingMainWant.title,
+          initialAppStateCache.targetSearchQueries[1] ?? '',
+          initialAppStateCache.targetSearchQueries[2] ?? '',
+        ],
+      }
+    }
+  }
+
   return initialAppStateCache
 }
 

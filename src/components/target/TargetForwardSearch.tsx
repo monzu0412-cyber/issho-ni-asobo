@@ -2,14 +2,22 @@ import { useMemo, useState } from 'react'
 import type { EnrichedSearchItem, EquipTaxonomyKey, ForwardStep2Category, SearchDictionaryItem } from '../../types/card'
 import { formatEquipmentMetadataSummary } from '../../lib/equipment-metadata'
 import {
+  getCollectionCategoryKeyForSearchCategory1,
+  isCollectionMissingFilterCategory1,
+  type CollectionOwnershipIndex,
+} from '../../lib/lodestone/collectionOwnershipIndex'
+import {
+  applyCollectionMissingFilterToForwardCandidates,
+  getForwardAcquisitionCategoriesForCollectionMissingFilter,
+  getForwardContentNamesForCollectionMissingFilter,
+} from '../../lib/wanted/collectionMissingFilter'
+import {
   groupForwardSearchBySavageSeries,
   isSavageSeriesGroupPilot,
   type SavageSeriesGroup,
 } from './savageSeriesGroup'
 import {
   forwardSearchCategory1Options,
-  getForwardAcquisitionCategories,
-  getForwardContentNames,
   getForwardDetails,
   getForwardSearchCandidates,
   getForwardTaxonomyOptions,
@@ -22,8 +30,12 @@ import {
 
 export function TargetForwardSearch({
   onSelect,
+  collectionOwnershipIndex,
+  missingOnly,
 }: {
   onSelect: (item: SearchDictionaryItem) => void
+  collectionOwnershipIndex: CollectionOwnershipIndex | null
+  missingOnly: boolean
 }) {
   const [category1, setCategory1] = useState('')
   const [acquisitionCategory, setAcquisitionCategory] = useState<ForwardStep2Category | ''>('')
@@ -32,24 +44,81 @@ export function TargetForwardSearch({
   const [detail, setDetail] = useState('')
   const [showRelatedSeries, setShowRelatedSeries] = useState(false)
 
-  const acquisitionOptions = getForwardAcquisitionCategories(category1)
-  const contentOptions = getForwardContentNames(category1, acquisitionCategory)
-  const taxonomyOptions = getForwardTaxonomyOptions(category1, acquisitionCategory, contentName)
-  const detailOptions = getForwardDetails(category1, acquisitionCategory, contentName)
+  const collectionCategoryKey = getCollectionCategoryKeyForSearchCategory1(category1)
+  const usesCollectionMissingFilter = missingOnly
+    && isCollectionMissingFilterCategory1(category1)
+    && collectionOwnershipIndex != null
+
+  const acquisitionOptions = useMemo(
+    () => getForwardAcquisitionCategoriesForCollectionMissingFilter(
+      category1,
+      collectionOwnershipIndex,
+      collectionCategoryKey,
+      missingOnly,
+    ),
+    [category1, collectionCategoryKey, collectionOwnershipIndex, missingOnly],
+  )
+
+  const effectiveAcquisitionCategory = useMemo(() => {
+    if (!acquisitionCategory) {
+      return ''
+    }
+
+    if (usesCollectionMissingFilter && !acquisitionOptions.includes(acquisitionCategory)) {
+      return ''
+    }
+
+    return acquisitionCategory
+  }, [acquisitionCategory, acquisitionOptions, usesCollectionMissingFilter])
+
+  const contentOptions = useMemo(
+    () => getForwardContentNamesForCollectionMissingFilter(
+      category1,
+      effectiveAcquisitionCategory,
+      collectionOwnershipIndex,
+      collectionCategoryKey,
+      missingOnly,
+    ),
+    [category1, collectionCategoryKey, collectionOwnershipIndex, effectiveAcquisitionCategory, missingOnly],
+  )
+
+  const effectiveContentName = useMemo(() => {
+    if (!contentName || !effectiveAcquisitionCategory) {
+      return ''
+    }
+
+    if (usesCollectionMissingFilter && !contentOptions.some((option) => option.key === contentName)) {
+      return ''
+    }
+
+    return contentName
+  }, [contentName, contentOptions, effectiveAcquisitionCategory, usesCollectionMissingFilter])
+
+  const taxonomyOptions = getForwardTaxonomyOptions(category1, effectiveAcquisitionCategory, effectiveContentName)
+  const detailOptions = getForwardDetails(category1, effectiveAcquisitionCategory, effectiveContentName)
   const usesEquipmentTaxonomy = category1 === '装備'
-  const canShowCandidates = Boolean(contentName) && (!usesEquipmentTaxonomy || Boolean(taxonomy))
+  const canShowCandidates = Boolean(effectiveContentName) && (!usesEquipmentTaxonomy || Boolean(taxonomy))
 
   const candidateFilters = useMemo(() => ({
     category1,
-    acquisitionCategory,
-    contentName,
+    acquisitionCategory: effectiveAcquisitionCategory,
+    contentName: effectiveContentName,
     detail,
     taxonomy,
-  }), [category1, acquisitionCategory, contentName, detail, taxonomy])
+  }), [category1, detail, effectiveAcquisitionCategory, effectiveContentName, taxonomy])
 
   const allCandidates = getForwardSearchCandidates(candidateFilters)
+  const filteredCandidates = useMemo(
+    () => applyCollectionMissingFilterToForwardCandidates(
+      allCandidates,
+      collectionOwnershipIndex,
+      collectionCategoryKey,
+      missingOnly,
+    ),
+    [allCandidates, collectionCategoryKey, collectionOwnershipIndex, missingOnly],
+  )
   const usesIndexForwardSearch = usesForwardSearchIndex(category1)
-  const usesGroupedContentOptions = usesIndexForwardSearch && usesGroupedForwardContentOptions(acquisitionCategory)
+  const usesGroupedContentOptions = usesIndexForwardSearch && usesGroupedForwardContentOptions(effectiveAcquisitionCategory)
 
   const groupedContentOptions = useMemo(() => {
     if (!usesGroupedContentOptions) {
@@ -67,19 +136,19 @@ export function TargetForwardSearch({
 
     return [...groups.entries()]
   }, [contentOptions, usesGroupedContentOptions])
-  const indexSeriesGroups = usesIndexForwardSearch && canShowCandidates && allCandidates.length > 0
-    ? groupForwardIndexCandidatesBySeries(allCandidates)
+  const indexSeriesGroups = usesIndexForwardSearch && canShowCandidates && filteredCandidates.length > 0
+    ? groupForwardIndexCandidatesBySeries(filteredCandidates)
     : null
   const usesSavageSeriesGrouping = !usesIndexForwardSearch && isSavageSeriesGroupPilot({
     category1,
-    acquisitionCategory,
-    contentName,
+    acquisitionCategory: effectiveAcquisitionCategory,
+    contentName: effectiveContentName,
     taxonomy,
   })
   const savageSeriesGroups = usesSavageSeriesGrouping
-    ? groupForwardSearchBySavageSeries(allCandidates)
+    ? groupForwardSearchBySavageSeries(filteredCandidates)
     : null
-  const candidates = usesSavageSeriesGrouping ? allCandidates : allCandidates.slice(0, 40)
+  const candidates = usesSavageSeriesGrouping ? filteredCandidates : filteredCandidates.slice(0, 40)
 
   const slotTaxonomyOptions = taxonomyOptions.filter((option) => option.kind === 'slot')
   const roleTaxonomyOptions = taxonomyOptions.filter((option) => option.kind === 'role')
@@ -166,7 +235,7 @@ export function TargetForwardSearch({
       <label>
         ② 入手カテゴリ
         <select
-          value={acquisitionCategory}
+          value={effectiveAcquisitionCategory}
           disabled={!category1}
           onChange={(event) => {
             setAcquisitionCategory(event.target.value as ForwardStep2Category | '')
@@ -186,8 +255,8 @@ export function TargetForwardSearch({
       <label>
         ③ コンテンツ
         <select
-          value={contentName}
-          disabled={!acquisitionCategory}
+          value={effectiveContentName}
+          disabled={!effectiveAcquisitionCategory}
           onChange={(event) => {
             setContentName(event.target.value)
             setTaxonomy('')
@@ -210,7 +279,7 @@ export function TargetForwardSearch({
         </select>
       </label>
 
-      {usesEquipmentTaxonomy && contentName && taxonomyOptions.length > 0 && (
+      {usesEquipmentTaxonomy && effectiveContentName && taxonomyOptions.length > 0 && (
         <label>
           ④ 分類
           <select
@@ -245,7 +314,7 @@ export function TargetForwardSearch({
           ④ 詳細
           <select
             value={detail}
-            disabled={!contentName}
+            disabled={!effectiveContentName}
             onChange={(event) => setDetail(event.target.value)}
           >
             <option value="">指定なし</option>
@@ -261,33 +330,51 @@ export function TargetForwardSearch({
           {usesEquipmentTaxonomy ? '⑤ 候補' : '⑤ 候補'}
           {canShowCandidates && (
             <span>
-              {allCandidates.length}件
-              {!usesSavageSeriesGrouping && allCandidates.length > candidates.length
+              {filteredCandidates.length}件
+              {missingOnly && isCollectionMissingFilterCategory1(category1) ? '（未所持のみ）' : ''}
+              {!usesSavageSeriesGrouping && filteredCandidates.length > candidates.length
                 ? `（先頭${candidates.length}件を表示）`
+                : ''}
+              {missingOnly
+                && isCollectionMissingFilterCategory1(category1)
+                && allCandidates.length !== filteredCandidates.length
+                ? ` / フィルター前 ${allCandidates.length} 件`
                 : ''}
             </span>
           )}
         </div>
 
-        {!contentName && (
+        {usesCollectionMissingFilter && category1 && acquisitionOptions.length === 0 && (
+          <p className="forwardSearchHint">未所持がある入手カテゴリはありません。</p>
+        )}
+
+        {usesCollectionMissingFilter && acquisitionCategory && effectiveAcquisitionCategory && contentOptions.length === 0 && (
+          <p className="forwardSearchHint">未所持があるコンテンツはありません。</p>
+        )}
+
+        {!effectiveContentName && (
           <p className="forwardSearchHint">種類・入手カテゴリ・コンテンツを選ぶと候補が表示されます。</p>
         )}
 
-        {contentName && usesEquipmentTaxonomy && !taxonomy && (
+        {effectiveContentName && usesEquipmentTaxonomy && !taxonomy && (
           <p className="forwardSearchHint">分類を選ぶと装備一覧が表示されます。</p>
         )}
 
-        {canShowCandidates && allCandidates.length === 0 && (
-          <p className="forwardSearchHint">条件に一致する候補がありません。</p>
+        {canShowCandidates && allCandidates.length > 0 && filteredCandidates.length === 0 && (
+          <p className="forwardSearchHint">
+            {missingOnly && isCollectionMissingFilterCategory1(category1)
+              ? 'この条件の未所持はありません。'
+              : '条件に一致する候補がありません。'}
+          </p>
         )}
 
-        {canShowCandidates && allCandidates.length > 0 && indexSeriesGroups && (
+        {canShowCandidates && filteredCandidates.length > 0 && indexSeriesGroups && (
           <div className="forwardSearchSeriesPanel">
             {indexSeriesGroups.map((group) => renderIndexSeriesGroup(group))}
           </div>
         )}
 
-        {canShowCandidates && allCandidates.length > 0 && savageSeriesGroups && (
+        {canShowCandidates && filteredCandidates.length > 0 && savageSeriesGroups && (
           <div className="forwardSearchSeriesPanel">
             <div className="forwardSearchSeriesToolbar">
               <button
@@ -332,7 +419,7 @@ export function TargetForwardSearch({
           </div>
         )}
 
-        {canShowCandidates && allCandidates.length > 0 && !indexSeriesGroups && !savageSeriesGroups && (
+        {canShowCandidates && filteredCandidates.length > 0 && !indexSeriesGroups && !savageSeriesGroups && (
           <div className="searchResultList forwardSearchResultList">
             {candidates.map((item) => renderCandidateButton(item))}
           </div>

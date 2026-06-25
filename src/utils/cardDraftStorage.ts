@@ -7,7 +7,7 @@ import {
 } from '../data/activityColumnTitles'
 import { inviteMajorIds, migrateLegacyInviteContentSelection } from '../data/invite/inviteContentDictionary'
 import type { InviteContentSelection, InviteMajorId } from '../data/invite/inviteDictionaryTypes'
-import type { LayoutMode } from '../types/card'
+import type { LayoutMode, TargetItem } from '../types/card'
 import {
   createDefaultLodestoneCardState,
   type JobUserSelection,
@@ -650,6 +650,57 @@ export function writeCardDraft(draft: CardDraft): void {
     localStorage.setItem(CARD_DRAFT_STORAGE_KEY, JSON.stringify(draft))
   } catch {
     // Ignore storage failures in private browsing or quota errors.
+  }
+}
+
+export function patchMainWantInCardDraft(target: TargetItem): void {
+  if (!readSaveEnabled()) {
+    return
+  }
+
+  try {
+    const raw = localStorage.getItem(CARD_DRAFT_STORAGE_KEY)
+
+    if (!raw) {
+      return
+    }
+
+    const parsed = JSON.parse(raw) as {
+      character?: { targets?: TargetItemDraft[] }
+      targetSearchQueries?: string[]
+    }
+    const targets = Array.isArray(parsed.character?.targets) ? [...parsed.character.targets] : []
+
+    while (targets.length < 3) {
+      targets.push({ title: '', category: 'その他', subcategory: '', icon: '🎯' })
+    }
+
+    const previousComment = targets[0]?.comment
+    targets[0] = {
+      title: target.title,
+      category: target.category,
+      subcategory: target.subcategory,
+      icon: target.icon,
+      comment: previousComment,
+      iconUrl: target.iconUrl ?? null,
+      sourceDictionaryId: target.sourceDictionaryId,
+      contentName: target.contentName ?? null,
+      acquisitionRoutes: target.acquisitionRoutes ?? [],
+    }
+
+    parsed.character = {
+      ...(parsed.character ?? {}),
+      targets,
+    }
+    parsed.targetSearchQueries = [
+      target.title,
+      parsed.targetSearchQueries?.[1] ?? '',
+      parsed.targetSearchQueries?.[2] ?? '',
+    ]
+
+    localStorage.setItem(CARD_DRAFT_STORAGE_KEY, JSON.stringify(parsed))
+  } catch {
+    // Ignore malformed drafts or storage failures.
   }
 }
 

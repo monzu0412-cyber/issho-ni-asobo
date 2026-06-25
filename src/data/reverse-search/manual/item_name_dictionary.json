@@ -6826,6 +6826,21 @@
     ]
   },
   {
+    "sourceDictionaryId": "source_10074",
+    "itemId": 10074,
+    "category1": "ミニオン",
+    "en": "Wind-up Alphinaud",
+    "ja": "マメット・アルフィノ",
+    "searchNames": [
+      "マメット・アルフィノ",
+      "Wind-up Alphinaud",
+      "マメット",
+      "アルフィノ",
+      "Wind-up",
+      "Alphinaud"
+    ]
+  },
+  {
     "sourceDictionaryId": "source_minion_101",
     "itemId": 10072,
     "category1": "ミニオン",
@@ -52628,6 +52643,17 @@
       "griffin",
       "Griffin Horn",
       "グリフィンホルン"
+    ]
+  },
+  {
+    "sourceDictionaryId": "source_minion_119",
+    "itemId": null,
+    "category1": "ミニオン",
+    "en": "Midgardsormr",
+    "ja": "ミドガルズオルム",
+    "searchNames": [
+      "ミドガルズオルム",
+      "Midgardsormr"
     ]
   },
   {

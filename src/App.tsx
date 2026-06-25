@@ -1,4 +1,4 @@
-import { type CSSProperties, type SyntheticEvent, useEffect, useRef, useState } from 'react'
+import { type CSSProperties, type SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react'
 import { CardConfirmModal, type CardConfirmModalPhase } from './components/CardConfirmModal'
 import { getActivityPurposeItem, getActivityPurposeItems } from './data/invite/activityPurposeDictionary'
 import {
@@ -22,10 +22,8 @@ import {
 } from './data/unsupportedTargetItem'
 import { CardBody } from './components/card/CardBody'
 import {
-  getActivityCategoryFromDictionary,
-  getTargetIconFromDictionary,
+  buildTargetItemFromSearchDictionaryItem,
   isSearchTargetCardUiPublic,
-  resolveTargetIconUrl,
   sourceItemById,
 } from './components/target/targetSearchHelpers'
 import {
@@ -43,7 +41,10 @@ import {
 import type { JobUserSelection, LeftColumnDisplayMode } from './types/lodestone'
 import { applyLodestoneProfileToCharacter } from './lib/lodestone/applyLodestoneProfileToCharacter'
 import { mergeLodestoneProfileOnRefetch } from './lib/lodestone/mergeLodestoneProfileOnRefetch'
+import { buildCollectionOwnershipIndex } from './lib/lodestone/collectionOwnershipIndex'
 import { fetchLodestoneCharacterProfile, normalizeLodestoneInput } from './lib/lodestone/fetchLodestoneCharacter'
+import { fetchLodestoneCollections } from './lib/lodestone/fetchLodestoneCollections'
+import type { LodestoneCollectionsResult } from './types/lodestoneCollections'
 import {
   CARD_CONTENT_DISPLAY_LIMIT,
   EDIT_CONTENT_DISPLAY_LIMIT,
@@ -308,6 +309,11 @@ function App() {
   const [lodestoneApplyMessage, setLodestoneApplyMessage] = useState<string | null>(null)
   const [lodestoneApplyError, setLodestoneApplyError] = useState<string | null>(null)
   const [isLodestoneFetching, setIsLodestoneFetching] = useState(false)
+  const [lodestoneCollectionsResult, setLodestoneCollectionsResult] = useState<LodestoneCollectionsResult | null>(null)
+  const collectionOwnershipIndex = useMemo(
+    () => (lodestoneCollectionsResult ? buildCollectionOwnershipIndex(lodestoneCollectionsResult) : null),
+    [lodestoneCollectionsResult],
+  )
 
   function updateCharacterName(value: string) {
     setCharacter((currentCharacter) => ({
@@ -472,23 +478,10 @@ function App() {
       return
     }
 
-    const category = getActivityCategoryFromDictionary(sourceItem?.category ?? item.category)
-    const subcategory = sourceItem?.subCategory ?? item.subCategory ?? ''
-    const iconUrl = resolveTargetIconUrl(item, sourceItem)
-
     setCharacter((currentCharacter) => ({
       ...currentCharacter,
-      targets: updateTargetAtIndex(currentCharacter.targets, targetIndex, (target) => ({
-        ...target,
-        title: item.name,
-        category,
-        subcategory,
-        icon: iconUrl ? '' : getTargetIconFromDictionary(item, sourceItem),
-        iconUrl: iconUrl ?? null,
-        sourceDictionaryId: item.sourceDictionaryId,
-        contentName: sourceItem?.contentName ?? null,
-        acquisitionRoutes: sourceItem?.acquisitionRoutes ?? [],
-      })),
+      targets: updateTargetAtIndex(currentCharacter.targets, targetIndex, () =>
+        buildTargetItemFromSearchDictionaryItem(item)),
     }))
     updateTargetSearchQuery(targetIndex, item.name)
   }
@@ -591,22 +584,32 @@ function App() {
     setIsLodestoneFetching(true)
 
     try {
-      const result = await fetchLodestoneCharacterProfile(characterId)
+      const [profileResult, collectionsResult] = await Promise.all([
+        fetchLodestoneCharacterProfile(characterId),
+        fetchLodestoneCollections(characterId),
+      ])
 
-      if (!result.ok) {
-        setLodestoneFetchError(result.error.message)
+      if (!profileResult.ok) {
+        setLodestoneFetchError(profileResult.error.message)
+        setLodestoneCollectionsResult(null)
         return
       }
 
       setCharacter((currentCharacter) => ({
         ...currentCharacter,
-        lodestone: mergeLodestoneProfileOnRefetch(currentCharacter.lodestone, result.data.profile),
+        lodestone: mergeLodestoneProfileOnRefetch(currentCharacter.lodestone, profileResult.data.profile),
       }))
+
+      setLodestoneCollectionsResult(collectionsResult.ok ? collectionsResult.data.result : null)
+
+      const collectionsNote = collectionsResult.ok
+        ? 'コレクション所持情報も取得しました。'
+        : 'コレクション所持情報は取得できませんでした（未所持フィルターは使えません）。'
 
       setLodestoneApplyMessage(
         options?.isRefetch
-          ? 'ロードストーン情報を再取得しました。ジョブの手動選択は維持しています。'
-          : 'ロードストーン情報を取得しました。「カードへ反映」で基本情報へ反映できます。',
+          ? `ロードストーン情報を再取得しました。ジョブの手動選択は維持しています。${collectionsNote}`
+          : `ロードストーン情報を取得しました。「カードへ反映」で基本情報へ反映できます。${collectionsNote}`,
       )
     } catch {
       setLodestoneFetchError('ロードストーンAPIへの接続に失敗しました。')
@@ -1246,6 +1249,7 @@ function App() {
           applyLodestoneProfileToCard={applyLodestoneProfileToCard}
           onLeftColumnDisplayModeChange={updateLeftColumnDisplayMode}
           onJobSelectionChange={updateJobSelection}
+          collectionOwnershipIndex={collectionOwnershipIndex}
         />
       </section>
 

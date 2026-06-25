@@ -1,0 +1,555 @@
+.collectionsLab {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  font-family: inherit;
+  color: #1f2937;
+}
+
+.collectionsLabHeader h1 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.collectionsLabHeader p {
+  margin: 0 0 12px;
+  color: #4b5563;
+}
+
+.collectionsLabBackLink {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.collectionsLabBackLink:hover {
+  text-decoration: underline;
+}
+
+.collectionsLabPanel {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.collectionsLabField {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.collectionsLabField input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.collectionsLabFetchButton {
+  justify-self: start;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.collectionsLabFetchButton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.collectionsLabLoading {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.collectionsLabLoading p {
+  margin: 0;
+  color: #1d4ed8;
+}
+
+.collectionsLabResult {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.collectionsLabResult--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.collectionsLabResult--success {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.collectionsLabMeta {
+  margin: 0 0 16px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.collectionsLabSummaryList {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.collectionsLabSummaryItem {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.collectionsLabSummaryLabel {
+  font-weight: 700;
+}
+
+.collectionsLabSummaryCounts {
+  color: #374151;
+}
+
+.collectionsLabSummaryError {
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
+.collectionsLabTotals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 20px;
+}
+
+.collectionsLabTotals div {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.collectionsLabTotals dt {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.collectionsLabTotals dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.collectionsLabStatus {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.collectionsLabStatus--ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.collectionsLabStatus--partial {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.collectionsLabStatus--failed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.collectionsLabStatus--not_found {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.collectionsLabTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.collectionsLabTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.collectionsLabTab--active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.collectionsLabTabStatus {
+  font-size: 0.75rem;
+}
+
+.collectionsLabCategoryPanel h3,
+.collectionsLabCategoryPanel h4 {
+  margin: 0 0 8px;
+}
+
+.collectionsLabCategoryHeader {
+  margin-bottom: 16px;
+}
+
+.collectionsLabCategoryHeader p {
+  margin: 0 0 6px;
+}
+
+.collectionsLabCategoryMessage {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.collectionsLabCategoryMessage--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.collectionsLabCategoryMessage--warning {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
+.collectionsLabCategoryMessage--info {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.collectionsLabItemList {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.collectionsLabItemList li {
+  display: grid;
+  gap: 2px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.collectionsLabItemRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.collectionsLabItemContent {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.collectionsLabCandidateAddButton,
+.collectionsLabCandidateRemoveButton {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.collectionsLabCandidateAddButton {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.collectionsLabCandidateAddButton:disabled {
+  opacity: 0.55;
+  cursor: default;
+  border-color: #d1d5db;
+  color: #6b7280;
+}
+
+.collectionsLabCandidateRemoveButton {
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+.collectionsLabCandidates {
+  margin-bottom: 20px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #dbeafe;
+}
+
+.collectionsLabCandidates h3 {
+  margin: 0 0 12px;
+}
+
+.collectionsLabCandidateList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.collectionsLabCandidateList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.collectionsLabCandidateActions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.collectionsLabCandidateApplyButton {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #16a34a;
+  background: #f0fdf4;
+  color: #166534;
+  font: inherit;
+  cursor: pointer;
+}
+
+.collectionsLabAppliedWant {
+  margin-bottom: 20px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #bbf7d0;
+}
+
+.collectionsLabAppliedWant h3 {
+  margin: 0 0 8px;
+}
+
+.collectionsLabAppliedWantMeta {
+  margin: 0 0 12px;
+  color: #166534;
+  font-size: 0.9rem;
+}
+
+.collectionsLabAppliedWantCard {
+  padding: 16px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.collectionsLabGuide {
+  margin: 0 0 8px;
+  color: #1e3a8a;
+}
+
+.collectionsLabGuidePanel {
+  margin: 0 0 20px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.collectionsLabGuidePanel h2 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.collectionsLabGuidePanel ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.collectionsLabItemIcon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  object-fit: contain;
+}
+
+.collectionsLabItemIcon--empty {
+  display: inline-block;
+  background: #e2e8f0;
+  border-radius: 6px;
+}
+
+.collectionsLabCandidateMain {
+  display: grid;
+  grid-template-columns: 32px auto;
+  grid-template-areas:
+    'icon category'
+    'icon name'
+    'icon meta';
+  gap: 4px 10px;
+  min-width: 0;
+  align-items: center;
+}
+
+.collectionsLabCandidateMain .collectionsLabItemIcon {
+  grid-area: icon;
+}
+
+.collectionsLabCandidateCategory {
+  grid-area: category;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.collectionsLabCandidateName {
+  grid-area: name;
+  font-weight: 700;
+}
+
+.collectionsLabCandidateMeta {
+  grid-area: meta;
+  color: #6b7280;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.collectionsLabItemList li:last-child {
+  border-bottom: none;
+}
+
+.collectionsLabItemName {
+  font-weight: 600;
+}
+
+.collectionsLabItemMeta {
+  color: #6b7280;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.collectionsLabEmpty {
+  margin: 0 0 16px;
+  color: #6b7280;
+}
+
+.collectionsLabForwardSearch {
+  margin: 0 0 24px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #dbeafe;
+}
+
+.collectionsLabForwardSearchHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.collectionsLabForwardSearchHeader h4 {
+  margin: 0;
+}
+
+.collectionsLabMissingFilterToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.collectionsLabForwardSearchFilters {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: 12px 0;
+}
+
+.collectionsLabForwardSearchField {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.collectionsLabForwardSearchField select {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.collectionsLabForwardSearchCounts {
+  margin: 0 0 10px;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.collectionsLabForwardSearchResults {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.collectionsLabForwardSearchResults li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+}
+
+.collectionsLabForwardSearchResults img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 640px) {
+  .collectionsLabTotals {
+    grid-template-columns: 1fr;
+  }
+}

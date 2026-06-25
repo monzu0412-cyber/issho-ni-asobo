@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { SECONDARY_TARGET_COMMENT_MAX_LENGTH } from '../../utils/cardDraftStorage'
+import type { CollectionOwnershipIndex } from '../../lib/lodestone/collectionOwnershipIndex'
 import type { SearchDictionaryItem, TargetFrameTheme, TargetItem } from '../../types/card'
 import { targetFrameThemeOptions } from '../../types/card'
 import { getImageCrossOrigin, getTargetFrameUrl, getWantTitleSizeClass } from '../../utils/cardDisplayUtils'
@@ -22,6 +23,7 @@ type WantSlotColumnProps = {
   onCommentChange: (comment: string) => void
   showFrameThemeSelect?: boolean
   onTargetFrameThemeChange?: (theme: TargetFrameTheme) => void
+  collectionOwnershipIndex: CollectionOwnershipIndex | null
 }
 
 export function WantSlotColumn({
@@ -38,6 +40,7 @@ export function WantSlotColumn({
   onCommentChange,
   showFrameThemeSelect = false,
   onTargetFrameThemeChange,
+  collectionOwnershipIndex,
 }: WantSlotColumnProps) {
   const wantSlotFrameUrl = getTargetFrameUrl(target, targetFrameTheme)
 
@@ -102,6 +105,7 @@ export function WantSlotColumn({
             onQueryChange={onTargetSearchQueryChange}
             onSelect={onSelectSearchTarget}
             onSelectUnsupported={onSelectUnsupportedTarget}
+            collectionOwnershipIndex={collectionOwnershipIndex}
           />
 
           {showFrameThemeSelect && onTargetFrameThemeChange && (

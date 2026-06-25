@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import type { CollectionOwnershipIndex } from '../../lib/lodestone/collectionOwnershipIndex'
 import type { CardSectionName, SearchDictionaryItem, TargetFrameTheme, TargetItem } from '../../types/card'
 import { resolveLayoutSectionBackground } from '../../utils/layoutSectionBackground'
 import { WantSlotColumn } from './WantSlotColumn'
@@ -13,6 +14,7 @@ type WantSlotPanelProps = {
   updateTargetSearchQuery: (targetIndex: number, query: string) => void
   selectSearchTarget: (targetIndex: number, item: SearchDictionaryItem) => void
   selectUnsupportedTarget: (targetIndex: number) => void
+  collectionOwnershipIndex: CollectionOwnershipIndex | null
 }
 
 const secondaryRankVariants = ['silver', 'bronze'] as const
@@ -28,6 +30,7 @@ export function WantSlotPanel({
   updateTargetSearchQuery,
   selectSearchTarget,
   selectUnsupportedTarget,
+  collectionOwnershipIndex,
 }: WantSlotPanelProps) {
   return (
     <>
@@ -50,6 +53,7 @@ export function WantSlotPanel({
             onSelectSearchTarget={(item) => selectSearchTarget(targetIndex, item)}
             onSelectUnsupportedTarget={() => selectUnsupportedTarget(targetIndex)}
             onCommentChange={(comment) => updateSecondaryTargetComment(targetIndex, comment)}
+            collectionOwnershipIndex={collectionOwnershipIndex}
           />
         )
       })}

@@ -2100,6 +2100,37 @@
   background: #f8e8bf;
 }
 
+.collectionMissingFilterBar {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #c7d7ef;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+}
+
+.collectionMissingFilterToggle {
+  align-items: center;
+  color: #102a54;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: bold;
+  gap: 8px;
+}
+
+.collectionMissingFilterToggle input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.collectionMissingFilterHint {
+  color: #4b5f7d;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0;
+}
+
 .forwardSearchPanel {
   background: rgba(255, 255, 255, 0.94);
   border: 2px solid #d6a23a;

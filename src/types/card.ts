@@ -61,7 +61,26 @@ export type SearchDictionaryItem = {
   rawCategory?: string | null
 }
 
-export type ForwardAcquisitionCategory = '零式' | 'ノーマルレイド' | '極' | 'ID' | '地図' | '交換' | '釣り' | 'PvP' | 'その他'
+export type ForwardAcquisitionCategory =
+  | '零式'
+  | 'ノーマルレイド'
+  | '極'
+  | 'ID'
+  | '地図'
+  | '交換'
+  | '釣り'
+  | 'PvP'
+  | 'その他'
+  | 'クエスト'
+  | '討滅戦'
+  | 'レイド'
+  | 'アライアンス'
+  | 'モブハント'
+  | 'クラフト・採集'
+  | '特殊フィールド'
+  | 'イベント'
+  | '課金'
+  | '実績・ショップ'
 
 export type ForwardStep2Category = ForwardAcquisitionCategory | '探索'
 

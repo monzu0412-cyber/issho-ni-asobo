@@ -1,10 +1,13 @@
 import { isValidCharacterId, normalizeCharacterIdInput } from './normalizeCharacterId.js'
 import { parseLodestoneCharacterProfile } from './parseCharacterProfile.js'
+import {
+  fetchLodestoneHtml,
+  LOCALE,
+  mapLodestoneFetchError,
+  mapLodestoneHttpStatus,
+} from './lodestoneHttp.js'
 import type { LodestoneApiError, LodestoneApiSuccess, LodestoneCharacterProfile } from '../../types/lodestone.js'
 
-const LOCALE = 'jp'
-const USER_AGENT = 'issho-ni-asobo/1.0 (+https://github.com/issho-ni-asobo)'
-const FETCH_TIMEOUT_MS = 12_000
 const CACHE_TTL_MS = 10 * 60 * 1000
 const RATE_LIMIT_WINDOW_MS = 5_000
 const RATE_LIMIT_MAX_REQUESTS = 1
@@ -27,33 +30,6 @@ function buildCharacterUrls(characterId: string) {
   return {
     profileUrl: `${base}/`,
     classJobUrl: `${base}/class_job/`,
-  }
-}
-
-async function fetchLodestoneHtml(url: string): Promise<{ status: number; html: string }> {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
-
-  try {
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': USER_AGENT,
-        'Accept-Language': 'ja-JP,ja;q=0.9',
-      },
-      signal: controller.signal,
-    })
-
-    const html = await response.text()
-
-    return { status: response.status, html }
-  } catch (error) {
-    if (error instanceof Error && error.name === 'AbortError') {
-      throw new Error('timeout')
-    }
-
-    throw error
-  } finally {
-    clearTimeout(timeoutId)
   }
 }
 
@@ -91,54 +67,6 @@ function isRateLimited(clientKey: string): boolean {
   recent.push(now)
   rateLimitByClient.set(clientKey, recent)
   return false
-}
-
-function mapFetchStatus(status: number): ServiceResult | null {
-  if (status === 404) {
-    return {
-      ok: false,
-      status: 404,
-      body: {
-        error: 'character_not_found',
-        message: 'キャラクターが見つかりません。',
-      },
-    }
-  }
-
-  if (status === 403) {
-    return {
-      ok: false,
-      status: 403,
-      body: {
-        error: 'character_private',
-        message: 'プロフィールが非公開、またはアクセスが拒否されました。',
-      },
-    }
-  }
-
-  if (status >= 500) {
-    return {
-      ok: false,
-      status: 503,
-      body: {
-        error: 'lodestone_unavailable',
-        message: 'ロードストーンに接続できません。',
-      },
-    }
-  }
-
-  if (status !== 200) {
-    return {
-      ok: false,
-      status: 503,
-      body: {
-        error: 'lodestone_unavailable',
-        message: 'ロードストーンからデータを取得できませんでした。',
-      },
-    }
-  }
-
-  return null
 }
 
 export function resolveCharacterIdFromRequest(idParam: string | undefined): string | null {
@@ -192,17 +120,17 @@ export async function getLodestoneCharacterProfile(
 
   try {
     const profileResponse = await fetchLodestoneHtml(profileUrl)
-    const profileError = mapFetchStatus(profileResponse.status)
+    const profileError = mapLodestoneHttpStatus(profileResponse.status)
 
     if (profileError) {
-      return profileError
+      return { ok: false, ...profileError }
     }
 
     const classJobResponse = await fetchLodestoneHtml(classJobUrl)
-    const classJobError = mapFetchStatus(classJobResponse.status)
+    const classJobError = mapLodestoneHttpStatus(classJobResponse.status)
 
     if (classJobError) {
-      return classJobError
+      return { ok: false, ...classJobError }
     }
 
     const profile = parseLodestoneCharacterProfile({
@@ -222,36 +150,7 @@ export async function getLodestoneCharacterProfile(
       },
     }
   } catch (error) {
-    if (error instanceof Error && error.message === 'timeout') {
-      return {
-        ok: false,
-        status: 504,
-        body: {
-          error: 'timeout',
-          message: '取得がタイムアウトしました。しばらくして再試行してください。',
-        },
-      }
-    }
-
-    if (error instanceof Error && error.message.startsWith('parse_failed')) {
-      return {
-        ok: false,
-        status: 502,
-        body: {
-          error: 'parse_failed',
-          message: 'ロードストーンのHTMLを解析できませんでした。',
-        },
-      }
-    }
-
-    return {
-      ok: false,
-      status: 503,
-      body: {
-        error: 'lodestone_unavailable',
-        message: 'ロードストーンに接続できません。',
-      },
-    }
+    return { ok: false, ...mapLodestoneFetchError(error) }
   }
 }
 

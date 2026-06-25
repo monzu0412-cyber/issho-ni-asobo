@@ -84,6 +84,7 @@ export function CardBodyWant(props: CardBodyProps) {
     applyLodestoneProfileToCard,
     onLeftColumnDisplayModeChange,
     onJobSelectionChange,
+    collectionOwnershipIndex,
   } = props
 
   return (
@@ -124,6 +125,7 @@ export function CardBodyWant(props: CardBodyProps) {
           selectSearchTarget={(item) => selectSearchTarget(0, item)}
           selectUnsupportedTarget={() => selectUnsupportedTarget(0)}
           updateTargetFrameTheme={updateTargetFrameTheme}
+          collectionOwnershipIndex={collectionOwnershipIndex}
         />
       </section>
       </div>
@@ -170,6 +172,7 @@ export function CardBodyWant(props: CardBodyProps) {
           updateTargetSearchQuery={updateTargetSearchQuery}
           selectSearchTarget={selectSearchTarget}
           selectUnsupportedTarget={selectUnsupportedTarget}
+          collectionOwnershipIndex={collectionOwnershipIndex}
         />
       </section>
 

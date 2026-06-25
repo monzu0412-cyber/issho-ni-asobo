@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import App from './App'
 import { JOB_DISPLAY_LAB_PAGE_HASH, JobDisplayLab } from './components/jobs/JobDisplayLab'
+import { COLLECTIONS_LAB_PAGE_HASH, CollectionsLab } from './components/lodestone/CollectionsLab'
 import { LODESTONE_LAB_PAGE_HASH, LodestoneLab } from './components/lodestone/LodestoneLab'
 import { PRIVACY_PAGE_HASH, PrivacyPolicyPage } from './pages/PrivacyPolicyPage'
 import { TERMS_PAGE_HASH, TermsOfServicePage } from './pages/TermsOfServicePage'
@@ -34,6 +35,10 @@ function Root() {
 
   if (hash === LODESTONE_LAB_PAGE_HASH) {
     return <LodestoneLab />
+  }
+
+  if (hash === COLLECTIONS_LAB_PAGE_HASH) {
+    return <CollectionsLab />
   }
 
   if (hash === JOB_DISPLAY_LAB_PAGE_HASH) {

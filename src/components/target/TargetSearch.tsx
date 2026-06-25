@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { SearchDictionaryItem } from '../../types/card'
+import type { CollectionOwnershipIndex } from '../../lib/lodestone/collectionOwnershipIndex'
+import { applyCollectionMissingFilterToSearchResults } from '../../lib/wanted/collectionMissingFilter'
+import { CollectionMissingFilterBar } from './CollectionMissingFilterBar'
 import {
   getSearchItemIconUrl,
   getSearchResults,
@@ -13,15 +16,26 @@ export function TargetSearch({
   onQueryChange,
   onSelect,
   onSelectUnsupported,
+  collectionOwnershipIndex,
 }: {
   query: string
   onQueryChange: (value: string) => void
   onSelect: (item: SearchDictionaryItem) => void
   onSelectUnsupported: () => void
+  collectionOwnershipIndex: CollectionOwnershipIndex | null
 }) {
   const [isForwardOpen, setIsForwardOpen] = useState(false)
-  const results = getSearchResults(query)
+  const [missingOnly, setMissingOnly] = useState(false)
   const hasSearchQuery = normalizeSearchText(query).length > 0
+  const results = useMemo(() => {
+    const rawResults = getSearchResults(query)
+
+    return applyCollectionMissingFilterToSearchResults(
+      rawResults,
+      collectionOwnershipIndex,
+      missingOnly,
+    )
+  }, [collectionOwnershipIndex, missingOnly, query])
 
   return (
     <div className="targetSearch">
@@ -51,8 +65,16 @@ export function TargetSearch({
         {isForwardOpen ? '閉じる' : '条件から探す'}
       </button>
 
+      <CollectionMissingFilterBar
+        collectionOwnershipIndex={collectionOwnershipIndex}
+        missingOnly={missingOnly}
+        onMissingOnlyChange={setMissingOnly}
+      />
+
       {isForwardOpen ? (
         <TargetForwardSearch
+          collectionOwnershipIndex={collectionOwnershipIndex}
+          missingOnly={missingOnly}
           onSelect={(item) => {
             onSelect(withResolvedSearchItem(item))
             setIsForwardOpen(false)
@@ -60,6 +82,13 @@ export function TargetSearch({
         />
       ) : hasSearchQuery ? (
         <div className="searchResultList">
+          {results.length === 0 ? (
+            <p className="forwardSearchHint">
+              {missingOnly && collectionOwnershipIndex
+                ? '未所持に一致する候補がありません。'
+                : '一致する候補がありません。'}
+            </p>
+          ) : null}
           {results.map((item) => {
             const iconUrl = getSearchItemIconUrl(item)
 
