@@ -1,5 +1,5 @@
 /**
- * Help slides in `src/assets/help/` (`help_01.webp`, `help_05.jpg`, `help_08.webp`, …).
+ * Help slides in `src/assets/help/` (`help_01_input.png`, `help_02_forward.webp`, …).
  *
  * Display order is defined by platform playlists below — not by filename sort.
  * Set `HELP_IMAGES_PLACEHOLDER` to `false` once real images are ready.
@@ -11,9 +11,14 @@ export type HelpSlideContent = {
   description: string
 }
 
+export type HelpSlideImage = {
+  imageUrl: string
+  caption?: string
+}
+
 export type HelpSlide = HelpSlideContent & {
   number: string
-  imageUrl: string
+  images: HelpSlideImage[]
 }
 
 export const HELP_DESKTOP_SLIDE_IDS = ['01', '02', '08', '03', '04'] as const
@@ -36,6 +41,13 @@ const HELP_INPUT_INTRO_SLIDE: HelpSlideContent = {
     '',
     '入力した内容は',
     'カードにすぐ反映されます。',
+    '',
+    'ロードストーンから',
+    'キャラクター情報を取得できます。',
+    '',
+    'ただし、ロードストーン上で',
+    '情報を公開していない場合は',
+    '使えません。',
   ].join('\n'),
 }
 
@@ -45,17 +57,19 @@ export const HELP_SLIDE_CONTENT: Record<string, HelpSlideContent> = {
   '02': {
     title: '欲しいものを登録しよう！',
     description: [
-      '欲しいものは検索で！',
-      '部分一致でもでます。',
+      '欲しいものは',
+      '名前で検索できます。',
+      '部分一致でも出ます。',
       '',
       '名前がわからないときは',
-      '「条件から探す」を押すと',
+      '「条件から探す」で',
+      '種類や入手カテゴリから',
+      '選べます。',
       '',
-      '① 分類',
-      '② コンテンツ',
-      '③ 詳細',
-      '',
-      'の順に選択できます。',
+      'ロードストーン取得済みの場合、',
+      'ミニオン・マウントなど',
+      '一部カテゴリでは',
+      '「未所持のみ表示」が使えます。',
       '',
       '辞書にないものは',
       '「未対応アイテム」を選び、',
@@ -81,7 +95,7 @@ export const HELP_SLIDE_CONTENT: Record<string, HelpSlideContent> = {
     ].join('\n'),
   },
   '03': {
-    title: 'PCで確認しよう！',
+    title: '確認しよう！',
     description: [
       '入力が終わったら',
       '「プレビューモード」を押して',
@@ -140,6 +154,27 @@ export const HELP_SLIDE_CONTENT: Record<string, HelpSlideContent> = {
   },
 }
 
+const HELP_SLIDE_IMAGE_KEYS: Record<string, string[]> = {
+  '01': ['01_input', '01_lodestone'],
+  '02': ['02_name', '02_forward'],
+  '08': ['08'],
+  '03': ['03'],
+  '04': ['04'],
+  '06': ['06'],
+  '07': ['07'],
+}
+
+/** Mobile-only slide images (single image per slide). PC uses `HELP_SLIDE_IMAGE_KEYS`. */
+const HELP_MOBILE_SLIDE_IMAGE_KEYS: Record<string, string[]> = {
+  '05': ['09'],
+  '02': ['10'],
+}
+
+const HELP_SLIDE_IMAGE_CAPTIONS: Record<string, string[]> = {
+  '01': ['通常入力', 'ロードストーン取得'],
+  '02': ['名前検索', '条件から探す'],
+}
+
 const PLACEHOLDER_SLIDE_CONTENT: HelpSlideContent = {
   title: '仮タイトル',
   description: '仮の説明文です。',
@@ -155,9 +190,9 @@ const helpImageModules = import.meta.glob<string>(
   },
 )
 
-function findImageUrl(number: string): string {
+function findImageUrlByKey(key: string): string {
   for (const extension of HELP_IMAGE_EXTENSIONS) {
-    const suffix = `help_${number}.${extension}`
+    const suffix = `help_${key}.${extension}`
     const entry = Object.entries(helpImageModules).find(([path]) => path.endsWith(suffix))
 
     if (entry?.[1]) {
@@ -172,12 +207,25 @@ function getSlideContent(number: string): HelpSlideContent {
   return HELP_SLIDE_CONTENT[number] ?? PLACEHOLDER_SLIDE_CONTENT
 }
 
-function buildSlide(number: string): HelpSlide {
+function buildSlideImages(number: string, isMobile: boolean): HelpSlideImage[] {
+  const imageKeys = isMobile && HELP_MOBILE_SLIDE_IMAGE_KEYS[number]
+    ? HELP_MOBILE_SLIDE_IMAGE_KEYS[number]
+    : (HELP_SLIDE_IMAGE_KEYS[number] ?? [number])
+  const usesMobileSingleImage = isMobile && Boolean(HELP_MOBILE_SLIDE_IMAGE_KEYS[number])
+  const captions = usesMobileSingleImage ? [] : (HELP_SLIDE_IMAGE_CAPTIONS[number] ?? [])
+
+  return imageKeys.map((key, index) => ({
+    imageUrl: findImageUrlByKey(key),
+    caption: captions[index],
+  }))
+}
+
+function buildSlide(number: string, isMobile: boolean): HelpSlide {
   const content = getSlideContent(number)
 
   return {
     number,
-    imageUrl: findImageUrl(number),
+    images: buildSlideImages(number, isMobile),
     title: content.title,
     description: content.description,
   }
@@ -185,11 +233,11 @@ function buildSlide(number: string): HelpSlide {
 
 export function getHelpSlides(isMobile: boolean): HelpSlide[] {
   const slideIds = isMobile ? HELP_MOBILE_SLIDE_IDS : HELP_DESKTOP_SLIDE_IDS
-  return slideIds.map((number) => buildSlide(number))
+  return slideIds.map((number) => buildSlide(number, isMobile))
 }
 
 /** @deprecated Use `getHelpSlides(isMobile)` instead. */
 export const HELP_SLIDES = getHelpSlides(false)
 
 /** @deprecated Use `getHelpSlides(isMobile)` instead. */
-export const HELP_IMAGES = HELP_SLIDES.map((slide) => slide.imageUrl).filter(Boolean)
+export const HELP_IMAGES = HELP_SLIDES.flatMap((slide) => slide.images.map((image) => image.imageUrl)).filter(Boolean)

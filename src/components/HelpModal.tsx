@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { getHelpSlides, HELP_IMAGES_PLACEHOLDER, type HelpSlide } from '../data/helpImages'
+import { getHelpSlides, HELP_IMAGES_PLACEHOLDER, type HelpSlide, type HelpSlideImage } from '../data/helpImages'
 import { useMobileViewport } from '../utils/isMobileViewport'
 import './HelpModal.css'
 
@@ -11,6 +11,24 @@ type HelpModalProps = {
 type HelpModalBodyProps = {
   slides: HelpSlide[]
   onClose: () => void
+}
+
+function renderSlideImage(image: HelpSlideImage, slideTitle: string) {
+  if (image.imageUrl && !HELP_IMAGES_PLACEHOLDER) {
+    return (
+      <img
+        className="helpModalImage"
+        src={image.imageUrl}
+        alt={image.caption ?? slideTitle}
+      />
+    )
+  }
+
+  return (
+    <div className="helpModalPlaceholder">
+      <span>準備中</span>
+    </div>
+  )
 }
 
 function HelpModalBody({ slides, onClose }: HelpModalBodyProps) {
@@ -58,6 +76,7 @@ function HelpModalBody({ slides, onClose }: HelpModalBodyProps) {
   }
 
   const currentSlide = slides[currentIndex]
+  const usesMultiImageLayout = currentSlide.images.length > 1
 
   return (
     <div className="helpModalBackdrop" onClick={handleClose} role="presentation">
@@ -81,18 +100,20 @@ function HelpModalBody({ slides, onClose }: HelpModalBodyProps) {
         </div>
 
         <div className="helpModalBody">
-          <div className="helpModalImageFrame">
-            {currentSlide.imageUrl && !HELP_IMAGES_PLACEHOLDER ? (
-              <img
-                className="helpModalImage"
-                src={currentSlide.imageUrl}
-                alt={currentSlide.title}
-              />
-            ) : (
-              <div className="helpModalPlaceholder">
-                <span>準備中</span>
-              </div>
-            )}
+          <div
+            className={`helpModalImageArea${usesMultiImageLayout ? ' helpModalImageArea--multi' : ''}`}
+          >
+            {currentSlide.images.map((image, index) => (
+              <figure
+                key={`${currentSlide.number}-${image.caption ?? index}`}
+                className="helpModalImageFrame"
+              >
+                {renderSlideImage(image, currentSlide.title)}
+                {image.caption ? (
+                  <figcaption className="helpModalImageCaption">{image.caption}</figcaption>
+                ) : null}
+              </figure>
+            ))}
           </div>
 
           <div className="helpModalSlideText">
