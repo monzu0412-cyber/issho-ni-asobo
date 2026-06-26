@@ -17,7 +17,10 @@
     "apply:equipment-l11-6": "tsx scripts/apply-phase-l11-6-limited-apply.ts",
     "audit:equipment-l11-7": "tsx scripts/run-phase-l11-7-overall-recount-audit.ts",
     "apply:equipment-l11-4": "tsx scripts/apply-phase-l11-4-evidence-promotion.ts",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify:data-protection": "tsx scripts/verify-data-protection-baseline.ts",
+    "verify:fish-forward-search": "tsx scripts/verify-fish-forward-search.ts",
+    "build:fish-item-icons": "tsx scripts/build-fish-item-icon-lookup.ts"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",

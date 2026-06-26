@@ -1,3 +1,4 @@
+import { consolidateFishAcquisitionRoutes } from '../../lib/fish-route-display'
 import { isUnsupportedTargetItem } from '../../data/unsupportedTargetItem'
 import {
   formatEquipJobsForDisplay,
@@ -8,6 +9,7 @@ import {
   deduplicateAcquisitionRoutes,
   formatConditionValue,
   formatFishingWeather,
+  formatFishBaitDisplay,
   formatFolklore,
   formatIntuitionFish,
   getConditionLabel,
@@ -36,7 +38,7 @@ function FishRouteDetails({ route }: { route: AcquisitionRoute }) {
   const place = getFishPlaceDisplay(route)
   const time = formatConditionValue(conditions.time)
   const weather = formatFishingWeather(conditions.weather)
-  const bait = translateFishTerm(conditions.bait)
+  const bait = formatFishBaitDisplay(conditions.bait)
   const mooch = translateFishTerm(conditions.mooch)
   const snagging = conditions.snagging === true
   const folklore = formatFolklore(conditions.folklore)
@@ -242,8 +244,10 @@ export function TargetDetails({
     return null
   }
 
-  const routes = deduplicateAcquisitionRoutes(target.acquisitionRoutes ?? [])
   const isFish = isFishTarget(target)
+  const routes = isFish
+    ? consolidateFishAcquisitionRoutes(target.acquisitionRoutes ?? [])
+    : deduplicateAcquisitionRoutes(target.acquisitionRoutes ?? [])
   const translateContent = isContentTranslationTarget(target)
   const hasSplitRoute = routes.some((route) => usesSplitRouteDisplay(route))
   const equipmentMetadata = showEquipmentMetadata

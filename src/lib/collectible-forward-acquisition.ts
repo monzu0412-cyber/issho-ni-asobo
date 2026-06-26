@@ -1,4 +1,5 @@
 import type { ForwardAcquisitionCategory } from '../types/card'
+import { refineCollectibleBattleAcquisitionCategory } from './collectible-forward-navigation'
 
 export const COLLECTIBLE_FORWARD_SEARCH_CATEGORY1 = [
   'ミニオン',
@@ -20,7 +21,10 @@ export const COLLECTIBLE_FORWARD_ACQUISITION_ORDER = [
   '極',
   'レイド',
   'アライアンス',
-  '交換',
+  'バイカラージェム',
+  'ゴールドソーサー',
+  'ギル購入',
+  'その他交換',
   '地図',
   'クラフト・採集',
   'PvP',
@@ -29,6 +33,8 @@ export const COLLECTIBLE_FORWARD_ACQUISITION_ORDER = [
   'イベント',
   '課金',
   '実績・ショップ',
+  '潜水艦・飛空艇探索',
+  'リテイナーベンチャー',
   'その他',
 ] as const satisfies readonly ForwardAcquisitionCategory[]
 
@@ -79,15 +85,30 @@ const SPECIAL_FIELD_PATTERNS: RegExp[] = [
   /アロアロ島/i,
 ]
 
+const SUBMARINE_AIRSHIP_PATTERNS: RegExp[] = [
+  /潜水艦/,
+  /飛空艇/,
+  /Submarine/i,
+  /Airship/i,
+  /Subaquatic Voyages/i,
+  /Exploratory Voyage/i,
+  /^Voyages$/i,
+]
+
+const RETAINER_VENTURE_PATTERNS: RegExp[] = [
+  /リテイナー/,
+  /Retainer/i,
+  /Venture/i,
+  /Exploration X{1,3}[IVXLC]+/i,
+  /Exploration X{1,3}I\b/i,
+]
+
 const ACHIEVEMENT_SHOP_PATTERNS: RegExp[] = [
   /Achievement/i,
   /実績/i,
   /Jonathas/i,
   /MGP/i,
   /Gold Saucer/i,
-  /Online Store/i,
-  /Premium/i,
-  /Final Fantasy XIV Online Store/i,
   /Companion app/i,
   /Skybuilders'? Scrips/i,
   /Seafarer'?s Cowries/i,
@@ -114,10 +135,37 @@ function resolveAchievementShopCategory(contentName: string | null | undefined, 
   return matchesAny(haystack, ACHIEVEMENT_SHOP_PATTERNS)
 }
 
+function resolveSubmarineAirshipCategory(
+  contentName: string | null | undefined,
+  name: string,
+  routeDetail?: string | null,
+): boolean {
+  const haystack = `${contentName ?? ''} ${name} ${routeDetail ?? ''}`
+  return matchesAny(haystack, SUBMARINE_AIRSHIP_PATTERNS)
+}
+
+function resolveRetainerVentureCategory(
+  contentName: string | null | undefined,
+  name: string,
+  routeDetail?: string | null,
+): boolean {
+  const haystack = `${contentName ?? ''} ${name} ${routeDetail ?? ''}`
+  return matchesAny(haystack, RETAINER_VENTURE_PATTERNS)
+}
+
 function mapDerivedCollectibleCategory(
   contentName: string | null | undefined,
   name: string,
+  routeDetail?: string | null,
 ): ForwardAcquisitionCategory {
+  if (resolveSubmarineAirshipCategory(contentName, name, routeDetail)) {
+    return '潜水艦・飛空艇探索'
+  }
+
+  if (resolveRetainerVentureCategory(contentName, name, routeDetail)) {
+    return 'リテイナーベンチャー'
+  }
+
   if (resolveSpecialFieldCategory(contentName, name)) {
     return '特殊フィールド'
   }
@@ -127,6 +175,45 @@ function mapDerivedCollectibleCategory(
   }
 
   return 'その他'
+}
+
+function refineBattleAcquisitionCategory(input: {
+  category2: string
+  contentName?: string | null
+  name?: string
+  routeDetail?: string | null
+}): ForwardAcquisitionCategory | null {
+  return refineCollectibleBattleAcquisitionCategory(input)
+}
+
+function buildCollectibleExchangeHaystack(input: {
+  contentName?: string | null
+  name?: string
+  routeDetail?: string | null
+}): string {
+  return `${input.contentName ?? ''} ${input.name ?? ''} ${input.routeDetail ?? ''}`
+}
+
+export function mapCollectibleExchangeCategory(input: {
+  contentName?: string | null
+  name?: string
+  routeDetail?: string | null
+}): ForwardAcquisitionCategory {
+  const haystack = buildCollectibleExchangeHaystack(input)
+
+  if (/Bicolor Gemstones?/i.test(haystack)) {
+    return 'バイカラージェム'
+  }
+
+  if (/\bMGP\b|Gold Saucer|ゴールドソーサー/i.test(haystack)) {
+    return 'ゴールドソーサー'
+  }
+
+  if (/\bGil\b|ギル|\bPurchase\b/i.test(haystack)) {
+    return 'ギル購入'
+  }
+
+  return 'その他交換'
 }
 
 export function mapLegacyAcquisitionCategory(category2: string | null | undefined): ForwardAcquisitionCategory {
@@ -161,13 +248,14 @@ export function mapCollectibleAcquisitionCategory(input: {
   category2: string | null | undefined
   contentName?: string | null
   name?: string
+  routeDetail?: string | null
 }): ForwardAcquisitionCategory {
   const category2 = input.category2 ?? null
   const contentName = input.contentName ?? null
   const name = input.name ?? ''
 
   if (!category2) {
-    return mapDerivedCollectibleCategory(contentName, name)
+    return mapDerivedCollectibleCategory(contentName, name, input.routeDetail)
   }
 
   if (category2 === 'トレジャーハント') {
@@ -178,15 +266,30 @@ export function mapCollectibleAcquisitionCategory(input: {
     return 'クラフト・採集'
   }
 
+  if (category2 === '交換') {
+    return mapCollectibleExchangeCategory(input)
+  }
+
   if (PASSTHROUGH_CATEGORY2.has(category2)) {
+    const refinedCategory = refineBattleAcquisitionCategory({
+      category2,
+      contentName,
+      name,
+      routeDetail: input.routeDetail,
+    })
+
+    if (refinedCategory) {
+      return refinedCategory
+    }
+
     return category2 as ForwardAcquisitionCategory
   }
 
   if (EQUIPMENT_ONLY_CATEGORY2.has(category2)) {
-    return mapDerivedCollectibleCategory(contentName, name)
+    return mapDerivedCollectibleCategory(contentName, name, input.routeDetail)
   }
 
-  return mapDerivedCollectibleCategory(contentName, name)
+  return mapDerivedCollectibleCategory(contentName, name, input.routeDetail)
 }
 
 export function resolveForwardAcquisitionCategory(input: {
@@ -194,6 +297,7 @@ export function resolveForwardAcquisitionCategory(input: {
   category2: string | null | undefined
   contentName?: string | null
   name?: string
+  routeDetail?: string | null
 }): ForwardAcquisitionCategory {
   if (isCollectibleForwardSearchCategory1(input.category1)) {
     return mapCollectibleAcquisitionCategory(input)

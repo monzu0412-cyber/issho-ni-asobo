@@ -68,6 +68,10 @@ export type ForwardAcquisitionCategory =
   | 'ID'
   | '地図'
   | '交換'
+  | 'バイカラージェム'
+  | 'ゴールドソーサー'
+  | 'ギル購入'
+  | 'その他交換'
   | '釣り'
   | 'PvP'
   | 'その他'
@@ -81,8 +85,26 @@ export type ForwardAcquisitionCategory =
   | 'イベント'
   | '課金'
   | '実績・ショップ'
+  | '潜水艦・飛空艇探索'
+  | 'リテイナーベンチャー'
 
-export type ForwardStep2Category = ForwardAcquisitionCategory | '探索'
+export type FishForwardStep2Category =
+  | '釣り'
+  | 'ヌシ'
+  | 'オオヌシ'
+  | 'オーシャンフィッシング'
+
+export type FishExpansionAreaLabel =
+  | '新生エリア'
+  | '蒼天エリア'
+  | '紅蓮エリア'
+  | '漆黒エリア'
+  | '暁月エリア'
+  | '黄金エリア'
+  | 'ディアデム等'
+  | 'その他特殊'
+
+export type ForwardStep2Category = ForwardAcquisitionCategory | FishForwardStep2Category | '探索'
 
 export type ForwardIndexRouteSummary = {
   routeType: string
@@ -186,7 +208,7 @@ export type EquipRole = 'タンク' | 'ヒーラー' | 'メレー' | 'レンジ'
 export type EquipTaxonomyKey = EquipSlot | EquipRole
 
 export type EnrichedSearchItem = SearchDictionaryItem & {
-  acquisitionCategory: ForwardAcquisitionCategory
+  acquisitionCategory: ForwardAcquisitionCategory | FishForwardStep2Category
   details: string[]
   contentDisplayName: string
   resolvedIconUrl: string | null

@@ -8,14 +8,17 @@ import {
 } from '../../lib/lodestone/collectionOwnershipIndex'
 import {
   applyCollectionMissingFilterToForwardCandidates,
+  getFishForwardExpansionAreasForCollectionMissingFilter,
   getForwardAcquisitionCategoriesForCollectionMissingFilter,
   getForwardContentNamesForCollectionMissingFilter,
 } from '../../lib/wanted/collectionMissingFilter'
+import { usesFishExpansionAreaNavigation } from '../../lib/fish-forward-navigation'
 import {
   groupForwardSearchBySavageSeries,
   isSavageSeriesGroupPilot,
   type SavageSeriesGroup,
 } from './savageSeriesGroup'
+import { usesCollectibleGroupedForwardContentOptions } from '../../lib/collectible-forward-navigation'
 import {
   forwardSearchCategory1Options,
   getForwardDetails,
@@ -39,6 +42,7 @@ export function TargetForwardSearch({
 }) {
   const [category1, setCategory1] = useState('')
   const [acquisitionCategory, setAcquisitionCategory] = useState<ForwardStep2Category | ''>('')
+  const [expansionArea, setExpansionArea] = useState('')
   const [contentName, setContentName] = useState('')
   const [taxonomy, setTaxonomy] = useState<EquipTaxonomyKey | ''>('')
   const [detail, setDetail] = useState('')
@@ -71,8 +75,11 @@ export function TargetForwardSearch({
     return acquisitionCategory
   }, [acquisitionCategory, acquisitionOptions, usesCollectionMissingFilter])
 
-  const contentOptions = useMemo(
-    () => getForwardContentNamesForCollectionMissingFilter(
+  const usesFishExpansionAreaStep = category1 === '魚'
+    && usesFishExpansionAreaNavigation(effectiveAcquisitionCategory)
+
+  const expansionAreaOptions = useMemo(
+    () => getFishForwardExpansionAreasForCollectionMissingFilter(
       category1,
       effectiveAcquisitionCategory,
       collectionOwnershipIndex,
@@ -80,6 +87,38 @@ export function TargetForwardSearch({
       missingOnly,
     ),
     [category1, collectionCategoryKey, collectionOwnershipIndex, effectiveAcquisitionCategory, missingOnly],
+  )
+
+  const effectiveExpansionArea = useMemo(() => {
+    if (!expansionArea || !usesFishExpansionAreaStep) {
+      return ''
+    }
+
+    if (usesCollectionMissingFilter && !expansionAreaOptions.includes(expansionArea)) {
+      return ''
+    }
+
+    return expansionArea
+  }, [expansionArea, expansionAreaOptions, usesCollectionMissingFilter, usesFishExpansionAreaStep])
+
+  const contentOptions = useMemo(
+    () => getForwardContentNamesForCollectionMissingFilter(
+      category1,
+      effectiveAcquisitionCategory,
+      collectionOwnershipIndex,
+      collectionCategoryKey,
+      missingOnly,
+      usesFishExpansionAreaStep ? effectiveExpansionArea : undefined,
+    ),
+    [
+      category1,
+      collectionCategoryKey,
+      collectionOwnershipIndex,
+      effectiveAcquisitionCategory,
+      effectiveExpansionArea,
+      missingOnly,
+      usesFishExpansionAreaStep,
+    ],
   )
 
   const effectiveContentName = useMemo(() => {
@@ -118,7 +157,8 @@ export function TargetForwardSearch({
     [allCandidates, collectionCategoryKey, collectionOwnershipIndex, missingOnly],
   )
   const usesIndexForwardSearch = usesForwardSearchIndex(category1)
-  const usesGroupedContentOptions = usesIndexForwardSearch && usesGroupedForwardContentOptions(effectiveAcquisitionCategory)
+  const usesGroupedContentOptions = (usesIndexForwardSearch && usesGroupedForwardContentOptions(effectiveAcquisitionCategory))
+    || (!usesIndexForwardSearch && usesCollectibleGroupedForwardContentOptions(effectiveAcquisitionCategory))
 
   const groupedContentOptions = useMemo(() => {
     if (!usesGroupedContentOptions) {
@@ -152,6 +192,11 @@ export function TargetForwardSearch({
 
   const slotTaxonomyOptions = taxonomyOptions.filter((option) => option.kind === 'slot')
   const roleTaxonomyOptions = taxonomyOptions.filter((option) => option.kind === 'role')
+  const contentStepNumber = usesFishExpansionAreaStep ? 4 : 3
+  const detailStepNumber = usesFishExpansionAreaStep ? 5 : 4
+  const candidatesStepNumber = usesEquipmentTaxonomy
+    ? (usesFishExpansionAreaStep ? 6 : 5)
+    : (usesFishExpansionAreaStep ? 6 : 5)
 
   function resetSeriesGrouping() {
     setShowRelatedSeries(false)
@@ -219,6 +264,7 @@ export function TargetForwardSearch({
           onChange={(event) => {
             setCategory1(event.target.value)
             setAcquisitionCategory('')
+            setExpansionArea('')
             setContentName('')
             setTaxonomy('')
             setDetail('')
@@ -239,6 +285,7 @@ export function TargetForwardSearch({
           disabled={!category1}
           onChange={(event) => {
             setAcquisitionCategory(event.target.value as ForwardStep2Category | '')
+            setExpansionArea('')
             setContentName('')
             setTaxonomy('')
             setDetail('')
@@ -252,11 +299,33 @@ export function TargetForwardSearch({
         </select>
       </label>
 
+      {usesFishExpansionAreaStep && (
+        <label>
+          ③ 拡張エリア
+          <select
+            value={effectiveExpansionArea}
+            disabled={!effectiveAcquisitionCategory}
+            onChange={(event) => {
+              setExpansionArea(event.target.value)
+              setContentName('')
+              setTaxonomy('')
+              setDetail('')
+              resetSeriesGrouping()
+            }}
+          >
+            <option value="">選択してください</option>
+            {expansionAreaOptions.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </label>
+      )}
+
       <label>
-        ③ コンテンツ
+        {contentStepNumber} コンテンツ
         <select
           value={effectiveContentName}
-          disabled={!effectiveAcquisitionCategory}
+          disabled={!effectiveAcquisitionCategory || (usesFishExpansionAreaStep && !effectiveExpansionArea)}
           onChange={(event) => {
             setContentName(event.target.value)
             setTaxonomy('')
@@ -281,7 +350,7 @@ export function TargetForwardSearch({
 
       {usesEquipmentTaxonomy && effectiveContentName && taxonomyOptions.length > 0 && (
         <label>
-          ④ 分類
+          {detailStepNumber} 分類
           <select
             value={taxonomy}
             onChange={(event) => {
@@ -311,7 +380,7 @@ export function TargetForwardSearch({
 
       {!usesEquipmentTaxonomy && detailOptions.length > 0 && (
         <label>
-          ④ 詳細
+          {detailStepNumber} 詳細
           <select
             value={detail}
             disabled={!effectiveContentName}
@@ -327,7 +396,7 @@ export function TargetForwardSearch({
 
       <div className="forwardSearchCandidates">
         <div className="forwardSearchCandidatesTitle">
-          {usesEquipmentTaxonomy ? '⑤ 候補' : '⑤ 候補'}
+          {candidatesStepNumber} 候補
           {canShowCandidates && (
             <span>
               {filteredCandidates.length}件
@@ -348,12 +417,24 @@ export function TargetForwardSearch({
           <p className="forwardSearchHint">未所持がある入手カテゴリはありません。</p>
         )}
 
+        {usesCollectionMissingFilter && acquisitionCategory && effectiveAcquisitionCategory && usesFishExpansionAreaStep && expansionAreaOptions.length === 0 && (
+          <p className="forwardSearchHint">未所持がある拡張エリアはありません。</p>
+        )}
+
         {usesCollectionMissingFilter && acquisitionCategory && effectiveAcquisitionCategory && contentOptions.length === 0 && (
           <p className="forwardSearchHint">未所持があるコンテンツはありません。</p>
         )}
 
-        {!effectiveContentName && (
+        {usesFishExpansionAreaStep && effectiveAcquisitionCategory && !effectiveExpansionArea && (
+          <p className="forwardSearchHint">拡張エリアを選ぶとゾーン一覧が表示されます。</p>
+        )}
+
+        {!usesFishExpansionAreaStep && !effectiveContentName && (
           <p className="forwardSearchHint">種類・入手カテゴリ・コンテンツを選ぶと候補が表示されます。</p>
+        )}
+
+        {usesFishExpansionAreaStep && effectiveExpansionArea && !effectiveContentName && (
+          <p className="forwardSearchHint">ゾーンを選ぶと候補が表示されます。</p>
         )}
 
         {effectiveContentName && usesEquipmentTaxonomy && !taxonomy && (

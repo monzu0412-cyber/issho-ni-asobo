@@ -1,6 +1,7 @@
 import type { EnrichedSearchItem, ForwardContentOption, SearchDictionaryItem } from '../../types/card'
 import type { LodestoneCollectionCategoryKey } from '../../types/lodestoneCollections'
 import {
+  getFishForwardExpansionAreaOptions,
   getForwardAcquisitionCategories,
   getForwardContentNames,
   getForwardSearchCandidates,
@@ -89,8 +90,9 @@ export function getForwardContentNamesForCollectionMissingFilter(
   index: CollectionOwnershipIndex | null,
   categoryKey: LodestoneCollectionCategoryKey | null,
   missingOnly: boolean,
+  expansionArea?: string,
 ): ForwardContentOption[] {
-  const contentOptions = getForwardContentNames(category1, acquisitionCategory)
+  const contentOptions = getForwardContentNames(category1, acquisitionCategory, expansionArea)
 
   return filterForwardContentOptionsForMissingOnly(
     category1,
@@ -100,6 +102,31 @@ export function getForwardContentNamesForCollectionMissingFilter(
     categoryKey,
     missingOnly,
   )
+}
+
+export function getFishForwardExpansionAreasForCollectionMissingFilter(
+  category1: string,
+  acquisitionCategory: string,
+  index: CollectionOwnershipIndex | null,
+  categoryKey: LodestoneCollectionCategoryKey | null,
+  missingOnly: boolean,
+): string[] {
+  const expansionAreas = getFishForwardExpansionAreaOptions(category1, acquisitionCategory)
+
+  if (!missingOnly || !index || !categoryKey || !category1 || !acquisitionCategory) {
+    return expansionAreas
+  }
+
+  return expansionAreas.filter((expansionArea) => (
+    getForwardContentNamesForCollectionMissingFilter(
+      category1,
+      acquisitionCategory,
+      index,
+      categoryKey,
+      missingOnly,
+      expansionArea,
+    ).length > 0
+  ))
 }
 
 export function applyCollectionMissingFilterToForwardCandidates(

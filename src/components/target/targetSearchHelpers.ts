@@ -22,6 +22,22 @@ import {
   resolveForwardAcquisitionCategory,
   sortCollectibleForwardAcquisitionCategories,
 } from '../../lib/collectible-forward-acquisition'
+import {
+  applyCollectibleDisplayTextOverrides,
+  buildCollectibleForwardContentOptions,
+  matchesCollectibleForwardContentFilter,
+  resolveCollectibleContentDisplayName,
+} from '../../lib/collectible-forward-navigation'
+import {
+  getFishForwardStep2CategoriesFromEnrichedItems,
+  isFishExpansionAreaLabel,
+  isFishForwardSearchCategory1,
+  resolveFishForwardStep2Category,
+  resolveFishZoneExpansionArea,
+  sortFishExpansionAreaLabels,
+  usesFishExpansionAreaNavigation,
+} from '../../lib/fish-forward-navigation'
+import { resolveFishItemIconUrl } from '../../lib/fish-item-icon'
 import { isCardUiPublicSearchItem } from '../../lib/publication-gate'
 import { formatCurrencyDisplayText } from '../../lib/currency-display.ts'
 import type {
@@ -33,6 +49,8 @@ import type {
   EquipSlot,
   EquipTaxonomyKey,
   ForwardAcquisitionCategory,
+  FishForwardStep2Category,
+  FishExpansionAreaLabel,
   ForwardContentOption,
   ForwardDetailOption,
   ForwardTaxonomyOption,
@@ -354,6 +372,17 @@ export function resolveTargetIconUrl(
   sourceItem?: SourceDictionaryItem,
   existingIconUrl?: string | null,
 ): string | null {
+  const category1 = searchItem.category1 ?? sourceItem?.category1 ?? ''
+  const itemId = searchItem.id ?? sourceItem?.itemId ?? null
+
+  if (isFishForwardSearchCategory1(category1) && itemId != null) {
+    const fishIconUrl = resolveFishItemIconUrl(itemId)
+
+    if (fishIconUrl) {
+      return fishIconUrl
+    }
+  }
+
   const directIconUrl = pickIconUrl(searchItem.iconUrl)
 
   if (directIconUrl) {
@@ -395,8 +424,6 @@ export function resolveTargetIconUrl(
   if (sourceImage && /^https?:\/\//.test(sourceImage)) {
     return sourceImage
   }
-
-  const itemId = searchItem.id ?? sourceItem?.itemId ?? null
 
   if (itemId != null) {
     const iconUrlFromItemId = iconUrlByItemId.get(itemId)
@@ -444,8 +471,14 @@ function mapToAcquisitionCategory(
   category2: string | null | undefined,
   contentName: string | null | undefined,
   name: string,
-): ForwardAcquisitionCategory {
-  return resolveForwardAcquisitionCategory({ category1, category2, contentName, name })
+  routeDetail?: string | null,
+  sourceItem?: SourceDictionaryItem,
+): ForwardAcquisitionCategory | FishForwardStep2Category {
+  if (isFishForwardSearchCategory1(category1) && sourceItem) {
+    return resolveFishForwardStep2Category(sourceItem)
+  }
+
+  return resolveForwardAcquisitionCategory({ category1, category2, contentName, name, routeDetail })
 }
 
 function mapRawCategoryToDetail(rawCategory: string | null | undefined): string | null {
@@ -502,23 +535,42 @@ function enrichSearchItem(item: SearchDictionaryItem): EnrichedSearchItem {
     details.add(rawDetail)
   }
 
+  const routeDetail = sourceItem?.acquisitionRoutes
+    ?.flatMap((route) => [route.type, route.detail].filter((value): value is string => Boolean(value?.trim())))
+    .join(' ') ?? null
+
   const enrichedItem = {
     ...item,
     category1,
     category2,
     contentName,
-    acquisitionCategory: mapToAcquisitionCategory(category1, category2, contentName, item.name),
+    acquisitionCategory: mapToAcquisitionCategory(
+      category1,
+      category2,
+      contentName,
+      item.name,
+      routeDetail,
+      sourceItem,
+    ),
     details: [...details].sort((a, b) => a.localeCompare(b, 'ja')),
   }
 
+  const baseContentDisplayName = resolveJapaneseContentName({
+    category1,
+    subCategory: item.subCategory ?? sourceItem?.subCategory,
+    contentName,
+    sourceItem,
+  })
+
   return {
     ...enrichedItem,
-    contentDisplayName: resolveJapaneseContentName({
-      category1,
-      subCategory: item.subCategory ?? sourceItem?.subCategory,
-      contentName,
-      sourceItem,
-    }),
+    contentDisplayName: isCollectibleForwardSearchCategory1(category1)
+      ? resolveCollectibleContentDisplayName({
+        contentName,
+        acquisitionCategory: enrichedItem.acquisitionCategory,
+        baseDisplayName: baseContentDisplayName,
+      })
+      : baseContentDisplayName,
     resolvedIconUrl: resolveTargetIconUrl(enrichedItem, sourceItem),
     equipSlot: category1 === '装備' ? resolveEquipSlot(item) : null,
     equipRole: category1 === '装備' ? resolveEquipRole(item.name) : null,
@@ -527,13 +579,23 @@ function enrichSearchItem(item: SearchDictionaryItem): EnrichedSearchItem {
 
 const enrichedSearchItems = searchItems.map(enrichSearchItem)
 
-function sortAcquisitionCategories(category1: string, categories: Iterable<ForwardAcquisitionCategory>) {
+function sortAcquisitionCategories(
+  category1: string,
+  categories: Iterable<ForwardAcquisitionCategory | FishForwardStep2Category>,
+) {
+  if (isFishForwardSearchCategory1(category1)) {
+    return getFishForwardStep2CategoriesFromEnrichedItems(
+      enrichedSearchItems.filter((item) => item.category1 === '魚'),
+    )
+  }
+
   if (isCollectibleForwardSearchCategory1(category1)) {
-    return sortCollectibleForwardAcquisitionCategories(categories)
+    return sortCollectibleForwardAcquisitionCategories(categories as Iterable<ForwardAcquisitionCategory>)
   }
 
   return [...new Set(categories)].sort(
-    (left, right) => (forwardAcquisitionCategoryOrder.get(left) ?? 99) - (forwardAcquisitionCategoryOrder.get(right) ?? 99),
+    (left, right) => (forwardAcquisitionCategoryOrder.get(left as ForwardAcquisitionCategory) ?? 99)
+      - (forwardAcquisitionCategoryOrder.get(right as ForwardAcquisitionCategory) ?? 99),
   )
 }
 
@@ -544,6 +606,12 @@ export function getForwardAcquisitionCategories(category1: string) {
 
   if (usesForwardSearchIndex(category1)) {
     return getForwardIndexAcquisitionCategories()
+  }
+
+  if (isFishForwardSearchCategory1(category1)) {
+    return getFishForwardStep2CategoriesFromEnrichedItems(
+      enrichedSearchItems.filter((item) => item.category1 === '魚'),
+    )
   }
 
   return sortAcquisitionCategories(
@@ -602,7 +670,40 @@ export {
   usesGroupedForwardContentOptions,
 } from '../../lib/forward-search-index'
 
-export function getForwardContentNames(category1: string, acquisitionCategory: string): ForwardContentOption[] {
+export function getFishForwardExpansionAreaOptions(
+  category1: string,
+  acquisitionCategory: string,
+): FishExpansionAreaLabel[] {
+  if (!isFishForwardSearchCategory1(category1) || !usesFishExpansionAreaNavigation(acquisitionCategory)) {
+    return []
+  }
+
+  const labels = new Set<FishExpansionAreaLabel>()
+
+  for (const item of enrichedSearchItems) {
+    if (item.category1 !== category1 || item.acquisitionCategory !== acquisitionCategory) {
+      continue
+    }
+
+    if (!shouldIncludeInForwardSearch(item)) {
+      continue
+    }
+
+    const expansionArea = resolveFishZoneExpansionArea(item.contentName)
+
+    if (expansionArea) {
+      labels.add(expansionArea)
+    }
+  }
+
+  return sortFishExpansionAreaLabels(labels)
+}
+
+export function getForwardContentNames(
+  category1: string,
+  acquisitionCategory: string,
+  expansionArea?: string,
+): ForwardContentOption[] {
   if (!category1 || !acquisitionCategory) {
     return []
   }
@@ -636,7 +737,30 @@ export function getForwardContentNames(category1: string, acquisitionCategory: s
     }))
   }
 
+  if (isCollectibleForwardSearchCategory1(category1)) {
+    return buildCollectibleForwardContentOptions({
+      acquisitionCategory,
+      entries: [...options.entries()].map(([key, displayName]) => ({ key, displayName })),
+    })
+  }
+
+  const usesFishExpansionFilter = isFishForwardSearchCategory1(category1)
+    && usesFishExpansionAreaNavigation(acquisitionCategory)
+
+  if (usesFishExpansionFilter) {
+    if (!expansionArea || !isFishExpansionAreaLabel(expansionArea)) {
+      return []
+    }
+  }
+
   return [...options.entries()]
+    .filter(([key]) => {
+      if (!usesFishExpansionFilter) {
+        return true
+      }
+
+      return resolveFishZoneExpansionArea(key) === expansionArea
+    })
     .map(([key, displayName]) => ({ key, displayName }))
     .sort((left, right) => left.displayName.localeCompare(right.displayName, 'ja'))
 }
@@ -733,7 +857,7 @@ export function getForwardDetails(
     if (
       item.category1 !== category1
       || item.acquisitionCategory !== acquisitionCategory
-      || item.contentName !== contentName
+      || !matchesCollectibleForwardContentFilter(acquisitionCategory, contentName, item.contentName, item.acquisitionCategory)
     ) {
       continue
     }
@@ -793,7 +917,12 @@ export function getForwardSearchCandidates(filters: {
       return false
     }
 
-    if (filters.contentName && item.contentName !== filters.contentName) {
+    if (filters.contentName && !matchesCollectibleForwardContentFilter(
+      filters.acquisitionCategory,
+      filters.contentName,
+      item.contentName,
+      item.acquisitionCategory,
+    )) {
       return false
     }
 
@@ -1160,6 +1289,14 @@ function resolveJapaneseContentName({
     return normalizedContentName
   }
 
+  if (isCollectibleForwardSearchCategory1(category1 ?? '')) {
+    const translatedCollectibleContentName = translateContentName(normalizedContentName, true)
+
+    if (translatedCollectibleContentName !== normalizedContentName) {
+      return translatedCollectibleContentName
+    }
+  }
+
   const translateContent = isContentTranslationCategory(category1, subCategory)
 
   if (translateContent) {
@@ -1452,6 +1589,14 @@ function translateDetailToJapanese(detail: string, category1?: string | null): s
   return normalized
 }
 
+function finalizeCollectibleDetailDisplay(detail: string, category1?: string | null): string {
+  if (!isCollectibleForwardSearchCategory1(category1 ?? '')) {
+    return detail
+  }
+
+  return applyCollectibleDisplayTextOverrides(detail)
+}
+
 function resolveJapaneseDetailName({
   detail,
   category1,
@@ -1465,13 +1610,13 @@ function resolveJapaneseDetailName({
   }
 
   if (isJapaneseText(normalizedDetail)) {
-    return normalizedDetail
+    return finalizeCollectibleDetailDisplay(normalizedDetail, category1)
   }
 
   const mappedRawDetail = mapRawCategoryToDetail(rawCategory)
 
   if (mappedRawDetail === normalizedDetail) {
-    return mappedRawDetail
+    return finalizeCollectibleDetailDisplay(mappedRawDetail, category1)
   }
 
   for (const route of sourceItem?.acquisitionRoutes ?? []) {
@@ -1485,11 +1630,17 @@ function resolveJapaneseDetailName({
     const routeDisplayName = resolveRouteDetailDisplayName(route)
 
     if (routeDisplayName) {
-      return translateDetailToJapanese(routeDisplayName, category1)
+      return finalizeCollectibleDetailDisplay(
+        translateDetailToJapanese(routeDisplayName, category1),
+        category1,
+      )
     }
   }
 
-  return translateDetailToJapanese(normalizedDetail, category1)
+  return finalizeCollectibleDetailDisplay(
+    translateDetailToJapanese(normalizedDetail, category1),
+    category1,
+  )
 }
 
 function getRouteCardKey(route: AcquisitionRoute) {
@@ -1523,6 +1674,24 @@ export function deduplicateAcquisitionRoutes(routes: AcquisitionRoute[]) {
   }
 
   return deduped
+}
+
+export function formatFishBaitDisplay(value: unknown) {
+  if (value == null) {
+    return ''
+  }
+
+  const text = String(value).trim()
+
+  if (!text) {
+    return ''
+  }
+
+  return text
+    .split(' / ')
+    .map((part) => translateFishTerm(part.trim()))
+    .filter(Boolean)
+    .join(' / ')
 }
 
 export function formatFishingWeather(value: unknown) {
